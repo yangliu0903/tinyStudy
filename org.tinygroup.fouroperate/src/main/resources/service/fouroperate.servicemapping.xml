@@ -1,6 +1,6 @@
 <service-view-mappings>
-	<service-view-mapping service-id="additionWithXml" path="/result.page"></service-view-mapping>
-	<service-view-mapping service-id="subtractWithXml" path="/result.page"></service-view-mapping>
-	<service-view-mapping service-id="multiWithXml" path="/result.page"></service-view-mapping>
-	<service-view-mapping service-id="divisionWithXml" path="/result.page"></service-view-mapping>
+	<service-view-mapping service-id="additionWithXml" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="subtractWithXml" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="multiWithXml" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="divisionWithXml" path="/result.page" type="forward"></service-view-mapping>
 </service-view-mappings>
