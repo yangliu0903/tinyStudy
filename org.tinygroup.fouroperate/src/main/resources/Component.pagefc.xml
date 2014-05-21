@@ -1,0 +1,26 @@
+<components>
+	<component name="additionComponent" bean="additionComponent"
+		title="addition component" icon="/icon/component.gif">
+		<short-description>addition component</short-description>
+		<long-description>addition component long description
+		</long-description>
+	</component>
+	<component name="subtractionComponent" bean="subtractionComponent"
+		title="subtraction component" icon="/icon/component.gif">
+		<short-description>subtraction component</short-description>
+		<long-description>subtraction component long description
+		</long-description>
+	</component>
+	<component name="multiComponent" bean="multiComponent"
+		title="multi component" icon="/icon/component.gif">
+		<short-description>multi component</short-description>
+		<long-description>multi component long description
+		</long-description>
+	</component>
+	<component name="divisionComponent" bean="divisionComponent"
+		title="division component" icon="/icon/component.gif">
+		<short-description>division component</short-description>
+		<long-description>division component long description
+		</long-description>
+	</component>
+</components>

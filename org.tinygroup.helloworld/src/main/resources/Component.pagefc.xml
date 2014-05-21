@@ -1,0 +1,9 @@
+<components>
+	<component name="helloworld" bean="helloworld"
+		title="helloworld Component" icon="/icon/component.gif">
+		<short-description>helloworld component</short-description>
+		<long-description>helloworld component long description
+		</long-description>
+	</component>
+</components>
+

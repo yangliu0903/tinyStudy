@@ -1,0 +1,43 @@
+<h2>四则运算服务</h2><br/>
+<h3>加法：</h3><br/>
+<form id="addition">
+<input type="text" name="number1" id="number1">+<input type="text" name="number2" id="number2">=<span id="result1"></span> <br/>
+<input type="button" value="计算" id="button1" >
+<input type="reset" value="重设">
+</form>
+<h3>减法：</h3><br/>
+<form id="subtraction">
+<input type="text" id="number3">-<input type="text" id="number4">=<span id="result2"></span>  <br/>
+<input type="button" value="计算" id="button2">
+<input type="reset" value="重设">
+</form>
+<h3>乘法：</h3><br/>
+<form id="multi">
+<input type="text" id="number5">*<input type="text" id="number6">=<span id="result3"></span>  <br/>
+<input type="button" value="计算" id="button3">
+<input type="reset" value="重设">
+</form>
+<h3>除法：</h3><br/>
+<form id="division">
+<input type="text" id="number7">/<input type="text" id="number8">=<span id="result4"></span>  <br/>
+<input type="button" value="计算" id="button4">
+<input type="reset" value="重设">
+</form>
+<script>
+  $("#button1").click(function(){
+      var data={number1:$("#number1").val(),number2:$("#number2").val()};
+      $("#result1").load("${TINY_CONTEXT_PATH}/fouroperate.pageflow?tiny_flow_id=addition",data);
+  })
+   $("#button2").click(function(){
+      var data={number1:$("#number3").val(),number2:$("#number4").val()};
+      $("#result2").load("${TINY_CONTEXT_PATH}/fouroperate.pageflow?tiny_flow_id=subtraction",data);
+  })
+   $("#button3").click(function(){
+      var data={number1:$("#number5").val(),number2:$("#number6").val()};
+      $("#result3").load("${TINY_CONTEXT_PATH}/fouroperate.pageflow?tiny_flow_id=multi",data);
+  })
+   $("#button4").click(function(){
+      var data={number1:$("#number7").val(),number2:$("#number8").val()};
+      $("#result4").load("${TINY_CONTEXT_PATH}/fouroperate.pageflow?tiny_flow_id=division",data);
+  })
+</script>

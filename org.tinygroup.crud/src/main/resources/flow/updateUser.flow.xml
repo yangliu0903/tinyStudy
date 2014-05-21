@@ -1,0 +1,13 @@
+<flow id="updateUserWithFlow" name="updateUserWithFlow" begin-node-id="updateUser"
+	private-context="false" enable="false">
+	<nodes>
+	<node id="updateUser" name="updateUser"  title="更改用户">
+			<component name="tinydbUpdateService">
+				<properties>
+					<flow-property name="beanType" value="user" />
+					<flow-property name="resultKey" value="result" />
+				</properties>
+			</component>
+	</node>
+	</nodes>
+</flow>

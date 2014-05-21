@@ -1,0 +1,13 @@
+<flow id="deleteUserWithFlow" name="deleteUserWithFlow" begin-node-id="deleteUser"
+	private-context="false" enable="false">
+	<nodes>
+	<node id="deleteUser" name="deleteUser"  title="删除用户">
+			<component name="tinydbDeleteService">
+				<properties>
+					<flow-property name="beanType" value="user" />
+					<flow-property name="resultKey" value="result" />
+				</properties>
+			</component>
+	</node>
+	</nodes>
+</flow>

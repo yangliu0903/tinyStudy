@@ -1,0 +1,13 @@
+<flow id="addUserWithFlow" name="addUserWithFlow" begin-node-id="addUser"
+	private-context="false" enable="false">
+	<nodes>
+	<node id="addUser" name="addUser"  title="添加用户">
+			<component name="tinydbAddService">
+				<properties>
+					<flow-property name="beanType" value="user" />
+					<flow-property name="resultKey" value="result" />
+				</properties>
+			</component>
+	</node>
+	</nodes>
+</flow>

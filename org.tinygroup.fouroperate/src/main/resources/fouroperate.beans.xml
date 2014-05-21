@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="fourOperateXmlService" name="fourOperateXmlService" scope="prototype"
+		class="org.tinygroup.fouroperate.service.FourOperateXmlService">
+	</bean>
+	<bean id="fourOperateAnnotationService" name="fourOperateAnnotationService" scope="prototype"
+		class="org.tinygroup.fouroperate.service.FourOperateAnnotationService">
+	</bean>
+	<bean id="additionComponent" name="additionComponent" scope="prototype"
+		class="org.tinygroup.fouroperate.component.AdditionComponent">
+	</bean>
+	<bean id="subtractionComponent" name="subtractionComponent" scope="prototype"
+		class="org.tinygroup.fouroperate.component.SubtractionComponent">
+	</bean>
+	<bean id="multiComponent" name="multiComponent" scope="prototype"
+		class="org.tinygroup.fouroperate.component.MultiComponent">
+	</bean>
+	<bean id="divisionComponent" name="divisionComponent" scope="prototype"
+		class="org.tinygroup.fouroperate.component.DivisionComponent">
+	</bean>
+</beans>

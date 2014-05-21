@@ -1,0 +1,11 @@
+服务方式：
+<form action="${TINY_CONTEXT_PATH}/sayHello.servicepage">
+ 输入名称：<input type="text" name="name"/>
+ <input type="submit" value="提交"/>
+</form>
+<br/>
+流程方式：
+<form action="${TINY_CONTEXT_PATH}/helloworld.pageflow">
+ 输入名称：<input type="text" name="name"/>
+ <input type="submit" value="提交"/>
+</form>

@@ -1,0 +1,24 @@
+<flow id="helloworld" name="helloworld" begin-node-id="helloworld"
+	private-context="false" enable="false">
+	<nodes>
+		<node id="helloworld" name="helloworld" title="helloworld">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="helloworld" />
+				</properties>
+			</component>
+		</node>
+		<node id="forward" name="forward" title="跳转页面"
+			next-node-id="end">
+			<component name="forwardComponent">
+				<properties>
+					<flow-property name="path" value="/helloresult.page" />
+				</properties>
+			</component>
+			<next-nodes>
+				<next-node next-node-id="end">
+				</next-node>
+			</next-nodes>
+		</node>
+	</nodes>
+</flow>

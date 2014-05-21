@@ -1,0 +1,13 @@
+<initDatas>
+	<use-packages>
+	</use-packages>
+	<initData-list>
+		<initData package-name="sample" table-id="incrementer">
+			<records>
+				<record>
+					<value-pair table-field-id="sequence_id" value="0"></value-pair>
+				</record>
+			</records>
+		</initData>
+	</initData-list>
+</initDatas>
