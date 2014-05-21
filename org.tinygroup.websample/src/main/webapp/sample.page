@@ -1,3 +1,1 @@
-helloworld示例:<a href="${TINY_CONTEXT_PATH}/helloworld.page">helloworld</a><br/>
-四则运算示例:<a href="${TINY_CONTEXT_PATH}/fouroperate.page">四则运算</a><br/>
-增删改查示例:<a href="${TINY_CONTEXT_PATH}/user.page">增删改查</a><br/>
+tiny示例

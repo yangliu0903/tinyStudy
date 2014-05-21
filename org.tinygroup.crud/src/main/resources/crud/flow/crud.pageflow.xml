@@ -54,7 +54,7 @@
 		<node id="list" name="list" title="转化页面">
 			<component name="forwardComponent">
 				<properties>
-					<flow-property name="path" value="/flow/list.page" />
+					<flow-property name="path" value="/crud/flow/list.page" />
 				</properties>
 			</component>
 			<next-nodes>
@@ -74,7 +74,7 @@
 		<node id="operate" name="operate" title="转化页面">
 			<component name="forwardComponent">
 				<properties>
-					<flow-property name="path" value="/flow/operate.page" />
+					<flow-property name="path" value="/crud/flow/operate.page" />
 				</properties>
 			</component>
 			<next-nodes>

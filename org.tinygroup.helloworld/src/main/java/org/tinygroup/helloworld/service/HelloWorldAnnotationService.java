@@ -9,7 +9,7 @@ import org.tinygroup.service.annotation.ServiceViewMapping;
 public class HelloWorldAnnotationService{
 	@ServiceMethod(serviceId = "sayHelloA")
 	@ServiceResult(name = "result")
-	@ServiceViewMapping("/helloresult.page")
+	@ServiceViewMapping("/helloworld/helloresult.page")
 	public String sayHello(String name) {
 		if (name == null) {
 			name = "world.";

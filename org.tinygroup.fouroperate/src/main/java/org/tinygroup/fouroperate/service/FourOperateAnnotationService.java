@@ -9,25 +9,25 @@ import org.tinygroup.service.annotation.ServiceViewMapping;
 public class FourOperateAnnotationService{
 	@ServiceMethod(serviceId = "additionWithAnno")
 	@ServiceResult(name = "result")
-	@ServiceViewMapping("/result.page")
+	@ServiceViewMapping("/fouroperate/result.page")
 	public double addition(double number1,double number2){
 		return number1+number2;
 	}
 	@ServiceMethod(serviceId = "subtractWithAnno")
 	@ServiceResult(name = "result")
-	@ServiceViewMapping("/result.page")
+	@ServiceViewMapping("/fouroperate/result.page")
 	public double subtraction(double number1,double number2){
 		return number1-number2;
 	}
 	@ServiceMethod(serviceId = "multiWithAnno")
 	@ServiceResult(name = "result")
-	@ServiceViewMapping("/result.page")
+	@ServiceViewMapping("/fouroperate/result.page")
 	public double multi(double number1,double number2){
 		return number1*number2;
 	}
 	@ServiceMethod(serviceId = "divisionWithAnno")
 	@ServiceResult(name = "result")
-	@ServiceViewMapping("/result.page")
+	@ServiceViewMapping("/fouroperate/result.page")
 	public double division (double number1,double number2){
 		return number1/number2;
 	}

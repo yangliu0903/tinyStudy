@@ -1,7 +1,0 @@
-服务方式：<a href="${TINY_CONTEXT_PATH}/service/fouroperate.page">四则运算</a><br/>
-页面流方式:<a href="${TINY_CONTEXT_PATH}/flow/fouroperate.page">四则运算</a><br/>
-流程编排方式:<br/>
-<a href="${TINY_CONTEXT_PATH}/layout/addition.page">加法运算</a><br/>
-<a href="${TINY_CONTEXT_PATH}/layout/subtraction.page">减法运算</a><br/>
-<a href="${TINY_CONTEXT_PATH}/layout/multi.page">乘法运算</a><br/>
-<a href="${TINY_CONTEXT_PATH}/layout/division.page">除法运算</a><br/>

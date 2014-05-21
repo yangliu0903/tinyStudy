@@ -39,13 +39,13 @@ public class HibernateCrudService implements CrudDbService {
 	}
 	@ServiceMethod(serviceId = "queryUsers")
 	@ServiceResult(name = "users")
-	@ServiceViewMapping("/service/hibernate/list.page")
+	@ServiceViewMapping("/crud/service/hibernate/list.page")
 	public List<User> queryUsers(User user) {
 		return crudDbDao.queryUsers(user);
 	}
 	@ServiceMethod(serviceId = "queryUserById")
 	@ServiceResult(name = "user")
-	@ServiceViewMapping("/service/hibernate/operate.page")
+	@ServiceViewMapping("/crud/service/hibernate/operate.page")
 	public User getUserById(Integer id) {
 		if(id==null){
 			return null;

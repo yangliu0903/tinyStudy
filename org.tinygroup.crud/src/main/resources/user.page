@@ -1,3 +1,0 @@
-hibernate服务方式：<a href="${TINY_CONTEXT_PATH}/queryUsers.servicepage">用户管理</a><br/>
-tinydb服务方式：<a href="${TINY_CONTEXT_PATH}/queryUsersTiny.servicepage">用户管理</a><br/>
-tinydb流程组件方式：<a href="${TINY_CONTEXT_PATH}/crud.pageflow?@beantype=user&tiny_flow_id=queryUsers">用户管理</a><br/>

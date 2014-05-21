@@ -52,7 +52,7 @@
 		<node id="success" name="success" title="转换页面">
 			<component name="forwardComponent">
 				<properties>
-					<flow-property name="path" value="/result.page" />
+					<flow-property name="path" value="/fouroperate/result.page" />
 				</properties>
 			</component>
 			<next-nodes>

@@ -40,13 +40,13 @@ public class TinyDbCrudService implements CrudDbService {
 	}
 	@ServiceMethod(serviceId = "queryUsersTiny")
 	@ServiceResult(name = "users")
-	@ServiceViewMapping("/service/tinydb/list.page")
+	@ServiceViewMapping("/crud/service/tinydb/list.page")
 	public List<User> queryUsers(User user) {
 		return crudDbDao.queryUsers(user);
 	}
 	@ServiceMethod(serviceId = "queryUserByIdTiny")
 	@ServiceResult(name = "user")
-	@ServiceViewMapping("/service/tinydb/operate.page")
+	@ServiceViewMapping("/crud/service/tinydb/operate.page")
 	public User getUserById(Integer id) {
 		if(id==null){
 			return null;

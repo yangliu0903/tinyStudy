@@ -1,0 +1,6 @@
+<service-view-mappings>
+	<service-view-mapping service-id="additionWithXml" path="/fouroperate/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="subtractWithXml" path="/fouroperate/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="multiWithXml" path="/fouroperate/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="divisionWithXml" path="/fouroperate/result.page" type="forward"></service-view-mapping>
+</service-view-mappings>

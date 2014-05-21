@@ -34,7 +34,7 @@ $(document).ready(function(){
      });
 
    $("#add").click(function(){
-       location.href="${TINY_CONTEXT_PATH}/flow/operate.page";
+       location.href="${TINY_CONTEXT_PATH}/crud/flow/operate.page";
     }
    );
    $("#update").click(function(){
