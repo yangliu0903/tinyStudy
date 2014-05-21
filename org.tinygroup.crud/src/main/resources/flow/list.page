@@ -60,7 +60,7 @@ $(document).ready(function(){
                  alert("只能选择一条记录进行修改");
                }else{
               var checkbox=checkboxs.get(0);
-             location.href="${TINY_CONTEXT_PATH}/crud.pageflow?id="+checkbox.value+"&@beantype=user&tiny_flow_id=deleteUser";
+             location.href="${TINY_CONTEXT_PATH}/crud.pageflow?id="+checkbox.value+"&tiny_flow_id=deleteUser";
              }
         }
     }

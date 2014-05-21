@@ -64,7 +64,7 @@
 		<node id="redirect" name="redirect" title="重定向页面">
 			<component name="redirectComponent">
 				<properties>
-					<flow-property name="path" value="crud.pageflow?@beantype=user&amp;tiny_flow_id=queryUsers" />
+					<flow-property name="path" value="crud.pageflow?tiny_flow_id=queryUsers" />
 				</properties>
 			</component>
 			<next-nodes>
