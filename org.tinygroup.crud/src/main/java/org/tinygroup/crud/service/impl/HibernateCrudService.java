@@ -10,15 +10,15 @@ import org.tinygroup.service.annotation.ServiceMethod;
 import org.tinygroup.service.annotation.ServiceResult;
 import org.tinygroup.service.annotation.ServiceViewMapping;
 @ServiceComponent()
-public class HibernateCrudService implements CrudDbService {
+public class HibernateCrudService implements CrudDbService<User> {
 	
-	private CrudDbDao crudDbDao;
+	private CrudDbDao<User> crudDbDao;
 	
-	public CrudDbDao getCrudDbDao() {
+	public CrudDbDao<User> getCrudDbDao() {
 		return crudDbDao;
 	}
 
-	public void setCrudDbDao(CrudDbDao crudDbDao) {
+	public void setCrudDbDao(CrudDbDao<User> crudDbDao) {
 		this.crudDbDao = crudDbDao;
 	}
 	@ServiceMethod(serviceId = "addUser")

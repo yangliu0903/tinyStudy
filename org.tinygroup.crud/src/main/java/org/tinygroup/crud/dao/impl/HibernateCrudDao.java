@@ -6,7 +6,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 
-public class HibernateCrudDao extends HibernateDaoSupport implements CrudDbDao{
+public class HibernateCrudDao extends HibernateDaoSupport implements CrudDbDao<User>{
 
 	public void addUser(User user) {
           getHibernateTemplate().save(user);		

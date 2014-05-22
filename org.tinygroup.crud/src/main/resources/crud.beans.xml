@@ -130,12 +130,9 @@
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 
-	<bean id="tinyDbCrudDao" class="org.tinygroup.crud.dao.impl.TinyDbCrudDao">
-		<property name="manager" ref="beanOperatorManager" />
-	</bean>
-
 	<bean id="tinyDbCrudService" class="org.tinygroup.crud.service.impl.TinyDbCrudService">
-		<property name="crudDbDao" ref="tinyDbCrudDao" />
+		<property name="manager" ref="beanOperatorManager" />
+		<property name="beanType" value="user" />
 	</bean>
 
 	<bean id="mysqlDialect" class="org.tinygroup.tinydb.dialect.impl.MySQLDialect">

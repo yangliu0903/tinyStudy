@@ -34,7 +34,7 @@ $(document).ready(function(){
      });
 
    $("#add").click(function(){
-       location.href="${TINY_CONTEXT_PATH}/queryUserById.servicepage";
+       location.href="${TINY_CONTEXT_PATH}/crud/service/hibernate/operate.page";
     }
    );
    $("#update").click(function(){

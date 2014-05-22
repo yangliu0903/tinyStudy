@@ -2,14 +2,12 @@ package org.tinygroup.crud.dao;
 
 import java.util.List;
 
-import org.tinygroup.crud.pojo.User;
+public interface CrudDbDao<T> {
 
-public interface CrudDbDao {
-
-	public void addUser(User user);
-	public void updateUser(User user);
-	public void deleteUser(User user);
-	public List<User> queryUsers(User user);
-	public User queryUserById(int id);
+	public void addUser(T user);
+	public void updateUser(T user);
+	public void deleteUser(T user);
+	public List<T> queryUsers(T user);
+	public T queryUserById(int id);
 	
 }

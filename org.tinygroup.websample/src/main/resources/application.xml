@@ -189,6 +189,9 @@
         <tiny-filter id="sessionTinyFilter" class="sessionTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
+        <tiny-filter id="tinydbFilter" class="tinydbFilter">
+            <filter-mapping url-pattern=".*"></filter-mapping>
+        </tiny-filter>
     </tiny-filters>
     <!--tiny listener 配置 -->
     <tiny-listener>
