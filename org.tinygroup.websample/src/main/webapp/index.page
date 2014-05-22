@@ -6,8 +6,3 @@ Accept-Language:$Accept-Language<br />
 Accept-Charset:$Accept-Charset<br />
 User-Agent:$User-Agent<br />
 Accept:$Accept<br />
-
-name:#i("name")<br />
-sex:#i("sex")<br />
-name:$name<br />
-title:<br />
