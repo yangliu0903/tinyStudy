@@ -4,23 +4,35 @@
 		<short-description>addition component</short-description>
 		<long-description>addition component long description
 		</long-description>
+		<parameter name="number1" title="加数" type="java.lang.Double"></parameter>
+		<parameter name="number2" title="加数" type="java.lang.Double"></parameter>
+		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="subtractionComponent" bean="subtractionComponent"
 		title="subtraction component" icon="/icon/component.gif">
 		<short-description>subtraction component</short-description>
 		<long-description>subtraction component long description
 		</long-description>
+		<parameter name="number1" title="减数" type="java.lang.Double"></parameter>
+		<parameter name="number2" title="减数" type="java.lang.Double"></parameter>
+		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="multiComponent" bean="multiComponent"
 		title="multi component" icon="/icon/component.gif">
 		<short-description>multi component</short-description>
 		<long-description>multi component long description
 		</long-description>
+		<parameter name="number1" title="乘数" type="java.lang.Double"></parameter>
+		<parameter name="number2" title="乘数" type="java.lang.Double"></parameter>
+		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="divisionComponent" bean="divisionComponent"
 		title="division component" icon="/icon/component.gif">
 		<short-description>division component</short-description>
 		<long-description>division component long description
 		</long-description>
+		<parameter name="number1" title="除数" type="java.lang.Double"></parameter>
+		<parameter name="number2" title="除数" type="java.lang.Double"></parameter>
+		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 </components>
