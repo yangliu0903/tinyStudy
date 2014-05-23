@@ -4,7 +4,7 @@
 	<node id="addUser" name="addUser"  title="添加用户">
 			<component name="tinydbAddService">
 				<properties>
-					<flow-property name="beanType" value="user" />
+					<flow-property name="beanType" value="TUser" />
 					<flow-property name="resultKey" value="result" />
 				</properties>
 			</component>

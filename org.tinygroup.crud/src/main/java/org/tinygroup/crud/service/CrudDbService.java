@@ -11,8 +11,8 @@ public interface CrudDbService<T> {
 
 	public void addUser(T user);
 	public void updateUser(T user);
-	public void deleteUserById(int id);
-	public T getUserById(Integer id);
+	public void deleteUserById(String id);
+	public T getUserById(String id);
 	public List<T> queryUsers(T user);
 	
 }

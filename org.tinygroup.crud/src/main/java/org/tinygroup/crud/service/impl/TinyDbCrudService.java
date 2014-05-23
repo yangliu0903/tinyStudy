@@ -11,14 +11,12 @@ import org.tinygroup.service.annotation.ServiceResult;
 import org.tinygroup.service.annotation.ServiceViewMapping;
 import org.tinygroup.support.BeanSupport;
 import org.tinygroup.tinydb.Bean;
-import org.tinygroup.tinydb.BeanOperatorManager;
+import org.tinygroup.tinydb.DbOperatorFactory;
 import org.tinygroup.tinydb.operator.DBOperator;
 @ServiceComponent()
 public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean>{
 	
     private DBOperator operator;
-	
-	private BeanOperatorManager manager;
 	
 	private String beanType;
 	
@@ -26,50 +24,48 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 		this.beanType = beanType;
 	}
 
-	public void setManager(BeanOperatorManager manager) {
-		this.manager = manager;
-	}
-
 	 /** 初始化bean。 */
     protected void init() throws Exception {
-    	Assert.assertNotNull(manager, "manager must not null");
-    	operator=manager.getDbOperator(beanType);
+    	Assert.assertNotNull(beanType, "beanType must not null");
+    	operator=DbOperatorFactory.getDBOperator(beanType);
     }
 	
 	
 	@ServiceMethod(serviceId = "addUserTiny")
-	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=user",type="redirect")
-	public void addUser(Bean user) {
-		operator.insert(user);
+	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
+	public void addUser(Bean TUser) {
+		operator.insert(TUser);
 	}
 	@ServiceMethod(serviceId = "updateUserTiny")
-	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=user",type="redirect")
-	public void updateUser(Bean user) {
-		operator.update(user);
+	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
+	public void updateUser(Bean TUser) {
+		operator.update(TUser);
 	}
 	@ServiceMethod(serviceId = "deleteUserTiny")
-	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=user",type="redirect")
-	public void deleteUserById(int id) {
+	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
+	public void deleteUserById(String id) {
 		operator.deleteById(id);
 	}
 	@ServiceMethod(serviceId = "queryUsersTiny")
 	@ServiceResult(name = "users")
 	@ServiceViewMapping("/crud/service/tinydb/list.page")
-	public List<Bean> queryUsers(Bean user) {
-		if(user==null){
-			user=new Bean(beanType);
+	public List<Bean> queryUsers(Bean TUser) {
+		if(TUser==null){
+			TUser=new Bean(beanType);
 		}
-		Bean[] beans= operator.getBeans(user);
-		return Arrays.asList(beans);
+		Bean[] beans= operator.getBeans(TUser);
+		if(beans!=null){
+			return Arrays.asList(beans);
+		}
+		return null;
 	}
 	@ServiceMethod(serviceId = "queryUserByIdTiny")
 	@ServiceResult(name = "user")
 	@ServiceViewMapping("/crud/service/tinydb/operate.page")
-	public Bean getUserById(Integer id) {
+	public Bean getUserById(String id) {
 		if(id==null){
 			return null;
 		}
 		return operator.getBean(id);
 	}
-
 }

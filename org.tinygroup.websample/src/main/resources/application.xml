@@ -62,7 +62,7 @@
     <!-- 数据库安装处理器 -->
     <database-install-processor>
         <database-installer>
-            <database type="mysql"/>
+            <database type="derby"/>
         </database-installer>
     </database-install-processor>
 
@@ -106,9 +106,9 @@
     </annotation-configuration>
 
     <!-- beanmanager配置信息  schema为表模式, bean-name为beanoperate的bean名称,table-name-pattern配置加载的表名称模式，key-type：表主键类型，现有increase和uuid-->
-    <bean-manager-config default-schema="sample">
-	   <bean-opertate-config schema="sample"
-			table-name-pattern="%" bean-name="beanStringOperator" key-type="increase">
+    <bean-manager-config default-schema="opensource">
+	   <bean-opertate-config schema="opensource"
+			table-name-pattern="%" bean-name="beanStringOperator" key-type="uuid">
 		</bean-opertate-config>
     </bean-manager-config>
 

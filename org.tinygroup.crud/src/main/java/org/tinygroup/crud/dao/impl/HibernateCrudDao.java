@@ -28,7 +28,7 @@ public class HibernateCrudDao extends HibernateDaoSupport implements CrudDbDao<U
 		return getHibernateTemplate().findByExample(user);
 	}
 
-	public User queryUserById(int id) {
+	public User queryUserById(String id) {
 		return (User) getHibernateTemplate().get(User.class, id);
 	}
 
