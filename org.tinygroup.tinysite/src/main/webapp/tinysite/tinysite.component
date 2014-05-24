@@ -162,10 +162,16 @@
 <li class="active">$title</li>
 #end
 
-#macro(thumbnails)
-<ul class="thumbnails">
+#macro(thumbnails $thumbnailsId)
+<ul class="thumbnails"#if($thumbnailsId)id="$thumbnailsId"#end>
     $bodyContent
 </ul>
+#end
+
+#macro(integration)
+<li class="span3 cms integration">
+    $bodyContent
+</li>
 #end
 
 #macro(clearfix)
@@ -256,6 +262,20 @@ $bodyContent
 </div>
 <hr class="no-margin" style="margin: 5pt;5pt;5pt;5pt;"/>
 #end
+
+#macro(filter)
+<!-- Portfolio Filter -->
+<div id="filter" class="half-margin">
+    $bodyContent
+</div>
+<div class="clearfix"></div>
+</div>
+#end
+
+#macro(filterItem $title $current)
+<button class="btn btn-small half-margin#if($current) current#end">$title</button>
+#end
+
 
 #################################################下面是业务相关#########################################################
 #macro(logo)
