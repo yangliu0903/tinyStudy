@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Tiny Framework-$!pageTitle</title>
+    <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
+    <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
+</head>
+<body class="boxed"  style="background: url(${TINY_CONTEXT_PATH}/tinysite/img/bg/parquet-bg.jpg);">
+$pageContent
+</body>
+</html>

@@ -1,0 +1,46 @@
+#pageTitle("feature")
+#title("特性Features" "Tiny Framework的特殊介绍")
+
+
+#@row()
+
+<!-- Sidebar -->
+    #@sidebar("特性列表")
+        #sidebarItem("Typography1" '#typography1')
+        #sidebarItem("Typography2" '#typography2')
+        #sidebarItem("Typography3" '#typography3')
+        #sidebarItem("Typography4" '#typography4')
+        #sidebarItem("Typography5" '#typography5')
+        #sidebarItem("Typography6" '#typography6')
+        #sidebarItem("Typography7" '#typography7')
+        #sidebarItem("Typography8" '#typography8')
+    #end
+
+<!-- Content -->
+    #@span9()
+        #@lead("typography1" "Typography1")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography2" "Typography2")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography3" "Typography3")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography4" "Typography4")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography5" "Typography5")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography6" "Typography6")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography7" "Typography7")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+        #@lead("typography8" "Typography8")
+        特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容特性内容
+        #end
+    #end
+#end

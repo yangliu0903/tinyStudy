@@ -1,0 +1,25 @@
+#pageTitle("关于")
+#title("关于我们" "核心成员介绍")
+#@row()
+    #@span12()
+
+    <p class="half-margin">
+        Tiny Framework已经走过了3个多年头，从开始的一个人到现在已经形成了一个紧密团结互补性强的团队，团队成员每个人都有自己的特色，但是他们都有一个共同的特点，那就是：对软件事业的热爱。
+
+        <!-- About Content -->
+        #@thumbnails()
+            #@thumbnailsItem("罗果" "项目发起人 架构师" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+                aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
+            #end
+            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+                aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
+            #end
+            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+                aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
+            #end
+            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+                aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
+            #end
+        #end
+    #end
+#end

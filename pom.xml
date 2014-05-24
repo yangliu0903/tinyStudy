@@ -10,5 +10,6 @@
         <module>org.tinygroup.fouroperate</module>
         <module>org.tinygroup.helloworld</module>
         <module>org.tinygroup.websample</module>
+        <module>org.tinygroup.tinysite</module>
     </modules>
 </project>

@@ -1,0 +1,333 @@
+#macro (a $aHref $aTarget )
+<a#if($aHref)
+        href="#if($aHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$aHref"#end#if($aTarget)
+        target="$aTarget"#end>
+    $bodyContent
+</a>
+#end
+
+#macro (img $imgHref $imgTitle)
+        <img#if($imgTitle) alt="$imgTitle"#end#if($imgHref)
+                           src="#if($imgHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$imgHref"#end#>
+</a>
+#end
+
+#macro(section)
+<div class="section">
+    $bodyContent
+</div>
+#end
+
+#macro(container)
+<div class="container">
+    $bodyContent
+</div>
+#end
+
+#macro(row)
+<div class="row">
+    $bodyContent
+</div>
+#end
+
+#macro(span1)
+<div class="span1">
+    $bodyContent
+</div>
+#end
+
+#macro(span2)
+<div class="span2">
+    $bodyContent
+</div>
+#end
+
+#macro(span3)
+<div class="span3">
+    $bodyContent
+</div>
+#end
+
+#macro(span4)
+<div class="span4">
+    $bodyContent
+</div>
+#end
+
+#macro(span5)
+<div class="span5">
+    $bodyContent
+</div>
+#end
+
+
+#macro(span6)
+<div class="span6">
+    $bodyContent
+</div>
+#end
+
+#macro(span7)
+<div class="span7">
+    $bodyContent
+</div>
+#end
+
+#macro(span8)
+<div class="span8">
+    $bodyContent
+</div>
+#end
+
+#macro(span9)
+<div class="span9">
+    $bodyContent
+</div>
+#end
+
+#macro(span10)
+<div class="span10">
+    $bodyContent
+</div>
+#end
+
+#macro(span11)
+<div class="span11">
+    $bodyContent
+</div>
+#end
+
+#macro(span12)
+<div class="span12">
+    $bodyContent
+</div>
+#end
+
+#macro(hr)
+<hr/>
+#end
+
+#macro(dropdownMenu $dropdownTitle $dropdownHref $dropdownSubTitle )
+<li class="dropdown"><a href="$dropdownHref?activePage=$!menuKey">$dropdownTitle</a> <b class="caret"></b>
+    <span>$dropdownSubTitle</span>
+    $!bodyContent
+</li>
+#end
+
+#macro(menu $menuTitle $menuHref $menuSubTitle  $menuKey)
+<li class="dropdown#if($menuKey==$activePage) active#end"><a
+        href="${menuHref}?activePage=$!menuKey">$menuTitle</a>
+    <span>$menuSubTitle</span>
+    $!bodyContent
+</li>
+#end
+
+#macro(nav)
+<ul class="nav">
+    $bodyContent
+</ul>
+#end
+
+#macro(subMenu)
+<ul>
+    $bodyContent
+</ul>
+#end
+
+#macro(subMenuItem  $title $href $menuKey)
+<li><a href="$href"#if($menuKey==$activePage) class="current"#end >$title</a></li>
+#end
+
+#macro(pageTitle $title)
+    #set($pageTitle="$title")
+#end
+
+#macro(modalFooter)
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+#end
+
+#macro(breadcrumb)
+<ul class="breadcrumb">
+    $bodyContent
+</ul>
+#end
+
+#macro(breadcrumbParentItem $title $url)
+<li>#@a($url)$title#end <span class="divider">/</span></li>
+#end
+
+#macro(breadcrumbItem $title)
+<li class="active">$title</li>
+#end
+
+#macro(thumbnails)
+<ul class="thumbnails">
+    $bodyContent
+</ul>
+#end
+
+#macro(clearfix)
+<div class="clearfix"></div>
+#end
+
+#macro(thumbnailsItem $name $title $qq $email $imgUrl)
+<li class="span3">
+    <div class="thumbnail">
+        #img($imgUrl)
+        <div class="caption">
+            <h3><a href="#">$name</a></h3>
+            <em>$title</em>
+
+            <p>QQ:$!qq</p>
+
+            <p>邮箱:$!email</p>
+            #clearfix
+            $!bodyContent
+        </div>
+    </div>
+</li>
+#end
+
+#macro(slides)
+<div class="slides">
+    $bodyContent
+</div>
+#end
+
+#macro(slidesItem $imgSrc $title $href)
+<div>#@a($href)#img($imgSrc $title) #end
+$bodyContent
+</div>
+#end
+
+#macro(slidesDetail)
+<div class="detail">
+    $bodyContent
+</div>
+#end
+
+#macro(slidesDetailInfo $title $subTitle)
+<h3>#@a($href)$title#end</h3>
+<em>$subTitle</em>
+    $bodyContent
+#end
+
+#macro(title $title $subTitle)
+<div class="row">
+    <div class="span12">
+        <h1 class="no-margin">$title</h1>
+
+        <p class="lead">$subTitle</p>
+    </div>
+</div>
+#end
+
+#macro(wideBanner)
+<!-- Wide Banner -->
+<div class="wide-bg">
+    <div class="container">
+        $bodyContent
+    </div>
+</div>
+#end
+
+#macro(sidebar $title)
+<!-- Sidebar -->
+<div class="span3 sidebar">
+    #if($title)
+        <h3 class="half-margin">$!title</h3>
+    #end
+    <ul class="nav nav-tabs nav-stacked">
+        $bodyContent
+    </ul>
+</div>
+#end
+
+#macro(sidebarItem $title $href )
+<li>#@a($href)$title#end</li>
+#end
+
+#macro(lead $id $title)
+<p class="lead no-margin" id="$id">$title</p>
+<div class="">
+    $bodyContent
+</div>
+<hr class="no-margin" style="margin: 5pt;5pt;5pt;5pt;"/>
+#end
+
+#################################################下面是业务相关#########################################################
+#macro(logo)
+<p class="logo"><a href="home.page?activePage=home"><span>Tiny Framework</span></a></p>
+#end
+
+#macro(toTop)
+<div id="toTop">Top</div>
+#end
+
+#macro(header)
+<!-- Header -->
+    #@row()
+        #@span3()
+        #logo
+        #end
+        #@span9()
+        <div class="top-header text-right"><em>QQ群: 228977971 邮箱：<a
+                href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
+
+            <div class="social">
+                <a href="http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" class="ico-rss"
+                   target="_blank"><img src="img/sonar.ico" alt="代码审查"/></a>
+                <a href="http://www.tinygroup.org/hudson/job/tiny/" target="_blank" class="ico-flickr"><img
+                        src="img/hudson.ico" alt="持续集成"/></a>
+            </div>
+        </div>
+        <div class="text-left">
+            <h2></bit> Think big, start small, scale fast.</h2>
+        </div>
+        #end
+    #end
+#end
+
+#macro(footer)
+    #@section()
+        #@container()
+        <!-- Footer -->
+            #@row()
+                #@span12()
+                <div class="footer">
+                    <hr/>
+                    <p class="text-center">&copy; 2014 <strong>Tiny Group</strong><br/>
+                        www.tinygroup.org</p>
+                </div>
+                #end
+            #end
+        #end
+    #end
+
+#end
+
+#macro(navbar)
+<!-- Navbar -->
+<div class="navbar"#* id="nav-follow"*#>
+    <div class="navbar-inner">
+        <div class="container"><a data-target=".navbar-responsive-collapse" data-toggle="collapse"
+                                  class="btn btn-navbar"><i class="icon-th-list"></i></a> <a
+                data-target=".navbar-responsive-collapse" data-toggle="collapse" class="brand">Navbar</a>
+
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+                #@nav()
+                    #@menu("首页Home" "home.page" "从这里开始" "home")#end
+##                    #@menu("概述" "summary.page" "设计理念和设计原则" "summary")#end
+                    #@menu("特性Features" "feature.page" "设计理念和设计原则" "feature")#end
+##                    #@menu("框架组成" "constitute.page" "详细介绍框架包含哪些内容" "constitute")#end
+                    #@menu("常见问题FAQ" "faq.page" "框架特性介绍" "faq")#end
+                    #@menu("关于About" "about.page" "框架特性介绍" "about")#end
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+#end
+

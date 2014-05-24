@@ -1,0 +1,53 @@
+#pageTitle("faq")
+#title("常见问题解答" "Tiny Framework的常见问题解答")
+
+
+#@row()
+
+<!-- Sidebar -->
+    #@sidebar("常见问题列表")
+        #sidebarItem("Tiny的贡献者有哪些？" '#typography1')
+        #sidebarItem("要学习Tiny框架要有什么前提条件？" '#typography2')
+        #sidebarItem("学习Tiny需要多长时间？" '#typography3')
+        #sidebarItem("如何下载Tiny最新源码？" '#typography4')
+        #sidebarItem("如果获取最新的快照版本?" '#typography5')
+        #sidebarItem("什么在开源项目那里的版本号与源码库中的不一致？" '#typography6')
+        #sidebarItem("为什么指定了坐标确找不到资源？" '#typography7')
+        #sidebarItem("如何给Tiny提新需求或报告BUG?" '#typography8')
+    #end
+
+<!-- Content -->
+    #@span9()
+        #@lead("typography1" "Tiny的贡献者有哪些")
+        <div class="SyntaxHighlighter">
+        <pre class="brush: java">
+class HelloWorld{
+    int a;
+}
+        </pre>
+            </div>
+            FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography2" "要学习Tiny框架要有什么前提条件")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography3" "学习Tiny需要多长时间")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography4" "如何下载Tiny最新源码")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography5" "如果获取最新的快照版本")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography6" "什么在开源项目那里的版本号与源码库中的不一致")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography7" "为什么指定了坐标确找不到资源")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+        #@lead("typography8" "如何给Tiny提新需求或报告BUG")
+        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+        #end
+    #end
+#end
