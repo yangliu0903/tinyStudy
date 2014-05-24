@@ -33,7 +33,7 @@ public class HibernateCrudService implements CrudDbService<User> {
 	}
 	@ServiceMethod(serviceId = "deleteUser")
 	@ServiceViewMapping(value="/queryUsers.servicepage",type="redirect")
-	public void deleteUserById(int id) {
+	public void deleteUserById(String id) {
 		User user=getUserById(id);
 		crudDbDao.deleteUser(user);
 	}
@@ -46,7 +46,7 @@ public class HibernateCrudService implements CrudDbService<User> {
 	@ServiceMethod(serviceId = "queryUserById")
 	@ServiceResult(name = "user")
 	@ServiceViewMapping("/crud/service/hibernate/operate.page")
-	public User getUserById(Integer id) {
+	public User getUserById(String id) {
 		if(id==null){
 			return null;
 		}

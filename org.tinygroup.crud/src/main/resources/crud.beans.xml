@@ -69,7 +69,7 @@
 	</bean>
 
 	<bean id="dynamicDataSource" class="org.tinygroup.datasource.DynamicDataSource">
-		<property name="dataSource" ref="dataSource3" />
+		<property name="dataSource" ref="dataSource1" />
 	</bean>
 
 	<bean id="dataSourceTransactionManager"
@@ -115,7 +115,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect  
+					org.hibernate.dialect.DerbyDialect  
                 </prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
@@ -131,24 +131,24 @@
 	</bean>
 
 	<bean id="tinyDbCrudService" class="org.tinygroup.crud.service.impl.TinyDbCrudService">
-		<property name="manager" ref="beanOperatorManager" />
-		<property name="beanType" value="user" />
+		<property name="beanType" value="TUser" />
 	</bean>
 
-	<bean id="mysqlDialect" class="org.tinygroup.tinydb.dialect.impl.MySQLDialect">
-		<property name="incrementer" ref="mysqlIncrementer"></property>
+	<!--<bean id="derbyDialect"
+		class="org.tinygroup.tinydb.dialect.impl.DerbyDialect">
+		<property name="incrementer" ref="derbyIncrementer"></property>
 	</bean>
-	<bean id="mysqlIncrementer"
-		class="org.springframework.jdbc.support.incrementer.MySQLMaxValueIncrementer">
+	<bean id="derbyIncrementer"
+		class="org.springframework.jdbc.support.incrementer.DerbyMaxValueIncrementer">
 		<property name="dataSource" ref="dynamicDataSource"></property>
 		<property name="incrementerName" value="incrementer"></property>
 		<property name="columnName" value="sequence_id"></property>
 		<property name="cacheSize" value="100"></property>
-	</bean>
+	</bean>-->
 	<bean id="beanStringOperator" class="org.tinygroup.tinydb.operator.impl.BeanStringOperator"
 		scope="prototype">
 		<constructor-arg ref="jdbcTemplate"></constructor-arg>
-		<property name="dialect" ref="mysqlDialect"></property>
+		<!--<property name="dialect" ref="derbyDialect"></property>-->
 	</bean>
 
     <bean id="metadataTableConfigConvert"
@@ -159,7 +159,7 @@
 	</bean>
 	<bean id="databaseTableConfigConvert"
 		class="org.tinygroup.tinydb.convert.impl.DatabaseTableConfigConvert">
-		<property name="database" value="mysql">
+		<property name="database" value="derby">
 		</property>
 	</bean>
 </beans>

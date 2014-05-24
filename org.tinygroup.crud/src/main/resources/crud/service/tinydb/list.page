@@ -46,7 +46,7 @@ $(document).ready(function(){
            alert("只能选择一条记录进行修改");
         }else{
          var checkbox=checkboxs.get(0);
-         location.href="${TINY_CONTEXT_PATH}/queryUserByIdTiny.servicepage?@beantype=user&id="+checkbox.value;
+         location.href="${TINY_CONTEXT_PATH}/queryUserByIdTiny.servicepage?@beantype=TUser&id="+checkbox.value;
         } 
     }
    );
@@ -60,7 +60,7 @@ $(document).ready(function(){
                  alert("只能选择一条记录进行修改");
                }else{
               var checkbox=checkboxs.get(0);
-             location.href="${TINY_CONTEXT_PATH}/deleteUserTiny.servicepage?@beantype=user&id="+checkbox.value;
+             location.href="${TINY_CONTEXT_PATH}/deleteUserTiny.servicepage?@beantype=TUser&id="+checkbox.value;
              }
         }
     }

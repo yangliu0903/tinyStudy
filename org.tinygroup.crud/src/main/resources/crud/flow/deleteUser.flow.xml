@@ -4,7 +4,7 @@
 	<node id="deleteUser" name="deleteUser"  title="删除用户">
 			<component name="tinydbDeleteService">
 				<properties>
-					<flow-property name="beanType" value="user" />
+					<flow-property name="beanType" value="TUser" />
 					<flow-property name="resultKey" value="result" />
 				</properties>
 			</component>

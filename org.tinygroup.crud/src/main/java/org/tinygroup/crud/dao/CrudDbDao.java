@@ -8,6 +8,6 @@ public interface CrudDbDao<T> {
 	public void updateUser(T user);
 	public void deleteUser(T user);
 	public List<T> queryUsers(T user);
-	public T queryUserById(int id);
+	public T queryUserById(String id);
 	
 }

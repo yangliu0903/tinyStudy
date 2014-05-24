@@ -4,7 +4,7 @@
 	<node id="updateUser" name="updateUser"  title="更改用户">
 			<component name="tinydbUpdateService">
 				<properties>
-					<flow-property name="beanType" value="user" />
+					<flow-property name="beanType" value="TUser" />
 					<flow-property name="resultKey" value="result" />
 				</properties>
 			</component>

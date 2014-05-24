@@ -11,10 +11,8 @@
 			<list>
 				<ref bean="i18nFileProcessor" />
 				<ref bean="xStreamFileProcessor" />
-				
 				<ref bean="tinyFilterFileProcessor" />
 				<ref bean="tinyProcessorFileProcessor" />
-
                 <!-- validate -->
                 <ref bean="validateMapFileProcessor"/>
                 <ref bean="validateFileProcessor"/>

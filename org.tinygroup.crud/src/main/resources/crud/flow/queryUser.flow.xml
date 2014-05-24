@@ -4,7 +4,7 @@
 	<node id="queryUsers" name="queryUsers"  title="查询用户">
 			<component name="tinydbQueryService">
 				<properties>
-					<flow-property name="beanType" value="user" />
+					<flow-property name="beanType" value="TUser" />
 					<flow-property name="resultKey" value="users" />
 				</properties>
 			</component>
