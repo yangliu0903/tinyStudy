@@ -1,5 +1,5 @@
-#macro (a $aHref $aTarget )
-<a#if($aHref)
+#macro (a $aHref $title $aTarget )
+<a#if($title) title="$title"#end#if($aHref)
         href="#if($aHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$aHref"#end#if($aTarget)
         target="$aTarget"#end>
     $bodyContent
@@ -116,7 +116,7 @@
 
 #macro(menu $menuTitle $menuHref $menuSubTitle  $menuKey)
 <li class="dropdown#if($menuKey==$activePage) active#end"><a
-        href="${menuHref}?activePage=$!menuKey">$menuTitle</a>
+        href="${menuHref}">$menuTitle</a>
     <span>$menuSubTitle</span>
     $!bodyContent
 </li>
@@ -138,8 +138,9 @@
 <li><a href="$href"#if($menuKey==$activePage) class="current"#end >$title</a></li>
 #end
 
-#macro(pageTitle $title)
+#macro(pageTitle $title $page)
     #set($pageTitle="$title")
+    #set($activePage="$page")
 #end
 
 #macro(modalFooter)
@@ -155,7 +156,7 @@
 #end
 
 #macro(breadcrumbParentItem $title $url)
-<li>#@a($url)$title#end <span class="divider">/</span></li>
+<li>#@a($url $title)$title#end <span class="divider">/</span></li>
 #end
 
 #macro(breadcrumbItem $title)
@@ -203,7 +204,7 @@
 #end
 
 #macro(slidesItem $imgSrc $title $href)
-<div>#@a($href)#img($imgSrc $title) #end
+<div>#@a($href $title)#img($imgSrc $title) #end
 $bodyContent
 </div>
 #end
@@ -215,7 +216,7 @@ $bodyContent
 #end
 
 #macro(slidesDetailInfo $title $subTitle)
-<h3>#@a($href)$title#end</h3>
+<h3>#@a($href $title)$title#end</h3>
 <em>$subTitle</em>
     $bodyContent
 #end
@@ -252,7 +253,7 @@ $bodyContent
 #end
 
 #macro(sidebarItem $title $href )
-<li>#@a($href)$title#end</li>
+<li>#@a($href $title)$title#end</li>
 #end
 
 #macro(lead $id $title)
@@ -276,6 +277,9 @@ $bodyContent
 <button class="btn btn-small half-margin#if($current) current#end">$title</button>
 #end
 
+#macro(shortcut $title $href $icon)
+#@a($href $title "_blank")#img($icon)#end
+#end
 
 #################################################下面是业务相关#########################################################
 #macro(logo)
@@ -297,10 +301,10 @@ $bodyContent
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
-                <a href="http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" class="ico-rss"
-                   target="_blank"><img src="img/sonar.ico" alt="代码审查"/></a>
-                <a href="http://www.tinygroup.org/hudson/job/tiny/" target="_blank" class="ico-flickr"><img
-                        src="img/hudson.ico" alt="持续集成"/></a>
+                #shortcut("代码审查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/sonar.ico")
+                #shortcut("持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "img/hudson.png")
+                #shortcut("作者OSC首页" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/osc.ico")
+                #shortcut("作品GIT网址" "http://git.oschina.net/tinyframework/tiny" "img/git.ico")
             </div>
         </div>
         <div class="text-left">

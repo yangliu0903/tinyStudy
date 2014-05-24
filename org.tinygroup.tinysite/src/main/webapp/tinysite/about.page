@@ -1,4 +1,4 @@
-#pageTitle("关于")
+#pageTitle("关于" "about")
 #title("关于我们" "核心成员介绍")
 #@row()
     #@span12()

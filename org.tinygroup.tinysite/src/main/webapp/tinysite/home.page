@@ -1,4 +1,4 @@
-#pageTitle("首页")
+#pageTitle("首页" "home")
 #title("Tiny开发框架" "它将使您轻松进行软件开发、发布、维护")
 
 
