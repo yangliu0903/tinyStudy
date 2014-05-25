@@ -96,7 +96,7 @@
                 #end
             #end
 
-            #@masonryItem("big")
+            #@masonryItem("large")
                 #@caption("如何设置jdk1.6和1.5的javac常量？")
                 <p>因为Tiny框架DBRouter有针对jdk1.5和jdk1.6的，因此必须有这两种jdk的支持。设置方式如下：</p>
                 <p>在settings文件中的profiles段中添加：</p>
@@ -109,8 +109,8 @@
     &lt;/properties&gt;
 &lt;/profile&gt;                </pre>
                 <p>然后再在activeProfiles段增加下面的内容：</p>
-      <pre class="brush:xml">
-<activeProfile>JAVA_CONFIG</activeProfile>
+      <pre>
+&lt;activeProfile&gt;JAVA_CONFIG&lt;/activeProfile&gt;
       </pre>
                 #end
             #end

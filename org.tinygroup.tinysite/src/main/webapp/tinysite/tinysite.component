@@ -369,7 +369,8 @@ $bodyContent
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
                     #@menu("Homepage" "home.page" "Tiny框架首页" "home")#end
-                    #@menu("summary" "summary.page" "设计理念和设计原则" "summary")#end
+                    #@menu("philosophy" "philosophy.page" "设计理念" "philosophy")#end
+                    #@menu("principle" "principle.page" "设计原则" "principle")#end
                     #@menu("Features" "feature.page" "功能性性" "feature")#end
                     #@menu("components" "component.page" "组件详细介绍" "component")#end
                     #@menu("FAQ" "faq.page" "常见问题解答" "faq")#end

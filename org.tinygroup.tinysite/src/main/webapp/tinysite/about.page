@@ -8,16 +8,16 @@
 
         <!-- About Content -->
         #@thumbnails()
-            #@thumbnailsItem("罗果" "项目发起人 架构师" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+            #@thumbnailsItem("悠悠然然" "项目发起人 架构师" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
                 aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
             #end
-            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+            #@thumbnailsItem("悠悠然然" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
                 aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
             #end
-            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+            #@thumbnailsItem("悠悠然然" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
                 aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
             #end
-            #@thumbnailsItem("罗果" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+            #@thumbnailsItem("悠悠然然" "高级程序员" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
                 aaaaaaaa aaaaa aaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaa
             #end
         #end
