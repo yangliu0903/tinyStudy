@@ -170,14 +170,16 @@
 #end
 
 #macro(filterContainer)
-<ul id="portfolio" class="thumbnails">
+<ul id="portfolio" class="thumbnails ">
     $bodyContent
 </ul>
 #end
 
 #macro(filterContainerItem $column $type)
-<li class="span$column $type">
-    $bodyContent
+<li class="span$column $type" style="opacity: 1;">
+    <div class="thumbnail" style="text-align:left;">
+            $bodyContent
+    </div>
 </li>
 #end
 
@@ -287,9 +289,27 @@ $bodyContent
     #@a($href $title "_blank")#img($icon)#end
 #end
 
+#macro(caption $title)
+<div class="head" style="text-align: left;">
+    <h3><strong>$title</strong></h3>
+    $bodyContent
+</div>
+#end
+
+#macro(masonry)
+<div id="masonry">
+    $bodyContent
+</div>
+#end
+#macro(masonryItem $masonryItemClass)
+<div class="single $masonryItemClass">
+    $bodyContent
+</div>
+#end
+
 #################################################下面是业务相关#########################################################
 #macro(logo)
-<p class="logo"><a href="home.page?activePage=home"><span>Tiny Framework</span></a></p>
+<p class="logo"><a href="home.page"><span>Tiny Framework</span></a></p>
 #end
 
 #macro(toTop)
@@ -303,14 +323,14 @@ $bodyContent
         #logo
         #end
         #@span9()
-        <div class="top-header text-right"><em>QQ群: 228977971 邮箱：<a
+        <div class="top-header text-right"><em>QQ群: <em>228977971</em> 邮箱：<a
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
-                #shortcut("代码审查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/sonar.ico")
-                #shortcut("持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "img/hudson.png")
-                #shortcut("作者OSC首页" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/osc.ico")
-                #shortcut("作品GIT网址" "http://git.oschina.net/tinyframework/tiny" "img/git.ico")
+                #shortcut("Sonar代码检查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/sonar.ico")
+                #shortcut("Hudson持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "img/hudson.png")
+                #shortcut("TinyFramework OSC首页" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/osc.ico")
+                #shortcut("TinyFramework GIT网址" "http://git.oschina.net/tinyframework/tiny" "img/git.ico")
             </div>
         </div>
         <div class="text-left">
@@ -328,7 +348,7 @@ $bodyContent
                 #@span12()
                 <div class="footer">
                     <hr/>
-                    <p class="text-center">&copy; 2014 <strong>Tiny Group</strong><br/>
+                    <p class="text-center">&copy;Copy Right 2009~2014 <strong>tiny group</strong><br/>
                         www.tinygroup.org</p>
                 </div>
                 #end
@@ -348,12 +368,12 @@ $bodyContent
 
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
-                    #@menu("首页Home" "home.page" "从这里开始" "home")#end
-                    #@menu("概述" "summary.page" "设计理念和设计原则" "summary")#end
-                    #@menu("特性Features" "feature.page" "设计理念和设计原则" "feature")#end
-                    #@menu("框架组成" "constitute.page" "详细介绍框架包含哪些内容" "constitute")#end
-                    #@menu("常见问题FAQ" "faq.page" "框架特性介绍" "faq")#end
-                    #@menu("关于About" "about.page" "框架特性介绍" "about")#end
+                    #@menu("Homepage" "home.page" "Tiny框架首页" "home")#end
+                    #@menu("summary" "summary.page" "设计理念和设计原则" "summary")#end
+                    #@menu("Features" "feature.page" "功能性性" "feature")#end
+                    #@menu("components" "component.page" "组件详细介绍" "component")#end
+                    #@menu("FAQ" "faq.page" "常见问题解答" "faq")#end
+                    #@menu("About us" "about.page" "关于我们" "about")#end
                 #end
             </div>
         </div>

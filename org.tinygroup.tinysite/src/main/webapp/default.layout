@@ -9,6 +9,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>Tiny Framework-$!pageTitle</title>
+    <meta name="description" content="Tiny Framework 是基于Java语言的面向组件的企业级开发框架。"/>
     <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
     <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
 </head>

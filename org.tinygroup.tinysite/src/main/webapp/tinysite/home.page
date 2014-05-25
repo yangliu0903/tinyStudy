@@ -1,34 +1,42 @@
 #pageTitle("首页" "home")
-#title("Tiny开发框架" "它将使您轻松进行软件开发、发布、维护")
+#title("Tiny framework" "基于组件化的J2EE开发框架")
 
 
 <!-- Slider -->
 #@slides()
     #@slidesItem("img/example-slide-1.jpg" "Photo" "#")
         #@slidesDetail()
-            #@slidesDetailInfo("系统架构" "系统架构讲解")
-            <p>系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解</p>
+            #@slidesDetailInfo("名字" "Tiny名称的来历")
+            <p>取名Tiny是取其微不足道，微小之意。</p>
+            <p>Tiny的构建者认为，一个J2EE开发框架是非常复杂的，只有把框架分解成非常细小、可控的部分，并且对每个细小、可控的部分都有一个最优解或相对最优解，
+            那么整个方案也就可以非常不错的落地。</p>
             #end
         #end
     #end
     #@slidesItem("img/example-slide-2.jpg" "Photo" "#")
         #@slidesDetail()
-            #@slidesDetailInfo("系统架构" "系统架构讲解")
-            <p>系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解</p>
+            #@slidesDetailInfo("策略" "Tiny框架的构建策略")
+            <p>Think big, start small, scale fast.</p>
+            <p>想法要宏伟，但是要从小的开始，同时可以快速的进行扩展。</p>
+            <p>Tiny框架的构建者认为：如果想法不够宏伟，那么就会局限于细节；如果一开始就铺非常大的摊子，将会失去控制；如果不能快速扩展，就无法满足应用需要。</p>
             #end
         #end
     #end
     #@slidesItem("img/example-slide-3.jpg" "Photo" "#")
         #@slidesDetail()
-            #@slidesDetailInfo("系统架构" "系统架构讲解")
-            <p>系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解</p>
+            #@slidesDetailInfo("定位" "Tiny框架的应用定位")
+            <p>基于WEB的展现平台</p>
+            <p>主要包括展现层及控制层，可以让开发人员方便快速的实现WEB层的开发，同时要避免现有方案的缺点，同时要有自己非常突出的优点。</p>
+            <p>基于SOA的服务开发平台</p>
+            <p>可以方便的开发平台无关的服务，同时有水平扩展，应用集群方面要有良好的支持，可以满足7*24的运维要求。</p>
             #end
         #end
     #end
     #@slidesItem("img/example-slide-4.jpg" "Photo" "#")
         #@slidesDetail()
-            #@slidesDetailInfo("系统架构" "系统架构讲解")
-            <p>系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解系统架构讲解</p>
+            #@slidesDetailInfo("目标" "Tiny框架的目标定位")
+            <p>Tiny框架的构建者认为再好的框架也有过时的时候，再优秀的架构师也有视野盲区，再NB的写手也无法实现所有的部分。</p>
+            <p>所以Tiny框架的构建者认为：只有建立一个良好的生态圈，让广大开发者使用者都在生态圈在找到自己的位置，才是有生命的模式。</p>
             #end
         #end
     #end
