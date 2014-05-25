@@ -1,7 +1,7 @@
 #macro (a $aHref $title $aTarget )
 <a#if($title) title="$title"#end#if($aHref)
-        href="#if($aHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$aHref"#end#if($aTarget)
-        target="$aTarget"#end>
+              href="#if($aHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$aHref"#end#if($aTarget)
+              target="$aTarget"#end>
     $bodyContent
 </a>
 #end
@@ -169,8 +169,14 @@
 </ul>
 #end
 
-#macro(integration)
-<li class="span3 cms integration">
+#macro(filterContainer)
+<ul id="portfolio" class="thumbnails">
+    $bodyContent
+</ul>
+#end
+
+#macro(filterContainerItem $column $type)
+<li class="span$column $type">
     $bodyContent
 </li>
 #end
@@ -278,7 +284,7 @@ $bodyContent
 #end
 
 #macro(shortcut $title $href $icon)
-#@a($href $title "_blank")#img($icon)#end
+    #@a($href $title "_blank")#img($icon)#end
 #end
 
 #################################################下面是业务相关#########################################################
@@ -343,9 +349,9 @@ $bodyContent
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
                     #@menu("首页Home" "home.page" "从这里开始" "home")#end
-##                    #@menu("概述" "summary.page" "设计理念和设计原则" "summary")#end
+                    #@menu("概述" "summary.page" "设计理念和设计原则" "summary")#end
                     #@menu("特性Features" "feature.page" "设计理念和设计原则" "feature")#end
-##                    #@menu("框架组成" "constitute.page" "详细介绍框架包含哪些内容" "constitute")#end
+                    #@menu("框架组成" "constitute.page" "详细介绍框架包含哪些内容" "constitute")#end
                     #@menu("常见问题FAQ" "faq.page" "框架特性介绍" "faq")#end
                     #@menu("关于About" "about.page" "框架特性介绍" "about")#end
                 #end
