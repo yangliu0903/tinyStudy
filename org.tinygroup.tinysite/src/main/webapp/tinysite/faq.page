@@ -1,53 +1,151 @@
 #pageTitle("常见问题" "faq")
-#title("常见问题解答" "Tiny Framework的常见问题解答")
+#title("faq" "Tiny Framework的常见问题解答")
 
 
 #@row()
+    #@masonry()
+    <!-- Content -->
+        #@masonryItem()
+            #@caption("Tiny的贡献者有哪些？")
+            <p>创建及主要设计者：悠悠然然</p>
+            <p>主要参与人员：Atizose,ballackhui，nishihe，达达。</p>
+            <p>其他贡献人员：dandy</p>
+            #end
+        #end
 
-<!-- Sidebar -->
-    #@sidebar("常见问题列表")
-        #sidebarItem("Tiny的贡献者有哪些？" '#typography1')
-        #sidebarItem("要学习Tiny框架要有什么前提条件？" '#typography2')
-        #sidebarItem("学习Tiny需要多长时间？" '#typography3')
-        #sidebarItem("如何下载Tiny最新源码？" '#typography4')
-        #sidebarItem("如果获取最新的快照版本?" '#typography5')
-        #sidebarItem("什么在开源项目那里的版本号与源码库中的不一致？" '#typography6')
-        #sidebarItem("为什么指定了坐标确找不到资源？" '#typography7')
-        #sidebarItem("如何给Tiny提新需求或报告BUG?" '#typography8')
-    #end
+        #@masonryItem("big")
+            #@caption("要学习Tiny框架要有什么前提条件？")
+            <p>必备条件：</p>
+            <ul>
+                <li>首先会Java</li>
+                <li>掌握Maven</li>
+                <li>熟悉git</li>
+            </ul>
+            <p>可选条件：</p>
 
-<!-- Content -->
-    #@span9()
-        #@lead("typography1" "Tiny的贡献者有哪些")
-        <div class="SyntaxHighlighter">
-        <pre class="brush: java">
-class HelloWorld{
-    int a;
-}
-        </pre>
-            </div>
-            FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+            <ul>
+                <li>有oschina的注册帐号：可以与Tiny框架构建者沟通</li>
+                <li>有oschina的git注册帐号：便于创建Tiny框架的Fork，并提交给原作者</li>
+                <li>对悠悠然然加粉：享受果粉待遇，得到辅导及及时回复</li>
+                <li>加入Q群：可即时互动</li>
+            </ul>
+            #end
         #end
-        #@lead("typography2" "要学习Tiny框架要有什么前提条件")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+
+        #@masonryItem("big")
+            #@caption("学习Tiny需要多长时间？")
+            <p>如果仅仅是用Tiny来进行开发，如果有Java编程基础，三小时可以掌握； </p>
+            <p>如果只是基于Tiny进行一定业务组件扩展，如果熟练掌握Java，1天可以掌握； </p>
+            <p>如果要对Tiny框架本身进行扩展，如果精通Java编程，3天可以掌握</p>
+            #end
         #end
-        #@lead("typography3" "学习Tiny需要多长时间")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
-        #end
-        #@lead("typography4" "如何下载Tiny最新源码")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
-        #end
-        #@lead("typography5" "如果获取最新的快照版本")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
-        #end
-        #@lead("typography6" "什么在开源项目那里的版本号与源码库中的不一致")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
-        #end
-        #@lead("typography7" "为什么指定了坐标确找不到资源")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
-        #end
-        #@lead("typography8" "如何给Tiny提新需求或报告BUG")
-        FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容FAQ内容
+
+        #@masonryItem("big")
+            #@caption("如何下载Tiny最新源码？")
+            <p>
+                Tiny原来的源码库是托管在sourceforge的，现在迁移到了oschina，因此，最新的原码都在oschina上，sourceforge中的代理不再进行更新，会做阶段性里程碑式的提供，但是最新的肯定在oschina。</p>
+            <p>点击#@a("http://git.oschina.net/tinyframework/tiny.git")这里#end访问tiny框架git网站。</p>
+            #end
+            #end
+
+            #@masonryItem()
+                #@caption("如何获取最新的快照版本?")
+                <p>请在你的pom.xml中添加下面的仓库(如果不知道如果添加请学习Maven)，就可以去下载最新的快照版本：</p>
+                <p>也可以访问#@a("https://oss.sonatype.org/content/repositories/snapshots/org/tinygroup/")这里#end 查看快照相关情况</p>
+                #end
+            #end
+
+            #@masonryItem()
+                #@caption("为什么在开源项目那里的版本号与源码库中的不一致？")
+                <p>源码库中的是最新的，而开源项目那里的版本号可能是比较旧的。</p>
+                #end
+            #end
+
+            #@masonryItem()
+                #@caption("为什么指定了坐标确找不到资源？")
+                <p>如果是正式版本号，是可以找到的，如果是SNAPSHOT版本，则需要添加#@a("https://oss.sonatype.org/content/repositories/snapshots")快照仓库#end</p>
+                #end
+            #end
+
+            #@masonryItem()
+                #@caption("如何给Tiny提新需求或报告BUG?")
+                <p>首先对您的参与表示感谢，所有关于Tiny的BUG及新需求都可以到下面的地址进行提交：</p>
+                <p>#@a("https://git.oschina.net/tinyframework/tiny/issues")https://git.oschina.net/tinyframework/tiny/issues#end</p>
+                #end
+            #end
+
+            #@masonryItem()
+                #@caption("Tiny框架用到的第三方库有哪些？")
+                <p>Tiny框架采用的第三方库，分必须及可选。</p>
+                <p>必须的有Spring、Xstream、Velocity、SLF4J、Apache Commons相关以前他们依赖的第三方Jar包。</p>
+                <p>可选的有一些EL表达式包，Cache包，网络通信包等等</p>
+                #end
+            #end
+
+            #@masonryItem("big")
+                #@caption("我想参与Tiny框架的构建，有什么要求没有？")
+                <p>没有任何特别的要求，只要你愿意就可以。早期可以先通过fork的来贡献你的代码，同时也是对自己技能的证明。当然，为了使得自己更容易上手，可以先从写测试用例和演示用例开始。</p>
+                <p>当你证明了自己的实力与意愿，你就可以加入核心团队，享受更多的权利。</p>
+                #end
+            #end
+
+            #@masonryItem("big")
+                #@caption("为什么Tiny工程必须在JDK1.5下编译？")
+                <p>Tiny工程中的某些模板由于与JDK1.5中的JDBC3相关，因此必须在JDK1.5版本下编译。当然，如果你不用TinyDBRouter,也可以选择<em>mvn install -DskipTests -fae</em>方式进行编译。</p>
+                <p>Tiny框架为了框架的普适性，可以在一些比较老的中间件中部署，要求必须兼容JDK1.5。</p>
+                #end
+            #end
+
+            #@masonryItem("big")
+                #@caption("如何设置jdk1.6和1.5的javac常量？")
+                <p>因为Tiny框架DBRouter有针对jdk1.5和jdk1.6的，因此必须有这两种jdk的支持。设置方式如下：</p>
+                <p>在settings文件中的profiles段中添加：</p>
+                <pre>
+&lt;profile&gt;
+    &lt;id&gt;JAVA_CONFIG&lt;/id&gt;
+    &lt;properties&gt;
+        &lt;JAVA_1_5_JAVAC&gt;C:\Program Files\Java\jdk1.5.0_22\bin\javac&lt;/JAVA_1_5_JAVAC&gt;
+        &lt;JAVA_1_6_JAVAC&gt;C:\Program Files\Java\jdk1.6.0_45\bin\javac&lt;/JAVA_1_6_JAVAC&gt;
+    &lt;/properties&gt;
+&lt;/profile&gt;                </pre>
+                <p>然后再在activeProfiles段增加下面的内容：</p>
+      <pre class="brush:xml">
+<activeProfile>JAVA_CONFIG</activeProfile>
+      </pre>
+                #end
+            #end
+
+            #@masonryItem("big")
+                #@caption("我在install tiny时出现下面的问题怎么办？")
+                <p>[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (D:\). Please verify you invoked Maven from the correct directory. -> [Help 1]</p>
+                <p>因为你没有在pom.xml文件所在的目录当中，请检查是不是没有进入目录？如果是在windows操作系统下，是不是没有切换盘符？</p>
+                #end
+            #end
+
+            #@masonryItem()
+                #@caption("为什么我在install Tiny工程时有单元测试错误？")
+                <p>有些测试用例则需要连接MySql，MongoDB数据库。因此：推荐采用下面的命令进行install</p>
+                <p><em>maven installl -DskipTests</em></p>
+                #end
+            #end
+            #@masonryItem()
+                #@caption("我可不可以在局域网编译Tiny?")
+                <p>因为用Maven构建项目时，有时需要从Maven仓库下载一些资源，如果没有上外网权限，则下载不到这些资源，从而导致install失败。
+
+                    因此，第一次是必须要有连接外网能力，并可以访问Maven仓库的。
+
+                    如果不能直接上外网，则需要在Maven的settings文件中设置代理，以访问外网，具体如何设置，请研究Maven相关手册。</p>
+                #end
+            #end
+            #@masonryItem()
+                #@caption("为什么使用Maven 3.2.1会有版本问题?")
+                <p>Maven3.2.1需要JDK1.6以上，如果Path中的java版本是1.5的时候，会有版本问题。
+
+                    解决方案1：使用Maven 3.1.0版本。
+
+                    解决方案2：使用JDK1.6，但是在Settings.xml文件中设置相关的JAVAC常量，具体见上面。</p>
+                #end
+            #end
+
         #end
     #end
-#end

@@ -29,6 +29,18 @@
 #masonry .single.big {
 	width: 460px;
 }
+
+#masonry .single.large {
+    width: 700px;
+}
+
+#masonry .single.huge{
+    width: 940px;
+}
+#masonry .single.wholeline{
+    width: 100%;
+}
+
 #masonry .single h3 {
 	margin: 20px 20px 0px 20px;
 	width: auto;
