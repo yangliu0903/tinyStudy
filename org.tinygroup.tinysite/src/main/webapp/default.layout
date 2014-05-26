@@ -16,5 +16,9 @@
 </head>
 <body class="boxed"  style="background: url(${TINY_CONTEXT_PATH}/tinysite/img/bg/parquet-bg.jpg);">
 $pageContent
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F08ed66f35813cc4b68c4607c2a40d33c' type='text/javascript'%3E%3C/script%3E"));
+</script>
 </body>
 </html>
