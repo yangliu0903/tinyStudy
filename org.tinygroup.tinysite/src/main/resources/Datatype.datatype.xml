@@ -162,7 +162,7 @@
 			</dialect-type>
 		</dialect-type-list>
 	</standard-type>
-	<standard-type type="Datatime" id="type_datetime">
+	<standard-type type="Datetime" id="type_datetime">
 		<dialect-type-list>
 			<dialect-type language="oracle" type="RAW(10)"
 				default-value="">

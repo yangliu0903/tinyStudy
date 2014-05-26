@@ -1,0 +1,14 @@
+<tables package-name="sample">
+	<table id="offer" name="offer" title="捐助表">
+		<table-field standard-field-id="id" primary="true"
+			unique="true" not-null="true" auto-increase="false" id="id" />
+		<table-field standard-field-id="money" primary="false"
+			unique="false" not-null="false" id="money" />
+		<table-field standard-field-id="name" primary="false"
+			unique="false" not-null="false" id="name" />	
+		<table-field standard-field-id="remark" primary="false"
+			unique="false" not-null="false" id="remark" />
+		<table-field standard-field-id="date" primary="false"
+			unique="false" not-null="false" id="date" />
+	</table>
+</tables>

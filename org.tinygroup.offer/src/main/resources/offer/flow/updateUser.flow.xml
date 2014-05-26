@@ -1,0 +1,13 @@
+<flow id="updateOfferWithFlow" name="updateOfferWithFlow" begin-node-id="updateOffer"
+	private-context="false" enable="false">
+	<nodes>
+	<node id="updateOffer" name="updateOffer"  title="更改捐助">
+			<component name="tinydbUpdateService">
+				<properties>
+					<flow-property name="beanType" value="offer" />
+					<flow-property name="resultKey" value="result" />
+				</properties>
+			</component>
+	</node>
+	</nodes>
+</flow>

@@ -1,0 +1,85 @@
+<flow id="offer" name="offer" begin-node-id="queryOffers"
+	private-context="false" enable="false">
+	<nodes>
+	 <node id="addOffer" name="addOffer"  title="添加捐助">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="addOfferWithFlow" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="redirect"></next-node>
+			</next-nodes>
+		</node>
+		<node id="updateOffer" name="updateOffer"  title="更新捐助">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="updateOfferWithFlow" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="redirect"></next-node>
+			</next-nodes>
+		</node>
+		<node id="deleteOffer" name="deleteOffer"  title="删除捐助">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="deleteOfferWithFlow" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="redirect"></next-node>
+			</next-nodes>
+		</node>
+		<node id="queryOffers" name="queryOffers"  title="查询捐助">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="queryOffersWithFlow" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="list"></next-node>
+			</next-nodes>
+		</node>
+		<node id="queryOfferById" name="queryOfferById"  title="主键查询捐助">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="queryOfferByIdWithFlow" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="operate"></next-node>
+			</next-nodes>
+		</node>
+		<node id="list" name="list" title="跳转页面">
+			<component name="forwardComponent">
+				<properties>
+					<flow-property name="path" value="/offer/flow/list.page" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="end"></next-node>
+			</next-nodes>
+		</node>
+		<node id="redirect" name="redirect" title="重定向页面">
+			<component name="redirectComponent">
+				<properties>
+					<flow-property name="path" value="offer.pageflow?tiny_flow_id=queryOffers" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="end"></next-node>
+			</next-nodes>
+		</node>
+		<node id="operate" name="operate" title="跳转页面">
+			<component name="forwardComponent">
+				<properties>
+					<flow-property name="path" value="/offer/flow/operate.page" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="end"></next-node>
+			</next-nodes>
+		</node>
+	</nodes>
+</flow>

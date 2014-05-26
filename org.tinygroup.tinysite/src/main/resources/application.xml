@@ -106,9 +106,9 @@
     </annotation-configuration>
 
     <!-- beanmanager配置信息  schema为表模式, bean-name为beanoperate的bean名称,table-name-pattern配置加载的表名称模式，key-type：表主键类型，现有increase和uuid-->
-    <bean-manager-config default-schema="sample">
-	   <bean-opertate-config schema="sample"
-			table-name-pattern="%" bean-name="beanStringOperator" key-type="increase">
+    <bean-manager-config default-schema="site">
+	   <bean-opertate-config schema="site"
+			table-name-pattern="%" bean-name="beanStringOperator" key-type="uuid">
 		</bean-opertate-config>
     </bean-manager-config>
 
@@ -202,6 +202,7 @@
     <velocity-context-config>
         <static-classes>
             <static-class name="stringUtils" className="org.apache.commons.lang.StringUtils"></static-class>
+            <static-class name="dateFormatUtils" className="org.apache.commons.lang.time.DateFormatUtils"></static-class>
 
         </static-classes>
         <platform-beans>

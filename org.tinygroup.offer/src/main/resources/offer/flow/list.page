@@ -1,0 +1,73 @@
+用户管理界面:
+<form>
+<div>
+	<p>
+		<input type="button" id="add" value="添加"/>
+	    <input type="button" id="update" value="修改"/>
+	    <input type="button" id="delete" value="删除"/>
+	</p>
+	<table cellpadding="0" cellspacing="1" border="0" bgcolor="#ebebeb" width="500px">
+		<tbody>
+			<tr bgcolor="#ffffff">
+				<th width="35"><input type="checkbox" id="selectAll"/></th>
+				<th width="100px" height="35">金额</th>
+				<th width="100px" >姓名</th>
+				<th width="400px" >备注</th>
+				<th width="200px" >日期</th>
+			</tr>
+			#foreach($offer in $offers)
+			<tr bgcolor="#ffffff">
+				<td align="center"><input type="checkbox" name="id" value="$offer.id"/></td>
+				<td align="center" height="30">$offer.money</td>
+				<td align="center">$offer.name</td>
+				<td align="center">$offer.remark</td>
+				<td align="center">$!dateFormatUtils.format($!offer.date,'yyyy-MM-dd HH:mm:ss')</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</div>
+<form>
+<script>
+$(document).ready(function(){
+   $("#selectAll").click(function(){
+        var checked=$(this).get(0).checked;
+        $(":checkbox:not('#selectAll')").each(function(){
+               $(this).get(0).checked=checked;
+        });
+     });
+
+   $("#add").click(function(){
+       location.href="${TINY_CONTEXT_PATH}/offer/flow/operate.page";
+    }
+   );
+   $("#update").click(function(){
+    var checkboxs=$(":checked:not('#selectAll')");
+    var size=checkboxs.size();
+        if(size==0){
+           alert("修改前请先选择记录");
+        }else if(size>1){
+           alert("只能选择一条记录进行修改");
+        }else{
+         var checkbox=checkboxs.get(0);
+         location.href="${TINY_CONTEXT_PATH}/offer.pageflow?primaryKey="+checkbox.value+"&tiny_flow_id=queryOfferById";
+        } 
+    }
+   );
+    $("#delete").click(function(){
+        if(confirm("确定要删除选择的记录吗？")){
+              var checkboxs=$(":checked:not('#selectAll')");
+               var size=checkboxs.size();
+               if(size==0){
+                alert("修改前请先选择记录");
+               }else if(size>1){
+                 alert("只能选择一条记录进行修改");
+               }else{
+              var checkbox=checkboxs.get(0);
+             location.href="${TINY_CONTEXT_PATH}/offer.pageflow?id="+checkbox.value+"&tiny_flow_id=deleteOffer";
+             }
+        }
+    }
+   );
+});
+</script>

@@ -1,0 +1,13 @@
+<flow id="queryOffersWithFlow" name="queryOffersWithFlow" begin-node-id="queryOffers"
+	private-context="false" enable="false">
+	<nodes>
+	<node id="queryOffers" name="queryOffers"  title="查询捐助">
+			<component name="tinydbQueryService">
+				<properties>
+					<flow-property name="beanType" value="offer" />
+					<flow-property name="resultKey" value="offers" />
+				</properties>
+			</component>
+	</node>
+	</nodes>
+</flow>
