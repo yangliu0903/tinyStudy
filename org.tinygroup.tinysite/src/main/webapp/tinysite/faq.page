@@ -1,5 +1,5 @@
 #pageTitle("常见问题" "faq")
-#title("faq" "Tiny Framework的常见问题解答")
+#title("faq" "常见问题解答")
 
 
 #@row()
@@ -96,7 +96,7 @@
                 #end
             #end
 
-            #@masonryItem("large")
+            #@masonryItem("big")
                 #@caption("如何设置jdk1.6和1.5的javac常量？")
                 <p>因为Tiny框架DBRouter有针对jdk1.5和jdk1.6的，因此必须有这两种jdk的支持。设置方式如下：</p>
                 <p>在settings文件中的profiles段中添加：</p>
@@ -128,8 +128,8 @@
                 <p><em>maven installl -DskipTests</em></p>
                 #end
             #end
-            #@masonryItem()
-                #@caption("我可不可以在局域网编译Tiny?")
+            #@masonryItem("big")
+                #@caption("可不可以在局域网编译Tiny?")
                 <p>因为用Maven构建项目时，有时需要从Maven仓库下载一些资源，如果没有上外网权限，则下载不到这些资源，从而导致install失败。
 
                     因此，第一次是必须要有连接外网能力，并可以访问Maven仓库的。
