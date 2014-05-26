@@ -108,7 +108,7 @@
         </dependency>
 	</dependencies>
 	<build>
-		<finalName>websample</finalName>
+		<finalName>tinysite</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
