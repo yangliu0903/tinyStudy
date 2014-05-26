@@ -19,8 +19,8 @@
             #@thumbnailsItem("达达" "高级程序员" "305702665" "305702665@qq.com" "img/dada.png")
                 擅于Eclipse插件开发
             #end
-            #@thumbnailsItem("nishihe" "高级程序员" "312016714" "312016714@qq.com" "img/nishihe.jpg")
-            擅于Eclipse插件开发
+            #@thumbnailsItem("nishihe" "中级程序员" "312016714" "312016714@qq.com" "img/nishihe.jpg")
+            擅于Java应用级开发
             #end
             #@thumbnailsItem("塔罗大道" "高级程序员" "78375102" "78375102@qq.com" "img/tldd.jpg")
             擅于技术研究
