@@ -307,7 +307,6 @@ $bodyContent
 </div>
 #end
 
-#################################################下面是业务相关#########################################################
 #macro(logo)
 <p class="logo"><a href="home.page"><span>Tiny Framework</span></a></p>
 #end
@@ -315,6 +314,8 @@ $bodyContent
 #macro(toTop)
 <div id="toTop">Top</div>
 #end
+
+#################################################下面是业务相关#########################################################
 
 #macro(header)
 <!-- Header -->
@@ -329,7 +330,7 @@ $bodyContent
             <div class="social">
                 #shortcut("Sonar代码检查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/sonar.ico")
                 #shortcut("Hudson持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "img/hudson.png")
-                #shortcut("TinyFramework OSC首页" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/osc.ico")
+                #shortcut("TinyFramework OSC首页" "http://my.oschina.net/tinyframework" "img/osc.ico")
                 #shortcut("TinyFramework GIT网址" "http://git.oschina.net/tinyframework/tiny" "img/git.ico")
             </div>
         </div>
