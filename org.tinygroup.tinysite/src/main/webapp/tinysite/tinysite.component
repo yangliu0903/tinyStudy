@@ -316,6 +316,14 @@ $bodyContent
 #end
 
 #################################################下面是业务相关#########################################################
+#macro(donate $name $amount $date $mode)
+<tr>
+    <td  style="text-align: center"><h3><strong>$name</strong></h3></td>
+    <td  style="text-align: right"><b style="color:blue">$amount</b>勇气</td>
+    <td>#if($mode)$mode#{else}账户码-转账#end</td>
+    <td style="text-align: right">$date</td>
+</tr>
+#end
 
 #macro(header)
 <!-- Header -->

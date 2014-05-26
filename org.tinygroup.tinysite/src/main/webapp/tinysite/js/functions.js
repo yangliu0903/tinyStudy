@@ -24,7 +24,7 @@ $(document).ready(function () {
                     play: {
                         active: true,
                         auto: true,
-                        interval: 4000,
+                        interval: 15000,
                         swap: true
                     }
                 });

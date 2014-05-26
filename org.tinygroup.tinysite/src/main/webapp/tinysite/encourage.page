@@ -1,19 +1,35 @@
 #pageTitle("鼓励" "encourage")
 #title("encourage" "鼓励与支持")
 #@row()
-    #@span3()
+    #@span1()
     #end
-    #@span6()
+    #@span10()
     <div class="thumbnail" style="text-align: left;">
-
-
             <p>我想每一个访问到这个页面的人，一定也是同样对技术有所追求的人。相对于金钱来说，我们更需要您的支持、鼓励，以及对我们所做工作的认可。</p>
             <p>我们不希望收到多少金钱，但是我们希望收获许多支持。</p>
-            <p>如果您感受得到我们的努力及付出，请不辞辛苦为我们捐赠<em style="color:red"><strong>一块钱</strong></em>，为我们加油，为我们助威！</p>
-            <p><em style="color:red">请用支付宝中的二维码扫描功能扫描下面的二维码</em></p>
+            <p>如果您感受得到我们的努力及付出，请不辞辛苦为我们加<em style="color:red"><strong>油</strong></em>，为我们助威！</p>
+            <p>支付宝帐户：<em style="color:red">luo_guo@icloud.com</em>，可留言</p>
+            <p><em style="color:red">或用支付宝中的二维码扫描功能扫描下面的二维码：</em></p>
         #img("img/appxl1rc0koh8fj044.png")
     </div>
+    <table border="0" cellpadding="0" cellspacing="0" class="table table-hover">
+        <thead>
+        <tr ">
+            <th width="10%"  style="text-align: center">加油者</th>
+            <th width="10%" style="text-align: center">加油量</th>
+            <th width="*">留言/加油方式</th>
+            <th width="15%" style="text-align: center">时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        #donate("李家宁" "2.00" "2014-05-26 14:04")
+        #donate("李思思" "10.24" "2014-05-26 13:42")
+        #donate("黄亿华" "1.00" "2014-05-26 13:41")
+        #donate("岳庆伟" "1.00" "2014-05-26 13:34")
+        #donate("余青松" "2.00" "2014-05-26 13:01")
+        </tbody>
+    </table>
     #end
-    #@span3()
+    #@span1()
     #end
 #end
