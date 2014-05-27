@@ -329,6 +329,10 @@ $bodyContent
 <div id="toTop">Top</div>
 #end
 
+#macro(fancybox $smallPic $bigPic $title)
+<a href="$bigPic" title="$title" class="thumb fancybox"><img src="$smallPic" alt="$title" /> </a>
+#end
+
 #################################################下面是业务相关#########################################################
 #macro(donate $name $amount $date $mode)
 <tr>
