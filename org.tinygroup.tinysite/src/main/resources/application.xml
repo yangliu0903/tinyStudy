@@ -29,7 +29,7 @@
         <application-processor bean="fileResolverProcessor"></application-processor>
         <application-processor bean="PluginMgtProcessor"></application-processor>
         <application-processor bean="CEPProcessor"></application-processor>
-        <application-processor bean="databaseInstallerProcessor"></application-processor>
+        <!--<application-processor bean="databaseInstallerProcessor"></application-processor>-->
         <application-processor bean="beanOperatorApplicationProcessor"></application-processor>
         <application-processor bean="dictLoadProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
