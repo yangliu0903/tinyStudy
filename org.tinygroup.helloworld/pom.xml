@@ -6,22 +6,6 @@
     <version>1.2.0-SNAPSHOT</version>
   </parent>
   <artifactId>org.tinygroup.helloworld</artifactId>
-  <name>org.tinygroup.helloworld</name>
-  <url>http://maven.apache.org</url>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!--可以自定义标签对,可以在其它地方用{标签名引用}-->
-    <groupId.default>org.tinygroup</groupId.default>
-    <serverIp>localhost</serverIp>
-    <serverPort>8088</serverPort>
-    <issueTrackingUrl>http://${serverIp}:${serverPort}/jira/browse/TP</issueTrackingUrl>
-    <jira.username>luog</jira.username>
-    <site.root>E:/snowrain/apache-tomcat-6.0.35/webapps</site.root>
-    <jira.password>123456</jira.password>
-    <svnroot>http://mysqldb:5559/svn/opensource</svnroot>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  </properties>
   <dependencies>
     <dependency>
       <groupId>org.tinygroup</groupId>
