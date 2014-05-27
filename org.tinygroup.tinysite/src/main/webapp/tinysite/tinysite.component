@@ -231,11 +231,25 @@ $bodyContent
 
 #macro(title $title $subTitle)
 <div class="row">
-    <div class="span12">
+    #@span4()
         <h1 class="no-margin">$title</h1>
 
         <p class="lead">$subTitle</p>
-    </div>
+    #end
+    #@span8()
+    <div align="right">
+    #[[
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- titlebarad -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-9864431858561260"
+         data-ad-slot="5845240839"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>]]#
+        </div>
+    #end
 </div>
 #end
 
