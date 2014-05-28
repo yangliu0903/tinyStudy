@@ -1,0 +1,272 @@
+#pageTitle("topic" "topic")
+#title("算法感想" "主题切换及其管理")
+#[[<div class="BlogContent"><span></span><span id="OSC_h1_1"></span><h1>试题</h1><pre class="brush:java; toolbar: true; auto-links: false;">你是一名体育老师，在某次课距离下课还有五分钟时，你决定搞一个游戏。此时有100名学生在上课。游戏的规则是：
+
+1. 你首先说出三个不同的特殊数，要求必须是个位数，比如3、5、7。
+2. 让所有学生拍成一队，然后按顺序报数。
+3. 学生报数时，如果所报数字是第一个特殊数（3）的倍数，那么不能说该数字，而要说Fizz；如果所报数字是第二个特殊数（5）的倍数，那么要说Buzz；如果所报数字是第三个特殊数（7）的倍数，那么要说Whizz。
+4. 学生报数时，如果所报数字同时是两个特殊数的倍数情况下，也要特殊处理，比如第一个特殊数和第二个特殊数的倍数，那么不能说该数字，而是要说FizzBuzz, 以此类推。如果同时是三个特殊数的倍数，那么要说FizzBuzzWhizz。
+5. 学生报数时，如果所报数字包含了第一个特殊数，那么也不能说该数字，而是要说相应的单词，比如本例中第一个特殊数是3，那么要报13的同学应该说Fizz。如果数字中包含了第一个特殊数，那么忽略规则3和规则4，比如要报35的同学只报Fizz，不报BuzzWhizz。</pre><span id="OSC_h1_2"></span><h1>乱弹</h1><p>据说是直接用来面试的，呵呵，很明显，写得少不是目标，写得快也不是目标，怎么样优雅的解决此问题还是重点。</p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">如果用一个方法解决了此问题的同学，我可以负责任的说，基本上没有啥戏了。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">悠然的方法不是最快的，悠然的方法也不是最小的，因此从这两个方面与悠然比较的，悠然承认落败了。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">悠然主要从扩展性及代码的优雅性方面来做一下解答，也顺便普及一下设计方面的一些心得体会，与大家分享。</span></p><span id="OSC_h1_3"></span><h1>思路</h1><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">此题明显是搞了一堆复杂的计算规则，来扰乱程序员的心灵，干扰程序员的思路，弄乱程序员的代码，出题之人是心怀叵测呀。但是抛开现象看本质，它就是让学生报数，然后在报数的时候要遵循一系列的规则。那么，很明显是可以按规则引擎的思路来解决的。（话外音：凡是有大量if语句，case语句的多都可以归到规则引擎范畴）。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">简单的分析，可以把试题中的规则进行如下分类：</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">1.如果是包含第一个特殊数字的，直接读出拉倒</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">2.如果是能被其中几个特殊数字整除的，则要读出几个特殊的数字对应的文字</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">3.如果不是上面两种情况，就直接读出数字</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">OK，原来这么简单，那就开工了</span></p><span id="OSC_h1_4"></span><h1>代码</h1><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public interface NumberReader extends Comparable&lt;NumberReader&gt;{
+    /**
+     * 返回处理优先级，优先级越高，越先执行
+     *
+     * @return
+     */
+    int getPriority();
+
+    /**
+     * 返回排它模式
+     * 如果返回true，则自己执行过之后就结束
+     * 如果返回false，则表示自己执行过之后，同优先级其它处理器还可以接着处理
+     *
+     * @return
+     */
+    boolean isExclusive();
+
+    /**
+     * 读数字
+     *
+     * @param number
+     * @return 如果有读则返回true, 没有读则返回false
+     */
+    boolean read(int number);
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">设定了3个接口方法，一个返回优先级，一个返回是否是排它的，一个去读数字，如果有读过，则返回true,如果没有读过，就返回false、</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">另外，之所以继承了Comparable接口，是为了对规则进行排序。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">为了避免后续的程序复制，因此搞一个抽象类：</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public abstract class AbstractNumberReader implements NumberReader {
+    private int priority;
+    private boolean exclusive;
+
+    public AbstractNumberReader(int priority, boolean exclusive) {
+        this.priority = priority;
+        this.exclusive = exclusive;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public boolean isExclusive() {
+        return exclusive;
+    }
+
+    public int compareTo(NumberReader numberReader) {
+        if (priority &gt; numberReader.getPriority()) {
+            return -1;
+        }
+        if (priority &lt; numberReader.getPriority()) {
+            return 1;
+        }
+        return 0;
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">上面的抽象类已经把复制的代码都写完了，接下来看实现类。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class CommonNumberReader extends AbstractNumberReader {
+    public CommonNumberReader() {
+        super(0, true);
+    }
+
+    public boolean read(int number) {
+        System.out.print(number);
+        return true;
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">普通的数字，其优先级为0，属于排它处理，不管3721，只要到我这里，我就一定会处理并返回true。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public class IncludeNumberReader extends AbstractNumberReader {
+    private String title;
+    private char num;
+
+    public IncludeNumberReader(int num, String title) {
+        super(2, true);
+        this.num = (char) (&apos;0&apos; + num);
+        this.title = title;
+    }
+
+    public boolean read(int number) {
+        if (Integer.toString(number).indexOf(num) &gt;= 0) {
+            System.out.print(title);
+            return true;
+        }
+        return false;
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">包含数字时的处理，设定优先级为2，排它性为true，如果包含了对应的数字才处理。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public class MultipleNumberReader extends AbstractNumberReader {
+    private String title;
+    private int dividend;
+
+    public MultipleNumberReader(int dividend, String title) {
+        super(1, false);
+        this.dividend = dividend;
+        this.title = title;
+    }
+
+    public boolean read(int number) {
+        if (number % dividend == 0) {
+            System.out.print(title);
+            return true;
+        }
+        return false;
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">倍数处理器，它的优先级是1，是非排它的，只要是指定数的整数倍，就处理。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">上面就写完了所有的规则。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">下面是规则引擎了，呵呵，由于比较简单，没有抽象接口，直接就实现了。如果是复杂的，可能应该抽象成接口，使得引擎也可以进行调整。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public final class NumberReaderEngine {
+    private List&lt;NumberReader&gt; numberReaders = new ArrayList&lt;NumberReader&gt;();
+
+    public void add(NumberReader numberReader) {
+        numberReaders.add(numberReader);
+    }
+
+    /**
+     * 在调用readNumber之前必须调用sortNumberReader
+     */
+    public void sortNumberReader() {
+        Collections.sort(numberReaders);
+    }
+
+    public void readNumber(int number) {
+        executeReadNumber(number);
+        System.out.println();
+    }
+
+    private void executeReadNumber(int number) {
+        int readPriority = -1;
+        for (NumberReader numberReader : numberReaders) {
+            //如果已经有读过，且当前优先级与已经读过的优先级不同，则结束
+            if (readPriority != -1 &amp;&amp; numberReader.getPriority() != readPriority) {
+                return;
+            }
+            boolean isRead = numberReader.read(number);
+            if (isRead) {
+                if (numberReader.isExclusive()) {
+                    //如果是独占方式，且已读，则直接返回
+                    return;
+                } else {
+                    readPriority = numberReader.getPriority();
+                }
+
+            }
+        }
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">引擎干的事情，很简单，就是添加规则，对规则进行排序，然后利用引擎对数字进行读出处理。</span></p><span id="OSC_h1_5"></span><h1>测试代码</h1><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * Created by luoguo on 2014/5/6.
+ */
+public class TestClass {
+    public static void main(String[] args) {
+        //简单起见，没有添加输入功能，而是直接在程序里初始化了
+        NumberReaderEngine numberReaderEngine=new NumberReaderEngine();
+        numberReaderEngine.add(new CommonNumberReader());
+        numberReaderEngine.add(new IncludeNumberReader(3,&quot;Fizz&quot;));
+        numberReaderEngine.add(new MultipleNumberReader(3,&quot;Fizz&quot;));
+        numberReaderEngine.add(new MultipleNumberReader(5,&quot;Buzz&quot;));
+        numberReaderEngine.add(new MultipleNumberReader(7,&quot;Whizz&quot;));
+        numberReaderEngine.sortNumberReader();
+        for(int i=1;i&lt;100;i++){
+           numberReaderEngine.readNumber(i);
+        }
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">测试代码很简单，就是添加一堆规则，然后读数字就好了</span></p><span id="OSC_h1_6"></span><h1>运行结果</h1><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"></span></p><pre class="brush:c#; toolbar: true; auto-links: false;">1
+2
+Fizz
+4
+Buzz
+Fizz
+Whizz
+8
+Fizz
+Buzz
+11
+Fizz
+Fizz
+Whizz
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz
+FizzWhizz
+22
+Fizz
+Fizz
+Buzz
+26
+Fizz
+Whizz
+29
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Fizz
+Buzz
+41
+FizzWhizz
+Fizz
+44
+FizzBuzz
+46
+47
+Fizz
+Whizz
+Buzz
+Fizz
+52
+Fizz
+Fizz
+Buzz
+Whizz
+Fizz
+58
+59
+FizzBuzz
+61
+62
+Fizz
+64
+Buzz
+Fizz
+67
+68
+Fizz
+BuzzWhizz
+71
+Fizz
+Fizz
+74
+FizzBuzz
+76
+Whizz
+Fizz
+79
+Buzz
+Fizz
+82
+Fizz
+FizzWhizz
+Buzz
+86
+Fizz
+88
+89
+FizzBuzz
+Whizz
+92
+Fizz
+94
+Buzz
+Fizz
+97
+Whizz
+Fizz
+Buzz</pre><p><span style="font-weight:600;font-size:12.5px;line-height:1.5;">代码行统计</span></p><p><img src="http://static.oschina.net/uploads/space/2014/0506/090802_mPad_1245989.png" alt=""></img></p><p>从上面看到，总共的代码行数是122行，去掉15行测试代码行，7行package声明，刚好100行。</p><span id="OSC_h1_7"></span><h1>扩展性</h1><p>从上面的代码可以看到，逻辑是可以方便的自由的增加的，比如，说，不仅是第一个特殊数字，第二个第三个特殊数字，也要用同样的逻辑，只要：</p><pre class="brush:java; toolbar: true; auto-links: false;">numberReaderEngine.add(new IncludeNumberReader(5,&quot;Buzz&quot;));
+numberReaderEngine.add(new IncludeNumberReader(7,&quot;Whizz&quot;));</pre>就可以了，不必修改计算逻辑。当然，也可以继续增加各种各样的逻辑。<span id="OSC_h1_8"></span><h1>总结</h1><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">对于复杂的问题，要有抽丝剥茧的能力，仔细分析、认真设计，最后可以给出一个易于维护，易于扩展，易于理解，易于维护的解决方案。</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;">想获得源码的同学，请到下面的路径：</span></p><p><span style="font-size:14px;line-height:22px;background-color:#FFFFFF;"><a href="http://git.oschina.net/tinyframework/FizzBuzzWhizz.git" target="_blank" rel="nofollow">http://git.oschina.net/tinyframework/FizzBuzzWhizz.git</a><br></br></span></p></div>]]#

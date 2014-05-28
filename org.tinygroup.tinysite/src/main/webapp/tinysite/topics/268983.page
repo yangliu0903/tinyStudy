@@ -1,0 +1,537 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>Tiny框架的官网已经开通：<span></span><a href="http://www.tinygroup.org/" target="_blank" rel="nofollow">http://www.tinygroup.org/</a><span></span></p><span id="OSC_h1_1"></span><h1><span></span><span style="color:#E53333;">新增加war包</span><span style="color:#003399;"><a href="http://master.dl.sourceforge.net/project/tinyorg/tinysite.war" target="_blank" rel="nofollow">下载地址</a></span><span style="color:#E53333;">，呵呵愿意体验的可以直接下载并发布到容器即可试用，也可以查看里面的内容。</span><span></span></h1><p>由于只花了两天时间制作，一天时间搞页面，一天时间搞内容，所以还非常粗糙，还有许多需要完善的地方，欢迎同学们提出改进和完善意见，但是今天网站做的好不好不是重点，重点讲讲网站是怎么做出来的。<span style="line-height:1.5;font-size:12.5px;">当然了，不用问，必须用Tiny框架来做，所以今天就来讲一下如何利用Tiny框架来高速有效的进行网站开发。</span></p><span id="OSC_h1_2"></span><h1>网站模板选择</h1><p>首先声明，本人是美工盲，前台界面盲，JS盲。所以，指望自己弄个漂亮的网站出来那是根本没有可能的。好在现在互联网发达，只要用心找就是可以找得到的。想想准备用bootstrap方式的响应式网页方式，于是就找到了<a href="http://themeforest.net" target="_blank" rel="nofollow">themeforest.net</a>，然后就在其主题世界荡漾，最后感觉Perfetto网站效果不错，是我想要的效果，再查看一下源文件，发现比较简单，比较容易搞定。于是就想着就是它了。</p><p>于是从<a href="http://www.angelomazzilli.com/Perfetto/index.html" target="_blank" rel="nofollow">http://www.angelomazzilli.com/Perfetto/index.html</a>上把源文件搞下来，呵呵，第一手资料就算有了。由于这个不是重点，所以就快速过掉，总之，我拿到了这个网站的html,js,css,图片等等一应资源，在本地目录中打开文件访问也正确，OK，可以进入下一步骤。</p><span id="OSC_h1_3"></span><h1>宏提取</h1><p>所谓宏提取，就是把网页里重复出现的东东搞成个宏，这样就避免了重复内容到处复制来复制去：</p><pre class="brush:html; toolbar: true; auto-links: false;">#macro (a $aHref $title $aTarget )
+&lt;a#if($title) title=&quot;$title&quot;#end#if($aHref)
+              href=&quot;#if($aHref.startWith(&apos;/&apos;))#if($TINY_CONTEXT_PATH.equals(&quot;/&quot;))#else{TINY_CONTEXT_PATH}#end$#end$aHref&quot;#end#if($aTarget)
+              target=&quot;$aTarget&quot;#end&gt;
+    $bodyContent
+&lt;/a&gt;
+#end
+
+#macro (img $imgHref $imgTitle)
+        &lt;img#if($imgTitle) alt=&quot;$imgTitle&quot;#end#if($imgHref)
+                           src=&quot;#if($imgHref.startWith(&apos;/&apos;))#if($TINY_CONTEXT_PATH.equals(&quot;/&quot;))#else{TINY_CONTEXT_PATH}#end$#end$imgHref&quot;#end#&gt;
+&lt;/a&gt;
+#end
+
+#macro(section)
+&lt;div class=&quot;section&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(container)
+&lt;div class=&quot;container&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(row)
+&lt;div class=&quot;row&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span1)
+&lt;div class=&quot;span1&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span2)
+&lt;div class=&quot;span2&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span3)
+&lt;div class=&quot;span3&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span4)
+&lt;div class=&quot;span4&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span5)
+&lt;div class=&quot;span5&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+
+#macro(span6)
+&lt;div class=&quot;span6&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span7)
+&lt;div class=&quot;span7&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span8)
+&lt;div class=&quot;span8&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span9)
+&lt;div class=&quot;span9&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span10)
+&lt;div class=&quot;span10&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span11)
+&lt;div class=&quot;span11&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(span12)
+&lt;div class=&quot;span12&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(hr)
+&lt;hr/&gt;
+#end
+
+#macro(dropdownMenu $dropdownTitle $dropdownHref $dropdownSubTitle )
+&lt;li class=&quot;dropdown&quot;&gt;&lt;a href=&quot;$dropdownHref?activePage=$!menuKey&quot;&gt;$dropdownTitle&lt;/a&gt; &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;
+    &lt;span&gt;$dropdownSubTitle&lt;/span&gt;
+    $!bodyContent
+&lt;/li&gt;
+#end
+
+#macro(menu $menuTitle $menuHref $menuSubTitle  $menuKey)
+&lt;li class=&quot;dropdown#if($menuKey==$activePage) active#end&quot;&gt;&lt;a
+        href=&quot;${menuHref}&quot;&gt;$menuTitle&lt;/a&gt;
+    &lt;span&gt;$menuSubTitle&lt;/span&gt;
+    $!bodyContent
+&lt;/li&gt;
+#end
+
+#macro(nav)
+&lt;ul class=&quot;nav&quot;&gt;
+    $bodyContent
+&lt;/ul&gt;
+#end
+
+#macro(subMenu)
+&lt;ul&gt;
+    $bodyContent
+&lt;/ul&gt;
+#end
+
+#macro(subMenuItem  $title $href $menuKey)
+&lt;li&gt;&lt;a href=&quot;$href&quot;#if($menuKey==$activePage) class=&quot;current&quot;#end &gt;$title&lt;/a&gt;&lt;/li&gt;
+#end
+
+#macro(pageTitle $title $page)
+    #set($pageTitle=&quot;$title&quot;)
+    #set($activePage=&quot;$page&quot;)
+#end
+
+#macro(modalFooter)
+&lt;div class=&quot;modal-footer&quot;&gt;
+    &lt;button class=&quot;btn&quot; data-dismiss=&quot;modal&quot; aria-hidden=&quot;true&quot;&gt;Close&lt;/button&gt;
+&lt;/div&gt;
+#end
+
+#macro(breadcrumb)
+&lt;ul class=&quot;breadcrumb&quot;&gt;
+    $bodyContent
+&lt;/ul&gt;
+#end
+
+#macro(breadcrumbParentItem $title $url)
+&lt;li&gt;#@a($url $title)$title#end &lt;span class=&quot;divider&quot;&gt;/&lt;/span&gt;&lt;/li&gt;
+#end
+
+#macro(breadcrumbItem $title)
+&lt;li class=&quot;active&quot;&gt;$title&lt;/li&gt;
+#end
+
+#macro(thumbnails $thumbnailsId)
+&lt;ul class=&quot;thumbnails&quot;#if($thumbnailsId)id=&quot;$thumbnailsId&quot;#end&gt;
+    $bodyContent
+&lt;/ul&gt;
+#end
+
+#macro(filterContainer)
+&lt;ul id=&quot;portfolio&quot; class=&quot;thumbnails &quot;&gt;
+    $bodyContent
+&lt;/ul&gt;
+#end
+
+#macro(filterContainerItem $column $type)
+&lt;li class=&quot;span$column $type&quot; style=&quot;opacity: 1;&quot;&gt;
+    &lt;div class=&quot;thumbnail&quot; style=&quot;text-align:left;&quot;&gt;
+            $bodyContent
+    &lt;/div&gt;
+&lt;/li&gt;
+#end
+
+#macro(clearfix)
+&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+#end
+
+#macro(thumbnailsItem $name $title $qq $email $imgUrl)
+&lt;li class=&quot;span3&quot;&gt;
+    &lt;div class=&quot;thumbnail&quot;&gt;
+        #img($imgUrl)
+        &lt;div class=&quot;caption&quot;&gt;
+            &lt;h3&gt;&lt;a href=&quot;#&quot;&gt;$name&lt;/a&gt;&lt;/h3&gt;
+            &lt;em&gt;$title&lt;/em&gt;
+
+            &lt;p&gt;QQ:$!qq&lt;/p&gt;
+
+            &lt;p&gt;邮箱:$!email&lt;/p&gt;
+            #clearfix
+            $!bodyContent
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/li&gt;
+#end
+
+#macro(slides)
+&lt;div class=&quot;slides&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(slidesItem $imgSrc $title $href)
+&lt;div&gt;#@a($href $title)#img($imgSrc $title) #end
+$bodyContent
+&lt;/div&gt;
+#end
+
+#macro(slidesDetail)
+&lt;div class=&quot;detail&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(slidesDetailInfo $title $subTitle)
+&lt;h3&gt;#@a($href $title)$title#end&lt;/h3&gt;
+&lt;em&gt;$subTitle&lt;/em&gt;
+    $bodyContent
+#end
+
+#macro(title $title $subTitle)
+&lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;span12&quot;&gt;
+        &lt;h1 class=&quot;no-margin&quot;&gt;$title&lt;/h1&gt;
+
+        &lt;p class=&quot;lead&quot;&gt;$subTitle&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+#end
+
+#macro(wideBanner)
+&lt;!-- Wide Banner --&gt;
+&lt;div class=&quot;wide-bg&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        $bodyContent
+    &lt;/div&gt;
+&lt;/div&gt;
+#end
+
+#macro(sidebar $title)
+&lt;!-- Sidebar --&gt;
+&lt;div class=&quot;span3 sidebar&quot;&gt;
+    #if($title)
+        &lt;h3 class=&quot;half-margin&quot;&gt;$!title&lt;/h3&gt;
+    #end
+    &lt;ul class=&quot;nav nav-tabs nav-stacked&quot;&gt;
+        $bodyContent
+    &lt;/ul&gt;
+&lt;/div&gt;
+#end
+
+#macro(sidebarItem $title $href )
+&lt;li&gt;#@a($href $title)$title#end&lt;/li&gt;
+#end
+
+#macro(lead $id $title)
+&lt;p class=&quot;lead no-margin&quot; id=&quot;$id&quot;&gt;$title&lt;/p&gt;
+&lt;div class=&quot;&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+&lt;hr class=&quot;no-margin&quot; style=&quot;margin: 5pt;5pt;5pt;5pt;&quot;/&gt;
+#end
+
+#macro(filter)
+&lt;!-- Portfolio Filter --&gt;
+&lt;div id=&quot;filter&quot; class=&quot;half-margin&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+#end
+
+#macro(filterItem $title $current)
+&lt;button class=&quot;btn btn-small half-margin#if($current) current#end&quot;&gt;$title&lt;/button&gt;
+#end
+
+#macro(shortcut $title $href $icon)
+    #@a($href $title &quot;_blank&quot;)#img($icon)#end
+#end
+
+#macro(caption $title)
+&lt;div class=&quot;head&quot; style=&quot;text-align: left;&quot;&gt;
+    &lt;h3&gt;&lt;strong&gt;$title&lt;/strong&gt;&lt;/h3&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(masonry)
+&lt;div id=&quot;masonry&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+#macro(masonryItem $masonryItemClass)
+&lt;div class=&quot;single $masonryItemClass&quot;&gt;
+    $bodyContent
+&lt;/div&gt;
+#end
+
+#macro(logo)
+&lt;p class=&quot;logo&quot;&gt;&lt;a href=&quot;home.page&quot;&gt;&lt;span&gt;Tiny Framework&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+#end
+
+#macro(toTop)
+&lt;div id=&quot;toTop&quot;&gt;Top&lt;/div&gt;
+#end</pre><p><br></br></p><p><br></br></p>通用的宏已经写好，接下来就是写与网站有关部分的宏：<pre class="brush:html; toolbar: true; auto-links: false;">#macro(header)
+&lt;!-- Header --&gt;
+    #@row()
+        #@span3()
+        #logo
+        #end
+        #@span9()
+        &lt;div class=&quot;top-header text-right&quot;&gt;&lt;em&gt;QQ群: &lt;em&gt;228977971&lt;/em&gt; 邮箱：&lt;a
+                href=&quot;mailto:luo_guo@icloud.com&quot;&gt;luo_guo@icloud.com&lt;/a&gt;&lt;/em&gt;
+
+            &lt;div class=&quot;social&quot;&gt;
+                #shortcut(&quot;Sonar代码检查&quot; &quot;http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny&quot; &quot;img/sonar.ico&quot;)
+                #shortcut(&quot;Hudson持续集成&quot; &quot;http://www.tinygroup.org/hudson/job/tiny/&quot; &quot;img/hudson.png&quot;)
+                #shortcut(&quot;TinyFramework OSC首页&quot; &quot;http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny&quot; &quot;img/osc.ico&quot;)
+                #shortcut(&quot;TinyFramework GIT网址&quot; &quot;http://git.oschina.net/tinyframework/tiny&quot; &quot;img/git.ico&quot;)
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;text-left&quot;&gt;
+            &lt;h2&gt;&lt;/bit&gt; Think big, start small, scale fast.&lt;/h2&gt;
+        &lt;/div&gt;
+        #end
+    #end
+#end
+
+#macro(footer)
+    #@section()
+        #@container()
+        &lt;!-- Footer --&gt;
+            #@row()
+                #@span12()
+                &lt;div class=&quot;footer&quot;&gt;
+                    &lt;hr/&gt;
+                    &lt;p class=&quot;text-center&quot;&gt;&amp;copy;Copy Right 2009~2014 &lt;strong&gt;tiny group&lt;/strong&gt;&lt;br/&gt;
+                        www.tinygroup.org&lt;/p&gt;
+                &lt;/div&gt;
+                #end
+            #end
+        #end
+    #end
+
+#end
+
+#macro(navbar)
+&lt;!-- Navbar --&gt;
+&lt;div class=&quot;navbar&quot;#* id=&quot;nav-follow&quot;*#&gt;
+    &lt;div class=&quot;navbar-inner&quot;&gt;
+        &lt;div class=&quot;container&quot;&gt;&lt;a data-target=&quot;.navbar-responsive-collapse&quot; data-toggle=&quot;collapse&quot;
+                                  class=&quot;btn btn-navbar&quot;&gt;&lt;i class=&quot;icon-th-list&quot;&gt;&lt;/i&gt;&lt;/a&gt; &lt;a
+                data-target=&quot;.navbar-responsive-collapse&quot; data-toggle=&quot;collapse&quot; class=&quot;brand&quot;&gt;Navbar&lt;/a&gt;
+
+            &lt;div class=&quot;nav-collapse collapse navbar-responsive-collapse&quot;&gt;
+                #@nav()
+                    #@menu(&quot;Homepage&quot; &quot;home.page&quot; &quot;首页&quot; &quot;home&quot;)#end
+                    #@menu(&quot;philosophy&quot; &quot;philosophy.page&quot; &quot;设计理念&quot; &quot;philosophy&quot;)#end
+                    #@menu(&quot;principle&quot; &quot;principle.page&quot; &quot;设计原则&quot; &quot;principle&quot;)#end
+                    #@menu(&quot;Features&quot; &quot;feature.page&quot; &quot;功能特性&quot; &quot;feature&quot;)#end
+                    #@menu(&quot;FAQ&quot; &quot;faq.page&quot; &quot;常见问题解答&quot; &quot;faq&quot;)#end
+                    #@menu(&quot;encourage us&quot; &quot;encourage.page&quot; &quot;鼓励我们&quot; &quot;encourage&quot;)#end
+                    #@menu(&quot;About us&quot; &quot;about.page&quot; &quot;关于我们&quot; &quot;about&quot;)#end
+                #end
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+#end</pre>上面就把宏处理方面的工作处理完毕了，接下来就是设定页面结构了。<span id="OSC_h1_4"></span><h1>页面结构设计</h1><p>Html页面结构</p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;!--[if IE 7 ]&gt;		 &lt;html class=&quot;no-js ie ie7 lte7 lte8 lte9&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;		 &lt;html class=&quot;no-js ie ie8 lte8 lte9&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;		 &lt;html class=&quot;no-js ie ie9 lte9&gt;&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;en-US&quot;&gt; &lt;!--&lt;![endif]--&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;link rel=&quot;shortcut icon&quot; href=&quot;${TINY_CONTEXT_PATH}/tinysite/img/tiny.png&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;title&gt;Tiny Framework-$!pageTitle&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Tiny Framework 是基于Java语言的面向组件的企业级开发框架。&quot;/&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;Tiny,Framework,Java,SOA,框架,组件,分层,水平扩展,分区，分表,分布式计算,VFS,Web&quot; /&gt;
+    &lt;script src=&quot;${TINY_CONTEXT_PATH}/uiengine.uijs&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;${TINY_CONTEXT_PATH}/uiengine.uicss&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;/head&gt;
+&lt;body class=&quot;boxed&quot;  style=&quot;background: url(${TINY_CONTEXT_PATH}/tinysite/img/bg/parquet-bg.jpg);&quot;&gt;
+$pageContent
+&lt;/body&gt;
+&lt;/html&gt;</pre><p><br></br></p><p><br></br></p>网站页面结构：<pre class="brush:xml; toolbar: true; auto-links: false;">#@section()
+    #@container()
+    #header
+    #navbar
+    #hr
+    #end
+    #@container()
+        $pageContent
+    #end
+#end
+#footer
+#toTop</pre>上面的页面结构就非常清晰了：<p>下面详细解释：</p><pre class="brush:xml; toolbar: true; auto-links: false;">#@section()##开一段
+    #@container()##开一个容器
+    #header##放header进去
+    #navbar##放导航条进去
+    #hr##放一个分隔线
+    #end
+    #@container()##再开一个容器
+        $pageContent##里面放展现的内容
+    #end
+#end
+#footer ##这里放页脚
+#toTop  ##这里放返回页顶按钮</pre>是不是非常清晰呀？<p>然后就是每一页的内容编写了。</p><span id="OSC_h1_5"></span><h1>页面编写</h1><span id="OSC_h2_6"></span><h2>首页</h2><p>在需要解释的行的后面我会增加注释</p><pre class="brush:html; toolbar: true; auto-links: false;">#pageTitle(&quot;首页&quot; &quot;home&quot;)##设定这一面展现时的标题是”首页“，并且置&quot;home&quot;菜单为选中状态<span></span>#title(&quot;Tiny framework&quot; &quot;基于组件化的J2EE开发框架&quot;)
+
+#@slides()##轮播
+    #@slidesItem(&quot;img/example-slide-1.jpg&quot; &quot;Photo&quot; &quot;#&quot;)##第一个轮播项
+        #@slidesDetail()
+            #@slidesDetailInfo(&quot;名字&quot; &quot;Tiny名称的来历&quot;)##轮播中的详细解释段
+            &lt;p&gt;取名Tiny是取其微不足道，微小之意。&lt;/p&gt;
+            &lt;p&gt;Tiny的构建者认为，一个J2EE开发框架是非常复杂的，只有把框架分解成非常细小、可控的部分，并且对每个细小、可控的部分都有一个最优解或相对最优解，
+            那么整个方案也就可以非常不错的落地。&lt;/p&gt;
+            #end
+        #end
+    #end
+    #@slidesItem(&quot;img/example-slide-2.jpg&quot; &quot;Photo&quot; &quot;#&quot;)
+        #@slidesDetail()
+            #@slidesDetailInfo(&quot;策略&quot; &quot;Tiny框架的构建策略&quot;)
+            &lt;p&gt;Think big, start small, scale fast.&lt;/p&gt;
+            &lt;p&gt;想法要宏伟，但是要从小的开始，同时可以快速的进行扩展。&lt;/p&gt;
+            &lt;p&gt;Tiny框架的构建者认为：如果想法不够宏伟，那么就会局限于细节；如果一开始就铺非常大的摊子，将会失去控制；如果不能快速扩展，就无法满足应用需要。&lt;/p&gt;
+            #end
+        #end
+    #end
+    #@slidesItem(&quot;img/example-slide-3.jpg&quot; &quot;Photo&quot; &quot;#&quot;)
+        #@slidesDetail()
+            #@slidesDetailInfo(&quot;定位&quot; &quot;Tiny框架的应用定位&quot;)
+            &lt;p&gt;基于WEB的展现平台&lt;/p&gt;
+            &lt;p&gt;主要包括展现层及控制层，可以让开发人员方便快速的实现WEB层的开发，同时要避免现有方案的缺点，同时要有自己非常突出的优点。&lt;/p&gt;
+            &lt;p&gt;基于SOA的服务开发平台&lt;/p&gt;
+            &lt;p&gt;可以方便的开发平台无关的服务，同时有水平扩展，应用集群方面要有良好的支持，可以满足7*24的运维要求。&lt;/p&gt;
+            #end
+        #end
+    #end
+    #@slidesItem(&quot;img/example-slide-4.jpg&quot; &quot;Photo&quot; &quot;#&quot;)
+        #@slidesDetail()
+            #@slidesDetailInfo(&quot;目标&quot; &quot;Tiny框架的目标定位&quot;)
+            &lt;p&gt;Tiny框架的构建者认为再好的框架也有过时的时候，再优秀的架构师也有视野盲区，再NB的写手也无法实现所有的部分。&lt;/p&gt;
+            &lt;p&gt;所以Tiny框架的构建者认为：只有建立一个良好的生态圈，让广大开发者使用者都在生态圈在找到自己的位置，才是有生命的模式。&lt;/p&gt;
+            #end
+        #end
+    #end
+#end</pre><p>可以看到上面的内容语法结构非常清晰，容易理解，容易修改。</p><span id="OSC_h2_7"></span><h2>设计理念</h2><pre class="brush:html; toolbar: true; auto-links: false;">#pageTitle(&quot;philosophy&quot; &quot;philosophy&quot;)
+#title(&quot;philosophy&quot; &quot;主要介绍Tiny框架的设计理念&quot;)
+
+
+#@row()
+    #@masonry()
+    &lt;!-- Content --&gt;
+        #@masonryItem()
+            #@caption(&quot;使用灵活&quot;)
+            &lt;p&gt;可以整个使用它，也可以只用它的一个或几个部分。&lt;/p&gt;
+            &lt;p&gt;Tiny构建者认为，一个完整的框架可能需要有许许多多个部分组成，但是对于实际应用的用户来说，它可能只需要其中的一部分功能。构架一定要有这种能力，可以由使用者进行点菜式，使用，避免只要用一点点功能，就要引入许许多多的内容。&lt;/p&gt;
+            #end
+        #end
+
+        #@masonryItem(&quot;big&quot;)
+            #@caption(&quot;学习成本低、上手容易&quot;)
+            &lt;p&gt;框架的学习成本必须非常低，这样才可以让使用者更容易上手，避免由于学习难度大而导致的学习曲线太陡、太长。&lt;/p&gt;
+            &lt;p&gt;经过许多次的实践，我们总结出来：有基础的JAVA开发人员经过半天的培训，就可以完全学会基于Tiny框架进行开发，经过1天到两天的实践就会变成熟手。&lt;/p&gt;
+            &lt;p&gt;对框架进行扩展或基于框架扩展接口进行扩展，则需要3天左右的培训，就可以完全掌握，经过一周的实践就会变成熟手。&lt;/p&gt;
+            #end
+        #end
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;##后面的内容都类似就不贴了
+    #end
+#end</pre><span id="OSC_h2_8"></span><h2>鼓励与支持</h2><pre class="brush:html; toolbar: true; auto-links: false;">#pageTitle(&quot;鼓励&quot; &quot;encourage&quot;)
+#title(&quot;encourage&quot; &quot;鼓励与支持&quot;)
+#@row()
+&amp;nbsp; &amp;nbsp; #@span3()
+&amp;nbsp; &amp;nbsp; #end
+&amp;nbsp; &amp;nbsp; #@span6()
+&amp;nbsp; &amp;nbsp; &lt;div class=&quot;thumbnail&quot; style=&quot;text-align: left;&quot;&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;p&gt;我想每一个访问到这个页面的人，一定也是同样对技术有所追求的人。相对于金钱来说，我们更需要您的支持、鼓励，以及对我们所做工作的认可。&lt;/p&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;p&gt;我们不希望收到多少金钱，但是我们希望收获许多支持。&lt;/p&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;p&gt;如果您感受得到我们的努力及付出，请不辞辛苦为我们捐赠&lt;em style=&quot;color:red&quot;&gt;&lt;strong&gt;一块钱&lt;/strong&gt;&lt;/em&gt;，为我们加油，为我们助威！&lt;/p&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;p&gt;&lt;em style=&quot;color:red&quot;&gt;请用支付宝中的二维码扫描功能扫描下面的二维码&lt;/em&gt;&lt;/p&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; #img(&quot;img/appxl1rc0koh8fj044.png&quot;)
+&amp;nbsp; &amp;nbsp; &lt;/div&gt;
+&amp;nbsp; &amp;nbsp; #end
+&amp;nbsp; &amp;nbsp; #@span3()
+&amp;nbsp; &amp;nbsp; #end
+#end</pre>其它页面也大同小异，这里就不贴了。<span id="OSC_h2_9"></span><h2>运行结果</h2><p><img src="http://static.oschina.net/uploads/space/2014/0526/125502_T1DY_1245989.png" width="800" height="714" alt=""></img></p><p><img src="http://static.oschina.net/uploads/space/2014/0526/125700_7n3X_1245989.png" width="800" height="648" alt=""></img></p><p><img src="http://static.oschina.net/uploads/space/2014/0526/125908_E9QS_1245989.png" width="800" height="967" alt=""></img></p><p>更多页面，请看网站<a href="http://www.tinygroup.org" target="_blank" rel="nofollow">www.tinygroup.org</a></p><span id="OSC_h1_10"></span><h1>增加google及Baidu站点统计</h1><pre class="brush:html; toolbar: true; auto-links: false;">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+        &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+&lt;!--[if IE 7 ]&gt;		 &lt;html class=&quot;no-js ie ie7 lte7 lte8 lte9&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;		 &lt;html class=&quot;no-js ie ie8 lte8 lte9&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;		 &lt;html class=&quot;no-js ie ie9 lte9&gt;&quot; lang=&quot;en-US&quot;&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;en-US&quot;&gt; &lt;!--&lt;![endif]--&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;/&gt;
+    &lt;link rel=&quot;shortcut icon&quot; href=&quot;${TINY_CONTEXT_PATH}/tinysite/img/tiny.png&quot; type=&quot;image/x-icon&quot;/&gt;
+    &lt;title&gt;Tiny Framework-$!pageTitle&lt;/title&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;Tiny Framework 是基于Java语言的面向组件的企业级开发框架。&quot;/&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;Tiny,Framework,Java,SOA,框架,组件,分层,水平扩展,分区，分表,分布式计算,VFS,Web&quot; /&gt;
+    &lt;script src=&quot;${TINY_CONTEXT_PATH}/uiengine.uijs&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;${TINY_CONTEXT_PATH}/uiengine.uicss&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;/head&gt;
+&lt;body class=&quot;boxed&quot;  style=&quot;background: url(${TINY_CONTEXT_PATH}/tinysite/img/bg/parquet-bg.jpg);&quot;&gt;
+$pageContent
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var _bdhmProtocol = ((&quot;https:&quot; == document.location.protocol) ? &quot; https://&quot; : &quot; http://&quot;);
+    document.write(unescape(&quot;%3Cscript src=&apos;&quot; + _bdhmProtocol + &quot;hm.baidu.com/h.js%3F08ed66f35813cc4b68c4607c2a40d33c&apos; type=&apos;text/javascript&apos;%3E%3C/script%3E&quot;));
+&lt;/script&gt;
+&lt;script&gt;
+    (function(i,s,o,g,r,a,m){i[&apos;GoogleAnalyticsObject&apos;]=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,&apos;script&apos;,&apos;//www.google-analytics.com/analytics.js&apos;,&apos;ga&apos;);
+
+    ga(&apos;create&apos;, &apos;UA-51345317-1&apos;, &apos;tinygroup.org&apos;);
+    ga(&apos;send&apos;, &apos;pageview&apos;);
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>考虑要个人也比较关心一些统计数据，于是就增加一baidu及google的统计分析。<p>很简单，只要在根目录中的default.layout中增加这两段js就可以了，所有的其它文件都不必修改。</p><p>哇，已经可以收集数据了，同时也再一次验证了Tiny框架对于DRY原则的坚持。</p><p><img src="http://static.oschina.net/uploads/space/2014/0526/155553_517R_1245989.png" alt=""></img></p><span id="OSC_h1_11"></span><h1>总结</h1><p>上面展示了Tiny框架强大的页面开发能力。</p><p>对于页面开发人员来说，进行了相当的封装，避免了直接使用html而出现不应该出现的问题。</p><p>对于开发人员来说，不必关心页面结构，也不必关系js,css相关的内容，只要设置好页面上的元素即可。</p><p>这里就可以非常清晰的看到，界面开发程序员做的事情非常简单、易懂，且易于维护。明眼人也看得非常清晰，如果数据是来自于数据库，那处理就更简单了。</p></div>]]#

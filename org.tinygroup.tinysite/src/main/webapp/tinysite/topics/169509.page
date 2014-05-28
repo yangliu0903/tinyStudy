@@ -1,0 +1,206 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>开发网站 ，一般是如下过程：</p><ol><li><span style="line-height:1.5;font-size:10pt;">找美工画图</span></li><li>进行图片切分</li><li>开发人员添加内容</li></ol><p>现在还用JSP来做网页，当然属于...那啥的事情。</p><p>今天看看不一样的体验，稍有HTML基础，马上就可以照葫芦画瓢了。</p><p>第一步：找美工画图，第二步图片切分</p><p>这两步合成一步，到网上找模板，假设我们就看上这个模板了。</p><p><a href="http://www.cssmoban.com/cssthemes/88.shtml" rel="nofollow">http://www.cssmoban.com/cssthemes/88.shtml</a></p><p>点击下面的地址<a href="http://down.cssmoban.com/cssthemes/dating-web-template-5.rar" target="_blank" rel="nofollow">http://down.cssmoban.com/cssthemes/dating-web-template-5.rar</a>把它下载到本地。</p><p>展开看看，确实还不错，OK，就它了。</p><p>OK，现在看看，如何利用它来快速开发一个网站。</p><p>Step1：创建UI展现包</p><p>说白点，就是创建个jar包工程</p><p>Step2:把css和images目录复制到src/main/<span>resources/demo/目录下</span></p><p><span>Step3:在<span>src/main/</span><span>resources/demo/目录下，创建文件demo.ui.xml</span></span></p><p><span>其文本内容如下：</span></p><p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;ui-components&gt;
+	&lt;ui-component name=&quot;demo&quot;&gt;
+		&lt;css-resource&gt;/demo/css/layout.css&lt;/css-resource&gt;
+	&lt;/ui-component&gt;
+&lt;/ui-components&gt;</pre>Step4:编写宏代码，这个时候，最好有dreamwaver等html编写工具，当然没有，用普通编辑器也可以，就是眼力要好一点。当然，如果你熟悉Firefox或Chrome，用浏览器直接找代码也是可以的。<p><span><span>中src/main/</span><span>resources/demo/ 创建文件：demo.component文件</span></span></p><p><span>这个时候，要稍微有点抽象能力(所谓抽象能力就是找同类项的能力)<br></br></span></p><p>首先看首页，整体效果如下（受上传图片大小限制，只能这么小）：</p><p><img src="http://static.oschina.net/uploads/space/2013/1017/115649_8EIG_1245989.png" alt=""></img></p><p>OK,我们放大看看局部：</p><p><img src="http://static.oschina.net/uploads/space/2013/1017/122437_ZCGo_1245989.jpg" alt=""></img></p><p><span>可以看到，有Banner图片，有导致栏。</span></p><p><span>直觉告诉我们这几个导航栏的东东，应该是同样的模式做出来的，找到一看，是下面的样子。</span></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;ul&gt;
+          &lt;li class=&quot;first&quot;&gt;&lt;a class=&quot;current&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;about_us.html&quot;&gt;about us&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;privacy.html&quot;&gt;privacy&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;projects.html&quot;&gt;projects&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;services.html&quot;&gt;services&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;support.html&quot;&gt;support&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;contact_us.html&quot;&gt;contact Us&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;</pre>所以，在<span>demo.component</span>文件中，添加下面的内容：<p><br></br></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#macro(menuBar)
+&lt;div id=&quot;menu&quot;&gt;
+&lt;ul&gt;
+$bodyContent
+&lt;/ul&gt;
+&lt;/div&gt;
+#end
+
+#macro(menuItem $key $url $title)
+&lt;li&gt;&lt;a href=&quot;$url&quot;#if($CurrentPage==$key) class=&quot;current&quot;#end&gt;$title&lt;/a&gt;&lt;/li&gt;
+#end</pre>上面的两段脚本是velocity宏，熟悉的一看就明白，不熟悉的，先猜猜大致意思就可以了。<p><br></br></p><p><span>接下来，在页面中就可以用下面的方式来定义原来的菜单区域了：</span></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#@menuBar()
+  #menuItem(&quot;about&quot; &quot;about_us.html&quot; &quot;about us&quot;)
+  #menuItem(&quot;privacy&quot; &quot;privacy.html&quot; &quot;privacy&quot;)
+  #menuItem(&quot;projects&quot; &quot;projects.html&quot; &quot;projects&quot;)
+  #menuItem(&quot;about&quot; &quot;about_us.html&quot; &quot;about us&quot;)
+  #menuItem(&quot;services&quot; &quot;services.html&quot; &quot;services&quot;)
+  #menuItem(&quot;support&quot; &quot;support.html&quot; &quot;support&quot;)
+  #menuItem(&quot;contact_us&quot; &quot;contact_us.html&quot; &quot;contact Us&quot;)
+#end</pre>好吧，可能有人会说，这样的写法，和原来的相比，不容易理解，还不如原来的好写呢。好吧，我也认同这种说法，不过我们放到小结的时候再来回顾这个问题。<p><br></br></p><p><span>通过我们眼睛的模式识别，我们发现下面的四个东东，好象也是一种类型的，那么，我们再抽象一下：</span></p><p><span><img src="http://static.oschina.net/uploads/space/2013/1017/123829_NcrF_1245989.jpg" alt=""></img><br></br></span></p><p><span>其HTML描述是这样的：</span></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;div class=&quot;box1&quot;&gt;
+  &lt;div&gt;
+    &lt;h2&gt;Customer Service&lt;/h2&gt;
+    &lt;div&gt; &lt;img src=&quot;images/ico-med-1.png&quot; alt=&quot;&quot; class=&quot;about-img&quot; /&gt; Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, &lt;a href=&quot;#&quot;&gt;Read More...&lt;/a&gt; &lt;/div&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+  &lt;/div&gt;
+  &lt;div&gt;&lt;br /&gt;
+    &lt;h2&gt;Global Reach&lt;/h2&gt;
+    &lt;br /&gt;
+    &lt;div&gt; &lt;img src=&quot;images/ico-med-3.png&quot; alt=&quot;&quot; class=&quot;about-img&quot; /&gt; Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, &lt;a href=&quot;#&quot;&gt;Read More...&lt;/a&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;box2&quot;&gt;
+  &lt;div&gt;
+    &lt;h2&gt;Award Winning&lt;/h2&gt;
+    &lt;div&gt; &lt;img src=&quot;images/ico-med-2.png&quot; alt=&quot;&quot; class=&quot;about-img&quot; /&gt; Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, &lt;a href=&quot;#&quot;&gt;Read More...&lt;/a&gt;&lt;/div&gt;
+    &lt;br /&gt;
+    &lt;br /&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;h2&gt;Availability&lt;/h2&gt;
+    &lt;div&gt;&lt;br /&gt;
+      &lt;img src=&quot;images/ico-med-4.png&quot; alt=&quot;&quot; class=&quot;about-img&quot; /&gt; Lorem ipsum dolor sit amet, consd
+      ectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius, &lt;a href=&quot;#&quot;&gt;Read More...&lt;/a&gt; &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>我们抽象成下面的样子：<p><br></br></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#macro(box $boxClass)
+&lt;div class=&quot;$boxClass&quot;&gt;
+$bodyContent
+&lt;/div&gt;
+#end<span></span>#macro(boxItem $title $imgUrl $moreUrl)
+  &lt;div&gt;
+    &lt;h2&gt;$title&lt;/h2&gt;
+    &lt;div&gt;
+#img(&quot;$imgUrl&quot;)
+$bodyContent, #moreHref(&quot;$moreUrl&quot;)
+    &lt;/div&gt;
+  &lt;/div&gt;<span></span><span></span><span></span>#end<span></span>#macro(img $url)
+&lt;img src=&quot;<span></span>$url<span></span>&quot; alt=&quot;&quot; class=&quot;about-img&quot; /&gt;
+#end
+
+#macro(moreHref $url)
+&lt;a href=&quot;$url&quot;&gt;Read More...&lt;/a&gt;
+#end</pre>原来的代码就可以写成下面的样子了：<p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#@box(&quot;box1&quot;)
+#@boxItem(&quot;Customer Service&quot; &quot;images/ico-med-1.png&quot; &quot;#&quot;)
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius
+#end
+#@boxItem(&quot;Global Reach&quot; &quot;images/ico-med-3.png&quot; &quot;#&quot;)
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius
+#end
+#end
+
+#@box(&quot;box2&quot;)
+#@boxItem(&quot;Award Winning&quot; &quot;images/ico-med-1.png&quot;&amp;nbsp;&quot;#&quot;)
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius
+#end
+#@boxItem(&quot;Availability&quot; &quot;images/ico-med-1.png&quot;&amp;nbsp;&quot;#&quot;)
+Lorem ipsum dolor sit amet, consd ectetuer adipiscing elit. Proin sed odio et ante adipiscing lobortis. Quisque eleifend, arcu a dictum varius
+#end
+#end</pre><span></span><p>通过不断抽象，就可以把原来杂乱无章的Html代码从我们的页面中拿掉，只留下我们要显示的数据内容。</p><p>Tiny的哲学是同样的事情，不要做两次，很明显，那些Header Footer是每个页面都要显示的，如果避免这些东东总要被重写呢？</p><p>这里就要创建一个布局文件default.layout</p><p><br></br></p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;div id=&quot;layout&quot;&gt;
+  &lt;div id=&quot;header&quot;&gt;
+    &lt;div id=&quot;logo&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;img src=&quot;images/logo_1.gif&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;/div&gt;
+    &lt;div class=&quot;member_login&quot;&gt;
+      &lt;div class=&quot;login_box&quot;&gt;
+        &lt;form action=&quot;&quot; method=&quot;get&quot;&gt;
+          &lt;fieldset&gt;
+          &lt;div class=&quot;column_1&quot;&gt;
+            &lt;label&gt;username :&lt;/label&gt;
+            &lt;label&gt;password :&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;column_2&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; /&gt;
+            &lt;input type=&quot;text&quot; name=&quot;&quot; value=&quot;&quot; /&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;column_3&quot;&gt;
+            &lt;input type=&quot;image&quot; src=&quot;images/login_btn.gif&quot; class=&quot;login&quot;/&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;column_4&quot;&gt;
+            &lt;label class=&quot;password&quot;&gt;&lt;a href=&quot;#&quot;&gt;Forgot &lt;br /&gt;
+            password&lt;/a&gt;&lt;/label&gt;
+          &lt;/div&gt;
+          &lt;/fieldset&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;body_container&quot;&gt;
+$pageContent 
+   &lt;/div&gt;
+    &lt;div id=&quot;footer&quot;&gt;
+      &lt;div class=&quot;footer_link&quot;&gt;
+      &lt;ul style=&quot;color:#FFf;&quot;&gt;
+         Copyright (c) Sitename.com. All rights reserved. Design by Stylish From &lt;a style=&quot;text-decoration:underline; color:#FFF;&quot; href=&quot;http://www.cssmoban.com&quot;&gt;cssMoban.com&lt;/a&gt;.
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>这样，所有的页面都会自动拥有header和Footer。<p><br></br></p><p>但是上面的样子太难看了，我们可以通过定义宏，把它简化成下面的样子。</p><p><br></br></p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;div id=&quot;layout&quot;&gt;
+#header()
+$pageContent
+#footer()
+&lt;/div&gt;</pre>哇，整个世界清静了，当然，从Tiny的建议来说，最上层的&lt;div id=&quot;layout&quot;&gt;也尽量不要原生的写来了，变成下面的样子就是最终的结果：<pre class="brush:html; toolbar: true; auto-links: false;">#@pageLayout()
+#header()
+$pageContent
+#footer()
+#end</pre>这样带来的好处是，什么时候要修改这些html原素，与使用它们的人毫无关系，改了，所有的人就都会生效。<p>至此，我们已经学会了，怎么进行抽象(眼睛能发生重复的地方，会一点html和Vecocity)；学会了怎么写布局，就是在一大段文本当中放一个$pageContent的标记，表示其它page页面就塞在这个位置。学会了编写宏，带有$pageContent的表示，它里面可以装别的东东。<span>学会了怎么做UI组件包。<br></br>基于Tiny编写网站 ，带来的好处是：网站构建中，同样的东西，永远不用写第二次；页面的易维护性非常强，特别简洁；未来的维护非常方便，进行大的结构化调整对于最终页面也没有任何影响。</span></p><p><span>下面展示一下Tiny网站的构建代码：</span></p><p><span>下面是整体布局default.layout文件的内容：</span></p><p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#@wrap()
+#@header()
+	#sitename(&quot;TINY WEB FRAMEWORK&quot; &quot;我们的目标是: Think big, start small.&quot;)
+	#@topnav()
+		#topnavItem(&quot;home&quot; &quot;Home&quot; &quot;/tinysite/home/home.page&quot;)
+		#topnavItem(&quot;faq&quot; &quot;FAQ&quot; &quot;/tinysite/home/faq.page&quot;)
+		#topnavItem(&quot;feature&quot; &quot;Feature&quot; &quot;/tinysite/home/feature.page&quot;)
+		#topnavItem(&quot;sample&quot; &quot;Sample&quot; &quot;/tinysite/home/sample.page&quot;)
+		#topnavItem(&quot;demo&quot; &quot;Demo&quot; &quot;/tinysite/home/demo.page&quot;)
+		#topnavItem(&quot;Task&quot; &quot;Task&quot; &quot;/tinysite/home/task.page&quot;)
+		#topnavItem(&quot;document&quot; &quot;Document&quot; &quot;/tinysite/home/document.page&quot;)
+		#topnavItem(&quot;resource&quot; &quot;Resource&quot; &quot;/tinysite/home/resource.page&quot;)
+		#topnavItem(&quot;about&quot; &quot;About&quot; &quot;/tinysite/home/about.page&quot;)
+	#end
+	#clear()
+	#@headercolumn1()
+	我们要做的不只是平台，更是一件艺术品，从所有项目参与者的视觉来看，它都是简洁、高效、美观的。
+	#end
+	#@headercolumn2()
+		&lt;div id=&quot;search_top&quot;&gt;
+		&lt;form action=&quot;/search/search.php&quot; method=&quot;get&quot;&gt;
+		&lt;p&gt;&lt;input type=&quot;text&quot; name=&quot;query&quot; id=&quot;query&quot; class=&quot;keyword&quot;/&gt;	&lt;/p&gt;
+		&lt;p class=&quot;button&quot;&gt;&lt;input name=&quot;&quot; type=&quot;image&quot; src=&quot;${TINY_CONTEXT_PATH}/images/searchbutton.gif&quot; alt=&quot;Search&quot; /&gt;&lt;/p&gt;
+		&lt;p class=&quot;hide&quot;&gt;	&lt;input type=&quot;hidden&quot; name=&quot;search&quot; value=&quot;1&quot; /&gt; &lt;/p&gt;
+		&lt;/form&gt;
+		&lt;/div&gt;
+		&lt;div id=&quot;subscribe&quot;&gt;&lt;a href=&quot;#&quot;&gt;Subscribe&lt;/a&gt;&lt;/div&gt;	
+	#end
+	#clear()
+#end
+
+#@contents()
+$!pageContent
+#end
+
+#@footer()
+&lt;p&gt;Copyright TINY open source group.&lt;/p&gt;
+&lt;p&gt;网站解释权归&amp;nbsp;&lt;b&gt;TINY开源组织&lt;/b&gt;&amp;nbsp;所有.&lt;/p&gt;
+#end
+#end</pre>下面是关于页面about.page的内容：<p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#@homepage()
+	#@faq(&quot;关于我们&quot;)
+		#@servicesItem(&quot;idea&quot;)
+			我们的目标：通过此开源项目的运作，对于J2EE应用框架中的各种概念与架构进行充分的验证与分析，达到概念清晰，理论体系完整，功能基本完成。
+			系统的编写，主要利用业余时间编写。
+		#end
+	#end
+	#@faq(&quot;主要参与者&quot;)
+		#@servicesItem(&quot;idea&quot;)
+		spzebra：负责架构设计，核心代码编写。 
+		#end
+	#end
+#end</pre>下面是demo.page的页面内容<p><span></span></p><pre class="brush:html; toolbar: true; auto-links: false;">#@homepage()
+	#@faq(&quot;演示列表&quot;)
+		#@servicesItem(&quot;idea&quot;)
+		HelloWorld
+		#end
+		#@servicesItem(&quot;design&quot;)
+		四则运算
+		#end
+		#@servicesItem(&quot;apps&quot;)
+		简单数据维护
+		#end
+		#@servicesItem(&quot;mobile&quot;)
+		站内邮件系统
+		#end
+	#end
+#end</pre>等等，所以的页面都非常简捷。<p><span>上述两个页面的执行效果图：</span></p><p><span>关于页面效果：</span></p><p><span><img src="http://static.oschina.net/uploads/space/2013/1017/132701_qgRI_1245989.jpg" alt=""></img><br></br></span></p><p>示例页面效果</p><p><span><img src="http://static.oschina.net/uploads/space/2013/1017/132758_DMhs_1245989.jpg" alt=""></img><br></br></span></p><p><span>小结：</span></p><p><span>采用Tiny与传统网页开发的不同之处在于：</span></p><p><span>传统的采用html编写，Tiny则基于宏编写，宏有更高的抽象度，避免了重复代码的编写，使得修改的时候更加容易。</span></p><p><span>传统的html，每个页面都要完整编写，Tiny则不需要，每个页面只写每个页面需要的部分。因为Tiny框架引入了布局的概念，可以把重复性的内容都放到布局中去。由于Tiny支持多重布局，支持布局继承，支持个性化布局，因此所有需求都可以得到满足。</span></p><p>国际化支持，如果要构建国际性网站，Tiny在这方面有强力支持。</p><p>静态化支持，Tiny默认是动态网站，但是可以根据配置提供页面静态化能力，大大提升网站响应速度，降低数据库压力。</p><p>当然，Tiny提供了这么多优点，也会带来一点要求，就是需要学习Velocity模板技术，一般来说3小时的学习，就可以满点开发要求(但是开发期及维护期节省的时间就远不止这个数了)。</p><p>当然，光看写文档，觉得又罗嗦，又难懂，光看不练假把式，实际操作一下就知道了。</p></div>]]#

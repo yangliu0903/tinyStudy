@@ -1,0 +1,123 @@
+#pageTitle("topic" "topic")
+#title("算法感想" "主题切换及其管理")
+#[[<div class="BlogContent"><p>今天在向maven仓库发文件，干不了什么活，于是就在osc中转转，转到共享代码里，看到一篇<br></br><a href="http://www.oschina.net/code/snippet_3307_296" target="_blank" rel="nofollow">Java 解析/读取XML 文件</a>&amp;nbsp;<a href="http://my.oschina.net/erliu" target="_blank" rel="nofollow">@老枪</a><br></br>于是就用这个例子来典型分析一下。<br></br>原文如下：</p><div><span id="OSC_h3_1"></span><h3><span style="font-weight:normal;">1.&amp;nbsp;</span><span style="font-weight:normal;">[代码]</span>students.xml&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span style="font-weight:normal;"><span><a rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#413" rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#414" rel="nofollow"></a></span><a href="http://www.oschina.net/code/piece_full?code=296&amp;amp;piece=413#413" name="413" target="_blank" rel="nofollow"></a></span></h3><div><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;students&gt;
+    &lt;student&gt;
+        &lt;name&gt;John&lt;/name&gt;
+        &lt;grade&gt;B&lt;/grade&gt;
+        &lt;age&gt;12&lt;/age&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+        &lt;name&gt;Mary&lt;/name&gt;
+        &lt;grade&gt;A&lt;/grade&gt;
+        &lt;age&gt;11&lt;/age&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+        &lt;name&gt;Simon&lt;/name&gt;
+        &lt;grade&gt;A&lt;/grade&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/student&gt;
+&lt;/students&gt;</pre></div></div><div><span id="OSC_h3_2"></span><h3><span style="font-weight:normal;">2.&amp;nbsp;</span><span style="font-weight:normal;">[代码]</span>XMLParser.java&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span style="font-weight:normal;"><span><a rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#413" rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#414" rel="nofollow"></a></span><a href="http://www.oschina.net/code/piece_full?code=296&amp;amp;piece=414#414" name="414" target="_blank" rel="nofollow"></a></span></h3><div><pre class="brush:java; toolbar: true; auto-links: false;">package net.viralpatel.java.xmlparser; 
+  
+import java.io.File; 
+import javax.xml.parsers.DocumentBuilder; 
+import javax.xml.parsers.DocumentBuilderFactory; 
+  
+import org.w3c.dom.Document; 
+import org.w3c.dom.Element; 
+import org.w3c.dom.Node; 
+import org.w3c.dom.NodeList; 
+   
+public class XMLParser { 
+   
+    public void getAllUserNames(String fileName) { 
+        try { 
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance(); 
+            DocumentBuilder db = dbf.newDocumentBuilder(); 
+            File file = new File(fileName); 
+            if (file.exists()) { 
+                Document doc = db.parse(file); 
+                Element docEle = doc.getDocumentElement(); 
+   
+                // Print root element of the document 
+                System.out.println(&quot;Root element of the document: &quot;
+                        + docEle.getNodeName()); 
+   
+                NodeList studentList = docEle.getElementsByTagName(&quot;student&quot;); 
+   
+                // Print total student elements in document 
+                System.out.println(&quot;Total students: &quot; + studentList.getLength()); 
+
+                if (studentList != null &amp;&amp; studentList.getLength() &gt; 0) { 
+                    for (int i = 0; i &lt; studentList.getLength(); i++) { 
+  
+                        Node node = studentList.item(i); 
+   
+                        if (node.getNodeType() == Node.ELEMENT_NODE) { 
+   
+                            System.out.println(&quot;=====================&quot;); 
+
+                            Element e = (Element) node; 
+                            NodeList nodeList = e.getElementsByTagName(&quot;name&quot;); 
+                            System.out.println(&quot;Name: &quot;
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue()); 
+  
+                            nodeList = e.getElementsByTagName(&quot;grade&quot;); 
+                            System.out.println(&quot;Grade: &quot;
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue()); 
+   
+                            nodeList = e.getElementsByTagName(&quot;age&quot;); 
+                            System.out.println(&quot;Age: &quot;
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue()); 
+                        } 
+                    } 
+                } else { 
+                    System.exit(1); 
+                } 
+            } 
+        } catch (Exception e) { 
+            System.out.println(e); 
+        } 
+    } 
+    public static void main(String[] args) { 
+ 
+        XMLParser parser = new XMLParser(); 
+        parser.getAllUserNames(&quot;c:\\students.xml&quot;); 
+    } 
+}</pre></div></div><p><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">类中存在的问题有：</span></p><p><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">1.类名起得不好--给人的感觉你这个解析的类，结果是个测试解析的类&amp;nbsp;<br></br></span><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">2.方法名起得不好--给人的感觉是有返回值的，结果是个没有返回值的&amp;nbsp;<br></br></span><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">3.方法内容写得太乱，把解析及数据获取啥的都放在一个方法里了。&amp;nbsp;<br></br></span><span style="color:#0000AA;font-size:14px;line-height:22px;background-color:#FFFFFF;">4.代码逻辑性不好，前面写了System.out.println(&quot;Total students: &quot;&amp;nbsp;</span><span style="color:#0000AA;font-size:14px;font-family:Consolas, &apos;Bitstream Vera Sans Mono&apos;, &apos;Courier New&apos;, Courier, monospace;line-height:14.65625px;background-color:#F8F8F8;">&amp;nbsp;</span><span style="color:#0000AA;font-size:14px;line-height:22px;background-color:#FFFFFF;">+ studentList.getLength());后面还在写studentList !=&amp;nbsp;null，如果前面不出异常，这里就没有用；如果前面出异常，这里检查点根本就过不来。&amp;nbsp;<br></br></span><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">5.中间用了System.exit，显然这不是一个好的处理，人家调你个参数，你给悄无声息的把整个应用停止了。&amp;nbsp;<br></br></span><span style="background-color:#FFFFFF;color:#0000AA;font-size:14px;line-height:22px;">6.代码重复率太高&amp;nbsp;</span></p><pre class="brush:java; toolbar: true; auto-links: false;">NodeList nodeList = e.getElementsByTagName(&quot;name&quot;); 
+
+                            System.out.println(&quot;Name: &quot; 
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue()); 
+                            nodeList = e.getElementsByTagName(&quot;grade&quot;); 
+                            System.out.println(&quot;Grade: &quot; 
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue()); 
+                            nodeList = e.getElementsByTagName(&quot;age&quot;); 
+                            System.out.println(&quot;Age: &quot; 
+                                    + nodeList.item(0).getChildNodes().item(0) 
+                                            .getNodeValue());</pre><p>这个太难看了。&amp;nbsp;</p><p>小结：这段代码把许多不良编程习惯都带出来了。</p><p>当然也可能是<a href="http://my.oschina.net/erliu" target="_blank" rel="nofollow">@老枪</a>当时只是随便写写的。</p><p>当然有人或许会问，你怎么写？换我写，我的写法是这样的，当然类名我这里只是用来测试一下，因此写个<span></span>TestXmlParser&amp;nbsp;<span></span>，实际上应该是两个类的：一个功能类，一个测试的类：</p><pre class="brush:java; toolbar: true; auto-links: false;">public class TestXmlParser {
+    public static void main(String[] args) throws Throwable {
+        File file = new File(&quot;E:/test/students.xml &quot;);
+        XmlStringParser parser = new XmlStringParser();
+        XmlDocument document = parser.parse(IOUtils.readFromInputStream(
+                new FileInputStream(file), &quot;utf-8&quot;));
+        printStudents(document.getRoot());
+    }
+    private static void printStudents(XmlNode studentsNode) {
+        for(XmlNode studentNode:studentsNode.getSubNodes(&quot;student&quot;)){
+            printStuent(studentNode);
+        }
+    }
+    private static void printStuent(XmlNode studentNode) {
+        printSubTagByName(studentNode,&quot;name&quot;);
+        printSubTagByName(studentNode,&quot;grade&quot;);
+        printSubTagByName(studentNode,&quot;age&quot;);
+    }
+    private static void printSubTagByName(XmlNode studentNode,String tagName) {
+        System.out.println( studentNode.getSubNode(tagName).getContent());
+    }
+}</pre><p>当然了，上面没有做边界检查，仅是为了说明例子而已，但是执行结果与@老枪 的是一样的。。</p></div>]]#

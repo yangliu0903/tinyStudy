@@ -1,0 +1,203 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p></p><p><span style="line-height:1.5;font-size:12.5px;">Maven引用坐标：</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:html;toolbar: true; auto-links: false;">&lt;dependency&gt;
+&lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+&lt;artifactId&gt;vfs&lt;/artifactId&gt;
+&lt;version&gt;0.0.12&lt;/version&gt;
+&lt;/dependency&gt;</pre><div><span style="line-height:1.5;font-size:12.5px;">一开始，本人抱着对Apache的绝对信任，选择了Apache VFS来进行文件访问的封装，确实，他的API是统一的、优雅的，支持的协议种类也非常多，在简单了解之后，觉得就用它吧，总不能什么轮子都自己造。</span></div><p></p><p>于是Apache VFS就进入了我的框架，功能也完全良好。但是在压力测试的时候，忽然发现有内存泄露问题，dump一下内存，进行分析之后，发现原来是Apache VFS 2.0惹得祸,看一看apache VFS已经好久没有升级了，跟踪了一下源码，发现有些地方，比较诡异，就是有时候进有时候不进，查之良久而不得，只好下决定把Apache VFS从里面拿掉，而拿掉之前，就需要有同样功能的东东支撑，不得已，花费2天时间写了一个VFS，功能比Apache的VFS少一些，但是够用了。然后花了一天时间，把原来Apache VFS的代码迁移到新的VFS之上，做此项迁移工作的小弟手指都木了，迁移完之后，再行测试，内存泄露问题不再存在。</p><p>好了，上面讲了前因，下面就介绍一下VFS的构成及实现：</p><p><span style="line-height:1.5;font-size:10pt;"><span></span>模式提供者接口用于扩展各种文件来源，比如：本地文件，HTTP文件，FTP文件，Jar包文件,Zip文件等等，其接口声明如下：</span></p><p><span style="font-size:10pt;line-height:1.5;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">/**
+ * 模式提供者接口
+ */
+public interface SchemaProvider {
+	/**
+	 * 是否匹配
+	 * 
+	 * @param resource
+	 * @return 如果返回true，表示此提供者可以处理，返回false表示不能处理
+	 */
+	boolean isMatch(String resource);
+
+	/**
+	 * 返回处理的模式
+	 * 
+	 * @return
+	 */
+	String getSchema();
+
+	/**
+	 * 解析资源，并返回文件对象
+	 * 
+	 * @param resource
+	 * @return
+	 */
+	FileObject resolver(String resource);
+}</pre><p><span style="line-height:1.5;font-size:10pt;">文件对象FileObject，是对文件的访问的统一接口，它的定义如下：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface FileObject {
+	String getFileName();// 返回文件名
+
+	String getPath();// 返回路径
+
+	String getAbsolutePath();// 返回绝对路径
+
+	String getExtName();// 返回扩展名
+
+	boolean isExist();// 是否存在
+
+	long getSize();// 返回文件大小
+
+	InputStream getInputStream();//返回输入流
+
+	boolean isFolder();// 返回是否是目录，如果是目录，则getInputStream无效。
+
+	FileObject getParent();// 返回上级文件
+	
+	void setParent(FileObject fileObject);// 设置上级文件
+
+	List&lt;FileObject&gt; getChildren();// 返回下级文件列表
+	
+	FileObject getChild(String fileName);//获取参数名称指定的fileobject
+
+	long getLastModifiedTime();// 返回修改时间
+
+	SchemaProvider getSchemaProvider();//返回模式提供者
+
+	boolean isInPackage();//是否是包文件
+	
+	URL getURL();//返回url
+	
+	OutputStream getOutputStream();//返回输出流
+}</pre>关键的接口就是上面两个，当然还有一个重要的类就是虚拟文件系统类，内容如下：<pre class="brush:java; toolbar: true; auto-links: false;">/**
+&amp;nbsp;* 虚拟文件系统
+&amp;nbsp;*/
+public class VFS {
+ static Map&lt;String, FileObject&gt; fileObjectCacheMap = new ConcurrentHashMap&lt;String, FileObject&gt;();
+ static Map&lt;String, Long&gt; fileModifyTimeMap = new ConcurrentHashMap&lt;String, Long&gt;();
+ static final Map&lt;String, SchemaProvider&gt; schemaProviderMap = new HashMap&lt;String, SchemaProvider&gt;();
+ private static String defaultSchema = &quot;file:&quot;;
+ static {
+ addSchemaProvider(new JarSchemaProvider());
+ addSchemaProvider(new ZipSchemaProvider());
+ addSchemaProvider(new FileSchemaProvider());
+ addSchemaProvider(new HttpSchemaProvider());
+ addSchemaProvider(new HttpsSchemaProvider());
+ addSchemaProvider(new FtpSchemaProvider());
+ addSchemaProvider(new JBossVfsSchemaProvider());
+ }
+
+
+ /**
+ * 构建函数私有化
+ */
+ private VFS() {
+
+ }
+ /**
+ * 清空Cache
+ */
+ public static final void clearCache() {
+ fileObjectCacheMap.clear();
+ }
+
+
+ /**
+ * 添加新的模式提供者
+ *&amp;nbsp;
+ * @param schemaProvider
+ */
+ public static final void addSchemaProvider(SchemaProvider schemaProvider) {
+ schemaProviderMap.put(schemaProvider.getSchema(), schemaProvider);
+ }
+ /**
+ * 设置默认模式提供者
+ *&amp;nbsp;
+ * @param schema
+ */
+ public static final void setDefaultSchemaProvider(String schema) {
+ defaultSchema = schema;
+ }
+ /**
+ * 返回指定的模式提供者
+ *&amp;nbsp;
+ * @param schema
+ * @return
+ */
+ public static final SchemaProvider getSchemaProvider(String schema) {
+ return schemaProviderMap.get(schema);
+ }
+ /**
+ * 解析文件
+ *&amp;nbsp;
+ * @param resource
+ * @return
+ */
+ public static FileObject resolveFile(String resource) {
+ FileObject fileObject = fileObjectCacheMap.get(resource);
+ if (fileObject != null) {
+ long oldTime = fileModifyTimeMap.get(resource);
+ long newTime = fileObject.getLastModifiedTime();
+ if (oldTime == newTime) {
+ return fileObject;
+ }
+ }
+ try {
+ resource = URLDecoder.decode(resource, &quot;UTF-8&quot;);
+ } catch (UnsupportedEncodingException e) {
+ // 如果出错也不用管，忽略之
+ }
+ SchemaProvider schemaProvider = schemaProviderMap.get(defaultSchema);
+ for (SchemaProvider provider : schemaProviderMap.values()) {
+ if (provider.isMatch(resource)) {
+ schemaProvider = provider;
+ break;
+ }
+ }
+ fileObject = schemaProvider.resolver(resource);
+ fileObjectCacheMap.put(resource, fileObject);
+ fileModifyTimeMap.put(resource, fileObject.getLastModifiedTime());
+ return fileObject;
+ }
+ /**
+ * 解析URL
+ *&amp;nbsp;
+ * @param url
+ * @return
+ */
+ public static FileObject resolveURL(URL url) {
+ return resolveFile(url.getPath());
+ }
+}</pre><p>可以看到，他实际上是一个工具类，提供了若干个静态方法，以供使用，因此，为了便于扩展，此类也没有加final，考虑到添加模式提供者一般是加载时单线程处理的，因此，为了提高效率，也没有增加线程安全相关的处理。</p><p>主体就是这三个类，接下来就是FileObject和SchemaProvider的扩展了，从下面的代码可以看到，默认已经添加了Jar文件支持，Zip文件支持，本地文件支持，Http资源支持，Ftp支持，JBossVfsSchema支持。</p><pre class="brush:java; toolbar: true; auto-links: false;">static {
+ addSchemaProvider(new JarSchemaProvider());
+ addSchemaProvider(new ZipSchemaProvider());
+ addSchemaProvider(new FileSchemaProvider());
+ addSchemaProvider(new HttpSchemaProvider());
+ addSchemaProvider(new HttpsSchemaProvider());
+ addSchemaProvider(new FtpSchemaProvider());
+ addSchemaProvider(new JBossVfsSchemaProvider());
+ }</pre>当然，你也可以根据进行进行扩展，只要调用VFS类的addSchemaProvider方法就可以了。限于篇幅，SchemaProvider及FileObject的实现类就不再一个一个讲解了，需要的话，可以看源码。接下来看看如何使用？<p>编写下面两行程序：</p><pre class="brush:java; toolbar: true; auto-links: false;">FileObject fileObject= VFS.resolveFile(&quot;src/main/java/org/tinygroup/vfs&quot;);
+FileUtils.printFileObject(fileObject);</pre>输出结果如下：<pre class="brush:html; toolbar: true; auto-links: false;">absolutePath:E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs
+extName:null
+fileName:vfs
+inputsteam:null
+path:
+provider:org.tinygroup.vfs.impl.FileSchemaProvider@296672d6
+size:0
+children:[E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\FileObject.java, E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\impl, E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\SchemaProvider.java, E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\util, E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\VFS.java]
+parent:null
+exist:true
+folder:true
+url:file:E:/SVN/tinyorg-code/trunk/Sources/framework/base/vfs/src/main/java/org/tinygroup/vfs
+------------------
+absolutePath:E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs\FileObject.java
+extName:java
+fileName:FileObject.java
+inputsteam:java.io.BufferedInputStream@13ccb029
+path:/FileObject.java
+provider:org.tinygroup.vfs.impl.FileSchemaProvider@296672d6
+size:2077
+children:null
+parent:E:\SVN\tinyorg-code\trunk\Sources\framework\base\vfs\src\main\java\org\tinygroup\vfs
+exist:true
+folder:false
+url:file:E:/SVN/tinyorg-code/trunk/Sources/framework/base/vfs/src/main/java/org/tinygroup/vfs/FileObject.java
+------------------
+下面还有许多文件......省略了</pre><span></span><p><span style="line-height:1.5;font-size:10pt;">可以看到确实是已经成功解析本地文件。</span></p><p>解析Web页面也是很方便的，如下：</p><pre class="brush:java; toolbar: true; auto-links: false;">FileObject fileObject=VFS.resolveFile(&quot;http://my.oschina.net/tinyframework&quot;);
+assertTrue(fileObject instanceof HttpFileObject);
+FileUtils.printFileObject(fileObject);</pre>测试用例也通过，说明Web页面也是一样样的。<p>由于所有的文件对象都实现了FileObject接口，所以，我们成功的对所有的文件进行了封装，构建了我们自己的VFS。</p></div>]]#

@@ -1,0 +1,221 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>优点：</p><p>高效、简单、易用的Xml解析器。</p><p>学习时间，分分钟。</p><p>支持中文标签名与属性名，支持下划线，减号等分隔符。</p><p>解析速度超过，查找速度超快，支持格式化。</p><p>缺点：不支持Xml Schema,DTD校验。</p><p>Maven引用坐标：</p><div><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
+&lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+&lt;artifactId&gt;xmlparser&lt;/artifactId&gt;
+&lt;version&gt;0.0.12&lt;/version&gt;
+&lt;/dependency&gt;</pre><p><span style="line-height:1.5;font-size:10pt;">解析下面xml</span></p></div><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;students&gt;
+    &lt;student&gt;
+        &lt;name&gt;John&lt;/name&gt;
+        &lt;grade&gt;B&lt;/grade&gt;
+        &lt;age&gt;12&lt;/age&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+        &lt;name&gt;Mary&lt;/name&gt;
+        &lt;grade&gt;A&lt;/grade&gt;
+        &lt;age&gt;11&lt;/age&gt;
+    &lt;/student&gt;
+    &lt;student&gt;
+        &lt;name&gt;Simon&lt;/name&gt;
+        &lt;grade&gt;A&lt;/grade&gt;
+        &lt;age&gt;18&lt;/age&gt;
+    &lt;/student&gt;
+&lt;/students&gt;</pre><p><span style="font-size:10pt;line-height:1.5;">示例代码：</span></p><p><span style="line-height:1.5;font-size:10pt;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class TestXmlParser {
+    public static void main(String[] args) throws Throwable {
+        File file = new File(&quot;E:/test/students.xml &quot;);
+        XmlStringParser parser = new XmlStringParser();
+        XmlDocument document = parser.parse(IOUtils.readFromInputStream(
+                new FileInputStream(file), &quot;utf-8&quot;));
+        printStudents(document.getRoot());
+    }
+    private static void printStudents(XmlNode studentsNode) {
+        for(XmlNode studentNode:studentsNode.getSubNodes(&quot;student&quot;)){
+            printStuent(studentNode);
+        }
+    }
+    private static void printStuent(XmlNode studentNode) {
+        printSubTagByName(studentNode,&quot;name&quot;);
+        printSubTagByName(studentNode,&quot;grade&quot;);
+        printSubTagByName(studentNode,&quot;age&quot;);
+    }
+    private static void printSubTagByName(XmlNode studentNode,String tagName) {
+        System.out.println( studentNode.getSubNode(tagName).getContent());
+    }
+}</pre><p>格式化示例：</p><pre class="brush:java; toolbar: true; auto-links: false;">XmlDocument doc;
+doc = new XmlStringParser()
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .parse(&quot;&lt;html 中=&apos;文&apos;&gt;&lt;head&gt;&lt;title&gt;aaa&lt;/title&gt;&lt;/head&gt;&lt;/html&gt;&quot;);
+XmlFormater f = new XmlFormater();
+System.out.println(f.format(doc));&amp;nbsp;</pre>运行结果：<pre class="brush:html; toolbar: true; auto-links: false;">&lt;html 中=&quot;文&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;
+      aaa      
+    &lt;/title&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</pre>性能测试：<p>构建下面的节点规模：</p><pre class="brush:java; toolbar: true; auto-links: false;">HtmlNode node = null;
+
+	public NameFilterTest() {
+		node = new HtmlNode(&quot;root&quot;);
+		for (int i = 0; i &lt; 60; i++) {
+			HtmlNode a = node.addNode(new HtmlNode(&quot;a&quot; + i));
+			for (int j = 0; j &lt; 60; j++) {
+				HtmlNode b = a.addNode(new HtmlNode(&quot;b&quot; + j));
+				for (int k = 0; k &lt; 60; k++) {
+					b.addNode(new HtmlNode(&quot;c&quot; + k));
+				}
+			}
+		}
+	}</pre><p>也就是节点数60+60*60+60*60*60个节点数时，进行下面的查找：</p><pre class="brush:java; toolbar: true; auto-links: false;">long t21 = System.currentTimeMillis();
+FastNameFilter fast = new FastNameFilter(node);
+long t22 = System.currentTimeMillis();
+System.out.println(&quot;fast初始化用时&quot; + (t22 - t21));
+long t1 = System.currentTimeMillis();
+String nodeName = null;
+for (int x = 0; x &lt; 10000; x++) {
+	nodeName = fast.findNode(&quot;b6&quot;).getNodeName();
+}
+long t2 = System.currentTimeMillis();
+System.out.println(&quot;FastNameFilter用时&quot; + (t2 - t1));</pre><p><span style="font-size:12.5px;line-height:1.5;">运行结果：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">fast初始化用时130
+FastNameFilter用时39</pre>也就是说在219661个节点规模下，查找指定节点10000次，只用时39ms，还有比这个更快的么？<p>如果到此为止，其实也没有啥，它提供的过滤功能可以满足绝大多数的应用场景，先看看接口：</p><p></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface NodeFilter&lt;T extends Node&lt;T&gt;&gt; {
+	/**
+	 * 初始化节点
+	 * 
+	 * @param node
+	 */
+	void init(T node);
+
+	/**
+	 * 设置必须包含的属性及对应属性的值，必须存在
+	 * 
+	 * @param includeAttributes
+	 */
+	void setIncludeAttribute(Map&lt;String, String&gt; includeAttributes);
+
+	/**
+	 * 设置必须包含的属性及对应的属性的值，必须存在
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	void setIncludeAttribute(String key, String value);
+
+	/**
+	 * 设置必须包含的属性
+	 * 
+	 * @param includeAttribute
+	 */
+	void setIncludeAttributes(String... includeAttribute);
+
+	/**
+	 * 设置必须排除的属性及对应属性值 如果包含属性，但属性的值与Map中不相同，允许存在该属性 若包含属性且属性的值与Map中相同，则不允许存在该属性
+	 * 
+	 * @param excludeAttribute
+	 */
+	void setExcludeAttribute(Map&lt;String, String&gt; excludeAttribute);
+
+	/**
+	 * 设置必须排除的属性，指定的属性不能存在
+	 * 
+	 * @param excludeAttribute
+	 */
+	void setExcludeAttribute(String... excludeAttribute);
+
+	/**
+	 * 设置必须包含的内容，只需要context中包include该值就行
+	 * 
+	 * @param includeText
+	 */
+	void setIncludeText(String... includeText);
+
+	/**
+	 * 设置必须排除的内容
+	 * 
+	 * @param excludeText
+	 */
+	void setExcludeText(String... excludeText);
+
+	/**
+	 * 设置必须包含的子节点
+	 * 
+	 * @param includeNode
+	 */
+	void setIncludeNode(String... includeNode);
+
+	/**
+	 * 设置父节点不允许的节点名称
+	 * 
+	 * @param excludeByNode
+	 */
+
+	void setExcludeByNode(String... excludeByNode);
+
+	/**
+	 * 设置父节点必须包含的节点名称
+	 * 
+	 * @param includeByNode
+	 */
+	void setIncludeByNode(String... includeByNode);
+
+	/**
+	 * 设置必须排除的子节点
+	 * 
+	 * @param excludeNode
+	 */
+
+	void setExcludeNode(String... excludeNode);
+
+	/**
+	 * 设置至少包含一个指定名称的节点
+	 * 
+	 * @param xorSubNode
+	 */
+	void setXorSubNode(String... xorSubNode);
+
+	/**
+	 * 设置至少包含一个指定名称属性
+	 * 
+	 * @param xorProperties
+	 */
+	void setXorProperties(String... xorProperties);
+
+	/**
+	 * 清除过滤条件
+	 */
+	void clearCondition();
+
+	/**
+	 * 设置要搜索的节点名称
+	 */
+	void setNodeName(String nodeName);
+
+	/**
+	 * 查找指定节点名称及满足其他条件的节点列表
+	 * 
+	 * @param nodeName
+	 * @return
+	 */
+	List&lt;T&gt; findNodeList(String nodeName);
+
+	/**
+	 * 根据名字及其他条件查找节点，如果有多个，也只返回第一个
+	 * 
+	 * @param nodeName
+	 *            要查找的节点名称
+	 * @return
+	 */
+	T findNode(String nodeName);
+
+	/**
+	 * 搜索符合设置的节点名称的节点，如果有多个，则只返回找到的第一个
+	 * 
+	 * @return
+	 */
+	T findNode();
+
+	/**
+	 * 搜索符合设置的节点名称的节点列表
+	 * 
+	 * @return
+	 */
+	List&lt;T&gt; findNodeList();
+}</pre><p><br></br></p><p><br></br></p>从上面的接口，就可以看到，它支持属性及属性值过滤，支持属性名过滤，支持排除性名过滤，包含的文本过滤，包含的节点名过滤，被节点包含的名字过滤，排除子节点名过滤，至少包含一个节点名过滤，至少包含一个属性过滤，节点名过滤，这些过滤条件是可以组合使用的。<p></p><p>有了这么强大的节点过滤功能，程序员们对于Xml的使用就简单便捷多了。</p><p><br></br></p></div>]]#

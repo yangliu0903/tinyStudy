@@ -1,0 +1,200 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>TinySpider是一个基于Tiny HtmlParser的网络数据抓取框架。</p><p><span style="font-size:12.5px;line-height:1.5;background-color:#FFFFFF;color:#333333;">Maven引用坐标：</span></p><div><div><pre class="brush:java; toolbar: true; auto-links: false;">&lt;dependency&gt;
+&lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+&lt;artifactId&gt;tinyspider&lt;/artifactId&gt;
+&lt;version&gt;0.0.12&lt;/version&gt;
+&lt;/dependency&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">网络爬虫，一般用在全文检索或内容获取上面。</span></p></div></div><p>Tiny框架对此也做了有限的支持，虽然功能不多，但是想做全文检索或从网页上获取数据也是非常方便的。</p><span id="OSC_h2_1"></span><h2>框架特性</h2><ol><li>强大的节点过滤能力</li><li>支持post与get两种数据提交方式</li><li>避免网页重复处理功能</li><li>支持多站点内容抓取功能</li><li>较强的Html容错处理</li></ol><span id="OSC_h2_2"></span><h2>框架设计</h2><span id="OSC_h3_3"></span><h3>网络爬虫</h3><pre class="brush:java; toolbar: true; auto-links: false;">public interface Spinder {
+ /**
+ * 添加站点访问器
+ * 
+ * @param siteVisitor
+ */
+ void addSiteVisitor(SiteVisitor siteVisitor);
+
+
+ /**
+ * 添加监视器
+ * 
+ * @param watcher
+ */
+ void addWatcher(Watcher watcher);
+
+
+ /**
+ * 处理url
+ * 
+ * @param url
+ */
+ void processUrl(String url);
+
+
+ /**
+ * 处理url
+ * @param url
+ * @param parameter
+ */
+ void processUrl(String url, Map&lt;String, Object&gt; parameter);
+
+
+ /**
+ * 设置URL仓库
+ * 
+ * @param urlRepository
+ */
+ void setUrlRepository(UrlRepository urlRepository);
+}</pre><p>一个爬虫，至少需要包含一个站点访问器，站点访问器用于对URL进行访问。如果没有匹配的站点访问器，URL将被忽略，不做继续处理。</p><p>一个爬虫至少需要包含一个监视器，监视器用于对URL中的内容进行过滤，并对命中的节点进行处理。如果没有监视器，爬虫爬回的内容就没有任何价值。</p><p>一个爬虫至少需要一个Url仓库，Url仓库用于对ur进行判断，是否已经抓取并处理过。如果没有url仓库，将无法判断url是否处理过，在非常多的时候，会造成死循环，无法退出。</p><p>当然，一个爬虫，也必须能够对url进行处理。</p><span id="OSC_h3_4"></span><h3>网站访问者</h3><p>由于一个爬虫可以有多个站点访问器，因此，需要有isMatch方法告诉爬虫是否应该由自己进行处理。<br></br>访问方式，可以设置是通过get还是post方式获取数据。</p><span id="OSC_h3_5"></span><h3>URL仓库</h3><pre class="brush:java; toolbar: true; auto-links: false;">public interface UrlRepository {
+ /**
+ * 返回url是否已经在仓库中存在
+ * 
+ * @param url
+ * @return
+ */
+ boolean isExist(String url);
+
+
+ /**
+ * 返回url是否已经在仓库中存在，带有参数
+ * 
+ * @param url
+ * @param parameter
+ * @return
+ */
+ boolean isExist(String url, Map&lt;String, Object&gt; parameter);
+
+
+ /**
+ * 如果不存在，则放放，如果已经存在，则替换
+ * 
+ * @param url
+ * @param content
+ */
+ void putUrlWithContent(String url, String content);
+
+
+ /**
+ * 如果不存在，则放放，如果已经存在，则替换
+ * 
+ * @param url
+ * @param parameter
+ * @param content
+ */
+ void putUrlWithContent(String url, Map&lt;String, Object&gt; parameter,
+ String content);
+
+
+ /**
+ * 如果存在，则返回内容；如果不存在，则抛出运行时异常
+ * 
+ * @param url
+ * @return
+ */
+ String getContent(String url);
+
+
+ /**
+ * 如果存在，则返回内容；如果不存在，则抛出运行时异常
+ * 
+ * @param url
+ * @param parameter
+ * @return
+ */
+ String getContent(String url, Map&lt;String, Object&gt; parameter);
+}</pre><p>url仓库用于对url及其内容进行管理。由于方法都简单明了，因此不做更多介绍。</p><span id="OSC_h3_6"></span><h3>监视器</h3><pre class="brush:java; toolbar: true; auto-links: false;">public interface Watcher {
+ /**
+ * 设置节点过滤器
+ * 
+ * @param filter
+ */
+ void setNodeFilter(NodeFilter&lt;HtmlNode&gt; filter);
+
+
+ /**
+ * 获取节点过滤器
+ * 
+ * @return
+ */
+ NodeFilter&lt;HtmlNode&gt; getNodeFilter();
+
+
+ /**
+ * 添加处理器
+ * 
+ * @param processor
+ */
+ void addProcessor(Processor processor);
+
+
+ /**
+ * 获取处理器列表
+ * 
+ * @return
+ */
+ List&lt;Processor&gt; getProcessorList();
+}</pre><p>一个监视器，必须一个节点过滤器，但是可以有多个处理器。</p><span id="OSC_h3_7"></span><h3>处理器</h3><pre class="brush:java; toolbar: true; auto-links: false;">public interface Processor {
+ /**
+ * 处理节点
+ * 
+ * @param node
+ */
+ void process(HtmlNode node);
+}</pre><p>处理器非常简单， 就是对命中的节点进行处理即可。</p><span id="OSC_h2_8"></span><h2>示例</h2><p>通过访问[<a href="http://www.oschina.net/question?catalog=1" target="_blank" rel="nofollow">http://www.oschina.net/question?catalog=1</a>]可以看到，里面有许多技术问答的问题。<br></br>下面我们就来编写一段程序来把这些标题打出来：</p><span id="OSC_h3_9"></span><h3>编写爬虫</h3><pre class="brush:java; toolbar: true; auto-links: false;">public static void main(String[] args) {
+ Spinder spinder = new SpinderImpl();
+ Watcher watcher = new WatcherImpl();
+ watcher.addProcessor(new PrintOsChinaProcessor());
+ QuickNameFilter&lt;HtmlNode&gt; nodeFilter = new QuickNameFilter&lt;HtmlNode&gt;();
+ nodeFilter.setNodeName(&quot;div&quot;);
+ nodeFilter.setIncludeAttribute(&quot;class&quot;, &quot;qbody&quot;);
+ watcher.setNodeFilter(nodeFilter);
+ spinder.addWatcher(watcher);
+ spinder.processUrl(&quot;http://www.oschina.net/question?catalog=1&quot;);
+ }</pre><span id="OSC_h3_10"></span><h3>编写处理器</h3><pre class="brush:java; toolbar: true; auto-links: false;">public class PrintOsChinaProcessor implements Processor {
+  public void process(HtmlNode node) {
+ FastNameFilter&lt;HtmlNode&gt; filter = new FastNameFilter&lt;HtmlNode&gt;(node);
+ filter.setNodeName(&quot;h2&quot;);
+ filter.setIncludeNode(&quot;a&quot;);
+ HtmlNode h3 = filter.findNode();
+ if (h3 != null) {
+ System.out.println(h3.getSubNode(&quot;a&quot;).getContent());
+ }
+ }
+}</pre><span id="OSC_h3_11"></span><h3>运行结果</h3><p>输出结果可能与结果不相同，因为数据是一直在变化的。</p><pre class="brush:java; toolbar: true; auto-links: false;">约瑟夫环问题，一段代码求讲解
+求推荐一款分享,回复的前端开源js
+MySQL什么情况使用MyISAM，什么时候使用InnoDB？
+phpstorm中使用搜狗输入中文出现乱行问题怎样解决？
+Android中如何实现快播中娱乐风向标的效果
+使用java做手机后台开发！
+Chrome 29的alert对话框好漂亮，有木有啊有木有
+Eclipse+ADT+Android环境配置问题
+关于android holderview的疑惑
+蛋疼  从一个公司到另外一个公司都是一个人开发   有木有
+wsunit 官方访问不了
+android求大神给我看看什么问题
+关于Hibernate search 查询结果与数据库不相符的问题
+求推荐Oracle好的书籍或PDF
+关于&quot;记事本&quot;的 &quot;自动换行&quot; 的实现
+swing在线html文本编辑器
+android下网络阻塞问题
+文件上线系统该如何做(代码上线)
+ztree节点设置成check多选框的时候如何只获取叶节点，不要其他节点
+怎么设置上传的图片不自动压缩
+js 正则表达式问题
+eclipse 经常loading descriptor for XXX ，然后卡死
+关于android开发xml显示问题
+RMI远程对象是共享的吧？
+参与开源项目如何进行文档编写
+php如何以文件图标的形式列出服务器上的所有文件？
+php中一个简单的问题？请帮助解决一下，菜鸟
+请教 solr query分词查询，结果为空的问题
+这段代码有问题吗，怎么我运行报错？
+jquery mobile 页面中切换闪屏问题
+你帮我改好，我给你讲个笑话可好TUT
+asp.net问题：Js如何获取cookie中的值？
+android  电话拦截并处理
+iis7 下 php 如何显示报错?
+安装virtualbox的时候提示要安装通用串行总线控制器，这个要安装吗？
+API获取新浪微博消息
+工厂该不该有默认行为
+如何处理开发过程中遗留无用的代码
+ireport 设计时报表模板时，无法使用sybase驱动com.sybase.jdbc3.jdbc.SybDriver？
+关于 使用druid后的一些问题.</pre><span id="OSC_h2_12"></span><h2>小结</h2><p>从示例可以看出，要从网页里获取数据，确实是非常容易的一件事情，只寥寥几行(20行左右)，就采集出了我们想要的数据，要想抓出更多的数据，只要逐层细化分析即可。</p></div>]]#

@@ -1,0 +1,286 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>经常要用的Xml和Html解决，实际上这个领域也有非常好的解决方案。</p><p>相对来说现在各种开源的Xml解析功能比较丰富，机制也比较灵活，但是由于他功能比较完善，干的事情比较多，所以性能方面也慢一点；另外，由于Xml天生是有严格格式的，所以问题不大，但是Html文件的内容是良莠不齐，有的网站经常缺少关闭标签，有的开始是大写，关闭是小写等等，没有严格遵守规范的时候，连Dom结构也解不正确，对于数据抓取程序来说，这就会严重影响正确性。</p><p>另外，一个重要的问题是数据遍历，一般来说在数据遍历方面，开源框架没有在性能做过充分优化，因此，如果要进行高速检索，就需要进行程序扩展。为此，本人编写一套XmlParser和HtmlParser，在数据校验方面做了删减，不支持进行数据校验，在容错性方面做了扩充，在Html解决时，即使格式不正确，在大多数情况下也可以返回正确的结果。最坏的情况也，也可以解决出Dom，但是Dom结构不一定正确，而不会出现崩溃或解析异常的问题。</p><p>还有一个是简体中文标签的支持能力，比如： &lt;中文 属性1=&quot;1&quot; 属性2=&quot;b&quot; /&gt;</p><p>OK，费话少说，看看调用代码。</p><pre class="brush:xml; toolbar: true; auto-links: false;">XmlStringParser parser = new XmlStringParser();
+XmlDocument xmlDocument = parser.parse(&quot;&lt;aa a=\&quot;1\&quot;&gt;&lt;!--aa --&gt;&lt;a a=\&quot;aa\&quot;&gt;&lt;/a&gt;&lt;/aa&gt;&quot;);</pre>上面就已经把xml解析好了。<pre class="brush:xml; toolbar: true; auto-links: false;">HtmlStringParser parser = new HtmlStringParser();
+HtmlDocument xmlDocument = parser.parse(&quot;&lt;aa a=\&quot;1\&quot;&gt;&lt;!--aa --&gt;&lt;a a=\&quot;aa\&quot;&gt;&lt;/a&gt;&lt;/aa&gt;&quot;);</pre><span>上面就已经把html解析好了。</span><p>由于Xml及Html都是用得统一的接口，所以，会了Xml解析，Html也是一样样的。</p><p>解析出的Node，都实现了下面的接口，因此遍历方面也是非常方便的。</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface Node&lt;T extends Node&lt;T&gt;&gt; extends ForEachProcessor&lt;T&gt; {
+	/**
+	 * 获取结点头标签相关内容
+	 * 
+	 * @return StringBuffer
+	 */
+	void getHeader(StringBuffer sb);
+
+	/**
+	 * 返回子节点
+	 * 
+	 * @param name
+	 * @return
+	 */
+	List&lt;T&gt; getSubNodes(String name);
+
+	/**
+	 * 添加内容节点
+	 * 
+	 * @param content
+	 */
+	void addContent(String content);
+
+	/**
+	 * 设置结点名称
+	 * 
+	 * @param name
+	 */
+	void setNodeName(String name);
+
+	/**
+	 * 获取结尾标签
+	 * 
+	 * @return StringBuffer
+	 */
+	void getFooter(StringBuffer sb);
+
+	/**
+	 * 获取根结点
+	 * 
+	 * @return T
+	 */
+	T getRoot();
+
+	/**
+	 * 设置父亲节点
+	 * 
+	 * @param parent
+	 */
+	void setParent(T parent);
+
+	/**
+	 * 返回节点名称
+	 * 
+	 * @return
+	 */
+	String getNodeName();
+
+	/**
+	 * 返回父亲节点
+	 * 
+	 * @return
+	 */
+	T getParent();
+
+	/**
+	 * 返回中间内容
+	 * 
+	 * @return
+	 */
+	StringBuffer getBody();
+
+	/**
+	 * 写出数据
+	 * 
+	 * @param stream
+	 * @throws IOException
+	 */
+	void write(OutputStream stream) throws IOException;
+
+	/**
+	 * 返回节点类型
+	 * 
+	 * @return
+	 */
+	NodeType getNodeType();
+
+	/**
+	 * 返回属性
+	 * 
+	 * @param attributeName
+	 * @return
+	 */
+	String getAttribute(String attributeName);
+
+	/**
+	 * 删除属性
+	 * 
+	 * @param attributeName
+	 */
+	void removeAttrivute(String attributeName);
+
+	/**
+	 * 设置属性值
+	 * 
+	 * @param attributeName
+	 * @param value
+	 */
+	void setAttribute(String attributeName, String value);
+
+	/**
+	 * 添加节点
+	 * 
+	 * @param node
+	 *            要增加的节点
+	 * @return 如果增加成功，则返回node节点，否则返回null
+	 */
+	T addNode(T node);
+
+	/**
+	 * 删除节点
+	 * 
+	 * @param node
+	 * @return 删除的节点，如果当前节点中不包含node节点，则返回null
+	 */
+	T removeNode(T node);
+
+	/**
+	 * 删除指定节点
+	 * 
+	 * @param nodeName
+	 * @return
+	 */
+	List&lt;T&gt; removeNode(String nodeName);
+
+	/**
+	 * 获取内容
+	 * 
+	 * @return
+	 */
+	String getContent();
+
+	/**
+	 * 变成StreamBuffer
+	 * 
+	 * @return
+	 */
+	StringBuffer toStringBuffer();
+
+	/**
+	 * 设置内容
+	 * 
+	 * @param content
+	 */
+	void setContent(String content);
+
+	/**
+	 * 返回属属性
+	 * 
+	 * @return
+	 */
+	Map&lt;String, String&gt; getAttributes();
+
+	/**
+	 * 返回子节点
+	 * 
+	 * @return
+	 */
+	List&lt;T&gt; getSubNodes();
+
+	/**
+	 * 是否单节点
+	 * 
+	 * @return
+	 */
+	boolean isSingleNode();
+
+	/**
+	 * 是否大小写敏感
+	 * 
+	 * @return
+	 */
+	boolean isCaseSensitive();
+
+	/**
+	 * 根据大小写相关返回名字
+	 * 
+	 * @param name
+	 * @return
+	 */
+	String getCaseSensitiveName(String name);
+
+	/**
+	 * 返回纯文本内容
+	 * 
+	 * @return
+	 */
+	String getPureText();
+}</pre>为了避免接口太过庞大，因此把格式化的处理放在独立的结构中进行处理。<pre class="brush:java; toolbar: true; auto-links: false;">public interface NodeFormater&lt;E extends Node&lt;E&gt;, T extends Document&lt;E&gt;&gt; {
+	/**
+	 * 格式化文档
+	 * 
+	 * @param doc
+	 * @return String
+	 */
+	String format(T doc);
+
+	void setEncode(String encode);
+
+	/**
+	 * 格式化文档、 并在指定的输出流中输出
+	 * 
+	 * @param doc
+	 * @param out
+	 * @return void
+	 * @throws IOException
+	 */
+	String format(E node);
+
+	void format(T doc, OutputStream out) throws IOException;
+
+	void format(E node, OutputStream out) throws IOException;
+}</pre>要格式化输入的话，下面的代码就可以了：<pre class="brush:java; toolbar: true; auto-links: false;">HtmlDocument doc= new XmlStringParser().parse(&quot;&lt;html 中=&apos;文&apos;&gt;&lt;head&gt;&lt;title&gt;aaa&lt;/title&gt;&lt;/head&gt;&lt;/html&gt;&quot;);
+HtmlFormater f = new HtmlFormater();
+System.out.println(f.format(doc));</pre>输出结果如下：<p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;html 中=&quot;文&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;
+      aaa
+    &lt;/title&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</pre>上面已经演示了解析和格式化以及遍历，下面看看检索。<p>首先构建60*60*60，三层的Dom结构，也就是现在有216000个Dom节点</p><pre class="brush:java; toolbar: true; auto-links: false;">XmlNode node = new XmlNode(&quot;root&quot;);
+for (int i = 0; i &lt; 60; i++) {
+	XmlNode a = node.addNode(new XmlNode(&quot;a&quot; + i));
+	for (int j = 0; j &lt; 60; j++) {
+		XmlNode b = a.addNode(new XmlNode(&quot;b&quot; + j));
+		for (int k = 0; k &lt; 60; k++) {
+			b.addNode(new XmlNode(&quot;c&quot; + k));
+		}
+	}
+}</pre>然后对其进行节点查找，用两种方法进行10000次节点过滤：<pre class="brush:java; toolbar: true; auto-links: false;">public void testSpeed() {
+	long t21 = System.currentTimeMillis();
+	QuickNameFilter quick = new QuickNameFilter(node);
+	long t22 = System.currentTimeMillis();
+	System.out.println(&quot;quick初始化用时&quot; + (t22 - t21));
+	long t1 = System.currentTimeMillis();
+	String nodeName = null;
+	for (int x = 0; x &lt; 10000; x++) {
+		nodeName = quick.findNode(&quot;b6&quot;).toString();
+	}
+	long t2 = System.currentTimeMillis();
+	System.out.println(&quot;QuickNameFilter用时&quot; + (t2 - t1));
+}
+
+public void testSpeed1() {
+	long t21 = System.currentTimeMillis();
+	FastNameFilter fast = new FastNameFilter(node);
+	long t22 = System.currentTimeMillis();
+	System.out.println(&quot;fast初始化<span></span><span></span>用时&quot; + (t22 - t21));
+	long t1 = System.currentTimeMillis();
+	String nodeName = null;
+	for (int x = 0; x &lt; 10000; x++) {
+		nodeName = fast.findNode(&quot;b6&quot;).toString();
+	}
+	long t2 = System.currentTimeMillis();
+	System.out.println(&quot;FastNameFilter用时&quot; + (t2 - t1));
+}</pre><p>下面看看时间耗费情况：</p><pre class="brush:java; toolbar: true; auto-links: false;">quick初始化用时385
+QuickNameFilter用时376
+fast初始化用时122
+FastNameFilter用时330</pre>可以看到fast的初始化时间及查找用时，都是最快的；而quick的初始化时间和查找用时相比要慢一些。但是请注意，这都是在216000个节点中查找10000次所耗费的时间。<p>那么再用传统的方式试一下---一般的开源方式也差不多在这个量级。</p><pre class="brush:java; toolbar: true; auto-links: false;">public void testSpeed2() {
+	long t11 = System.currentTimeMillis();
+	NameFilter filter = new NameFilter(node);
+	long t12 = System.currentTimeMillis();
+	System.out.println(&quot;Name初始化用时&quot; + (t12 - t11));
+	long t1 = System.currentTimeMillis();
+	String nodeName = null;
+	for (int x = 0; x &lt; 10; x++) {
+		nodeName = filter.findNode(&quot;b6&quot;).toString();
+	}
+	long t2 = System.currentTimeMillis();
+	System.out.println(&quot;NameFilter用时&quot; + (t2 - t1));
+}</pre>运行结果：<pre class="brush:java; toolbar: true; auto-links: false;">Name初始化用时12
+NameFilter用时83</pre>但是，请注意，他的查询次数是10次，如果变成10000次，就是83000ms，也就是83秒之多。与Fast过滤方式相差了680倍之多。<p>小结：我们实现的Xml及HtmlParser确实是有自己独特的优点(学习成本低，Html和Xml解析方法一致，格式化输出，紧凑输出，容错性，查询效率高等等)，也有不足(不支持DTD,XSD校验)，在不需要校验的场景，需要容错性好及过滤性能高的场景下，是非常有优势的。</p><p><br></br></p></div>]]#

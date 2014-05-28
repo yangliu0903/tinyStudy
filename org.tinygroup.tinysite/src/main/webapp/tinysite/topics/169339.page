@@ -1,0 +1,36 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p><strong>最简陋HelloWorld</strong></p><p>首先，编写一个页面文件叫：hello.page，输入下面的信息，然后运行之！</p><pre class="brush:html; toolbar: true; auto-links: false;">Hello:$!name</pre><p>浏览器URL：<span>http://localhost:/hello.page</span></p>运行结果如下：<p><br></br></p><p><img src="http://static.oschina.net/uploads/space/2013/1016/160451_00NZ_1245989.jpg" alt=""></img></p><p>浏览器URL：http://localhost:/hello.page?name=abc</p><span>运行结果如下：</span><pre class="brush:html; toolbar: true; auto-links: false;">Hello:abc</pre>很明显，上面的HelloWorld仅仅是在展现层完成的，不管怎么样，他不是用JS直接在页面输出的。<p><br></br></p><p><strong>增加HelloWorld处理类</strong></p><p><strong></strong></p><pre class="brush:java; toolbar: true; auto-links: false;">@ServiceComponent()
+public class HelloWorldService {
+	@ServiceMethod(serviceId = &quot;helloWorldService&quot;)
+	@ServiceResult(name = &quot;sayHelloResult&quot;)
+	@ServiceViewMapping(type=&quot;page&quot;,path=&quot;/helloworld.page&quot;)
+	public String helloWorld(String name) {
+		if (name == null) {
+			return &quot;您好，guest！&quot;;
+		} else {
+			return &quot;您好，&quot; + name;
+		}
+	}
+}</pre><span></span><p>编写helloworld.page文件，内容如下：</p><pre class="brush:html; toolbar: true; auto-links: false;">$!sayHelloResult</pre><p>浏览器URL：http://localhost:8080/helloWorldService.servicepage</p><span>运行结果如下：</span><pre class="brush:html; toolbar: true; auto-links: false;">您好，guest！</pre><p>浏览器URL：<span>http://localhost:8080/helloWorldService.servicepage?name=abc</span></p><span>运行结果如下：</span><pre class="brush:html; toolbar: true; auto-links: false;">您好，abc</pre>好的，现在已经写了Java类，并且写了展现页面，并且已经正确的执行了结果。<p><br></br></p><p>换一种访问方式，试试看？</p><p><span>浏览器URL：</span><span>http://localhost:8080/helloWorldService.servicexml?name=abc</span></p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;string&gt;您好，abc&lt;/string&gt;</pre><p>换一种访问方式，试试看？</p><p>浏览器URL：http://localhost:8080/helloWorldService.servicejson?name=abc</p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;string&gt;您好，abc&lt;/string&gt;</pre><p>运行结果如下：</p><pre class="brush:html; toolbar: true; auto-links: false;">&quot;您好，abc&quot;</pre>限于时间关系，怎么通过webservice访问就不再展示了，实际上，通过WebService访问也是没有问题的。<p><br></br></p><p>小结：只要定义一个Service，就可以用N种方式来访问它。</p><p>可以渲染为一个html页面，也可以渲染为了个JSon，也可以是一段Xml，还可以是一个Excel表格，等等。</p><p>这个时候，我们在4台机器上运行，其中一台配置为AR，两台配置为AS，一台配置为SC。</p>AR为Web接入服务器，AS为应用服务器,SC为服务中心，这个时候用JMeter来对AR进行并发访问，你会发现两台AS都在提供服务。这证明了你的应用服务已经可以进行水平扩展了，而且是基于SOA模式的。<p><br></br></p><p>同样的去访问WebService，你会发现，也会被负载给两台AS。</p><p>也就是说，你只写一次，就可以以各种方式向外提供服务。</p><p>当然，你看到了，在你的服务处理类上定义了我们的注解，这会对你的代码形成侵入性。</p><p>如果一点也不想依赖我们的类和接口，那也没有问题。</p><p>类的写法如下：</p><pre class="brush:java; toolbar: true; auto-links: false;">public class HelloWorldService {
+	public String helloWorld(String name) {
+		if (name == null) {
+			return &quot;您好，guest！&quot;;
+		} else {
+			return &quot;您好，&quot; + name;
+		}
+	}
+}</pre><p>另外添加如下配置：</p><p>hello.service.xml</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;service-components&gt;
+	&lt;service-component type=&quot;org.tinygroup.helloproject.HelloWorldService&quot;&gt;
+		&lt;service-method service-id=&quot;helloWorldService&quot; method-name=&quot;helloWorld&quot;&gt;
+			&lt;service-parameters&gt;
+				&lt;service-parameter name=&quot;name&quot; type=&quot;java.lang.String&quot;
+					required=&quot;true&quot; is-array=&quot;false&quot; /&gt;
+			&lt;/service-parameters&gt;
+			&lt;service-result name=&quot;sayHelloResult&quot; required=&quot;true&quot;
+				is-array=&quot;false&quot; type=&quot;java.lang.String&quot; /&gt;
+		&lt;/service-method&gt;
+	&lt;/service-component&gt;
+&lt;/service-components&gt;</pre><p>hello.serviceMapping.xml</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;service-mappings&gt;
+	&lt;service-mapping service=&quot;helloWorldService&quot; type=&quot;page&quot; path=&quot;/helloworld/helloworld.page<span></span>&quot;&gt;&lt;/service-mapping&gt;
+&lt;/service-mappings&gt;</pre><p><br></br></p><p>这种方式与用注解方式达到的结果是完全一样的。</p><p>通过Hello的了解，您可能知道了Tiny框架的一些特点，这里小结一下：</p><ul><li><span style="line-height:1.5;font-size:10pt;">可以没有任何侵入性，但是需要写一些xml文件</span></li><li><span style="line-height:1.5;font-size:10pt;">如果可以接受一些注解，那么开发将更加简单</span></li><li>开发了服务，就代表着可以做许多扩展的功能，而这些扩展的功能，不会要你做额外的工作</li><li>Tiny框架中的Service与Spring中的Service的函义不同，它等价于WebService中的Service，就是说：你不用管它在哪里，实际上你也不知道它是在哪台物理机器上运行的，总之它被执行了。</li><li>Tiny框架天生支持前后台服务器的水平扩展，而你不需要做任何针对性的开发-当然需要遵守其规约--所有的要发布成服务的参数及返回值必须是可序列化的，其它没有任何附加条件。</li></ul><p>如果这个HelloWorld示例学会了，表示你学会了：</p><ul><li><span style="line-height:1.5;font-size:10pt;">Tiny的界面开发</span></li><li><span style="line-height:1.5;font-size:10pt;">Tiny的服务开发</span></li></ul><p>而普通的程序员不需要学习Tiny的其它内容，当然，架构师要学的东西还是要多些的。</p><p><br></br></p><span></span></div>]]#

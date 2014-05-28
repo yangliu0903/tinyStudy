@@ -1,0 +1,94 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>流程式编程在许多商业框架中都有实现。</p><p>Tiny框架构建者认为，流程式编程与普通的编程式开发，各有其应用场景及优势。</p><p>编程式开发，程序员有更大的自由度，当然也正是由于其具有的极大自由度导致项目的进度、质量方面带来了极大的不确定性，同时对于未来的维护方面也可能挖下了巨大的坑。</p><p>而流程式编程呢，对于开发人员有了较大的限制，也就是说，只能用已经开发好的组件进行开发，或者扩展自己的组件进行开发。开发过程当然就受限制了，可能在项目初期，会带来一定的开发效率降低，但是最后的维护成本方面会有比较大的节省，当然，其最大的被诟病的就是在实现某些功能的时候，不方便；还有就是程序员认为长时间使用流程编排式开发会降低开发能力，而受到抵制。</p><p>正是由于编排式编程在后期维护方面带来的便利，使得流程编排式开发方式存在其实际的生存空间。当然，Tiny框架提供的流程编排式框架，提供了与一般常见流程编排开发方式不一样的特性。</p><p><strong>充分支持面向对象特性的流程编排开始模型</strong></p><p>首先来从一个简单的示例看起：</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;flow id=&quot;1000&quot; name=&quot;Hello&quot;&gt;
+    &lt;nodes&gt;
+        &lt;node id=&quot;begin&quot;&gt;
+            &lt;component name=&quot;helloWorldComponent&quot;&gt;
+                &lt;properties&gt;
+                     &lt;property name=&quot;name&quot; value=&quot;World&quot; /&gt;
+                     &lt;property name=&quot;resultKey&quot; value=&quot;&quot;helloInfo&quot;&quot; /&gt;
+                &lt;/properties&gt;
+            &lt;/component&gt;
+        &lt;/node&gt;
+    &lt;/nodes&gt;
+&lt;/flow&gt;</pre><p>组件helloWorldComponent的源码如下：</p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class HelloWorldComponent implements ComponentInterface {
+	String name;
+	String resultKey;
+
+	public String getResultKey() {
+		return resultKey;
+	}
+
+	public void setResultKey(String resultKey) {
+		this.resultKey = resultKey;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void execute(Context context) {
+		context.put(resultKey, String.format(&quot;Hello, %s&quot;, name));
+	}
+
+}</pre><p><span style="font-size:10pt;line-height:1.5;">从上面的代码可以看出，其实它的逻辑非常简单。提供了两个自定义属性，一个是name,一个是resultKey，最后在其execute方法中，从其实现逻辑可以看出，它就是把“Hello, ”加上输入的名字，放在了环境变量的resultKey当中，然后返回。</span></p><p><span style="font-size:10pt;line-height:1.5;">流程组件的接口，也非常简单，如下：</span></p><p><span style="font-size:10pt;line-height:1.5;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface ComponentInterface {
+	/**
+	 * 组件执行方法
+	 * @param context 组件执行的环境
+	 */
+	void execute(Context context);
+
+}</pre>所以，其实现也是非常简单的。<p><span style="font-size:10pt;line-height:1.5;">下面是调用此流程的方法：<br></br>a.按默认开始结点开始执行<br></br></span></p><pre class="brush:java; toolbar: true; auto-links: false;">Context context = new ContextImpl();
+flowExecutor.execute(&quot;1000&quot;,  context);
+assertEquals(&quot;Hello, luoguo&quot;, context.get(&quot;helloInfo&quot;));</pre>b.从指定节点开始执行<br></br><pre class="brush:java; toolbar: true; auto-links: false;">Context context = new ContextImpl();
+flowExecutor.execute(&quot;1000&quot;,&quot;begin&quot;, context);
+assertEquals(&quot;Hello, luoguo&quot;, context.get(&quot;helloInfo&quot;));</pre>可以看到确实是执行并返回了结果，但是它的执行机理是怎么样的呢？？<br></br>看一个更全面的流程配置：&amp;nbsp;<p><span style="font-size:10pt;line-height:1.5;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;flow id=&quot;1000&quot; version=&quot;1.0&quot; privateContext=&quot;false&quot; extend-flow-id=&quot;&quot; name=&quot;Hello&quot; title=&quot;你好示例&quot; default-node-id=&quot;end&quot; begin-node-id=&quot;begin&quot; end-node-id=&quot;end&quot; enable=&quot;true&quot;&gt;
+  &lt;description&gt;some thing....&lt;/description&gt;
+  &lt;nodes&gt;
+    &lt;node id=&quot;begin&quot;&gt;
+      &lt;component name=&quot;helloWorldComponent&quot;&gt;
+        &lt;properties&gt;
+          &lt;property name=&quot;name&quot; value=&quot;&quot;luoguo&quot;&quot;/&gt;
+          &lt;property name=&quot;resultKey&quot; value=&quot;&quot;helloInfo&quot;&quot;/&gt;
+        &lt;/properties&gt;
+      &lt;/component&gt;
+      &lt;next-nodes&gt;
+        &lt;next-node component-result=&quot;OK&quot; exception-type=&quot;java.lang.Exception&quot; next-node-id=&quot;end&quot;/&gt;
+      &lt;/next-nodes&gt;
+    &lt;/node&gt;
+  &lt;/nodes&gt;
+&lt;/flow&gt;</pre>其中flow节点的属性含义为：<br></br>id，唯一确定一个流程<br></br>privateContext，如果是true，则在流程单独申请一个context，否则共用调用者的context，这样可以有效避免环境变量冲突问题<br></br>extend-flow-id，继承的流程id，这个继承id是一个非常强大的功能，后面详细介绍<br></br>version版本号，同一id的流程可以存在多个版本，访问时，如果不指定版本则默认采用最新版本<br></br>name,title仅用于说明其英文，中文名称，易于理解而已。<br></br>default-node-id表示，默认执行节点，即如果一个组件执行完毕，其项值没有指定下一处理节点则执行默认节点<br></br>begin-node-id，开始节点<br></br>end-node-id，结束节点<br></br>如果不指定，则begin-node-id默认为begin,end-node-id默认为end<br></br>node节点：id必须指定，在一个流程当中id必须唯一。<br></br>component节点<br></br>class-name用于指定组织实现类名<br></br>properties是组件的属性列表<br></br>property中的name与value是组件的属性的值，value，这里传入的是个字符串，但是实际当中可以处理中可以非常灵活，后面再介绍。<br></br>next-nodes，是指根据执行结果进行后续处理的规则。<br></br>next-node，具体的一条规则，component-result，匹配项，支持正则表达式，节点中的组件执行结果进行匹配，匹配成功则执行此规则中的下一节点。<br></br>exception-type是异常的类名称，如果出现异常且与这里定义的类型匹配，则执行此规则中的下一节点。<br></br><strong>关于继承</strong><p><span style="font-size:10pt;line-height:1.5;">上次说到继承，流程继承实现起来是非常简单的，只要在extend-flow-id属性中指定即可。<br></br>继承不支持多继承，即流程只能继承自一个流程，但是可以支持多层继承，即<br></br>a&gt;b&gt;c&gt;d.....<br></br>实际开发过程中，不要把继承搞得太复杂，这样会把程序逻辑搞得更难理解的。<br></br>继承实际会起到什么作用呢？<br></br>首先，会继承一些属性，另外会把节点信息继承过来。<br></br>简单来说就是：两者都有，当前流程说了算，当前没有，父流程说了算。<br></br>继承应用到什么场景呢？？<br></br>继承应用于业务处理的模式非常相似，只有中间处理环境不同的时候。<br></br>比如：<br></br>A &amp;nbsp;B &amp;nbsp;C &amp;nbsp;D ---O--- -D -C -B -A<br></br>类型的业务处理流程，只有O不同，其他处理模式完全相同，此时采用继承方式都非常舒服了，<br></br>只要定义父流程，在子流程中只用定义O一个流程节点即可。以后要统一进行流程调整，只要在父流程中进行调整就可以了。<br></br><span></span>比如：flow aa定义为:</span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;flow id=&quot;aa&quot; name=&quot;aa&quot;&gt;
+  &lt;nodes&gt;
+    &lt;node id=&quot;begin&quot;&gt;
+      &lt;next-nodes&gt;
+        &lt;next-node component-result=&quot;begin&quot; next-node-id=&quot;hello&quot;/&gt;
+      &lt;/next-nodes&gt;
+    &lt;/node&gt;
+    &lt;node id=&quot;hello&quot;&gt;
+      &lt;component name=&quot;helloWorldComponent&quot;&gt;
+        &lt;properties&gt;
+          &lt;property name=&quot;name&quot; value=&quot;&quot;luoguo&quot;&quot;/&gt;
+          &lt;property name=&quot;resultKey&quot; value=&quot;&quot;helloInfo&quot;&quot;/&gt;
+        &lt;/properties&gt;
+      &lt;/component&gt;
+      &lt;next-nodes&gt;
+        &lt;next-node component-result=&quot;OK&quot; next-node-id=&quot;end&quot;/&gt;
+      &lt;/next-nodes&gt;
+    &lt;/node&gt;
+  &lt;/nodes&gt;
+&lt;/flow&gt;</pre>flow bb定义为：<p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;flow id=&quot;bb&quot; name=&quot;bb&quot; extend-flow-id=&quot;aa&quot;&gt;
+	&lt;nodes&gt;
+		&lt;node id=&quot;hello&quot;&gt;
+			&lt;component name=&quot;helloWorldComponent&quot;&gt;
+				&lt;properties&gt;
+					&lt;property name=&quot;name&quot; value=&quot;LG&quot; /&gt;
+					&lt;property name=&quot;resultKey&quot; value=&quot;&quot;helloInfo&quot;&quot; /&gt;
+				&lt;/properties&gt;
+			&lt;/component&gt;
+		&lt;/node&gt;
+	&lt;/nodes&gt;
+&lt;/flow&gt;</pre>则流程bb也可以顺利执行，且执行结果是Hello, LG<p>流程的可重入性：</p><p>一般的流程编排引擎中，流程是不可重入的，也就是一个流程一定是从开始节点起执行，一定执行到结束结点结束。在Tiny流程引擎中，不仅可以在当前流程中进行切换与转接，还可以流转到其他流程的节点当中，这在业务处理及页面处理，流程处理方面都提供了极大的使得，但是这也是一个双刃剑，在提供了这么灵活的功能的同时，也会导致业务流程看起来比较复杂，因此，控制方面最好由架构师或核心开发人员来编写，普通开发人员只开发具体的业务点即可。<br></br><strong>小结</strong>：</p><p>Tiny框架提供的流程编排引擎，功能强大，扩展灵活，支持了部分面向对象的特性，比如继承、比如重载，再加上流程的可重入性，使得它更加灵活，便捷。当然，流程编排式编程还有一个非常强大的功能，就是可以进行在线式编程，Xml式流程配置完毕，马上就可以执行出结果。</p></div>]]#

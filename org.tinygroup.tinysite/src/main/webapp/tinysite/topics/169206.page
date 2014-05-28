@@ -1,0 +1,23 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>呵呵，有点标题党的意思，但是如果你正在寻找UI解决方案，你一定不会白来的。</p><p>虽然没有直接开发前台界面，但是好呆也看了这么些年，碰到许多关于UI的问题：</p><ol><li><span style="line-height:1.5;font-size:10pt;">UI中JS的引入与顺序，JS合并的问题</span></li><li><span style="line-height:1.5;font-size:10pt;">UI中css的引入与顺序，CSS合并的问题</span></li><li><span style="line-height:1.5;font-size:10pt;">UI中碰到性能问题时的影响范围，比如：一个树出现问题，要改动许多用到树的地方</span></li><li>代码重复的问题，同样的内容在许多地方都有，如果要改动就要改动许多个地方</li><li>整体布局调整困难的问题</li><li>开发效率的问题</li><li>执行效率的问题，前台响应要求速度更快</li><li>集群的问题</li><li>国际化的问题</li><li>...</li></ol><p>这些问题直接带来开发得是否够快，系统是否够健壮，系统是否易扩展，是否易维护等等。</p><p>为此，在Tiny框架中，我们设计了整套的UI开发方案，与具体的技术实现无关，可以兼容各种现有或未来的JS,CSS框架。同时，对于上述的问题，也都有良好的思考及解决方案，可谓是界面开发的终极解决方案。</p><p>那么，Tiny框架的UI解决方案是怎样的呢？</p><p>一、规范化，如果没有一个<span>规范</span>，那么所有的期许都无法落地。</p><p>Tiny中规范中认为所有共用的内容都是一个UI组件包。UI组件包，由一个Jar工程组成，UI组件名最后以Jar名为单位进行发布。UI组件包中包含了其所需的css/jss/gif/htm等等各种资源。同时有一个UI组件包描述文件，对UI组件包的结构、内容、以及对其它UI组件包的依赖关系。</p><p>比如：我们要复用JQuery，实际上非常简单，在Maven工程结构中，在resources目录中，放置所有的JQuery资源进来，然后编写一个ui组件包描述文件。UI组件包就算开发完毕了。</p><p><img src="http://static.oschina.net/uploads/space/2013/1016/090443_cEg9_1245989.jpg" alt=""></img></p><p>再看看UI组件包描述文件</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;ui-components&gt;
+	&lt;ui-component name=&quot;Jquery&quot; order=&quot;99&quot;&gt;
+		&lt;js-resource&gt;/jquery/js/jquery-1.9.1.min.js&lt;/js-resource&gt;
+		&lt;js-debug-resource&gt;/jquery/js/jquery-1.9.1.js&lt;/js-debug-resource&gt;
+	&lt;/ui-component&gt;
+&lt;/ui-components&gt;</pre>UI组件名描述信息，包含UI组件名名称，这里是JQuery，引入顺序，这里指定是99，当然，在大多数情况下，你都不需要指定它。这里指定了调试和非调试模式下引入的JS。这样，在实际运行时，可以根据运行模式来统一进行引入，而这个过程不再需要程序员干预。<p>OK，mvn install之后，第一个UI组件包就开发好了，非常简单吧?</p><p>二、引擎支持</p><p>引擎要做内容就非常多了，这些js/css/img资源都是放在Jar包中的，在工程运行过程中，需要访问到这些文件，引擎提供了访问Jar包中文件的能力，提供了css/js文件合并，提供根据运行模式引入调试或非调试JS或CSS的能力，提供文件缓冲以提速访问，提供压缩以缩小网络传输量，等等等等。当然，这些都相当有难度，但这正是框架要解决的问题，对于程序员来说，与平时所做的内容唯一不同就是需要配置一个UI描述文件。用如此小的付出换来如此多的便捷，投入产出比还是相当高的。</p><p>三、模板化支持</p><p>我们都知道不管是html,xml,wml等等，实际上都是文本内容，都是一些标记语言。因此，都可以通过一些模板语言来进行生成，我们常说的asp,aspx,jsp,php等等，实际上都可以认为是模板语言。</p><p>Tiny框架因为提供了良好的模块化组织方式，展现层的内容也是可以放在jar包中的，因此，不再推荐使用jsp作为展现层(在某些容器如：tomcat,jetty，也是可以放入的，但是在Weblogic,Websphere等容器下，由于其没有遵循接口编程规范，而是使用了类型强转，所以无法进行处理)。另外，由于jsp自身的特殊性，实际上它最后是以Servlet形式存在，所以可控性稍差，虽然通过处理可以对其进行控制，但是投入产出比不高。所以，Tiny框架并不排斥，使用jsp，但是只能放在war中使用。带来的问题就是展现层无法模块化。（关于模板化的相关问题不在此说明，参见相关博文）。</p><p>因此Tiny推荐采用模板语言,如：Velocity,FreeMaker等作为展现层。Tiny内部实现复用了Velocity，但是实际上并没有限制，你完全可以用其它模板语言做同样的事情。</p><p>Tiny的模板体系组织方式如下：</p><ul><li><span style="line-height:1.5;font-size:10pt;">支持多层文件结构</span></li><li><span style="line-height:1.5;font-size:10pt;">布局文件统一用.layout扩展名结尾</span></li><li><span style="line-height:1.5;font-size:10pt;">页面文件统一用.page扩展名结构</span></li><li><span style="line-height:1.5;font-size:10pt;">只有.page文件可以被外部访问，访问方式有两种.page或.pagelet</span></li></ul><p>Tiny的模板渲染方式为：</p><p>如果访问aa.pagelet，则会读取aa.page中的文件内容，并用velocity引擎进行渲染后输出</p><p>如果访问aa.page，则会读取aa.page中的文件内容，<span>并用velocity引擎进行渲染，但是此时会做布局渲染</span></p><p><span>比如：aa.page所中的路径是/a/b/c/aa.page，布局的渲染过程如下：</span></p><p><span>查找/a/b/c/aa.layout是否存在？如果存在，则渲染，否则<span>查找/a/b/c/default.layout，如果存在，则渲染。</span></span></p><p><span></span></p><p>查找/a/b/aa.layout是否存在？如果存在，则渲染，否则查找/a/b/default.layout，如果存在，则渲染。</p><p>查找/a/aa.layout是否存在？如果存在，则渲染，否则查找/a/default.layout，如果存在，则渲染。</p><p>查找/aa.layout是否存在？如果存在，则渲染，否则查找/default.layout，如果存在，则渲染。</p><p>通过上面的渲染机制，程序员有可能只写了非常少的内容，但是通过分层布局渲染，最后出来的效果也会非常丰富多彩。</p><p>这样说说，可能很难理解，我们来看个例子，程序写的例子是：demo.page。</p><pre class="brush:java; toolbar: true; auto-links: false;">#@homepage()
+ #@faq(&quot;演示列表&quot;)
+ #@servicesItem(&quot;idea&quot;)
+ HelloWorld
+ #end
+ #@servicesItem(&quot;design&quot;)
+ 四则运算
+ #end
+ #@servicesItem(&quot;apps&quot;)
+ 简单数据维护
+ #end
+ #@servicesItem(&quot;mobile&quot;)
+ 站内邮件系统
+ #end
+ #end
+#end</pre>运行结果如下：<p><img src="http://static.oschina.net/uploads/space/2013/1016/094317_1z8J_1245989.jpg" alt=""></img></p><p>可能看了有些云里雾里，但是不管怎么样，你看到了，只要写非常少的内容，就可以出来非常多的结果。</p><p>通过布局的支持，程序员不用管js，不用管css，不用管header,footer，不用管页面结构，只用管自己的那点事儿，就可以了。</p><p>国际化，可能对于小型个人网站来说，无所谓，但是对于大型企业来说是经常要用到的。TinyUI展现框架对国际化有良好支持，支持国际化资源方式国际化和国际化页面国际化两种方案。</p><p><span>国际化资源就很容易理解了，添加国际化资源文件，用国际化标签进行引用即可。国际化页面是指同样访问aa.page，在对其渲染时，会优先使用与访问者相同的语言的文件进行渲染，比如：存在aa.page，aa.zh_CN.page，如果非zh_CN语言的人来访问，渲染的是aa.page，zh_CN语言的人来访问，渲染的是<span>aa.zh_CN.page</span>。</span><span style="line-height:1.5;font-size:10pt;">两种方式总有一款适合你。</span></p><p>小结：</p><p>Tiny框架的前台开发，基本上帮助你解决了所有的难题，但是对你的工作没有任何限制，你可以用你想用的任何展现框架，做任何基于脚本语言的展现。当然还远远不止这些，框架还提供了缓冲功能，只要增加一点配置，就可以设定哪些页面进行缓冲，缓冲多长时间，等等。更多的好处与便利，需要你亲身体会。</p><p><br></br></p></div>]]#

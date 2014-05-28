@@ -1,0 +1,132 @@
+#pageTitle("topic" "topic")
+#title("算法感想" "主题切换及其管理")
+#[[<div class="BlogContent"><p>最近希望做分布式计算方面的支持，当然，省先要了解一下相关的内容。</p><p>以前就看到过taobao的fourinone框架的说明，感觉非常好，值得研究，于是就下载了fourinone-3.04.25的开源版本，地址<a href="https://code.google.com/p/fourinone/" rel="nofollow">https://code.google.com/p/fourinone/</a>。</p><p><span>不看不知道，一看，吓了一跳，难不成这个是拿出来之前处理过，专门让人看不懂的？</span></p><p><span>不解一、所有的类都在一个包名下，<span>不同层次的代码都混在一起</span>。很明显的，底层是分布式计算的基础部分，这个与具体实现的功能无关。</span></p><p><span>实现集群配置、集群文件系统、MQ、分布式缓冲之类的功能是基于核心功能进行扩展出来的新功能，最好的办法当然是分成多个工程；不能分成多个工程，好呆分成不同的包名，全部混在一个包之中，只有两种可能，一种是层次分解不清晰，另外一种是人为处理，不想让人看明白。</span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">ArrayAdapter.java
+ArrayInt.java
+AsyncExector.java
+AuthPolicy.java
+BeanContext.java
+BeanService.java
+Cache.java
+CacheFacade.java
+CacheLocal.java
+CacheProxy.java
+ClosetoOverException.java
+ConfigContext.java
+Contractor.java
+ContractorParallel.java
+ContractorService.java
+CtorLocal.java
+Delegate.java
+DelegateConsole.java
+DelegateHandle.java
+DelegatePolicy.java
+DelegateProcessor.java
+DESBean.java
+FileAdapter.java
+FileBatch.java
+FileException.java
+FileResult.java
+FttpAdapter.java
+FttpContractor.java
+FttpException.java
+FttpLocal.java
+FttpMigrantWorker.java
+FttpWorker.java
+FttpWorkerProxy.java
+FttpWorkerService.java
+HbDaemo.java
+LastestEvent.java
+LastestListener.java
+LeaderException.java
+LogUtil.java
+MementoService.java
+MigrantWorker.java
+MulBean.java
+ObjectBean.java
+ObjectBeanList.java
+ObjectBeanProxy.java
+ObjectBytes.java
+ObjectVersion.java
+ObjValue.java
+ParallelService.java
+Park.java
+ParkActive.java
+ParkGroup.java
+ParkInetServer.java
+ParkLeader.java
+ParkLocal.java
+ParkManager.java
+ParkMeta.java
+ParkObjValue.java
+ParkPatternBean.java
+ParkPatternExector.java
+ParkPermission.java
+ParkProxy.java
+ParkService.java
+ParkStatg.java
+PoolExector.java
+RecallException.java
+ResourceBean.java
+Result.java
+ServiceContext.java
+ServiceException.java
+StartResult.java
+SuperContractor.java
+WareHouse.java
+Worker.java
+WorkerLocal.java
+WorkerParallel.java
+WorkerParkProxy.java
+WorkerProxy.java
+WorkerService.java
+WorkerServiceProxy.java
+Workman.java
+XmlCallback.java
+XmlObjectCallback.java
+XmlUtil.java</pre>不解二、鲜见注释<p><br></br></p><p><span>从头到尾看不到多少注释，对于set、get实现，不写啥注释都可以理解的。但是连接口与重要的类也没有注释，对于阅读者来说就非常困难了。</span></p><p><span>不解三、命名给人带来的困扰</span></p><p><span>下面是一个接口</span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface Worker extends ParkActive
+{
+	public void setMigrantWorker(MigrantWorker mw) throws RemoteException;
+	public WareHouse doTask(WareHouse inhouse) throws RemoteException;
+	public void stopTask() throws RemoteException,InterruptedException;
+	public boolean receiveMaterials(WareHouse inhouse) throws RemoteException;
+}</pre>下面是另外一个接口<p><br></br></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface FttpWorker extends ParkActive{
+	public byte[] read(String f, long b, long t) throws RemoteException,FttpException;
+	public byte[] readLocked(String f, long b, long t) throws RemoteException,FttpException;
+	public int[] readInt(String f, long b, long t) throws RemoteException,FttpException;
+	public int[] readIntLocked(String f, long b, long t) throws RemoteException,FttpException;
+	public int write(String f, long b, long t, byte[] bs) throws RemoteException,FttpException;
+	public int writeLocked(String f, long b, long t, byte[] bs) throws RemoteException,FttpException;
+	public int writeInt(String f, long b, long t, int[] its) throws RemoteException,FttpException;
+	public int writeIntLocked(String f, long b, long t, int[] its) throws RemoteException,FttpException;
+	public FileResult getFileMeta(String f) throws RemoteException,FttpException;
+	public FileResult[] getChildFileMeta(String f) throws RemoteException,FttpException;
+	public String[] listRoots() throws RemoteException,FttpException;
+	public File createFile(String f, boolean isFile) throws RemoteException,FttpException;
+	public boolean deleteFile(String f) throws RemoteException,FttpException;
+	public boolean copyFile(String f, long e, URI t) throws RemoteException,FttpException;
+	public boolean renameFile(String f, String n) throws RemoteException,FttpException;
+}</pre>开始我根据命名理解，以为FttpWorker是继承<span>Worker的，显然我错了，这两个根本就没有关系，它们都继承自</span>ParkActive。偶的理解，如果两个是两个东东，要么就给<span>Worker前面加上一个另外的形容词可能更好。</span><p><br></br></p><p><span>好吧，接下来看看<span>ParkActive长什么样：</span></span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">package com.fourinone;
+import java.rmi.Remote;
+interface ParkActive extends ParkStatg,Remote{
+}</pre>再看ParkStatg<span>，实际上是继承了序列化接口</span><p><br></br></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">package com.fourinone;
+import java.io.Serializable;
+interface ParkStatg extends Serializable{
+	static final long serialVersionUID = 2983113349866492266L;
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">至次才明白，所谓的工人，就是带有远程访问接口和序列号接口的任意的类。它上面没有自己的任何接口方法。</span></p><p><span>但是这一圈转下来，嗯嗯，头有点晕。</span></p><p><span>不解四，散落的main</span></p><p><span>在程序中许多类中都有一个main方法在那里，虽然不一定能造成多坏、多大的影响，但是明显，这不是一个好的做法。</span></p><p><span>问题，哪位能给解释一下这些变量代表啥意思？？</span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class ParkMeta
+{
+	private static String YSJ,YBB,YCJZ,YCIP,YCSJ,YQX,YSX,YGXZ,YGIP,YGSJ,SXXT;
+	static{
+		MulBean mb = ConfigContext.getMulBean();
+		YSJ = mb.getString(&quot;YSJ&quot;);
+		YBB = mb.getString(&quot;YBB&quot;);
+		YCJZ = mb.getString(&quot;YCJZ&quot;);
+		YCIP = mb.getString(&quot;YCIP&quot;);
+		YCSJ = mb.getString(&quot;YCSJ&quot;);
+		YQX = mb.getString(&quot;YQX&quot;);
+		YSX = mb.getString(&quot;YSX&quot;);
+		YGXZ = mb.getString(&quot;YGXZ&quot;);
+		YGIP = mb.getString(&quot;YGIP&quot;);
+		YGSJ = mb.getString(&quot;YGSJ&quot;);
+		SXXT = mb.getString(&quot;SXXT&quot;);
+	}
+}</pre><p><br></br></p><p><br></br></p><p><span>小结</span></p><p>到目前为止，还没有对fourinone有深入的了解，但是很明显的，令我有点失望。一开始，我觉得总共80多个类，去掉扩展的功能，核心的部分应该很少，大概也就30个左右差不多了，但是实际上看下来，还是感觉到比较困难。当然，这也与自己的水平与能力不足有相当的关系。</p><span id="OSC_h2_1"></span><h2><strong>反过来说，开源，绝对不是把自己的代码放在别人能看得到的地方就叫开源了。如果别人看不懂，或者很难看懂，会直接影响到开源的目的与效果。<br></br></strong><strong>国人开源的意识及道路还很漫长，共勉！</strong></h2></div>]]#

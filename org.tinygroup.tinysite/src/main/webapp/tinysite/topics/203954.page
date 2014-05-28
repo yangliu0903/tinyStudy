@@ -1,0 +1,73 @@
+#pageTitle("topic" "topic")
+#title("Tiny示例" "主题切换及其管理")
+#[[<div class="BlogContent"><p>原来我的POM中groupId是org.tinygroup，<span style="line-height:1.5;font-size:12.5px;">artifactId是对应的工程名，如parser。</span></p><p><span style="line-height:1.5;font-size:12.5px;">后出有一个处理上的原因，而且便于进行分隔，还可以避免与别人的冲突，想把所有的artifactId前面增加个“org.tinygroup.”前缀，比如parser就变成<span>org.tinygroup.</span><span>parser。但是这样一来，所有的依赖信息也全都对不上了，也就是要对工程的artifactId及依赖中的artifactId都进行修改才行。</span></span></p><p><span style="line-height:1.5;font-size:12.5px;">由于工程数比较多，一个一个手工改总是麻烦的，因此就想着写程序进行处理。</span></p><p><span style="line-height:1.5;font-size:12.5px;">实现方案1：</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class ChangePom {
+    public static void main(String[] args) throws Throwable {
+        File file1 = new File(&quot;D:\\SVN\\tinyorg-code\\trunk\\Sources\\&quot;);
+        processFolder(file1);
+    }
+
+    private static void processFolder(File file1) throws Exception {
+        File[] files = file1.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                processFolder(file);
+            }
+            if (file.getName().equals(&quot;pom.xml&quot;)) {
+                processPomFile(file);
+            }
+        }
+    }
+
+    private static void processPomFile(File file) throws Exception {
+        System.out.println(&quot;processing:&quot; + file.getAbsolutePath());
+        XmlStringParser parser = new XmlStringParser();
+        XmlDocument doc = parser.parse(IOUtils.readFromInputStream(new FileInputStream(file), &quot;utf-8&quot;));
+        XmlNode dependencies = doc.getRoot().getSubNode(&quot;dependencies&quot;);
+        XmlNode projectArtifactId = doc.getRoot().getSubNode(&quot;artifactId&quot;);
+        projectArtifactId.setContent(&quot;org.tinygroup&quot; + projectArtifactId.getContent().trim());
+        if (dependencies != null) {
+            List&lt;XmlNode&gt; dependencyList = dependencies.getSubNodes(&quot;dependency&quot;);
+            if (dependencyList != null) {
+                for (XmlNode node : dependencyList) {
+                    XmlNode groupId = node.getSubNode(&quot;groupId&quot;);
+                    if (groupId.getContent().trim().equals(&quot;org.tinygroup&quot;)) {
+                        XmlNode artifactId = node.getSubNode(&quot;artifactId&quot;);
+                        artifactId.setContent(&quot;org.tinygroup.&quot; + artifactId.getContent().trim());
+                    }
+                }
+            }
+        }
+
+        XmlFormater formater = new XmlFormater();
+        IOUtils.writeToOutputStream(new FileOutputStream(file), formater.format(doc), &quot;UTF-8&quot;);
+    }
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">呵呵，程序运行一会，马上搞定了。</span></p><p><span style="line-height:1.5;font-size:12.5px;">当然，这个时候，可能感觉还是有点麻烦，OK，再换一种写法：</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class ChangePom1 {
+    public static void main(String[] args) throws Throwable {
+        FileObject fileObject= VFS.resolveFile(&quot;D:\\SVN\\tinyorg-code\\trunk\\Sources\\&quot;);
+        fileObject.foreach(new FileNameFileObjectFilter(&quot;pom\\.xml&quot;),new FileObjectProcessor() {
+            public void process(FileObject fileObject) throws Exception {
+                System.out.println(&quot;processing:&quot; + fileObject.getAbsolutePath());
+                XmlStringParser parser = new XmlStringParser();
+                XmlDocument doc = parser.parse(IOUtils.readFromInputStream(fileObject.getInputStream(), &quot;utf-8&quot;));
+                XmlNode dependencies = doc.getRoot().getSubNode(&quot;dependencies&quot;);
+                XmlNode projectArtifactId = doc.getRoot().getSubNode(&quot;artifactId&quot;);
+                projectArtifactId.setContent(&quot;org.tinygroup&quot; + projectArtifactId.getContent().trim());
+                if (dependencies != null) {
+                    List&lt;XmlNode&gt; dependencyList = dependencies.getSubNodes(&quot;dependency&quot;);
+                    if (dependencyList != null) {
+                        for (XmlNode node : dependencyList) {
+                            XmlNode groupId = node.getSubNode(&quot;groupId&quot;);
+                            if (groupId.getContent().trim().equals(&quot;org.tinygroup&quot;)) {
+                                XmlNode artifactId = node.getSubNode(&quot;artifactId&quot;);
+                                artifactId.setContent(&quot;org.tinygroup.&quot; + artifactId.getContent().trim());
+                            }
+                        }
+                    }
+                }
+
+                XmlFormater formater = new XmlFormater();
+                IOUtils.writeToOutputStream(fileObject.getOutputStream(), formater.format(doc), &quot;UTF-8&quot;);
+            }
+        });
+    }
+}</pre><p>下面的xml格式化并输出到文件中，也可以写成：</p><pre class="brush:java; toolbar: true; auto-links: false;">formater.format(doc,fileObject.getOutputStream();</pre><p><br></br></p><p><br></br></p>当然，上面只是临时进行一下处理，中间的Xml处理写得稍微丑陋一点。<p><br></br></p><br></br><p><span style="line-height:1.5;font-size:12.5px;"><br></br></span></p></div>]]#

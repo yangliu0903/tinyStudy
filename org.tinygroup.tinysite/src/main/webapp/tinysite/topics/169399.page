@@ -1,0 +1,37 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>曾经看到过一个web.xml有上千行，如果出现点问题，开发人员根本就不知道现场是怎么一种情况。</p><p>更要命的是在不同的应用服务器，比如说在旧的websphere版本上用listener启动Spring就是有问题的。</p><p>如果要进行软件升级，那悲催了，不仅要修改应用相关的内容，还要对web.xml进行修改。</p><p>要把几个模块集成在一起，完蛋了，光web.xml的合并就困难得不行不行。</p><p>Tiny构建者深知web.xml给程序员和现场实施人员带来的不便与困扰，因此设计了以下方案进行解决，从此再不用关心web.xml。</p><p>先来看一下，tiny框架中，web.xml中配置。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;web-app version=&quot;2.4&quot; xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;&gt;
+	&lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;
+	&lt;welcome-file-list&gt;
+		&lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+		&lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;
+	&lt;/welcome-file-list&gt;
+	&lt;listener&gt;
+		&lt;listener-class&gt;
+			org.tinygroup.weblayer.ApplicationStartupListener
+		&lt;/listener-class&gt;
+	&lt;/listener&gt;
+	&lt;filter&gt;
+		&lt;filter-name&gt;TinyFilter&lt;/filter-name&gt;
+		&lt;filter-class&gt;org.tinygroup.weblayer.TinyHttpFilter&lt;/filter-class&gt;
+	&lt;/filter&gt;
+	&lt;filter-mapping&gt;
+		&lt;filter-name&gt;TinyFilter&lt;/filter-name&gt;
+		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+		&lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;  
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;  
+	&lt;/filter-mapping&gt;
+&lt;/web-app&gt;</pre>OK,一个listener用于启动，一个filter用于处理所有内容，结束了。<p><br></br></p><p>然后，web.xml文件就不允许再动了，换而言之，使用Tiny框架并用其模板创建了工程之后，web.xml文件就是不被允许修改的。</p><p>当然，带来一个问题就是？如果要增加别的listener,filter,servlet怎么办？</p><p>Tiny框架接管了所有的这些配置，支持自发现，也就是说你只要按照Tiny配置规范配置，然后就不用管了，Tiny框架会发现并加载它们。当然，Tiny框架还有一套配置管理规范，并有配置框架支持，在Tiny框架中，所有的配置信息都是被集中中一起的。</p><p>对于已经实现好的<span>listener,filter,servlet，也不用担心，不用做任何修改，直接配入即可。</span></p><p><span>比如：资源压缩过滤器就是别人写好的，我们要复用，只要把这个Filter配置为一个Spring的Bean，然后如下配置就可以了：</span></p><p><span><span></span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;tiny-wrapper-filter id=&quot;tinyFilterWrapper&quot; class=&quot;tinyFilterWrapper&quot;&gt;
+	&lt;init-param name=&quot;filter_beans&quot; value=&quot;gZIPFilter&quot;&gt;&lt;/init-param&gt;
+	&lt;filter-mapping url-pattern=&quot;.*&quot;&gt;&lt;/filter-mapping&gt;
+&lt;/tiny-wrapper-filter&gt;</pre>当然Servlet也是一样的，下面就是jsp的例子：<p><br></br></p><p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;tiny-processor id=&quot;jspProcessor&quot; class=&quot;tinyProcessorWapper&quot;&gt; 
+	&lt;init-param name=&quot;servlet_bean&quot; value=&quot;jspServlet&quot;&gt;&lt;/init-param&gt;
+	&lt;servlet-mapping url-pattern=&quot;.*\.jsp&quot;&gt;&lt;/servlet-mapping&gt; 
+&lt;/tiny-processor&gt;</pre>所以，没有任何不同。<p><br></br></p><p><span>当然，里面还会有许多Tiny框架的处理器：</span></p><p><span>比如处理MDA的处理器，就是通过如下配置加入的：</span></p><p><span><span></span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;tiny-processor id=&quot;mdaTinyProcessor&quot; class=&quot;mdaTinyProcessor&quot;&gt;
+ &lt;servlet-mapping url-pattern=&quot;.*\.model&quot;&gt;&lt;/servlet-mapping&gt;
+ &lt;servlet-mapping url-pattern=&quot;.*\.modellet&quot;&gt;&lt;/servlet-mapping&gt;
+ &lt;servlet-mapping url-pattern=&quot;.*\.modeljson&quot;&gt;&lt;/servlet-mapping&gt;
+&lt;/tiny-processor&gt;</pre>小结，在Tiny框架中，web.xml中的所有配置都被接管，并被赋予自发现能力，带来的好处就是，如果我依赖了某个Jar包(Tiny中叫业务单元)，它需要有某个过滤器或处理器，那它就会被加载，而不需要程序员进行干预，也不需要现场支持人员进行修改。<p></p></div>]]#

@@ -1,0 +1,56 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent">问题的提出，我们经常会有几项的任务，这几项任务之间本身没有先后顺序关系，或者是协作来共同完成一个目标。这个时候，我们就希望能够把这几项任务并行进行运行以充分利用CPU，缩短运行时间，或者把大的任务分成小的任务，所有的小任务都完成时，再继续进行下一阶段的处理。<br></br>这个时候就有一个问题了，因为一般的Java多线程都是互不相关的，也就是当这个任务在执行的时候，主线程也会执行，但是因为这个时候前面的任务还不一定执行完毕，所以，主线程继续向下执行是有问题的，因此我们就要主线程等待这些线程执行完毕后再向下执行。<br></br>为此，封装了一个线程组的概念，一个线程组内可以包含N个线程，所有的线程运行完毕后，线程组才会结束，调用线程组的线程才会继续向下执行。<br></br>首先看示例：<br></br><pre class="brush:java; toolbar: true; auto-links: false;">public class NumberAdd extends AbstractProcessor {
+	public static int sumValue;
+	private static Object lockObject = new Object();
+
+	public NumberAdd(String name) {
+		super(name);
+	}
+
+	@Override
+	protected void action() throws Exception {
+		for (int i = 0; i &lt; 1000; i++) {
+			add();
+			Thread.sleep(1);
+		}
+	}
+
+	private static void add() {
+		synchronized (lockObject) {
+			sumValue++;
+		}
+	}
+}</pre>上面的程序是一个类，它用于把sumValue中的值增加1000。<br></br>下面是测试用例<br></br><pre class="brush:java; toolbar: true; auto-links: false;">public void testStart() {
+		MultiThreadProcessor processors = new MultiThreadProcessor(&quot;number add&quot;);
+		for (int i = 0; i &lt; 10; i++) {
+			processors.addProcessor(new NumberAdd(&quot;add&quot; + i));
+		}
+		long startTime = System.currentTimeMillis();
+		processors.start();
+		long endTime = System.currentTimeMillis();
+		logger.log(LogLevel.INFO, &quot;执行时间：{}&quot;, endTime - startTime);
+		assertEquals(10000, NumberAdd.sumValue);
+	}</pre>启动了10个线程来执行添加操作，因为每个线程添加1000，最终应该是添加30000才对。<br></br><span style="font-size:10pt;line-height:1.5;">最终的执行结果：</span><br></br><pre class="brush:java; toolbar: true; auto-links: false;">-0    [main] INFO   - 线程组&lt;number add&gt;运行开始,线程数10...
+-5    [number add-add0] INFO   - 线程&lt;number add-add0&gt;运行开始...
+-6    [number add-add4] INFO   - 线程&lt;number add-add4&gt;运行开始...
+-6    [number add-add3] INFO   - 线程&lt;number add-add3&gt;运行开始...
+-6    [number add-add1] INFO   - 线程&lt;number add-add1&gt;运行开始...
+-6    [number add-add2] INFO   - 线程&lt;number add-add2&gt;运行开始...
+-6    [number add-add7] INFO   - 线程&lt;number add-add7&gt;运行开始...
+-7    [number add-add8] INFO   - 线程&lt;number add-add8&gt;运行开始...
+-7    [number add-add5] INFO   - 线程&lt;number add-add5&gt;运行开始...
+-7    [number add-add6] INFO   - 线程&lt;number add-add6&gt;运行开始...
+-7    [number add-add9] INFO   - 线程&lt;number add-add9&gt;运行开始...
+-1023 [number add-add6] INFO   - 线程&lt;number add-add6&gt;运行结束
+-1023 [number add-add1] INFO   - 线程&lt;number add-add1&gt;运行结束
+-1024 [number add-add9] INFO   - 线程&lt;number add-add9&gt;运行结束
+-1024 [number add-add2] INFO   - 线程&lt;number add-add2&gt;运行结束
+-1025 [number add-add5] INFO   - 线程&lt;number add-add5&gt;运行结束
+-1029 [number add-add7] INFO   - 线程&lt;number add-add7&gt;运行结束
+-1029 [number add-add4] INFO   - 线程&lt;number add-add4&gt;运行结束
+-1030 [number add-add0] INFO   - 线程&lt;number add-add0&gt;运行结束
+-1030 [number add-add3] INFO   - 线程&lt;number add-add3&gt;运行结束
+-1031 [number add-add8] INFO   - 线程&lt;number add-add8&gt;运行结束
+-1031 [main] INFO   - 线程组&lt;number add&gt;运行结束, 用时:1026ms
+-1032 [main] INFO   -</pre>并且测试用例也执行通过，说明最终的结果，确实是加了30000次。<br></br>而且是在线程组执行完毕后，才执行的assertEquals语句。<br></br>从此，写多线程协作就像写普通程序一样了。(注意是像，不是是，因为还是要注意冲突对象的同步问题的)<br></br></div>]]#

@@ -1,0 +1,77 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "主题切换及其管理")
+#[[<div class="BlogContent"><p>TinyUI实际上并不是一个具体的UI展现组件，它只是一个UI构建体系。它可以适应于各种Html+CSS+JS的体系架构中。</p><p>TinyUI主要解决下面的问题：</p><ol><li><span style="line-height:1.5;font-size:10pt;">UI中JS的引入与顺序，JS合并的问题</span></li><li><span style="line-height:1.5;font-size:10pt;">UI中css的引入与顺序，CSS合并的问题</span></li><li><span style="line-height:1.5;font-size:10pt;">UI中碰到性能问题时的影响范围，比如：一个树出现问题，要改动许多用到树的地方</span></li><li>代码重复的问题，同样的内容在许多地方都有，如果要改动就要改动许多个地方</li><li>整体布局调整困难的问题</li><li>开发效率的问题</li><li>执行效率的问题，前台响应要求速度更快</li><li>集群的问题</li><li>国际化的问题</li><li>等等</li></ol>所以，它只是一个体系，不提供具体的UI组件，只是便于进行对其它UI框架进行包装、集成，同时解决运行过程中的各种问题。它还解决了模块化的问题，也就是说大家都按照规范构建一个一个的模块，然后复用的时候，是不用考虑如何引入css,js以及其引入顺序的相关问题的。<p>关于体系性的说明，请移步查阅<a href="http://my.oschina.net/tinyframework/blog/169206" target="_blank" rel="nofollow">UI开发的终极方案</a>。</p><p>下面我们就以集成Jquery和Jqueryui来示例，如何进行TinyUI组件包的开发。</p><span id="OSC_h1_1"></span><h1>JQuery TinyUI组件包的的开发</h1><ol><li><span style="line-height:1.5;font-size:12.5px;">新建一个Maven的Jar类型工程</span></li><li><span style="line-height:1.5;font-size:12.5px;">在main/resources/中创建jquery/js目录，</span><span style="font-size:12.5px;line-height:1.5;">然后在/jquery/js/目录中放入</span><span style="font-size:12.5px;line-height:1.5;">jquery-1.11.0.js文件</span></li><li><span style="line-height:1.5;font-size:12.5px;">在main/resources目录中创建jquery.ui.xml，文件内容如下</span></li></ol><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;ui-components&gt;
+    &lt;ui-component name=&quot;jquery&quot;&gt;
+        &lt;js-resource&gt;/jquery/js/jquery-1.11.0.js&lt;/js-resource&gt;
+    &lt;/ui-component&gt;
+&lt;/ui-components&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">OK，JQuery的UI组件包就算开发完毕了。</span></p><p><span style="font-size:12.5px;line-height:1.5;">简单说明：其实上面的文件组织形式，只是个示例而已，实际上你也可以根据你自己的需要制订自己的规范，来进行目录的组织，唯一需要注意的是js-resource中的jquery-1.11.0.js所在的路径，以/resources为根开始要正确引用。<span></span></span></p><p><span style="font-size:12.5px;font-weight:600;line-height:1.5;"><span></span></span></p><span id="OSC_h1_2"></span><h1>JQueryUI TinyUI组件包的的开发</h1><ol><li><span style="line-height:1.5;font-size:12.5px;">新建一个Maven的Jar类型工程，并依赖上面创建的jquery工程</span></li><li><span style="line-height:1.5;font-size:12.5px;">在main/resources/中创建jqueryui/js目录，</span><span style="font-size:12.5px;line-height:1.5;">然后在/jqueryui/js/目录中放入</span><span style="font-size:12.5px;line-height:1.5;">jquery-1.11.0.js文件</span></li><li><span style="font-size:12.5px;line-height:1.5;">在main/resource/jqueryui/中创建theme目录，里面放jqueryui的所有主题文件夹</span></li><li><span style="line-height:1.5;font-size:12.5px;">在main/resources目录中创建jqueryui.ui.xml，文件内容如下</span></li></ol><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;ui-components&gt;
+    &lt;ui-component name=&quot;jqueryui&quot; dependencies=&quot;jquery&quot;&gt;
+        &lt;js-resource&gt;/jqueryui/js/jquery-ui-1.10.3.custom.js&lt;/js-resource&gt;
+    &lt;/ui-component&gt;
+&lt;/ui-components&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">OK，JQueryUI的UI组件包就算基本开发完毕了。</span></p><p><span style="font-size:12.5px;line-height:1.5;">解释一下与做JQuery工程时的差异，为什么要在pom中依赖上面创建的jquery工程呢？？原因是JQueryUI的运行需要用于JQuery运行库。</span></p><p><span style="font-size:12.5px;line-height:1.5;">为什么已经在pom中依赖jquery包，还要在ui-component一行中要增加dependencies=&quot;jquery&quot;属性呢？？</span></p><p>因为Pom依赖解决的问题是如果要用JQueryUI，则必须要有JQuery的运行库。</p><p>但是有了运行库之后呢，JS的引入是有先后顺序的。这个时候，TinyUI框架就无法知道把哪个js引入在前面，但是有了<span>dependencies=&quot;jquery&quot;属性，TinyUI框架就知道，哦，jqueryui只能在jquery之后引用。</span></p><p>为什么上面有个说法叫基本完成呢？就是说，现在确实可以算做已经完成，但是程序员在写代码的时候还是要对JQueryUI进行深入学习，然后编写时的写法与原来没有什么本质的区别，这当然不是TinyUI框架解决问题的终点。</p><p>有没有办法，让不懂JQueryUI的人也可以简单的使用JQueryUI？当然可以，请看下节，创建界面组件定义文件。</p><span id="OSC_h1_3"></span><h1>TinyUI组件的定义</h1><p>在jqueryui工程的/resources目录中创建component目录，然后中其中创建jquery_ui.component文件</p><pre class="brush:shell; toolbar: true; auto-links: false;">##==================================================================================
+## jqueryUI Dialog
+##==================================================================================
+#*
+参数
+id:ID
+title:标题
+construct:构建参数，详细参见jqueryui手册
+*#
+#macro(jui_dialog $id $title $construct)
+&lt;div id=&quot;$id&quot; title=&quot;$!title&quot;&gt;
+	$!bodyContent
+&lt;/div&gt;
+&lt;script&gt;
+    $(function() {
+        $( &quot;#$!id&quot;).dialog($!construct);
+    });
+&lt;/script&gt;
+#end
+##=================================================================================</pre><p><span style="font-size:12.5px;line-height:1.5;">如上，定义了一个宏，名字叫jui_dialog，它有两个参数，一个是标题，一个是构建参数。</span></p><p>采用的语法是Velocity语法--因为内部就是集成了Velocity模板语言的。</p><p>以后的人开发的时候，使用就非常简单了，只要输入下面的内容：</p><pre class="brush:html; toolbar: true; auto-links: false;">#@jui_dialog(&quot;窗口标题&quot;)
+这里放内容
+#end</pre><p><span style="font-size:12.5px;line-height:1.5;">就可以直接使用JQueryUI的Dialog来显示一个对话框了。</span></p><p>当然，你也可以定义更多的宏，比如：</p><pre class="brush:html; toolbar: true; auto-links: false;">##==================================================================================
+## jquery accordion，参数：ID,构建参数
+##==================================================================================
+#macro(jui_accordion $id $construct) 
+&lt;div id=&quot;$id&quot;&gt;
+ $!bodyContent
+&lt;/div&gt;
+&lt;script&gt;
+$(function() {
+    $( &quot;#$id&quot; ).accordion($construct);
+});
+&lt;/script&gt;
+#end
+##==================================================================================
+
+##==================================================================================
+##by 罗果 jquery accordion section,参数：标题
+##==================================================================================
+#macro(jui_accordionSection $title)
+   &lt;h3&gt;$!title&lt;/h3&gt;
+    &lt;div&gt;
+       $!bodyContent
+    &lt;/div&gt;
+#end
+##==================================================================================</pre><p>然后就可以在编写界面的时候用下面的方式来构建一个抽屉效果了：</p><pre class="brush:html; toolbar: true; auto-links: false;">#@jui_accordion(&quot;abc&quot;)
+  #@jui_accordionSection(&quot;第一个抽屉&quot;)
+    第一个抽屉的内容
+  #end
+  #@jui_accordionSection(&quot;第二个抽屉&quot;)
+    第二个抽屉的内容
+  #end
+  #@jui_accordionSection(&quot;第二个抽屉&quot;)
+    第二个抽屉的内容
+  #end
+#end</pre>通过上面的处理，就可以在很大程度上屏蔽开发人员对具体的UI开发框架的依赖，而是在别人研究之后的基础上，像调用函数一下，就可以方便的来构建界面应用了。<span id="OSC_h1_4"></span><h1>TinyUI界面的开发</h1>TinyUI的界面开发，有两种文件格式，一种以.page结尾，一种以.layout结尾<p><br></br></p><p>.page文件表示是用来展现的一个页面文件，.layout文件表示是一个布局文件，它自己不能被单独用来展示，但是可以进行布局定义，并影响.page文件的展现效果。干巴巴的说，比较晦涩，还是用例子来进行演示：</p><ol><li><span style="line-height:1.5;font-size:12.5px;">新建一个jar类型的maven工程</span></li><li><span style="line-height:1.5;font-size:12.5px;">在main/resources/目录中创建下面的目录结构目录，</span></li></ol><pre class="brush:xml; toolbar: true; auto-links: false;">main/resources/demo/a
+main/resources/demo/b</pre><p><span style="font-size:12.5px;line-height:1.5;">也就是说在main/resources上创建demo目录，然后在demo目录中分别创建a和b两个子目录</span></p><p><span style="line-height:1.5;font-size:12.5px;">在demo目录中创建default.layout文件，内容如下：</span></p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;h3&gt;这里是Header&lt;/h3&gt;
+$pageContent
+&lt;h3&gt;这里是Footer&lt;/h3&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">然后在a目录中创建一个a.page，内容如下：</span></p><pre class="brush:html; toolbar: true; auto-links: false;">我是a</pre><p><span style="font-size:12.5px;line-height:1.5;">在b目录中创建一个 b.page，内容如下：</span></p><pre class="brush:html; toolbar: true; auto-links: false;">我是b</pre><p><span style="font-size:12.5px;line-height:1.5;">在执行的时候，浏览器中输入http://localhost:8080/sample1/demo/a.page</span></p><p>它的运行结果是：</p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;h3&gt;这里是Header&lt;/h3&gt;
+我是a
+&lt;h3&gt;这里是Footer&lt;/h3&gt;</pre><p>在执行的时候，浏览器中输入http://localhost:8080/sample1/demo/b.page</p><p>它的运行结果是：</p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;h3&gt;这里是Header&lt;/h3&gt;
+我是b
+&lt;h3&gt;这里是Footer&lt;/h3&gt;</pre><p>看起来，布局文件确实已经起效果了。</p><span></span><span id="OSC_h1_5"></span><h1>一些特殊用法</h1>用法1：个性化，从上面的例子中，可以看到布局文件会对当前文件夹中的所有文件起作用。但是在特殊场景下，确实有想不一样的情况出现，这时有两个办法：一个是把不一样的从当前目录中分离出去，另外一个是创建一个同名的布局文件。<p>比如，在上面的例子中，在demo目录中创建一个a.layout文件，其内容是如下：</p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;h3&gt;This is Header&lt;/h3&gt;
+$pageContent
+&lt;h3&gt;This is Footer&lt;/h3&gt;</pre><p><br></br></p><p><br></br></p><p><span style="font-size:12.5px;line-height:1.5;">在执行的时候，浏览器中输入http://localhost:8080/sample1/demo/a.page</span></p><p>它的运行结果就会变成：</p><pre class="brush:html; toolbar: true; auto-links: false;">&lt;h3&gt;This is Header&lt;/h3&gt;
+我是a
+&lt;h3&gt;This is Footer&lt;/h3&gt;</pre><p>用法2：Ajax支持：</p><p>比如，用Ajax进行局部加载的时候，不期望进行布局加载，只想这个page文件有啥就出啥，否则就会导致重复渲染的情况。TinyUI框架对此也有良好支持，只要请求的时候，在page后面加个let即可：</p><p><span>http://localhost:8080/sample1/demo/a.pagelet</span></p><p>这个时候它出来的内容都只有：</p><pre class="brush:html; toolbar: true; auto-links: false;">我是a</pre>用法3：国际化支持<p>如果我想中国人访问，显示“我是a”，美国人访问，显示&quot;I am a&quot;，怎么办呢？</p><p>创建a.zh_CN.page内容是“我是a”</p><p>创建a.en_US.page内容是 “I am a”</p><p>同理，布局文件也支持同样的国际化规则支持。</p><p>当然这个适合于两个页面结构及内容大相径庭的情况。</p><p>如果只是利用国际化资源进行简单的国际化内容支持</p><p>比如，有个国际国资源key值是title，那只要简单的写成#i(&quot;title&quot;)即可。</p><span id="OSC_h1_6"></span><h1>总结：</h1><p>TinyUI是一个UI构建体系，但它不是一个具体的UI框架，因此它里面没有JS，没有CSS，也没有HTML，它只是提供了集成各种UI展现框架的能力，并提供了UI组件包的组织形式。并解决JS,CSS引入顺序、合并、压缩、国际化等问题。</p><p>上面只演示了部分的特性，更多的请参阅相关文档或下载后直接试用。</p><p><br></br></p></div>]]#

@@ -1,0 +1,109 @@
+#pageTitle("topic" "topic")
+#title("Tiny乱弹" "主题切换及其管理")
+#[[<div class="BlogContent"><p><a href="http://my.oschina.net/tinyframework/blog/203233" target="_blank" rel="nofollow">上一篇</a>我们讲了文件相关的处理，并进行了结构上的优化，味道好极了。</p><p>接下来我们看看注解方面的处理，熟悉注解的同学们都知道，注解是可以添加到类型上、方法上、属性上的。</p><p>有时候它们的处理没有关联性，有些时候，它们的处理又是有关联性的。</p><p>我们用伪代码来示意一下。</p><pre class="brush:java; toolbar: true; auto-links: false;">if(includeAnnotation(testClass,Abc.class)){
+  doSomething...
+}
+
+if(includeAnnotation(testClass,Abc.class)){
+  for(Field field:testClass.getFields){
+    if(includeAnnotation(testField,AbcField.class)){
+     dosomething...
+   }
+  }
+  for(Method method:testClass.getMethods){
+    if(includeAnnotation(testMethod,AbcMethod.class)){
+     dosomething...
+   }
+  }
+}</pre>你会发现所有的注解过程处理都是上面几种情况。<p>有的时候，我们可能在类名的处理上还有一些规则，比如：....Service,.....Action,.....View等等，我们的某些注解只可以加在某种类名规则之下，这个时候，判定就又会增加。我们的程序员就不停的在写这些重复，但是却不可缺少的内容。有没有办法让开发人员只写doSomething的内容就好呢？？</p><p>只要问题可以提得出来，办法总是有的：</p><p>可以定义下面的三个类，开发人员只要编写process函数体中的内容就好了。</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface AnnotationClassAction {
+	&lt;T&gt; void process(Class&lt;T&gt; clazz, Annotation annotation);
+}
+public interface AnnotationMethodAction {
+	&lt;T&gt; void process(Class&lt;T&gt; clazz, Method method, Annotation annotation);
+}
+public interface AnnotationPropertyAction{
+	&lt;T&gt; void process(Class&lt;T&gt; clazz, Field field, Annotation annotation);
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">这对于开发人员来说当然是再熟悉不过的了。</span></p><p>但是总要让上面的逻辑有所体现才是，否则不是就执行错位置了？？</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;annotation-class-matchers&gt;
+	&lt;annotation-class-matcher class-name=&quot;.*\.annotation\.Annotation.*&quot;
+		annotation-type=&quot;.*Test&quot;&gt;
+		&lt;processor-beans&gt;
+			&lt;processor-bean enable=&quot;true&quot; name=&quot;classAction&quot;&gt;
+			&lt;/processor-bean&gt;
+		&lt;/processor-beans&gt;
+		&lt;annotation-method-matchers&gt;
+			&lt;annotation-method-matcher method-name=&quot;method.*&quot;
+				annotation-type=&quot;.*Test&quot;&gt;
+				&lt;processor-beans&gt;
+					&lt;processor-bean enable=&quot;true&quot; name=&quot;methodAction&quot;&gt;
+					&lt;/processor-bean&gt;
+				&lt;/processor-beans&gt;
+			&lt;/annotation-method-matcher&gt;
+		&lt;/annotation-method-matchers&gt;
+		&lt;annotation-property-matchers&gt;
+			&lt;annotation-property-matcher
+				property-name=&quot;field.*&quot; annotation-type=&quot;.*Test&quot;&gt;
+				&lt;processor-beans&gt;
+					&lt;processor-bean enable=&quot;true&quot; name=&quot;propertyAction&quot;&gt;
+					&lt;/processor-bean&gt;
+				&lt;/processor-beans&gt;
+			&lt;/annotation-property-matcher&gt;
+		&lt;/annotation-property-matchers&gt;
+	&lt;/annotation-class-matcher&gt;
+&lt;/annotation-class-matchers&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">上面的演示了一个</span><span style="font-size:12.5px;line-height:1.5;">示例</span><span style="font-size:12.5px;line-height:1.5;">，看起来比较复杂，其实是因为配置的内容为了充分说明，所以看起来有点复杂,实际应用情况不一定要全配的。我给翻译一下：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">首先进行注解类的匹配，匹配的类名是*.annotation.Annotation.*，上面加的注解名是*Test，如果匹配呢，就执行classAction处理器。
+
+如果类名匹配，则再进行方法匹配，方法名必须是method*格式的，上面加的注解是*Test类型的注解，匹配成功呢就执行methodAction处理器。
+
+如果类名匹配，再进行属性匹配，属性名必须为field*格式，上面的注解格式是*Test类型，如果匹配呢就执行propertyAction处理器。</pre><p><span style="font-size:12.5px;line-height:1.5;">这样是不是简单了，把所有的匹配工作都通过配置的方式进行实现，开发人员只需要做逻辑处理的部分。</span></p><p>比如下面这样子：</p><pre class="brush:java; toolbar: true; auto-links: false;">public class AnnotationClassActionDemo implements AnnotationClassAction {
+	public &lt;T&gt; void process(Class&lt;T&gt; clazz, Annotation annotation) {
+		System.out.println(&quot;className:&quot; + clazz.getName() + &quot; annotation类型:&quot;
+				+ annotation.annotationType().getName());
+	}
+}
+
+public class AnnotationMethodActionDemo implements AnnotationMethodAction {
+	public &lt;T&gt; void process(Class&lt;T&gt; clazz, Method method,
+			Annotation annotation) {
+		System.out.println(&quot;className:&quot;+clazz.getName()+&quot; annotation类型:&quot;+annotation.annotationType().getName()+&quot; method名称：&quot;+method.getName());		
+	}
+}
+
+public class AnnotationPropertyActionDemo implements
+		AnnotationPropertyAction {
+
+	public &lt;T&gt; void process(Class&lt;T&gt; clazz, Field field, Annotation annotation) {
+		System.out.println(&quot;className:&quot; + clazz.getName() + &quot; annotation类型:&quot;
+				+ annotation.annotationType().getName() + &quot; field名称:&quot;
+				+ field.getName());
+	}
+}</pre>针对下面的类：<pre class="brush:java; toolbar: true; auto-links: false;">@Test(id=0,description=&quot;class&quot;)
+@XStreamAlias(&quot;sd&quot;)
+public class AnnotationDemo1 {
+	@Test(id=1,description=&quot;field1&quot;)
+	private String field1;
+	@Test(id=2,description=&quot;field2&quot;)
+	private String field2;
+	@Test(id=3,description=&quot;method1&quot;)
+	public void method1(){
+		System.out.println(&quot;method1&quot;);
+	}
+	@Test(id=4,description=&quot;method2&quot;)
+	public void method2(){
+		System.out.println(&quot;method2&quot;);
+	}
+	public String getField1() {
+		return field1;
+	}
+	public void setField1(String field1) {
+		this.field1 = field1;
+	}
+	public String getField2() {
+		return field2;
+	}
+	public void setField2(String field2) {
+		this.field2 = field2;
+	}
+}</pre><p>进行处理，可以看到正确的处理结果。</p><pre class="brush:html; toolbar: true; auto-links: false;">className:org.tinygroup.annotation.AnnotationDemo1 annotation类型:org.tinygroup.annotation.Test
+className:org.tinygroup.annotation.AnnotationDemo1 annotation类型:org.tinygroup.annotation.Test field名称:field1
+className:org.tinygroup.annotation.AnnotationDemo1 annotation类型:org.tinygroup.annotation.Test field名称:field2
+className:org.tinygroup.annotation.AnnotationDemo1 annotation类型:org.tinygroup.annotation.Test method名称：method1
+className:org.tinygroup.annotation.AnnotationDemo1 annotation类型:org.tinygroup.annotation.Test method名称：method2</pre><p>通过上面的的重构，我们可以看到，把开发人员从重复的劳动中解脱出来，而且由于其只处理逻辑部分的内容即可，也避免了一些不必要的逻辑错误引入。</p><p>当然，采用配置还是编码的方式配置匹配规则，这个是公说公有理，婆说婆有理，其实两者都支持不就可以了？？</p><p>总之，通过上面的重构，对编程人员开发注解方面有更大的便捷。</p><p>通过文件处理及注解处理的重构，我们看到代码编写及实现确实是优雅了，</p><p>解决了代码重复、圈复杂度大、扩展方面的问题，但是性能方面的问题其实是还没有解决的。</p><p>请看<a href="http://my.oschina.net/tinyframework/blog/203257" target="_blank" rel="nofollow">下篇</a>，性能终极优化。</p></div>]]#

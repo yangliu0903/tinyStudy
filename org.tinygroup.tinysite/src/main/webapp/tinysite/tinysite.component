@@ -1,15 +1,20 @@
 #macro (a $aHref $title $aTarget )
 <a#if($title) title="$title"#end#if($aHref)
-              href="#if($aHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$aHref"#end#if($aTarget)
+              href="#linkConvert($aHref)"#end#if($aTarget)
               target="$aTarget"#end>
     $bodyContent
 </a>
 #end
 
 #macro (img $imgHref $imgTitle)
+<!-- $imgHref.charAt(0) -->
         <img#if($imgTitle) alt="$imgTitle"#end#if($imgHref)
-                           src="#if($imgHref.startWith('/'))#if($TINY_CONTEXT_PATH.equals("/"))#else{TINY_CONTEXT_PATH}#end$#end$imgHref"#end#>
+                           src="#linkConvert($imgHref)"#end#>
 </a>
+#end
+
+#macro(linkConvert $href)
+    #if($href.charAt(0)=='/')#if($TINY_CONTEXT_PATH.chatAt(0)=='/')#else${TINY_CONTEXT_PATH}#end$#end$href
 #end
 
 #macro(section)
@@ -116,7 +121,7 @@
 
 #macro(menu $menuTitle $menuHref $menuSubTitle  $menuKey)
 <li class="dropdown#if($menuKey==$activePage) active#end"><a
-        href="${menuHref}">$menuTitle</a>
+        href="#linkConvert(${menuHref})">$menuTitle</a>
     <span>$menuSubTitle</span>
     $!bodyContent
 </li>
@@ -135,7 +140,7 @@
 #end
 
 #macro(subMenuItem  $title $href $menuKey)
-<li><a href="$href"#if($menuKey==$activePage) class="current"#end >$title</a></li>
+<li><a href="#linkConvert($href)"#if($menuKey==$activePage) class="current"#end >$title</a></li>
 #end
 
 #macro(pageTitle $title $page)
@@ -178,7 +183,7 @@
 #macro(filterContainerItem $column $type)
 <li class="span$column $type" style="opacity: 1;">
     <div class="thumbnail" style="text-align:left;">
-            $bodyContent
+        $bodyContent
     </div>
 </li>
 #end
@@ -237,17 +242,18 @@ $bodyContent
         <p class="lead">$subTitle</p>
     #end
     #@span8()
-    <div align="right">
-    #[[
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- titlebarad -->
-    <ins class="adsbygoogle"
-         style="display:inline-block;width:728px;height:90px"
-         data-ad-client="ca-pub-9864431858561260"
-         data-ad-slot="5845240839"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>]]#
+        <div align="right">
+            #[[
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- titlebarad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9864431858561260"
+                 data-ad-slot="5845240839"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            ]]#
         </div>
     #end
 </div>
@@ -330,14 +336,14 @@ $bodyContent
 #end
 
 #macro(fancybox $smallPic $bigPic $title)
-<a href="$bigPic" title="$title" class="thumb fancybox"><img src="$smallPic" alt="$title" /> </a>
+<a href="$bigPic" title="$title" class="thumb fancybox"><img src="$smallPic" alt="$title"/> </a>
 #end
 
 #################################################下面是业务相关#########################################################
 #macro(donate $name $amount $date $mode)
 <tr>
-    <td  style="text-align: center"><h3><strong>$name</strong></h3></td>
-    <td  style="text-align: right"><b style="color:blue">$amount</b>勇气</td>
+    <td style="text-align: center"><h3><strong>$name</strong></h3></td>
+    <td style="text-align: right"><b style="color:blue">$amount</b>勇气</td>
     <td>#if($mode)$mode#{else}通过扫描鼓励#end</td>
     <td style="text-align: right">$date</td>
 </tr>
@@ -354,10 +360,10 @@ $bodyContent
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
-                #shortcut("Sonar代码检查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "img/sonar.ico")
-                #shortcut("Hudson持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "img/hudson.png")
-                #shortcut("TinyFramework OSC首页" "http://my.oschina.net/tinyframework" "img/osc.ico")
-                #shortcut("TinyFramework GIT网址" "http://git.oschina.net/tinyframework/tiny" "img/git.ico")
+                #shortcut("Sonar代码检查" "http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny" "/tinysite/img/sonar.ico")
+                #shortcut("Hudson持续集成" "http://www.tinygroup.org/hudson/job/tiny/" "/tinysite/img/hudson.png")
+                #shortcut("TinyFramework OSC首页" "http://my.oschina.net/tinyframework" "/tinysite/img/osc.ico")
+                #shortcut("TinyFramework GIT网址" "http://git.oschina.net/tinyframework/tiny" "/tinysite/img/git.ico")
             </div>
         </div>
         <div class="text-left">
@@ -395,15 +401,25 @@ $bodyContent
 
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
-                    #@menu("Homepage" "home.page" "首页" "home")#end
-                    #@menu("philosophy" "philosophy.page" "设计理念" "philosophy")#end
-                    #@menu("principle" "principle.page" "设计原则" "principle")#end
-                    #@menu("Features" "feature.page" "功能特性" "feature")#end
-##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
-##                    #@menu("sample" "sample.page" "示例" "sample")#end
-                    #@menu("FAQ" "faq.page" "常见问题解答" "faq")#end
-                    #@menu("encourage us" "encourage.page" "鼓励我们" "encourage")#end
-                    #@menu("About us" "about.page" "关于我们" "about")#end
+                    #@menu("Homepage" "/tinysite/home.page" "首页" "home")
+                        #@subMenu()
+                            #@subMenuItem("设计理念"  "/tinysite/philosophy.page" "philosophy")#end
+                            #@subMenuItem("设计原则"  "/tinysite/principle.page"  "principle")#end
+                        #end
+                    #end
+                    #@menu("Features" "/tinysite/feature.page" "功能特性" "feature")#end
+                ##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
+                    #@menu("topic" "#" "相关文章" "topic")
+                        #@subMenu()
+                            #subMenuItem("Tiny框架" "/tinysite/topics/cat_377413.page" $menuKey)
+                            #subMenuItem("Tiny示例" "/tinysite/topics/cat_451799.page" $menuKey)
+                            #subMenuItem("算法感想" "/tinysite/topics/cat_377414.page" $menuKey)
+                            #subMenuItem("悠然乱弹" "/tinysite/topics/cat_451101.page" $menuKey)
+                        #end
+                    #end
+                    #@menu("FAQ" "/tinysite/faq.page" "常见问题解答" "faq")#end
+                    #@menu("encourage us" "/tinysite/encourage.page" "鼓励我们" "encourage")#end
+                    #@menu("About us" "/tinysite/about.page" "关于我们" "about")#end
                 #end
             </div>
         </div>
