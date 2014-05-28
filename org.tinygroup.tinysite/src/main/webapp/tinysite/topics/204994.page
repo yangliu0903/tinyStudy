@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "开源框架Tiny之内容组成 ")
 #[[<div class="BlogContent"><span id="OSC_h3_1"></span><h3><span style="color:#E53333;"><strong>源码快照：</strong></span><br></br><span style="color:#E53333;"><strong>https://git.oschina.net/tinyframework/tiny</strong></span><br></br><span style="color:#E53333;"></span></h3><p><strong>上手之前，默认已经熟悉Maven和Git，对于Maven和Gig相关问题，女生请问谷哥，男生请问度娘，他二位的细致耐心一定会让你满意的。</strong></p><p><strong>install之前需要进行环境准备，确认你的机器可以联得上外网，或者有好用的Maven代理。</strong></p><p><strong>请确认在编译环境中存在jdk1.5和1.6以上版本。</strong></p><p><strong>在你的Maven settings.xml中增加如下配置：</strong></p><p><strong>在&lt;profiles&gt;中添加下面的内容，<span style="color:#E53333;">注意：文件路径要改成与你的实际情况一致。</span></strong></p><p><strong></strong></p><pre class="brush:xml; toolbar: true; auto-links: false;">&amp;nbsp;&lt;profile&gt;
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;id&gt;JAVA_CONFIG&lt;/id&gt;
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;properties&gt;

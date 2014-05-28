@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "在Linux下搭建Tiny开发环境 ")
 #[[<div class="BlogContent"><p>有一朋友在Linux下编译Tiny时出错了，偶在Windows下编译是OK的，但是说明不了问题。因此就想着搭建一个Linux下的编译环境进行验证，实际搭建过程碰到了一些问题--主要是NTLM ISA代理服务器的问题。由于整个过程比较复杂，因此就写此文志之，有需要的朋友也正好用一下。</p><h1>Step 1：搭建Linux环境</h1><p>考虑到fedora各方面不错，本人选用了fedora，在vSphere中创建一个虚拟机，一会<span style="line-height:1.5;font-size:12.5px;">就装完了，没有啥好说的。</span></p><h1>Step 2：由于经常要从windows通过ssh连接或上传文件，因此设置自动启用ssh</h1><p><span style="font-family:arial, helvetica, clean, sans-serif;font-size:small;line-height:20px;background-color:#FFFFFF;">systemctl enable sshd.service</span></p><h1>Step3 : 安装JDK，并配置环境变量</h1><p>Tiny框架需要jdk1.5及jdk1.6两个jdk，考虑到如果安装高版本的Web Server，因此也安装了jdk1.7</p><p>JDK有bin和rpm两种格式</p><p>bin格式的通过chmod +x xxxx.bin增加执行权限，然后./xxxx.bin来执行安装</p><p>rpm格式的，需要通过rpm命令进行安装，简单的就是rpm -i xxxx.rpm</p><p>环境变量的设置，如果是所有用户起作用，就配置在/etc/profile中，如果是只有当前用户起作用，就是.bash_profile，如果是自己玩玩的，可以放在/etc/profile中，如果是正式的环境，保守一点放在.bash_profile中更适合一点</p><pre class="brush:shell; toolbar: true; auto-links: false;">JAVA_HOME=/opt/jdk1.6.0_33
 JDK_HOME=$JAVA_HOME
 JRE_HOME=$JAVA_HOME/jre

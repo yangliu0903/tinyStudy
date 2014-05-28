@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "Tiny中文分词 ")
 #[[<div class="BlogContent"><p><span></span></p><p><span style="line-height:1.5;font-size:12.5px;">Maven引用坐标：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;dependency&gt;
       &lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
       &lt;artifactId&gt;chinese&lt;/artifactId&gt;

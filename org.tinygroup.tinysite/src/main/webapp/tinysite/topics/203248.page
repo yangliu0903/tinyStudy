@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny乱弹" "主题切换及其管理")
+#title("Tiny乱弹" "悠然乱弹：从几个方法的重构讲开去--注解相关的处理 ")
 #[[<div class="BlogContent"><p><a href="http://my.oschina.net/tinyframework/blog/203233" target="_blank" rel="nofollow">上一篇</a>我们讲了文件相关的处理，并进行了结构上的优化，味道好极了。</p><p>接下来我们看看注解方面的处理，熟悉注解的同学们都知道，注解是可以添加到类型上、方法上、属性上的。</p><p>有时候它们的处理没有关联性，有些时候，它们的处理又是有关联性的。</p><p>我们用伪代码来示意一下。</p><pre class="brush:java; toolbar: true; auto-links: false;">if(includeAnnotation(testClass,Abc.class)){
   doSomething...
 }

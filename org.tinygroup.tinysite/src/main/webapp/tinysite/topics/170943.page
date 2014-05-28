@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("算法感想" "主题切换及其管理")
+#title("算法感想" "带权树的最短最长问题 ")
 #[[<div class="BlogContent"><p>原题如下：</p><p><img src="http://static.oschina.net/uploads/space/2013/1018/143327_Q9l2_1245989.png" alt=""></img><span></span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">上面的示意图展示了一组城镇之问的道路交通网络。道路的不同颜色表示不同的长度。为了降低难度，只用考虑树形结构，也就是任意两点之间只有一个通路。
 
 请给出思路(当然有程序更好)：分别求出整个树中最远的两点之间的距离是多少？最近的两点之间的距离是多少？

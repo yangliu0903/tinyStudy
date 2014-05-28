@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny乱弹" "主题切换及其管理")
+#title("Tiny乱弹" "悠然乱弹：从几个方法的重构讲开去--文件相关的处理 ")
 #[[<div class="BlogContent"><p><a href="http://my.oschina.net/tinyframework/blog/203222" target="_blank" rel="nofollow">上一篇</a>，我们写了引言，说明了几个方法之前有比较坏的味道，也分析了存在一些性能和扩展性方面的问题。</p><p>但是如何进行优化解决呢？？</p><p>简单看看吧，确实没有什么好的解决方案，那我们就抽丝剥茧，看看这三个方法里都涉及到哪些个领域？</p><ol><li><span style="line-height:1.5;font-size:12.5px;">涉及到注解方面的处理</span></li><li><span style="line-height:1.5;font-size:12.5px;">涉及到多种注解方面的处理</span></li><li><span style="line-height:1.5;font-size:12.5px;">涉及到文件查找方面的问题</span></li><li>涉及到多种资源文件查找方面的问题-file,jar</li><li>涉及到对查找到资源<span></span>文件之后的后续处理的问题</li></ol><p>好吧，可能还有别的问题，我们先利用上面分析出来的问题，看看有没有着手之处？？</p><p>仔细分析下来，暂时有三种要遍历的文件了，file,jar,自定义ClassLoader，那我们简单抽象一下：</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface FileObject{
      String getFileName();<span></span>&amp;nbsp; &amp;nbsp; &amp;nbsp;
      String getFileExtName();

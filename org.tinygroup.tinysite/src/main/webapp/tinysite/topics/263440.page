@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("算法感想" "主题切换及其管理")
+#title("算法感想" "从易于扩展扩展的角度来设计FizzBuzzWhizz ")
 #[[<div class="BlogContent"><span id="OSC_h1_1"></span><h1><span>序言</span></h1><p><span>最近FizzBuzzWhizz比较热，很多OSCER们也写出了自己的版本，有写的最快的，有写的最短的。</span></p><p>前面写过一篇文章叫<span style="font-weight:600;background-color:#FFFFFF;font-size:12pt;line-height:1.5;">&amp;nbsp;</span><a href="http://my.oschina.net/tinyframework/blog/260989" rel="nofollow">悠然乱弹：拉钩网FizzBuzzWhizz试题之悠然版解答</a>，是悠然闲来无事写的一种算法，当时的文章只有写了实现与结果，但是没有详细说明作者为什么这么设计，所以导致一些人可能没有看明白，觉得有些设计是脱裤子放屁，多此一举。</p><p>今天悠然就来谈谈，悠然为什么这么设计，这么设计有什么好处？以与广大朋友们分享。</p><p>从题目来看，并不复杂，就是几种报数规则，并且有一些解决冲突时的规则，然后同学们就可以按规则进行游戏了。但是很显然，体育老师不希望每天玩的游戏都一样，同学们也不希望每天玩一样的游戏，这样就可能导致一个必然会出现的结果，那就是：游戏规则及解决冲突的规则可以方便的进行变换。</p><span id="OSC_h1_2"></span><h1>示例</h1><p>但是这个时候，程序架构必须要保证，当游戏规则或冲突解决规则出现的时候，程序的代码修改量及修改范围要最小化，如果能达到这一目标，说明程序的架构与设计是合理的。</p><p>由于输出100，数量太多，因此悠然把输出数量调整为20，来看看悠然的FizzBuzzWhizz是怎么玩的：</p><p>1.只加入普通读法</p><pre class="brush:java; toolbar: true; auto-links: false;">public static void main(String[] args) {
 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; NumberReaderEngine numberReaderEngine = new NumberReaderEngine();
 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; numberReaderEngine.add(new CommonNumberReader(1));

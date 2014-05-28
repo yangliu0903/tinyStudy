@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "一个Maven工程中，不同的模块需要不同的JDK进行编译的解决方案 ")
 #[[<div class="BlogContent"><p>本人在构建数据库分区，分表的时候，由于jdbc3（jdk1.5中实现）和jdbc4(jdk1.6后实现)两个规范上存在相当大的差异，导致无论采用哪个jdk进行编译，都会导致整个pom树无法正确构建，总有一个要出问题。</p><p>说实际的这个问题卡了比较长的时候，最后还是研究maven编译插件，才真正解决。</p><p>解决的办法就是，在主Pom中定义下面的编译插件：</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;build&gt;
     [...]
     &lt;plugins&gt;

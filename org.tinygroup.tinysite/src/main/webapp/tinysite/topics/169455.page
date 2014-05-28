@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("算法感想" "主题切换及其管理")
+#title("算法感想" "如何打印没有重复数字的自然数字列表？ ")
 #[[<div class="BlogContent"><p>在问答区看到这个问题，下面7788的回答，真是千奇百怪。</p><p>因此，花了几分钟写了一下，不一定是最优解，但是效率和速度应该还可以，代码如下：</p><pre class="brush:java; toolbar: true; auto-links: false;">public class Test1 {
 &amp;nbsp; public static void main(String[] args) {
 &amp;nbsp; &amp;nbsp; long start = System.currentTimeMillis();

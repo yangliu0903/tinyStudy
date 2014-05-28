@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "类Spring IoC容器 ")
 #[[<div class="BlogContent"><p>在构建Tiny框架之初，想着是不是不要强依赖Spring？于是就写了一个类Spring的依赖注入容器，基本实现了Spring的依赖注入部分的功能，工作情况也良好，配置规范也是采用的Spring的规范。在前面一直是没有问题的，但是在做数据库业务的时候，出现问题了。做数据库，必须要考虑事务问题，而当时我的设计目标是对各种开源的ORMapping方案都不拒绝，这个时候就引入一个问题，要么自己再实现一套AOP,要么就复用Spring。当时预想的另外一个方案是核心框架采用非直接依赖Spring的方案，数据库相关的采用Spring依赖的方式。但是实际上，业务层面的Bean会依赖系统层面的Bean，这又涉及到两个容器之间的协作，这个时候，我意识到，是应该做一个取舍了。</p><p>所以果断放弃自己来做IOC和AOP方面的工作，而采用强依赖Spring来实现的方案，毕竟在现在的应用场景下，拒绝Spring就等于让别人拒绝自己。</p><p>但是，不管怎么样，在实现这个容器的过程中，还是让我对依赖注入方面有了更深的了解，因此，这两天的投入还是值得的。</p><p>下面展示一下，它实现的功能：</p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;beans&gt;
 	&lt;bean id=&quot;user&quot; name=&quot;user,user1,user2&quot; scope=&quot;singleton&quot;
 		class=&quot;org.tinygroup.factory.config.User&quot;&gt;

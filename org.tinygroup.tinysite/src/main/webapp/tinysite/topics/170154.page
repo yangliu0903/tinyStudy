@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "线程组 ")
 #[[<div class="BlogContent">问题的提出，我们经常会有几项的任务，这几项任务之间本身没有先后顺序关系，或者是协作来共同完成一个目标。这个时候，我们就希望能够把这几项任务并行进行运行以充分利用CPU，缩短运行时间，或者把大的任务分成小的任务，所有的小任务都完成时，再继续进行下一阶段的处理。<br></br>这个时候就有一个问题了，因为一般的Java多线程都是互不相关的，也就是当这个任务在执行的时候，主线程也会执行，但是因为这个时候前面的任务还不一定执行完毕，所以，主线程继续向下执行是有问题的，因此我们就要主线程等待这些线程执行完毕后再向下执行。<br></br>为此，封装了一个线程组的概念，一个线程组内可以包含N个线程，所有的线程运行完毕后，线程组才会结束，调用线程组的线程才会继续向下执行。<br></br>首先看示例：<br></br><pre class="brush:java; toolbar: true; auto-links: false;">public class NumberAdd extends AbstractProcessor {
 	public static int sumValue;
 	private static Object lockObject = new Object();

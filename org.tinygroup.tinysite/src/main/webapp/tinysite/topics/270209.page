@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "使用TinySpider实战抓取自己博客中的内容 ")
 #[[<div class="BlogContent"><p>因为做官网，没有内容，因此就想办法从OSChina中写的博客里弄点内容，这就要用到爬虫了。</p><p>然后就花了几分钟搞了一下，步骤如下：</p><p>第一步，写个方法抓目录：</p><pre class="brush:java; toolbar: true; auto-links: false;">public static void processCategory(String categoryId) {
         Watcher watcher = new WatcherImpl();
         Spider spider = new SpiderImpl();

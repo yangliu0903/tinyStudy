@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "Tiny之Web工程构建 ")
 #[[<div class="BlogContent"><p>友情提醒：<strong>阅读此文需要java、Maven环境搭建技能，关于java开发环境及maven环境搭建请咨询谷哥和度娘</strong>。</p><span id="OSC_h1_1"></span><h1>搭建TinyWeb工程环境</h1><p>搭建一下TinyWeb的开发环境，是非常简单的</p><p><span style="font-size:12.5px;">如果你没有下载过Tiny框架，请在命令行中输入下面的命令：</span></p><pre class="brush:java;toolbar: true; auto-links: false;">mvn&amp;nbsp;archetype:generate&amp;nbsp;-DarchetypeGroupId=org.tinygroup&amp;nbsp;-DarchetypeArtifactId=webappproject&amp;nbsp;-DarchetypeVersion=0.0.13-SNAPSHOT&amp;nbsp;-DgroupId=org.tinygroup&amp;nbsp;-DartifactId=webhello&amp;nbsp;-Dversion=1.0-SNAPSHOT</pre><p>中间会让你确认一下输入是否正确，回答Y即可，运行完毕之后，就会在当前目录中生成一个webhello的目录，里面包含了tiny的web工程目录。</p><p>如果你已经在本地安装过tiny框架，那么请在命令行中简单输入下面的命令：</p><pre class="brush:java;toolbar: true; auto-links: false;">mvn&amp;nbsp;archetype:generate&amp;nbsp;-DarchetypeCatalog=local</pre><p>这时会显示一个菜单，如下：</p><pre class="brush:shell;toolbar: true; auto-links: false;">D:\studytiny&gt;mvn&amp;nbsp;archetype:generate&amp;nbsp;-DarchetypeCatalog=local
 
 D:\studytiny&gt;set&amp;nbsp;MAVEN_OPTS=&amp;nbsp;-Xms2560m&amp;nbsp;-Xmx4048m

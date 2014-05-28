@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "TinyXmlParser开源喽~~~ ")
 #[[<div class="BlogContent"><p>优点：</p><p>高效、简单、易用的Xml解析器。</p><p>学习时间，分分钟。</p><p>支持中文标签名与属性名，支持下划线，减号等分隔符。</p><p>解析速度超过，查找速度超快，支持格式化。</p><p>缺点：不支持Xml Schema,DTD校验。</p><p>Maven引用坐标：</p><div><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
 &lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
 &lt;artifactId&gt;xmlparser&lt;/artifactId&gt;

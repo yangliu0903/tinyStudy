@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "不一样的味道--Html及Xml解析、格式化、遍历 ")
 #[[<div class="BlogContent"><p>TinyXmlParser一切以简单、实用、快速为主。</p><span id="OSC_h1_1"></span><h1>示例1：Xml字符串解析</h1><p>比如，我们要解析一段Xml字符串，简单如下即可：</p><pre class="brush:java; toolbar: true; auto-links: false;">XmlDocument xmlDocument = new XmlStringParser().parse(&quot;&lt;title&gt;&lt;a&gt;a&lt;/a&gt;&lt;/title&gt;&quot;);</pre><span id="OSC_h1_2"></span><h1>示例2：输出格式化后的Xml：<span style="background-color:#F6F6F6;font-family:&apos;Courier New&apos;, Arial;font-size:9pt;font-weight:normal;line-height:1.5;"></span></h1><pre class="brush:java; toolbar: true; auto-links: false;">XmlFormater formater = new XmlFormater();
 System.out.println(formater.format(xmlDocument));</pre><p><span style="line-height:1.5;font-size:12.5px;">运行结果如下：</span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;title&gt;
   &lt;a&gt;a&lt;/a&gt;

@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "Tiny框架启动过程日志 ")
 #[[<div class="BlogContent"><pre class="brush:xml; toolbar: true; auto-links: false;">-1    [main] INFO   - WEB环境属性开始
 -2    [main] INFO   - javax.servlet.context.tempdir=[D:\git\tiny\web\org.tinygroup.webstandard\target\work]
 -2    [main] INFO   - WEB 应用启动中...

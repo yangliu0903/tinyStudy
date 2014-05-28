@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "分布式锁的简单实现 ")
 #[[<div class="BlogContent"><p>分布式锁在分布式应用当中是要经常用到的，主要是解决分布式资源访问冲突的问题。</p><p>一开始考虑采用ReentrantLock来实现，但是实际上去实现的时候，是有问题的，<span>ReentrantLock的lock和unlock要求必须是在同一线程进行，而分布式应用中，lock和unlock是两次不相关的请求，因此肯定不是同一线程，因此导致无法使用<span>ReentrantLock。</span></span></p><p><span>接下来就考虑采用自己做个状态来进行锁状态的记录，结果发现总是死锁，仔细一看代码，能不锁死么。</span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public synchronized void lock(){
     while(lock){
 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Thread.sleep(1);

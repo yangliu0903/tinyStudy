@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "如何快速开发网站？ ")
 #[[<div class="BlogContent"><p>开发网站 ，一般是如下过程：</p><ol><li><span style="line-height:1.5;font-size:10pt;">找美工画图</span></li><li>进行图片切分</li><li>开发人员添加内容</li></ol><p>现在还用JSP来做网页，当然属于...那啥的事情。</p><p>今天看看不一样的体验，稍有HTML基础，马上就可以照葫芦画瓢了。</p><p>第一步：找美工画图，第二步图片切分</p><p>这两步合成一步，到网上找模板，假设我们就看上这个模板了。</p><p><a href="http://www.cssmoban.com/cssthemes/88.shtml" rel="nofollow">http://www.cssmoban.com/cssthemes/88.shtml</a></p><p>点击下面的地址<a href="http://down.cssmoban.com/cssthemes/dating-web-template-5.rar" target="_blank" rel="nofollow">http://down.cssmoban.com/cssthemes/dating-web-template-5.rar</a>把它下载到本地。</p><p>展开看看，确实还不错，OK，就它了。</p><p>OK，现在看看，如何利用它来快速开发一个网站。</p><p>Step1：创建UI展现包</p><p>说白点，就是创建个jar包工程</p><p>Step2:把css和images目录复制到src/main/<span>resources/demo/目录下</span></p><p><span>Step3:在<span>src/main/</span><span>resources/demo/目录下，创建文件demo.ui.xml</span></span></p><p><span>其文本内容如下：</span></p><p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;ui-components&gt;
 	&lt;ui-component name=&quot;demo&quot;&gt;
 		&lt;css-resource&gt;/demo/css/layout.css&lt;/css-resource&gt;

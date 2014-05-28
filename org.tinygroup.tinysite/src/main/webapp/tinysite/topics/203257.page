@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny乱弹" "主题切换及其管理")
+#title("Tiny乱弹" "悠然乱弹：从几个方法的重构讲开去--性能大优化 ")
 #[[<div class="BlogContent"><p><a href="http://my.oschina.net/tinyframework/blog/203248" target="_blank" rel="nofollow">上一篇</a>讲到经过上面两篇的优化与重构，整体来说，前面提到的问题，除了性能问题之外，其它问题都已经顺利的解决了。</p><p>现在还存在多次扫描处理的问题，也就是说虽然代码结构性重构是成功的，但是性能问题还是没有根本解决。</p><p>在给出解决方案之前，需要对这个处理方式缕一缕：</p><p>处理方式1：每次遍历全路径找到待处理文件，文件然后批量进行处理。优点是处理起来比较简单，但是会重复扫描。</p><p>处理方式2：一次遍历所有文件，然后对每个文件进行注解检测。扫描全路径只有一次，然后要把每个文件与过滤器进行比较如果比较成功那就做，比较不成功就不做。</p><p>稍加分析就会发现，两种方式的比较次数是一样的，但是第二种方案遍历文件的次数就少到极限了，还能比1次更少么？？</p><p>这次的做法就有点复杂了（相对的，实际上也很简单）,做一个过滤器，里面放个Map存储过滤器：处理器。</p><p>对于每个一个文件，都对所有的过滤器进行校验，如果校验成功，就执行对应的处理器。</p><pre class="brush:java; toolbar: true; auto-links: false;">public class ComplexFileFilter implements FileObjectFilter {
     Map&lt;FileObjectFilter,FileObjectProcessor&gt; filterProcessorMap;
     public boolean accept(FileObject fileObject) {

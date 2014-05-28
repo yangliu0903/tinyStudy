@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "构建网络爬虫？so easy ")
 #[[<div class="BlogContent"><p>网络爬虫，一般用在全文检索或内容获取上面。</p><p>Tiny框架对此也做了有限的支持，虽然功能不多，但是想做全文检索或从网页上获取数据也是非常方便的。</p><span id="OSC_h2_1"></span><h2>框架特性</h2><ol><li>强大的节点过滤能力</li><li>支持post与get两种数据提交方式</li><li>避免网页重复处理功能</li><li>支持多站点内容抓取功能</li><li>较强的Html容错处理</li></ol><span id="OSC_h2_2"></span><h2>框架设计</h2><span id="OSC_h3_3"></span><h3>网络爬虫</h3><pre class="brush:java; toolbar: true; auto-links: false;">public interface Spinder {
  /**
  * 添加站点访问器

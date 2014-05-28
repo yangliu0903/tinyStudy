@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("算法感想" "主题切换及其管理")
+#title("算法感想" "如何模仿人的学习模式来教计算机程序解数学题？ ")
 #[[<div class="BlogContent"><span>周末，看关于专家系统方面的书，其中有关于规则方面的内容，忽然就想，能不能模仿人的学习方式来提升计算机程序的计算能力呢？&amp;nbsp;</span><br></br><span>试想，一个小孩子，他一开始什么也不会，首先，你要告诉他什么是数字，然后告诉他什么是加、减；然后告诉他什么是乘、除，还要告诉他有乘、除要先计算乘除，然后又引入了括号说，有括号永远要先计算括号。如此，随着告诉他的技能越多，他的解题能力也就越强。&amp;nbsp;</span><br></br><span>于是就想着试验一下。&amp;nbsp;</span><br></br><span>第一步，教计算机学习什么是数字。&amp;nbsp;</span><br></br><span>下面的正则表达式，就是告诉“孩子”，数字就是前面可能有“-”号，当然也可能没有，接下来连续的数字0-9，组成的数字，后面可能还会有小数点开始加一堆0-9的数字，当然没有也没有关系。如此，它就算懂得认数字了。&amp;nbsp;</span><br></br><pre class="brush:java; toolbar: true; auto-links: false;">public final class MathNumber {
 	private MathNumber() {
 	}

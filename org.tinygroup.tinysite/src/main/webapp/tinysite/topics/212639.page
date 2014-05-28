@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "Tiny Formater ")
 #[[<div class="BlogContent"><p>昨天看了<a href="http://my.oschina.net/brinlike" target="_blank" rel="nofollow">@Brin想写程序</a>的文章&amp;nbsp;<a href="http://www.oschina.net/code/snippet_1378360_34352" target="_blank" rel="nofollow">几行Java代码实现的简单模板（不是引擎）</a>，呵呵，就非常想去掏掏偶滴小兜兜，果然发现一个类似的东西，因为东西太小，没有准备怎么写，但是看到@Brin想写程序的文章，就想着也发篇文章，说一下当时我的想法与思路。</p><p>格式化提供者，用于对字符串进行转换：</p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;interface&amp;nbsp;FormatProvider&amp;nbsp;{
 	/**
 	&amp;nbsp;*&amp;nbsp;把指定的值进行处理后返回

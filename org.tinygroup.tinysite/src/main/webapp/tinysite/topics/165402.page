@@ -1,5 +1,5 @@
 #pageTitle("topic" "topic")
-#title("Tiny框架" "主题切换及其管理")
+#title("Tiny框架" "主题切换及其管理 ")
 #[[<div class="BlogContent"><p>想做一个更换主题的功能</p><p>第一步，做主题管理：</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;entity-model id=&quot;theme&quot; name=&quot;theme&quot; title=&quot;主题&quot;
 	enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; version=&quot;2.0&quot; cache-enabled=&quot;true&quot;&gt;
 	&lt;operations&gt;
