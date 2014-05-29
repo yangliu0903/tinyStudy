@@ -1,6 +1,6 @@
 <ui-components>
     <ui-component name="tinysite" dependencies="">
-        <css-resource>/tinysite/css/shCore.css,/tinysite/css/shCoreEclipse.css,/tinysite/css/font.css,/tinysite/css/bootstrap.min.css,/tinysite/css/bootstrap-responsive.min.css,/tinysite/css/style.css,/tinysite/css/slides.css,/tinysite/css/masonry.css,/tinysite/css/fancybox.css,/tinysite/css/colors/custom.css</css-resource>
-        <js-resource>/tinysite/js/jquery-1.9.1.js,/tinysite/js/fancybox.js,/tinysite/js/shCore.js,/tinysite/js/shBrushJava.js,/tinysite/js/shBrushCpp.js,/tinysite/js/shBrushXml.js,/tinysite/js/slides.min.js,/tinysite/js/bootstrap.min.js,/tinysite/js/masonry.min.js,/tinysite/js/functions.js</js-resource>
+        <css-resource>/css/shCore.css,/css/shCoreEclipse.css,/css/font.css,/css/bootstrap.min.css,/css/bootstrap-responsive.min.css,/css/style.css,/css/slides.css,/css/masonry.css,/css/fancybox.css,/css/colors/custom.css</css-resource>
+        <js-resource>/js/jquery-1.9.1.js,/js/fancybox.js,/js/shCore.js,/js/shBrushJava.js,/js/shBrushCpp.js,/js/shBrushXml.js,/js/slides.min.js,/js/bootstrap.min.js,/js/masonry.min.js,/js/functions.js</js-resource>
     </ui-component>
 </ui-components>

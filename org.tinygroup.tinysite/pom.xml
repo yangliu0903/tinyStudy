@@ -115,7 +115,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>tinysite</finalName>
+		<finalName>ROOT</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
