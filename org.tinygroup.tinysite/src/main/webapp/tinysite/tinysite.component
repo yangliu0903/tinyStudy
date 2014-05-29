@@ -402,11 +402,13 @@ $bodyContent
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
                     #@menu("Homepage" "/tinysite/home.page" "首页" "home")
-                        #@subMenu()
+ #*                       #@subMenu()
                             #@subMenuItem("设计理念"  "/tinysite/philosophy.page" "philosophy")#end
                             #@subMenuItem("设计原则"  "/tinysite/principle.page"  "principle")#end
                         #end
-                    #end
+ *#                   #end
+                    #@menu("philosophy" "/tinysite/philosophy.page" "设计理念" "philosophy")#end
+                    #@menu("principle" "/tinysite/principle.page" "设计原则" "principle")#end
                     #@menu("Features" "/tinysite/feature.page" "功能特性" "feature")#end
                 ##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
                     #@menu("topic" "#" "相关文章" "topic")

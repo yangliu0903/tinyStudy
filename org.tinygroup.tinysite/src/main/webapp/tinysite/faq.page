@@ -62,7 +62,7 @@
             #end
 
             #@masonryItem()
-                #@caption("为什么指定了坐标确找不到资源？")
+                #@caption("为什么指定了坐标却找不到资源？")
                 <p>如果是正式版本号，是可以找到的，如果是SNAPSHOT版本，则需要添加#@a("https://oss.sonatype.org/content/repositories/snapshots")快照仓库#end</p>
                 #end
             #end
