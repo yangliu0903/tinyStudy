@@ -409,7 +409,7 @@ $bodyContent
  *#                   #end
                     #@menu("philosophy" "/philosophy.page" "设计理念" "philosophy")#end
                     #@menu("principle" "/principle.page" "设计原则" "principle")#end
-                    #@menu("Features" "/feature.page" "功能特性" "feature")#end
+                    #@menu("functions" "/function.page" "框架概要" "functions")#end
                 ##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
                     #@menu("topic" "#" "相关文章" "topic")
                         #@subMenu()

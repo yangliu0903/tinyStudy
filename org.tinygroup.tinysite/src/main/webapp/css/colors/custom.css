@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Perfetto CSS v1.0 - Designed and built by Angelo Mazzilli */
+/* www.angelomazzilli.com */
+
+.btn-primary, .single-post p:first-letter, .logo a span, .progress .bar, .settings .btn-settings:hover {
+	background: #---;
+}
+.slides:hover .slidesjs-play, a.fancybox span.view {
+	background: rgba(-, -, -, 0.5);
+}
+.navbar .navbar-inner .nav li:hover, .navbar .navbar-inner .nav li a:hover, .navbar .navbar-inner .nav li.active, .navbar .navbar-inner .nav li.active a {
+	border-bottom-color: #---;
+}
+a, blockquote, .lead, .tooltip-hover, .popover-hover, .accordion-heading .accordion-toggle, .nav-tabs li a:hover, .nav-tabs li a:focus, .nav-tabs .dropdown-menu li a:hover, .nav-tabs .dropdown.active.open .dropdown-menu li a:hover, .nav-tabs .dropdown a.dropdown-toggle, .navbar .navbar-inner .nav li:hover, .navbar .navbar-inner .nav li a:hover, .navbar .navbar-inner .nav li.active, .navbar .navbar-inner .nav li.active a, .media-list .media .media-body h4 {
+	color: #---;
+}

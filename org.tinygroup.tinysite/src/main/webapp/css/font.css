@@ -1,0 +1,11 @@
+* {
+    font-family: Oswald, "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1";
+}
+
+
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Oswald Light'), local('Oswald-Light'), url(../fonts/font2.woff) format('woff');
+}

@@ -1,0 +1,36 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "300粉丝集结号吹响了，可以开源重量级的流程引擎或UI引擎 ")
+#[[<div class="BlogContent"><p>关注这两个方面的同学个踊跃加粉了~~同时在下面回复期望开源哪一个，将先开源呼声高的一个。</p><p>好吧，先小秀一下UI：</p><p>增加下面的pom依赖，表示此工程需要org.tinygroup.aerowindow</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
+            &lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+            &lt;artifactId&gt;org.tinygroup.aerowindow<span></span>&lt;/artifactId&gt;
+            &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;</pre><p>接下来就可以在页面文件中编写内容了：</p><p>比如创建aero.page文件</p><pre class="brush:xml; toolbar: true; auto-links: false;">#@aeroWindow(&quot;Demo&quot; &quot;演示&quot; &quot;400&quot; &quot;300&quot;)
+&lt;ul&gt;
+	&lt;li&gt;&lt;strong&gt;Special feature:&lt;/strong&gt; Live animated Aero Glossy look (see header when moving) &lt;/li&gt;
+	&lt;li&gt;Usual window buttons: Minimize, Zoom, Maximize and Close &lt;/li&gt;
+	&lt;li&gt;Double-click support, such as in windows (maximize, zoom out) &lt;/li&gt;
+	&lt;li&gt;Active window is highlighted visually, as in Windows &lt;/li&gt;
+	&lt;li&gt;User-infinitely scalable window size &lt;/li&gt;
+	&lt;li&gt;Sliding window by mouse dragging &lt;/li&gt;
+	&lt;li&gt;Usual Z-order management, as in Windows &lt;/li&gt;
+	&lt;li&gt;+ Animated change of window size&lt;/li&gt;
+	&lt;li&gt;+ Multiple configuration options &lt;/li&gt;
+&lt;/ul&gt;
+#end
+
+#@aeroWindow(&quot;hundsun&quot; &quot;百度&quot; &quot;800&quot; &quot;400&quot;)
+&lt;iframe src=&quot;http://www.baidu.com&quot; width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;border: 0px;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+#end
+
+#@iconContainer(&quot;abc&quot;)
+	#@icon(&quot;firefox&quot; &quot;DesktopIcon-Firefox.png&quot;)
+	alert(1);
+	#end
+#end</pre>运行结果：<p><img src="http://static.oschina.net/uploads/space/2014/0331/204816_RBJv_1245989.png" alt=""></img></p><p>简单吧。</p><p>实际上，这个效果要出来，需要用到aero window jquery plugin,它还用到了jqueryui，JqueryUI还用到了jquery，但是所有的这一切程序员都不用管了。</p><p>只要引用了UI组件包org.tinygroup.aerowindow，什么jss,css,什么图片资源，字体资源统统不用管。</p><pre class="brush:xml; toolbar: true; auto-links: false;">#@aeroWindow(&quot;Demo&quot; &quot;演示&quot; &quot;400&quot; &quot;300&quot;)
+......
+#end</pre><p>只要在页面中写入上面的内容，......就会自动放入到窗口中去。</p><p>再看一个例子：</p><p></p><p>增加下面的pom依赖，表示此工程需要org.tinygroup.arctext</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
+            &lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+            &lt;artifactId&gt;org.tinygroup.<span>arctext</span>&lt;/artifactId&gt;
+            &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+        &lt;/dependency&gt;</pre>然后编写下在的页面文件arctext.page：<p></p><p></p><pre class="brush:java; toolbar: true; auto-links: false;">#@arcText (&quot;abc&quot; 3 &quot;100&quot; 1 &quot;200pt&quot; &quot;200pt&quot;)中华人民共和国#end
+#@arcText (&quot;aaa&quot; 3 &quot;100&quot; -1 &quot;200pt&quot; &quot;200pt&quot;)中华人民共和国#end</pre><p><br></br></p><p><br></br></p>然后执行，就可以执行出下面的效果：<p></p><p><img src="http://static.oschina.net/uploads/space/2014/0331/210854_LTk2_1245989.png" alt=""></img></p><p>只要去掉上面的POM依赖，它们就会消失的干干净净。</p></div>]]#

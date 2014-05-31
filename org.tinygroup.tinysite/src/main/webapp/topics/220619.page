@@ -1,0 +1,232 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "不一样的味道--Html及Xml解析、格式化、遍历 ")
+#[[<div class="BlogContent"><p>TinyXmlParser一切以简单、实用、快速为主。</p><span id="OSC_h1_1"></span><h1>示例1：Xml字符串解析</h1><p>比如，我们要解析一段Xml字符串，简单如下即可：</p><pre class="brush:java; toolbar: true; auto-links: false;">XmlDocument xmlDocument = new XmlStringParser().parse(&quot;&lt;title&gt;&lt;a&gt;a&lt;/a&gt;&lt;/title&gt;&quot;);</pre><span id="OSC_h1_2"></span><h1>示例2：输出格式化后的Xml：<span style="background-color:#F6F6F6;font-family:&apos;Courier New&apos;, Arial;font-size:9pt;font-weight:normal;line-height:1.5;"></span></h1><pre class="brush:java; toolbar: true; auto-links: false;">XmlFormater formater = new XmlFormater();
+System.out.println(formater.format(xmlDocument));</pre><p><span style="line-height:1.5;font-size:12.5px;">运行结果如下：</span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;title&gt;
+  &lt;a&gt;a&lt;/a&gt;
+&lt;/title&gt;</pre><p>当然换一种写法也是可以的，比如下面：</p><pre class="brush:xml; toolbar: true; auto-links: false;">XmlDocument xmlDocument = new XmlStringParser().parse(&quot;&lt;title&gt;&lt;a&gt;a&lt;/a&gt;&lt;/title&gt;&quot;);
+XmlFormater formater = new XmlFormater();
+System.out.println(formater.format(xmlDocument));</pre><span>输出结果和上面是一样的。</span><span id="OSC_h1_3"></span><h1>示例3：中文标签支持</h1><pre class="brush:java; toolbar: true; auto-links: false;">XmlDocument document = new XmlStringParser().parse(&quot;&lt;html 中=&apos;文&apos;&gt;&lt;head&gt;&lt;title&gt;aaa&lt;/title&gt;&lt;中&gt;中信&lt;/中&gt;&lt;/head&gt;&lt;/html&gt;&quot;);
+document.write(System.out);
+XmlFormater formater = new XmlFormater();
+formater.format(document, System.out);</pre><p><span style="font-size:12.5px;line-height:1.5;">上面的例子用了两种方式，一种是非格式化方式输出，默认是用一行输出的；另一种是格式化输出的：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;html 中=&quot;文&quot;&gt;&lt;head&gt;&lt;title&gt;aaa&lt;/title&gt;&lt;中&gt;中信&lt;/中&gt;&lt;/head&gt;&lt;/html&gt;
+&lt;html 中=&quot;文&quot;&gt;
+  &lt;head&gt;
+    &lt;title&gt;aaa&lt;/title&gt;
+    &lt;中&gt;中信&lt;/中&gt;
+  &lt;/head&gt;
+&lt;/html&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">可以看到对于中文标签及属性也有完美支持。</span></p><span id="OSC_h1_4"></span><h1>示例4：容错性示例</h1><pre class="brush:java; toolbar: true; auto-links: false;">XmlDocument document = new XmlStringParser().parse(&quot;&lt;title&gt;&lt;a&gt;a&lt;/title&gt;&quot;);
+XmlFormater formater = new XmlFormater();
+formater.format(document, System.out);</pre><p><span style="font-size:12.5px;line-height:1.5;">上面的例子中，&lt;a&gt; 标签没有&lt;/a&gt;结束标签。</span></p><p>输出结果如下：<span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;title&gt;
+  &lt;a&gt;a&lt;/a&gt;
+&lt;/title&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">可以看到，它已经尽最大可能来猜测是否正确</span></p><span id="OSC_h1_5"></span><h1>示例5：性能测试</h1><pre class="brush:java; toolbar: true; auto-links: false;">XmlNode node = null;
+
+	public NameFilterTest() {
+		node = new XmlNode(&quot;root&quot;);
+		for (int i = 0; i &lt; 60; i++) {
+			XmlNode a = node.addNode(new XmlNode(&quot;a&quot; + i));
+			for (int j = 0; j &lt; 60; j++) {
+				XmlNode b = a.addNode(new XmlNode(&quot;b&quot; + j));
+				for (int k = 0; k &lt; 60; k++) {
+					b.addNode(new XmlNode(&quot;c&quot; + k));
+				}
+			}
+		}
+	}</pre><p><span style="font-size:12.5px;line-height:1.5;">构建这么大一棵Dom树</span></p><pre class="brush:java; toolbar: true; auto-links: false;">long t21 = System.currentTimeMillis();
+FastNameFilter&lt;XmlNode&gt; fast = new FastNameFilter(node);
+long t22 = System.currentTimeMillis();
+System.out.println(&quot;初始化用时:&quot; + (t22 - t21));
+long t1 = System.currentTimeMillis();
+for (int x = 0; x &lt; 10000; x++) {
+&amp;nbsp; &amp;nbsp; XmlNode node = fast.findNode(&quot;b6&quot;);
+}
+// System.out.println(nodeName);
+long t2 = System.currentTimeMillis();
+System.out.println(&quot;遍历用时:&quot; + (t2 - t1));</pre><p><span style="font-size:12.5px;line-height:1.5;">运行结果如下：</span></p><pre class="brush:xml; toolbar: true; auto-links: false;">初始化用时:48
+遍历用时:20</pre><p>请注意，上面的时间单位不是分钟，不是秒钟，而是毫秒。</p><span id="OSC_h1_6"></span><h1>示例6：节点过滤</h1><p>对节点过滤是否方便才是最紧要的。这个功能，太过强大，因此，用例子已经演示不出它的强大了。直接贴接口：</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface NodeFilter&lt;T extends Node&lt;T&gt;&gt; {
+	/**
+	 * 初始化节点
+	 * 
+	 * @param node
+	 */
+	void init(T node);
+
+	/**
+	 * 设置必须包含的属性及对应属性的值，必须存在
+	 * 
+	 * @param includeAttributes
+	 */
+	void setIncludeAttribute(Map&lt;String, String&gt; includeAttributes);
+
+	/**
+	 * 设置必须包含的属性及对应的属性的值，必须存在
+	 * 
+	 * @param key
+	 * @param value
+	 */
+	void setIncludeAttribute(String key, String value);
+
+	/**
+	 * 设置必须包含的属性
+	 * 
+	 * @param includeAttribute
+	 */
+	void setIncludeAttributes(String... includeAttribute);
+
+	/**
+	 * 设置必须排除的属性及对应属性值 如果包含属性，但属性的值与Map中不相同，允许存在该属性 若包含属性且属性的值与Map中相同，则不允许存在该属性
+	 * 
+	 * @param excludeAttribute
+	 */
+	void setExcludeAttribute(Map&lt;String, String&gt; excludeAttribute);
+
+	/**
+	 * 设置必须排除的属性，指定的属性不能存在
+	 * 
+	 * @param excludeAttribute
+	 */
+	void setExcludeAttribute(String... excludeAttribute);
+
+	/**
+	 * 设置必须包含的内容，只需要context中包include该值就行
+	 * 
+	 * @param includeText
+	 */
+	void setIncludeText(String... includeText);
+
+	/**
+	 * 设置必须排除的内容
+	 * 
+	 * @param excludeText
+	 */
+	void setExcludeText(String... excludeText);
+
+	/**
+	 * 设置必须包含的子节点
+	 * 
+	 * @param includeNode
+	 */
+	void setIncludeNode(String... includeNode);
+
+	/**
+	 * 设置父节点不允许的节点名称
+	 * 
+	 * @param excludeByNode
+	 */
+
+	void setExcludeByNode(String... excludeByNode);
+
+	/**
+	 * 设置父节点必须包含的节点名称
+	 * 
+	 * @param includeByNode
+	 */
+	void setIncludeByNode(String... includeByNode);
+
+	/**
+	 * 设置必须排除的子节点
+	 * 
+	 * @param excludeNode
+	 */
+
+	void setExcludeNode(String... excludeNode);
+
+	/**
+	 * 设置至少包含一个指定名称的节点
+	 * 
+	 * @param xorSubNode
+	 */
+	void setXorSubNode(String... xorSubNode);
+
+	/**
+	 * 设置至少包含一个指定名称属性
+	 * 
+	 * @param xorProperties
+	 */
+	void setXorProperties(String... xorProperties);
+
+	/**
+	 * 清除过滤条件
+	 */
+	void clearCondition();
+
+	/**
+	 * 设置要搜索的节点名称
+	 */
+	void setNodeName(String nodeName);
+
+	/**
+	 * 查找指定节点名称及满足其他条件的节点列表
+	 * 
+	 * @param nodeName
+	 * @return
+	 */
+	List&lt;T&gt; findNodeList(String nodeName);
+
+	/**
+	 * 根据名字及其他条件查找节点，如果有多个，也只返回第一个
+	 * 
+	 * @param nodeName
+	 *            要查找的节点名称
+	 * @return
+	 */
+	T findNode(String nodeName);
+
+	/**
+	 * 搜索符合设置的节点名称的节点，如果有多个，则只返回找到的第一个
+	 * 
+	 * @return
+	 */
+	T findNode();
+
+	/**
+	 * 搜索符合设置的节点名称的节点列表
+	 * 
+	 * @return
+	 */
+	List&lt;T&gt; findNodeList();
+}</pre><p><span style="font-size:12.5px;line-height:1.5;">也就是说它支持节点指定属性名及指定属性值过滤（可以指定多组）、指定属性名过滤（不管是什么值都可以，可以指定多个）、可以指定排除属性及属性值（即不能包含的属性名及值，可以包含多组）、不能包含的属性（可以包含多组）、包含文本内容（可以指定多组）、不能包含的文件内容（可以指定多组），可以指定包含的节点名（可以指定多组）、可以指定不能包含的节点（可以指定多组）、可以指定必须在某个节点下（可以指定多组）、可以指定不能在某个节点下（可以指定多组）、可以指定至少包含某几个节点中的一个，可以指定至下包含某几个属性中的一个，可以根据节点名进行搜索。</span></p><p><span style="line-height:1.5;font-size:12.5px;">上面的所有条件可以组合起来一起搜索。</span></p><p>说了这么多，看看测试用例：</p><pre class="brush:java; toolbar: true; auto-links: false;">node = new XmlNode(&quot;root&quot;);
+XmlNode n1 = node.addNode(new XmlNode(&quot;aa&quot;));
+n1.setAttribute(&quot;a&quot;, &quot;av&quot;);
+n1.setAttribute(&quot;b&quot;, &quot;bv&quot;);
+n1.addNode(new XmlNode(&quot;a&quot;));
+n1 = node.addNode(new XmlNode(&quot;aa&quot;));
+n1.setAttribute(&quot;a&quot;, &quot;av1&quot;);
+n1.setAttribute(&quot;b&quot;, &quot;bv1&quot;);
+n1.setAttribute(&quot;c&quot;, &quot;cv1&quot;);
+n1.addNode(new XmlNode(&quot;b&quot;));</pre><p>上面构建了一棵Dom树:</p><pre class="brush:java; toolbar: true; auto-links: false;">&lt;root&gt;
+  &lt;aa a=&quot;av&quot; b=&quot;bv&quot;&gt;
+    &lt;a&gt;
+    &lt;/a&gt;
+  &lt;/aa&gt;
+  &lt;aa a=&quot;av1&quot; b=&quot;bv1&quot; c=&quot;cv1&quot;&gt;
+    &lt;b&gt;
+    &lt;/b&gt;
+  &lt;/aa&gt;
+&lt;/root&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">下面是一堆的测试用例了：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">filter = new NameFilter(node);
+filter.clearCondition();
+assertEquals(1, filter.findNodeList(&quot;root&quot;).size());
+filter.setExcludeAttribute(&quot;c&quot;);
+assertEquals(1, filter.findNodeList(&quot;aa&quot;).size());
+// 测试包含属性名
+filter.clearCondition();
+assertEquals(1, filter.findNodeList(&quot;root&quot;).size());
+filter.setIncludeAttributes(&quot;c&quot;);
+assertEquals(1, filter.findNodeList(&quot;aa&quot;).size());
+// 测试包含指定属性值
+filter.clearCondition();
+Hashtable&lt;String, String&gt; pht = new Hashtable&lt;String, String&gt;();
+pht.put(&quot;a&quot;, &quot;av1&quot;);
+filter.setIncludeAttribute(pht);
+assertEquals(1, filter.findNodeList(&quot;aa&quot;).size());
+filter.setExcludeAttribute(&quot;c&quot;);
+assertEquals(0, filter.findNodeList(&quot;aa&quot;).size());
+// 测试包含指定节点
+filter.clearCondition();
+filter.setIncludeNode(&quot;a&quot;);
+assertEquals(1, filter.findNodeList(&quot;aa&quot;).size());
+filter.setIncludeAttributes(&quot;c&quot;);
+assertEquals(0, filter.findNodeList(&quot;aa&quot;).size());
+// 测试包含指定节点
+filter.clearCondition();
+filter.setExcludeNode(&quot;c&quot;);
+assertEquals(2, filter.findNodeList(&quot;aa&quot;).size());</pre><p><span style="font-size:12.5px;line-height:1.5;">测试用例写得比较丑，但是对它的使用还是做了一个简单的演示。</span></p><p><span style="font-size:12.5px;line-height:1.5;">上面所有的例子当中，把X变成Ht，就是针对Html解析器的了，API完全一致，用法完全相同。</span></p><p><span style="font-size:12.5px;line-height:1.5;">区别在于Xml的标签及属性名是大小写敏感的，而Html是大小写不敏感的。</span></p><p><span style="font-size:12.5px;line-height:1.5;">另外Html支持单标签。</span></p></div>]]#
