@@ -128,227 +128,227 @@
 0 0 4 0 6 0 2 0 0 
 5 0 0 0 0 2 0 0 7 
 0 0 2 1 0 0 0 0 0</pre><p><span style="font-size:12.5px;line-height:1.5;">呵呵，显而易见，它的计算能力太差了，已经无法计算了。</span></p><p>吃过饭之后，再对数独程序进行增强。增强之后，成为下面的样子：</p><pre class="brush:java; toolbar: true; auto-links: false;">public class Sudoku {
-&amp;nbsp; &amp;nbsp; int[][] data = new int[9][9];//填好的数字
-&amp;nbsp; &amp;nbsp; List&lt;Integer&gt;[][] dataLeft = new ArrayList[9][9];//每个位置可能的数字
+    int[][] data = new int[9][9];//填好的数字
+    List&lt;Integer&gt;[][] dataLeft = new ArrayList[9][9];//每个位置可能的数字
 
 
-&amp;nbsp; &amp;nbsp; public Sudoku(int data[][]) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (data[i][j] != 0) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; putNumber(i, j, data[i][j]);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+    public Sudoku(int data[][]) {
+        this();
+        for (int i = 0; i &lt; 9; i++) {
+            for (int j = 0; j &lt; 9; j++) {
+                if (data[i][j] != 0) {
+                    putNumber(i, j, data[i][j]);
+                }
+            }
+        }
+    }
 
 
-&amp;nbsp; &amp;nbsp; public Sudoku() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //初始化数据
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; data[i][j] = 0;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[i][j] = new ArrayList&lt;Integer&gt;();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int k = 1; k &lt;= 9; k++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[i][j].add(k);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+    public Sudoku() {
+        //初始化数据
+        for (int i = 0; i &lt; 9; i++) {
+            for (int j = 0; j &lt; 9; j++) {
+                data[i][j] = 0;
+                dataLeft[i][j] = new ArrayList&lt;Integer&gt;();
+                for (int k = 1; k &lt;= 9; k++) {
+                    dataLeft[i][j].add(k);
+                }
+            }
+        }
+    }
 
 
-&amp;nbsp; &amp;nbsp; public void putNumber(int x, int y, Integer n) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; data[x][y] = n;//此点位置赋值
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[x][y].clear();//可能数字清空;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //清理水平和竖直
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (i != x) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[i][y].remove(n);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (i != y) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[x][i].remove(n);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //清理小空格
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int startX = x / 3;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int startY = y / 3;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 3; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 3; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (i + startX * 3 != x &amp;&amp; j + startY * 3 != y) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[i + startX * 3][j + startY * 3].remove(n);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+    public void putNumber(int x, int y, Integer n) {
+        data[x][y] = n;//此点位置赋值
+        dataLeft[x][y].clear();//可能数字清空;
+        //清理水平和竖直
+        for (int i = 0; i &lt; 9; i++) {
+            if (i != x) {
+                dataLeft[i][y].remove(n);
+            }
+            if (i != y) {
+                dataLeft[x][i].remove(n);
+            }
+        }
+        //清理小空格
+        int startX = x / 3;
+        int startY = y / 3;
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (i + startX * 3 != x &amp;&amp; j + startY * 3 != y) {
+                    dataLeft[i + startX * 3][j + startY * 3].remove(n);
+                }
+            }
+        }
+    }
 
 
-&amp;nbsp; &amp;nbsp; public void compute() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int count = 0;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //计算某个位置只有一个数字的情况
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (dataLeft[i][j].size() == 1) {//如果只有一个可能的数字，那就是它了
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; putNumber(i, j, dataLeft[i][j].get(0));
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count++;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (count == 0) {//如果没有唯一一个数的，则查找只出现过一次的
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count += computeRow();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count += computeColumn();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count += computeBox();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+    public void compute() {
+        int count = 0;
+        //计算某个位置只有一个数字的情况
+        for (int i = 0; i &lt; 9; i++) {
+            for (int j = 0; j &lt; 9; j++) {
+                if (dataLeft[i][j].size() == 1) {//如果只有一个可能的数字，那就是它了
+                    putNumber(i, j, dataLeft[i][j].get(0));
+                    count++;
+                }
+            }
+        }
+        if (count == 0) {//如果没有唯一一个数的，则查找只出现过一次的
+            count += computeRow();
+            count += computeColumn();
+            count += computeBox();
+        }
 
 
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (count &gt; 0) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; compute();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+        if (count &gt; 0) {
+            compute();
+        }
+    }
 
 
-&amp;nbsp; &amp;nbsp; public int computeRow() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int c = 0;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {//行
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int[] count = new int[9];
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {//列
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int num : dataLeft[i][j]) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count[num - 1]++;//统计个数
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int k = 0; k &lt; 9; k++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (count[k] == 1) {//如果区域内的某个数字可能次数为1
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (dataLeft[i][j].contains(k + 1)) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; putNumber(i, j, k + 1);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; c++;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return c;
-&amp;nbsp; &amp;nbsp; }
+    public int computeRow() {
+        int c = 0;
+        for (int i = 0; i &lt; 9; i++) {//行
+            int[] count = new int[9];
+            for (int j = 0; j &lt; 9; j++) {//列
+                for (int num : dataLeft[i][j]) {
+                    count[num - 1]++;//统计个数
+                }
+            }
+            for (int k = 0; k &lt; 9; k++) {
+                if (count[k] == 1) {//如果区域内的某个数字可能次数为1
+                    for (int j = 0; j &lt; 9; j++) {
+                        if (dataLeft[i][j].contains(k + 1)) {
+                            putNumber(i, j, k + 1);
+                            c++;
+                        }
+                    }
+                }
+            }
+        }
+        return c;
+    }
 
 
 
 
-&amp;nbsp; &amp;nbsp; public int computeBox() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int c = 0;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int dx = 0; dx &lt; 3; dx++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int dy = 0; dy &lt; 3; dy++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //9个小格子
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int[] count = new int[9];
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; List&lt;Point&gt;[] points = new ArrayList[9];
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; points[i] = new ArrayList&lt;Point&gt;();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 3; i++) {//行
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 3; j++) {//列
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int num : dataLeft[dx * 3 + i][dy * 3 + j]) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count[num - 1]++;//统计个数
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; points[num - 1].add(new Point(dx * 3 + i, dy * 3 + j));
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int k = 0; k &lt; 9; k++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (count[k] == 0) {//如果没有
+    public int computeBox() {
+        int c = 0;
+        for (int dx = 0; dx &lt; 3; dx++) {
+            for (int dy = 0; dy &lt; 3; dy++) {
+                //9个小格子
+                int[] count = new int[9];
+                List&lt;Point&gt;[] points = new ArrayList[9];
+                for (int i = 0; i &lt; 9; i++) {
+                    points[i] = new ArrayList&lt;Point&gt;();
+                }
+                for (int i = 0; i &lt; 3; i++) {//行
+                    for (int j = 0; j &lt; 3; j++) {//列
+                        for (int num : dataLeft[dx * 3 + i][dy * 3 + j]) {
+                            count[num - 1]++;//统计个数
+                            points[num - 1].add(new Point(dx * 3 + i, dy * 3 + j));
+                        }
+                    }
+                }
+                for (int k = 0; k &lt; 9; k++) {
+                    if (count[k] == 0) {//如果没有
 
 
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (count[k] == 1) {//如果区域内的某个数字可能次数为1
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; putNumber(points[k].get(0).x, points[k].get(0).y, k + 1);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else {//如果出现次数大于1
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Point point = points[k].get(0);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; boolean sameRow = true;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; boolean sameColumn = true;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 1; i &lt; points[k].size(); i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Point p = points[k].get(i);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (p.x != point.x) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; sameRow = false;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (points[k].get(i).y != point.y) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; sameColumn = false;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (sameRow) {// 且在一行上，则可以进行区块排除
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; cleanRow(point.x, dy, k + 1);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (sameColumn) {// 且在一列上，则可以进行区块排除
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; cleanColumn(dx, point.y, k + 1);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+                    } else if (count[k] == 1) {//如果区域内的某个数字可能次数为1
+                        putNumber(points[k].get(0).x, points[k].get(0).y, k + 1);
+                    } else {//如果出现次数大于1
+                        Point point = points[k].get(0);
+                        boolean sameRow = true;
+                        boolean sameColumn = true;
+                        for (int i = 1; i &lt; points[k].size(); i++) {
+                            Point p = points[k].get(i);
+                            if (p.x != point.x) {
+                                sameRow = false;
+                            }
+                            if (points[k].get(i).y != point.y) {
+                                sameColumn = false;
+                            }
+                        }
+                        if (sameRow) {// 且在一行上，则可以进行区块排除
+                            cleanRow(point.x, dy, k + 1);
+                        }
+                        if (sameColumn) {// 且在一列上，则可以进行区块排除
+                            cleanColumn(dx, point.y, k + 1);
+                        }
+                    }
+                }
+            }
+        }
 
 
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return c;
-&amp;nbsp; &amp;nbsp; }
+        return c;
+    }
 
 
-&amp;nbsp; &amp;nbsp; private void cleanColumn(int dx, int y, Integer n) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 3; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (i != dx) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 3; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[i * 3 + j][y].remove(n);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+    private void cleanColumn(int dx, int y, Integer n) {
+        for (int i = 0; i &lt; 3; i++) {
+            if (i != dx) {
+                for (int j = 0; j &lt; 3; j++) {
+                    dataLeft[i * 3 + j][y].remove(n);
+                }
+            }
+        }
+    }
 
 
-&amp;nbsp; &amp;nbsp; private void cleanRow(int x, int dy, Integer n) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 3; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (i != dy) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 3; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; dataLeft[x][i * 3 + j].remove(n);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; public int computeColumn() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int c = 0;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {//行
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; int[] count = new int[9];
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {//列
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int num : dataLeft[j][i]) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; count[num - 1]++;//统计个数
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int k = 0; k &lt; 9; k++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (count[k] == 1) {//如果区域内的某个数字可能次数为1
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (dataLeft[j][i].contains(k + 1)) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; putNumber(j, i, k + 1);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; c++;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; return c;
-&amp;nbsp; &amp;nbsp; }
+    private void cleanRow(int x, int dy, Integer n) {
+        for (int i = 0; i &lt; 3; i++) {
+            if (i != dy) {
+                for (int j = 0; j &lt; 3; j++) {
+                    dataLeft[x][i * 3 + j].remove(n);
+                }
+            }
+        }
+    }
+    public int computeColumn() {
+        int c = 0;
+        for (int i = 0; i &lt; 9; i++) {//行
+            int[] count = new int[9];
+            for (int j = 0; j &lt; 9; j++) {//列
+                for (int num : dataLeft[j][i]) {
+                    count[num - 1]++;//统计个数
+                }
+            }
+            for (int k = 0; k &lt; 9; k++) {
+                if (count[k] == 1) {//如果区域内的某个数字可能次数为1
+                    for (int j = 0; j &lt; 9; j++) {
+                        if (dataLeft[j][i].contains(k + 1)) {
+                            putNumber(j, i, k + 1);
+                            c++;
+                        }
+                    }
+                }
+            }
+        }
+        return c;
+    }
 
 
-&amp;nbsp; &amp;nbsp; public void print() {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int i = 0; i &lt; 9; i++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; for (int j = 0; j &lt; 9; j++) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; System.out.printf(&quot;%d &quot;, data[i][j]);
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; System.out.println();
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+    public void print() {
+        for (int i = 0; i &lt; 9; i++) {
+            for (int j = 0; j &lt; 9; j++) {
+                System.out.printf(&quot;%d &quot;, data[i][j]);
+            }
+            System.out.println();
+        }
+    }
 
-&amp;nbsp; &amp;nbsp; class Point {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; private final int x;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; private final int y;
+    class Point {
+        private final int x;
+        private final int y;v
 
 
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Point(int x, int y) {
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.x = x;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; this.y = y;
-&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
-&amp;nbsp; &amp;nbsp; }
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 }</pre><p><span style="font-size:12.5px;line-height:1.5;">再次计算上面算不出来的数独：</span></p><pre class="brush:java; toolbar: true; auto-links: false;">Compute completed.
 2 4 6 7 5 8 1 9 3 
 7 3 5 9 4 1 8 2 6 
