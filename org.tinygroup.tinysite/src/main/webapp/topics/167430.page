@@ -1,0 +1,20 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "MDA数据校验规则定义 ")
+#[[<div class="BlogContent"><p>及时有效的数据校验可以给用户良好的体验，避免用户输入半天，提交的时候，才告诉用户输入的数据有若干的问题。更悲催的是有时候，还会出现数据丢失的现象，这个时候，用户已经眼都红了。</p><p>Tiny MDA中集成了JQuery Validate用来进行前端数据校验，当然，为了避免恶意用户手工提交数据或禁用JS、动态修改JS等方式进行攻击，后台数据校验也是必须的。</p><p>Tiny框架提交的数据校验属于一次定义，前后台同时启作用。在良好用户体验及数据安全方面取得平衡。</p><p>目前 ，集成的数据校验规则与JQuery Validate基本相同，也可以扩展新的处理方式。</p><p></p><pre class="brush:java; toolbar: true; auto-links: false;">required
+email
+url
+date
+dateISO
+number
+digits
+equalTo
+maxlength
+minlength
+rangelength
+range
+max
+min</pre><p></p><p>配置方式与JQuery Validate基本相同，稍有差异的是：</p><p><span><strong>equalTo</strong>：前面不用加#，只能用名字来进行匹配</span></p><p>比如：password, repassword</p><p>则在password上添加equalTo:repassword</p>在repassword上添加<span>equalTo:<span>password</span></span><p><strong>range和rangelength</strong>，两边不需要加“[]”</p><p>比如：</p><p>range:3,5</p><p>配置方法：</p><p>在实体模型的groups&gt;group&gt;field节点上如下配置:</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;field standard-field-id=&quot;user_account&quot; primary=&quot;false&quot; unique=&quot;false&quot; display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot; editable=&quot;false&quot; hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;user_account&quot;&gt;
+  &lt;validate-rules&gt;
+    &lt;validate-rule rule-name=&quot;required&quot; rule-value=&quot;&quot; messege=&quot;用户账号不能为空！&quot;/&gt;
+  &lt;/validate-rules&gt;
+&lt;/field&gt;</pre><p>当然，也可以根据情况添加多个校验规则。message属性也可以不配，不配的时候，则采用默认信息。</p><p>问题：<strong>为什么不是配在操作字段上而是配在field上？</strong></p><p>配在field上，可以一次配置到处使用，避免了多次配置。</p></div>]]#

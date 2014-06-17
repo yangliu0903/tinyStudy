@@ -1,0 +1,356 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "Tiny Formater ")
+#[[<div class="BlogContent"><p>昨天看了<a href="http://my.oschina.net/brinlike" target="_blank" rel="nofollow">@Brin想写程序</a>的文章&amp;nbsp;<a href="http://www.oschina.net/code/snippet_1378360_34352" target="_blank" rel="nofollow">几行Java代码实现的简单模板（不是引擎）</a>，呵呵，就非常想去掏掏偶滴小兜兜，果然发现一个类似的东西，因为东西太小，没有准备怎么写，但是看到@Brin想写程序的文章，就想着也发篇文章，说一下当时我的想法与思路。</p><p>格式化提供者，用于对字符串进行转换：</p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;interface&amp;nbsp;FormatProvider&amp;nbsp;{
+	/**
+	&amp;nbsp;*&amp;nbsp;把指定的值进行处理后返回
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;string
+	&amp;nbsp;*&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;要进行格式化的值
+	&amp;nbsp;*&amp;nbsp;@return&amp;nbsp;格式化好的值
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+	String&amp;nbsp;format(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;string)&amp;nbsp;throws&amp;nbsp;FormatException;
+
+}</pre><p></p><p>接口方法只有一个，输入有两个参数，一个是上下文，一个是要进行格式的串，返回的值是格式化处理好的串。</p><p>当然，我也担心，一些串可能会与我们的点位符有冲突，因此期望能由用户自行指定点位符，因此设定了下面的接口：</p><pre class="brush:java;toolbar: true; auto-links: false;">/**
+&amp;nbsp;*&amp;nbsp;模式匹配处理接口
+&amp;nbsp;*&amp;nbsp;
+&amp;nbsp;*&amp;nbsp;@author&amp;nbsp;luoguo
+&amp;nbsp;*&amp;nbsp;
+&amp;nbsp;*/
+public&amp;nbsp;interface&amp;nbsp;PatternDefine&amp;nbsp;{
+	/**
+	&amp;nbsp;*&amp;nbsp;返回正则匹配
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	Pattern&amp;nbsp;getPattern();
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置前缀
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;prefixPatternString
+	&amp;nbsp;*/
+	void&amp;nbsp;setPrefixPatternString(String&amp;nbsp;prefixPatternString);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置后缀
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;postfixPatternString
+	&amp;nbsp;*/
+	void&amp;nbsp;setPostfixPatternString(String&amp;nbsp;postfixPatternString);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置正则表达式中间部分
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;patternString
+	&amp;nbsp;*/
+	void&amp;nbsp;setPatternString(String&amp;nbsp;patternString);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;返回正文部分
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;string
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	String&amp;nbsp;getPureMatchText(String&amp;nbsp;string);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;根据正文返回完整部分
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;string
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	String&amp;nbsp;getFullMatchText(String&amp;nbsp;string);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置域分隔符
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	void&amp;nbsp;setSplitChar(char&amp;nbsp;splitChar);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;返回分隔符
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@return
+	&amp;nbsp;*/
+	char&amp;nbsp;getSplitChar();
+}</pre><p></p><p>当然上面的接口如果是固定一个的话，框架内部已经提供，不必另行进行扩展。<br></br></p><p>格式化接口如下：</p><pre class="brush:java;toolbar: true; auto-links: false;">/**
+&amp;nbsp;*&amp;nbsp;格式化的接口
+&amp;nbsp;*&amp;nbsp;
+&amp;nbsp;*&amp;nbsp;@author&amp;nbsp;luoguo
+&amp;nbsp;*&amp;nbsp;
+&amp;nbsp;*/
+public&amp;nbsp;interface&amp;nbsp;Formater&amp;nbsp;extends&amp;nbsp;FormatProvider&amp;nbsp;{
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置正则表达式,如果不想用默认正则表达式，可以通过此方法自行定义
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;patternHandle
+	&amp;nbsp;*/
+	void&amp;nbsp;setPatternHandle(PatternDefine&amp;nbsp;patternHandle);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;设置格式化提供者
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;formatProviders
+	&amp;nbsp;*&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Key为匹配范围符
+	&amp;nbsp;*/
+	void&amp;nbsp;setFormatProviders(Map&lt;String,&amp;nbsp;FormatProvider&gt;&amp;nbsp;formatProviders);
+
+	/**
+	&amp;nbsp;*&amp;nbsp;添加格式化提供者
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;prefix&amp;nbsp;前缀
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;formatProvider
+	&amp;nbsp;*/
+	void&amp;nbsp;addFormatProvider(String&amp;nbsp;prefix,&amp;nbsp;FormatProvider&amp;nbsp;formatProvider);
+}</pre><p></p><p>三个方法，&amp;nbsp;setPatternHandle用于设定格式话模式，setFormatProviders用于设定格式化提供者，由于是一个map，key值是前缀，value是对应的格式化处理器。当然也可以通过addFormatProvider一个一个的增加出来。</p><p>好的，接口的事情就搞定了，我们来看看具体的实现类：</p><p>默认的格式化实现类：<br></br></p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;DefaultPatternDefine&amp;nbsp;implements&amp;nbsp;PatternDefine&amp;nbsp;{
+
+	private&amp;nbsp;static&amp;nbsp;final&amp;nbsp;String&amp;nbsp;DEFAULT_PATTERN_STRING&amp;nbsp;=&amp;nbsp;&quot;([$]+[{]+[a-zA-Z0-9[.[_[:[/[#]]]]]]+[}])&quot;;
+	private&amp;nbsp;static&amp;nbsp;final&amp;nbsp;String&amp;nbsp;DEFAULT_POSTFIX_PATTERN_STRING&amp;nbsp;=&amp;nbsp;&quot;}&quot;;
+	private&amp;nbsp;static&amp;nbsp;final&amp;nbsp;String&amp;nbsp;DEFAULT_PREFIX_PATTERN_STRING&amp;nbsp;=&amp;nbsp;&quot;${&quot;;
+	private&amp;nbsp;static&amp;nbsp;final&amp;nbsp;char&amp;nbsp;DEFAULT_SPLIT_CHAR&amp;nbsp;=&amp;nbsp;&apos;:&apos;;
+	private&amp;nbsp;String&amp;nbsp;prefixPatternString&amp;nbsp;=&amp;nbsp;DEFAULT_PREFIX_PATTERN_STRING;//&amp;nbsp;前缀
+	private&amp;nbsp;String&amp;nbsp;postfixPatternString&amp;nbsp;=&amp;nbsp;DEFAULT_POSTFIX_PATTERN_STRING;//&amp;nbsp;后缀
+	private&amp;nbsp;String&amp;nbsp;patternString&amp;nbsp;=&amp;nbsp;DEFAULT_PATTERN_STRING;//&amp;nbsp;中间部分
+	private&amp;nbsp;Pattern&amp;nbsp;pattern;
+	private&amp;nbsp;char&amp;nbsp;splitChar&amp;nbsp;=&amp;nbsp;DEFAULT_SPLIT_CHAR;//&amp;nbsp;域分隔符
+
+	public&amp;nbsp;Pattern&amp;nbsp;getPattern()&amp;nbsp;{
+		if&amp;nbsp;(pattern&amp;nbsp;==&amp;nbsp;null)&amp;nbsp;{
+			pattern&amp;nbsp;=&amp;nbsp;Pattern.compile(patternString);
+		}
+		return&amp;nbsp;pattern;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setPrefixPatternString(String&amp;nbsp;prefixPatternString)&amp;nbsp;{
+		this.prefixPatternString&amp;nbsp;=&amp;nbsp;prefixPatternString;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setPostfixPatternString(String&amp;nbsp;postfixPatternString)&amp;nbsp;{
+		this.postfixPatternString&amp;nbsp;=&amp;nbsp;postfixPatternString;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setPatternString(String&amp;nbsp;patternString)&amp;nbsp;{
+		this.patternString&amp;nbsp;=&amp;nbsp;patternString;
+	}
+
+	public&amp;nbsp;String&amp;nbsp;getPureMatchText(String&amp;nbsp;string)&amp;nbsp;{
+		int&amp;nbsp;startPos&amp;nbsp;=&amp;nbsp;prefixPatternString.length();
+		int&amp;nbsp;endPos&amp;nbsp;=&amp;nbsp;string.length()&amp;nbsp;-&amp;nbsp;postfixPatternString.length();
+		return&amp;nbsp;string.substring(startPos,&amp;nbsp;endPos);
+	}
+
+	public&amp;nbsp;String&amp;nbsp;getFullMatchText(String&amp;nbsp;string)&amp;nbsp;{
+		return&amp;nbsp;String.format(&quot;%s%s%s&quot;,&amp;nbsp;prefixPatternString,&amp;nbsp;string,
+				postfixPatternString);
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setSplitChar(char&amp;nbsp;splitChar)&amp;nbsp;{
+		this.splitChar&amp;nbsp;=&amp;nbsp;splitChar;
+	}
+
+	public&amp;nbsp;char&amp;nbsp;getSplitChar()&amp;nbsp;{
+		return&amp;nbsp;splitChar;
+	}
+
+}</pre><p></p><p>下面是一个针对Context的格式串：</p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;ContextFormater&amp;nbsp;implements&amp;nbsp;FormatProvider&amp;nbsp;{
+
+	public&amp;nbsp;String&amp;nbsp;format(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;string)&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		Object&amp;nbsp;obj&amp;nbsp;=&amp;nbsp;context.get(string);
+		if&amp;nbsp;(obj&amp;nbsp;!=&amp;nbsp;null)&amp;nbsp;{
+			return&amp;nbsp;obj.toString();
+		}
+		int&amp;nbsp;index&amp;nbsp;=&amp;nbsp;string.indexOf(&apos;.&apos;);
+		if&amp;nbsp;(index&amp;nbsp;&gt;&amp;nbsp;0)&amp;nbsp;{
+			String&amp;nbsp;name&amp;nbsp;=&amp;nbsp;string.substring(0,&amp;nbsp;index);
+			obj&amp;nbsp;=&amp;nbsp;context.get(name);
+			if&amp;nbsp;(obj&amp;nbsp;!=&amp;nbsp;null)&amp;nbsp;{
+				String&amp;nbsp;property&amp;nbsp;=&amp;nbsp;string.substring(index&amp;nbsp;+&amp;nbsp;1);
+				try&amp;nbsp;{
+					return&amp;nbsp;BeanUtils.getProperty(obj,&amp;nbsp;property).toString();
+				}&amp;nbsp;catch&amp;nbsp;(Exception&amp;nbsp;e)&amp;nbsp;{
+					throw&amp;nbsp;new&amp;nbsp;FormatException(e);
+				}
+			}
+		}
+		return&amp;nbsp;null;
+	}
+}</pre><p></p><p>下面是核心的格式化算法了：<br></br></p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;FormaterImpl&amp;nbsp;implements&amp;nbsp;Formater&amp;nbsp;{
+
+	private&amp;nbsp;Map&lt;String,&amp;nbsp;FormatProvider&gt;&amp;nbsp;formatProviders;
+	private&amp;nbsp;PatternDefine&amp;nbsp;patternDefine&amp;nbsp;=&amp;nbsp;new&amp;nbsp;DefaultPatternDefine();
+
+	/**
+	&amp;nbsp;*&amp;nbsp;构造函数&amp;nbsp;使用默认的配置加载器
+	&amp;nbsp;*/
+	public&amp;nbsp;FormaterImpl()&amp;nbsp;{
+	}
+
+	/**
+	&amp;nbsp;*&amp;nbsp;格式化找到的内容，其余内容不变，如果找不到内容，则原样保留
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+	public&amp;nbsp;String&amp;nbsp;format(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;source)&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		Matcher&amp;nbsp;matcher&amp;nbsp;=&amp;nbsp;patternDefine.getPattern().matcher(source);
+		StringBuffer&amp;nbsp;buf&amp;nbsp;=&amp;nbsp;new&amp;nbsp;StringBuffer();
+		int&amp;nbsp;curpos&amp;nbsp;=&amp;nbsp;0;
+		while&amp;nbsp;(matcher.find())&amp;nbsp;{
+			String&amp;nbsp;replaceStr&amp;nbsp;=&amp;nbsp;patternDefine.getPureMatchText(matcher.group());
+			buf.append(source.substring(curpos,&amp;nbsp;matcher.start()));
+			curpos&amp;nbsp;=&amp;nbsp;matcher.end();
+			String&amp;nbsp;str&amp;nbsp;=&amp;nbsp;formatSingle(context,&amp;nbsp;replaceStr);
+			if&amp;nbsp;(str&amp;nbsp;!=&amp;nbsp;null)&amp;nbsp;{
+				buf.append(str);
+			}
+			continue;
+		}
+		buf.append(source.substring(curpos));
+		return&amp;nbsp;buf.toString();
+	}
+
+	/**
+	&amp;nbsp;*&amp;nbsp;格式化字符串
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@param&amp;nbsp;string
+	&amp;nbsp;*&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String
+	&amp;nbsp;*&amp;nbsp;@return&amp;nbsp;String
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;Exception
+	&amp;nbsp;*/
+	private&amp;nbsp;String&amp;nbsp;formatSingle(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;string)
+			throws&amp;nbsp;FormatException&amp;nbsp;{
+		String&amp;nbsp;s[]&amp;nbsp;=&amp;nbsp;string.split(patternDefine.getSplitChar()&amp;nbsp;+&amp;nbsp;&quot;&quot;);
+		if&amp;nbsp;(s.length&amp;nbsp;&gt;=&amp;nbsp;2)&amp;nbsp;{
+			FormatProvider&amp;nbsp;o&amp;nbsp;=&amp;nbsp;(FormatProvider)&amp;nbsp;formatProviders.get(s[0]);
+			if&amp;nbsp;(o&amp;nbsp;!=&amp;nbsp;null)&amp;nbsp;{
+				return&amp;nbsp;o.format(context,&amp;nbsp;s[1]);
+			}
+		}&amp;nbsp;else&amp;nbsp;{
+			FormatProvider&amp;nbsp;o&amp;nbsp;=&amp;nbsp;(FormatProvider)&amp;nbsp;formatProviders.get(&quot;&quot;);
+			if&amp;nbsp;(o&amp;nbsp;!=&amp;nbsp;null)&amp;nbsp;{
+				return&amp;nbsp;o.format(context,&amp;nbsp;string);
+			}
+		}
+		return&amp;nbsp;patternDefine.getFullMatchText(string);
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setFormatProviders(Map&lt;String,&amp;nbsp;FormatProvider&gt;&amp;nbsp;formatProviders)&amp;nbsp;{
+		this.formatProviders&amp;nbsp;=&amp;nbsp;formatProviders;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setPatternHandle(PatternDefine&amp;nbsp;patternHandle)&amp;nbsp;{
+		this.patternDefine&amp;nbsp;=&amp;nbsp;patternHandle;
+
+	}
+
+	public&amp;nbsp;void&amp;nbsp;addFormatProvider(String&amp;nbsp;prefix,&amp;nbsp;FormatProvider&amp;nbsp;formatProvider)&amp;nbsp;{
+		if&amp;nbsp;(formatProviders&amp;nbsp;==&amp;nbsp;null)&amp;nbsp;{
+			formatProviders&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap&lt;String,&amp;nbsp;FormatProvider&gt;();
+		}
+		formatProviders.put(prefix,&amp;nbsp;formatProvider);
+	}
+
+}</pre><p></p><p>好吧，还有一些配置相关的类，由于不是关键性的，就不在这里讲了，那么接下来看示例：<br></br></p><p>增加一个常量格式化提供者:<br></br></p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;ConstFormatProvider&amp;nbsp;implements&amp;nbsp;FormatProvider&amp;nbsp;{
+	Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;constMap&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap&lt;String,&amp;nbsp;String&gt;();
+
+	public&amp;nbsp;String&amp;nbsp;format(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;key)&amp;nbsp;{
+		return&amp;nbsp;constMap.get(key);
+	}
+
+	public&amp;nbsp;Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;getConstMap()&amp;nbsp;{
+		return&amp;nbsp;constMap;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setConstMap(Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;constMap)&amp;nbsp;{
+		this.constMap&amp;nbsp;=&amp;nbsp;constMap;
+	}
+
+}</pre><p></p><p>再增加一个日期格式化提供者：<br></br></p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;DateFormatProvider&amp;nbsp;implements&amp;nbsp;FormatProvider&amp;nbsp;{
+	Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;constMap&amp;nbsp;=&amp;nbsp;new&amp;nbsp;HashMap&lt;String,&amp;nbsp;String&gt;();
+
+	public&amp;nbsp;String&amp;nbsp;format(Context&amp;nbsp;context,&amp;nbsp;String&amp;nbsp;key)&amp;nbsp;{
+		return&amp;nbsp;constMap.get(key);
+	}
+
+	public&amp;nbsp;Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;getConstMap()&amp;nbsp;{
+		return&amp;nbsp;constMap;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setConstMap(Map&lt;String,&amp;nbsp;String&gt;&amp;nbsp;constMap)&amp;nbsp;{
+		this.constMap&amp;nbsp;=&amp;nbsp;constMap;
+	}
+
+}</pre><p></p><p>再增加一个用于测试的POJO类：<br></br></p><pre class="brush:java;toolbar: true; auto-links: false;">public&amp;nbsp;class&amp;nbsp;User&amp;nbsp;{
+	String&amp;nbsp;name;
+	int&amp;nbsp;age;
+
+	public&amp;nbsp;String&amp;nbsp;getName()&amp;nbsp;{
+		return&amp;nbsp;name;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setName(String&amp;nbsp;name)&amp;nbsp;{
+		this.name&amp;nbsp;=&amp;nbsp;name;
+	}
+
+	public&amp;nbsp;int&amp;nbsp;getAge()&amp;nbsp;{
+		return&amp;nbsp;age;
+	}
+
+	public&amp;nbsp;void&amp;nbsp;setAge(int&amp;nbsp;age)&amp;nbsp;{
+		this.age&amp;nbsp;=&amp;nbsp;age;
+	}
+
+	public&amp;nbsp;User()&amp;nbsp;{
+
+	}
+
+	public&amp;nbsp;User(String&amp;nbsp;name,&amp;nbsp;int&amp;nbsp;age)&amp;nbsp;{
+		this.name&amp;nbsp;=&amp;nbsp;name;
+		this.age&amp;nbsp;=&amp;nbsp;age;
+	}
+}</pre><p></p><p>好吧，我承认，前面都是做铺垫，跑龙套的，真正的秀场下面开始：</p><pre class="brush:java;toolbar: true; auto-links: false;">/**
+	&amp;nbsp;*&amp;nbsp;测试不存在任何标记情况
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+	public&amp;nbsp;void&amp;nbsp;testFormatNotPlaceholder()&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		assertEquals(&quot;this&amp;nbsp;is&amp;nbsp;test&quot;,&amp;nbsp;formater.format(context,&amp;nbsp;&quot;this&amp;nbsp;is&amp;nbsp;test&quot;));
+	}
+
+	/**
+	&amp;nbsp;*&amp;nbsp;测试存在标记，且有处理提供者处理的情况
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+	public&amp;nbsp;void&amp;nbsp;testFormatExistPlaceholderProvider()&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		Context&amp;nbsp;context&amp;nbsp;=&amp;nbsp;new&amp;nbsp;ContextImpl();
+		assertEquals(&quot;this&amp;nbsp;is&amp;nbsp;v1&amp;nbsp;test&quot;,
+				formater.format(context,&amp;nbsp;&quot;this&amp;nbsp;is&amp;nbsp;${const:1}&amp;nbsp;test&quot;));
+	}
+
+	/**
+	&amp;nbsp;*&amp;nbsp;测试存在标记，且没有处理提供者处理的情况
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+
+	public&amp;nbsp;void&amp;nbsp;testFormatExistPlaceholderNoProvider()&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		assertEquals(&quot;this&amp;nbsp;is&amp;nbsp;${abc:2}&amp;nbsp;test&quot;,
+				formater.format(context,&amp;nbsp;&quot;this&amp;nbsp;is&amp;nbsp;${abc:2}&amp;nbsp;test&quot;));
+	}
+
+	/**
+	&amp;nbsp;*&amp;nbsp;测试存在标记，且是bean的情况
+	&amp;nbsp;*&amp;nbsp;
+	&amp;nbsp;*&amp;nbsp;@throws&amp;nbsp;FormatException
+	&amp;nbsp;*/
+
+	public&amp;nbsp;void&amp;nbsp;testFormatBean()&amp;nbsp;throws&amp;nbsp;FormatException&amp;nbsp;{
+		User&amp;nbsp;user&amp;nbsp;=&amp;nbsp;new&amp;nbsp;User(&quot;aa&quot;,&amp;nbsp;123);
+		context.put(&quot;user&quot;,&amp;nbsp;user);
+		assertEquals(&quot;this&amp;nbsp;is&amp;nbsp;aa&amp;nbsp;test&amp;nbsp;123&quot;,
+				formater.format(context,&amp;nbsp;&quot;this&amp;nbsp;is&amp;nbsp;${context:user.name}&amp;nbsp;test&amp;nbsp;${context:user.age}&quot;));
+
+	}</pre><p></p><p>下面总结一下：</p><p>上面的格式化占位符方式是${...}方式的，中间的...可以是aa:bb的方式，或者直接是bb的方式，冒号前面实际是一个区域的概念，表示由对应的区域处理器进行处理。这样就可以由开发人员不断的扩展格式化处理器的处理能力。由于占位匹配器也是可以进行扩展的，因此，可以自行定义自己的格式化占位方式。</p><p>对于对象的属性可以无限向下“.”下去，当然也可以添加其它的处理方式，比如：数组之类的。</p><p>所以从功能及定位来说，与<span style="line-height: 22.5px;"><a href="http://my.oschina.net/brinlike" target="_blank" rel="nofollow">@Brin想写程序</a>是一样的。</span></p><p><span style="line-height: 22.5px;">剧透一下：当时我本来是想写模板语言的，后来直接选择复用Velocity了，所以，就只到此为止了。</span></p><p>虽然放弃了，但是其中在设计及基础构架方面的一些思想及模式，还是值得同学们参考与借鉴的。</p><p><br></br></p><p><br></br></p></div>]]#
