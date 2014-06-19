@@ -30,6 +30,18 @@
             #@thumbnailsItem("塔罗大道" "高级程序员" "78375102" "78375102@qq.com" "img/tldd.jpg")
             擅于技术研究
             #end
+            #@thumbnailsItem("Kraken" "初级程序员" "1458307249" "1458307249@qq.com" "img/Kraken.jpg")
+            擅于技术研究
+            #end
+            #@thumbnailsItem("虚位以待" "高级程序员" "不明" "不明" "img/xwyd.jpg")
+            不明
+            #end
+            #@thumbnailsItem("虚位以待" "高级程序员" "不明" "不明" "img/xwyd.jpg")
+            不明
+            #end
+            #@thumbnailsItem("虚位以待" "高级程序员" "不明" "不明" "img/xwyd.jpg")
+            不明
+            #end
             #@thumbnailsItem("虚位以待" "高级程序员" "不明" "不明" "img/xwyd.jpg")
             不明
             #end

@@ -8,6 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
+    <link rel="icon" href="$!TINY_CONTEXT_PATH/img/tiny32.png" type="image/x-icon"/>
     <link rel="shortcut icon" href="$!TINY_CONTEXT_PATH/img/tiny32.png" type="image/x-icon"/>
     <title>TinyFramework-$!pageTitle</title>
     <meta name="description" content="Tiny Framework 是基于Java语言的面向组件的企业级开发框架。"/>
