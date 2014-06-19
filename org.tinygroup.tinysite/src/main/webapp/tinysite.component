@@ -243,7 +243,7 @@ $bodyContent
     #end
     #@span8()
         <div align="right">
-            #[[
+            #*
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- titlebarad -->
             <ins class="adsbygoogle"
@@ -253,7 +253,7 @@ $bodyContent
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-            ]]#
+            *#
         </div>
     #end
 </div>
