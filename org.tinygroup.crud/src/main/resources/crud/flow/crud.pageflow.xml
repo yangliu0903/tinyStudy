@@ -51,6 +51,16 @@
 			    <next-node next-node-id="operate"></next-node>
 			</next-nodes>
 		</node>
+		<node id="queryUsersBySql" name="queryUsersBySql"  title="根据sql查询用户">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="queryUsersBySql" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="list"></next-node>
+			</next-nodes>
+		</node>
 		<node id="list" name="list" title="转化页面">
 			<component name="forwardComponent">
 				<properties>
