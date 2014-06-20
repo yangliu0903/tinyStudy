@@ -13,7 +13,7 @@
         <!-- About Content -->
         #@thumbnails()
             #@thumbnailsItem("悠悠然然" "发起人 架构师" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
-                擅于架构设计、忽悠、挑毛病
+                架构、忽悠、挑毛病
             #end
             #@thumbnailsItem("Atizose" "高级程序员" "279708573" "279708573@qq.com" "img/atirose.jpg")
                 擅于攻坚克难
@@ -31,7 +31,7 @@
             擅于技术研究
             #end
             #@thumbnailsItem("Kraken" "初级程序员" "1458307249" "1458307249@qq.com" "img/Kraken.jpg")
-            擅于技术研究
+            测试、示例
             #end
             #@thumbnailsItem("虚位以待" "不明" "不明" "不明" "img/xwyd.jpg")
             不明

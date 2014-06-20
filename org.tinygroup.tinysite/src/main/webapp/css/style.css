@@ -538,7 +538,7 @@ body.boxed .nav-tabs .dropdown a.dropdown-toggle {
 }
 /* Social */
 .social {
-	width: 150px;
+	width: 250px;
 	height: 30px;
 	position: relative;
 	top: 0px;
@@ -1382,7 +1382,7 @@ body.boxed .container {
 	display: none;
 }
 .top-header .social {
-	margin-right: 155px;
+	margin-right: 250px;
 }
 .logo {
 	margin: 0px auto 20px;
