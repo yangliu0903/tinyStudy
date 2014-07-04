@@ -125,7 +125,7 @@
             #@masonryItem()
                 #@caption("为什么我在install Tiny工程时有单元测试错误？")
                 <p>有些测试用例则需要连接MySql，MongoDB数据库。因此：推荐采用下面的命令进行install</p>
-                <p><em>maven installl -DskipTests</em></p>
+                <p><em>maven install -DskipTests</em></p>
                 #end
             #end
             #@masonryItem("big")
