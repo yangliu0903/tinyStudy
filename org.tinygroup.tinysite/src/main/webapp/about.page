@@ -39,23 +39,18 @@
             #@thumbnailsItem("旺旺旺" "初级程序员" "343512613" "343512613@qq.com" "img/www.jpg")
             测试、示例
             #end
-            #@thumbnailsItem("reman" "初级程序员" "309688283" "309688283@qq.com" "img/reman.jpg")
-            测试、示例
+            #@thumbnailsItem("reman" "高级程序员" "309688283" "309688283@qq.com" "img/reman.jpg")
+            负责TinyReport开发
             #end
             #@thumbnailsItem("秋窗寒雨" "初级程序员" "100218084" "100218084@qq.com" "img/qchy.jpg")
-            测试、示例
-            #end
-            #@thumbnailsItem("小四" "初级程序员" "842817794" "842817794@qq.com" "img/xiaosi.jpg")
             测试、示例
             #end
             #@thumbnailsItem("KeepUp" "初级程序员" "345977373" "345977373@qq.com" "img/moveup.jpg")
             擅长后台开发
             #end
-#*
             #@thumbnailsItem("虚位以待" "不明" "不明" "不明" "img/xwyd.jpg")
             不明
             #end
-*#
         #end
     #end
 #end
