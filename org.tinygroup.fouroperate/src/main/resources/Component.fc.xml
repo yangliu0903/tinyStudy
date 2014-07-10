@@ -1,6 +1,6 @@
 <components>
 	<component name="additionComponent" bean="additionComponent"
-		title="addition component" icon="/icon/component.gif">
+		title="addition component" icon="/icon/addition.gif">
 		<short-description>addition component</short-description>
 		<long-description>addition component long description
 		</long-description>
@@ -9,7 +9,7 @@
 		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="subtractionComponent" bean="subtractionComponent"
-		title="subtraction component" icon="/icon/component.gif">
+		title="subtraction component" icon="/icon/subtraction.gif">
 		<short-description>subtraction component</short-description>
 		<long-description>subtraction component long description
 		</long-description>
@@ -18,7 +18,7 @@
 		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="multiComponent" bean="multiComponent"
-		title="multi component" icon="/icon/component.gif">
+		title="multi component" icon="/icon/multi.gif">
 		<short-description>multi component</short-description>
 		<long-description>multi component long description
 		</long-description>
@@ -27,7 +27,7 @@
 		<parameter name="resultKey" title="结果值" type="java.lang.String"></parameter>
 	</component>
 	<component name="divisionComponent" bean="divisionComponent"
-		title="division component" icon="/icon/component.gif">
+		title="division component" icon="/icon/division.gif">
 		<short-description>division component</short-description>
 		<long-description>division component long description
 		</long-description>
