@@ -1,0 +1,32 @@
+<service-components>
+  <service-component type="org.tinygroup.fouroperate.service.FourOperateXmlService" bean="fourOperateXmlService">
+    <service-method local-name="addition" service-id="additionWithXml" method-name="addition" cacheable="false">
+      <service-parameters>
+        <service-parameter name="number1" type="java.lang.Double" required="false" is-array="false"/>
+        <service-parameter name="number2" type="java.lang.Double" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="result" required="false" is-array="false" type="java.lang.Double"/>
+    </service-method>
+    <service-method local-name="subtraction" service-id="subtractWithXml" method-name="subtraction" cacheable="false">
+      <service-parameters>
+        <service-parameter name="number1" type="java.lang.Double" required="false" is-array="false"/>
+        <service-parameter name="number2" type="java.lang.Double" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="result" required="false" is-array="false" type="java.lang.Double"/>
+    </service-method>
+    <service-method local-name="multi" service-id="multiWithXml" method-name="multi" cacheable="false">
+      <service-parameters>
+        <service-parameter name="number1" type="java.lang.Double" required="false" is-array="false"/>
+        <service-parameter name="number2" type="java.lang.Double" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="result" required="false" is-array="false" type="java.lang.Double"/>
+    </service-method>
+    <service-method local-name="division" service-id="divisionWithXml" method-name="division" cacheable="false">
+      <service-parameters>
+        <service-parameter name="number1" type="java.lang.Double" required="false" is-array="false"/>
+        <service-parameter name="number2" type="java.lang.Double" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="result" required="false" is-array="false" type="java.lang.Double"/>
+    </service-method>
+  </service-component>
+</service-components>
