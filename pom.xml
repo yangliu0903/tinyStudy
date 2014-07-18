@@ -12,6 +12,5 @@
         <module>org.tinygroup.websample</module>
         <module>org.tinygroup.tinysite</module>
         <module>org.tinygroup.offer</module>
-        <module>org.tinygroup.weixin</module>
     </modules>
 </project>
