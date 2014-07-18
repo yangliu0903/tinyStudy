@@ -27,7 +27,7 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 	 /** 初始化bean。 */
     protected void init() throws Exception {
     	Assert.assertNotNull(beanType, "beanType must not null");
-    	operator=DbOperatorFactory.getDBOperator(beanType);
+    	operator=DbOperatorFactory.getDBOperator(beanType,getClass().getClassLoader());
     }
 	
 	
