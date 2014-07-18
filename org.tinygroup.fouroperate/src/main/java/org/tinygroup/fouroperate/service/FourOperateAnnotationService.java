@@ -10,25 +10,25 @@ public class FourOperateAnnotationService{
 	@ServiceMethod(serviceId = "additionWithAnno")
 	@ServiceResult(name = "result")
 	@ServiceViewMapping("/fouroperate/result.page")
-	public double addition(double number1,double number2){
+	public Double addition(Double number1,Double number2){
 		return number1+number2;
 	}
 	@ServiceMethod(serviceId = "subtractWithAnno")
 	@ServiceResult(name = "result")
 	@ServiceViewMapping("/fouroperate/result.page")
-	public double subtraction(double number1,double number2){
+	public Double subtraction(Double number1,Double number2){
 		return number1-number2;
 	}
 	@ServiceMethod(serviceId = "multiWithAnno")
 	@ServiceResult(name = "result")
 	@ServiceViewMapping("/fouroperate/result.page")
-	public double multi(double number1,double number2){
+	public Double multi(Double number1,Double number2){
 		return number1*number2;
 	}
 	@ServiceMethod(serviceId = "divisionWithAnno")
 	@ServiceResult(name = "result")
 	@ServiceViewMapping("/fouroperate/result.page")
-	public double division (double number1,double number2){
+	public Double division (Double number1,Double number2){
 		return number1/number2;
 	}
 }
