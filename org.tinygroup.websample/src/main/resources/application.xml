@@ -194,10 +194,7 @@
         </tiny-filter>
     </tiny-filters>
     <!--tiny listener 配置 -->
-    <tiny-listener>
-        <!--<listener-bean name=""></listener-bean> -->
-        <!--<context-param name="" value=""></context-param> -->
-    </tiny-listener>
+ 
     <!--velocity 自定义类配置 -->
     <velocity-context-config>
         <static-classes>
@@ -273,6 +270,15 @@
         <!--<interceptors> <interceptor bean-name="sessionLifecycleLogger"></interceptor>
             <interceptor bean-name="sessionAttributeWhitelist"></interceptor> </interceptors> -->
     </session>
+    <tiny-listener>
+        <listener-bean name="TG_WSServletContextListener"></listener-bean>
+        <past-pattern pattern=".*"/>
+        <skip-pattern pattern="serviceGetNodeName|serviceCEPCoreStart|serviceCEPCoreStop|serviceGetProcessorCount"/>
+        <skip-pattern pattern="cepNodeRegisteNodes|cepNodeRegisteNode|cepNodeRegisteNodes|cepNodeUnRegisteNode|cepNodeUnRegisteNodes|cepNodeBreathCheck"/>
+        <skip-pattern pattern="serviceGetFlow|serviceGetFlowWithVersion|serviceRemoveFlow|serviceRemoveFlowWithVersion"/>
+        <skip-pattern pattern="serviceGetServiceCount|serviceGetServiceRegistryItems"/>
+    </tiny-listener>
+    
     <jcs-config enable="false">
     </jcs-config>
 
