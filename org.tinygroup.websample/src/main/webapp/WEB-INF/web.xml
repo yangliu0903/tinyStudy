@@ -31,5 +31,12 @@
 			<param-value>.*/services.*</param-value>
 		</init-param>
 	</filter>
+	
+	<filter-mapping>
+		<filter-name>TinyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		 <dispatcher>REQUEST</dispatcher>  
+         <dispatcher>FORWARD</dispatcher>  
+	</filter-mapping>
 
 </web-app>
