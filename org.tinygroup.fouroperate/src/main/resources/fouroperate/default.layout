@@ -3,6 +3,7 @@
       <td colspan="2">
         服务方式：<a href="${TINY_CONTEXT_PATH}/fouroperate/service/fouroperate.page">四则运算</a><br/>
         页面流方式:<a href="${TINY_CONTEXT_PATH}/fouroperate/flow/fouroperate.page">四则运算</a><br/>
+   服务接口方式:<a href="${TINY_CONTEXT_PATH}/fouroperate/serviceinterface/fouroperate.page">四则运算</a><br/>
         流程编排方式:<br/>
 <a href="${TINY_CONTEXT_PATH}/fouroperate/layout/addition.page">加法运算</a><br/>
 <a href="${TINY_CONTEXT_PATH}/fouroperate/layout/subtraction.page">减法运算</a><br/>
