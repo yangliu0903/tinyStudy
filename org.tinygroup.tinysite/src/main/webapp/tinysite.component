@@ -328,7 +328,7 @@ $bodyContent
 #end
 
 #macro(logo)
-<p class="logo"> #@a("/index.page")<span>Tiny Framework</span>#end</p>
+<p class="logo"> #@a("/index.page")<span>Tiny 框架</span>#end</p>
 #end
 
 #macro(toTop)
@@ -365,6 +365,7 @@ $bodyContent
                 #shortcut("TinyFramework OSC首页" "http://my.oschina.net/tinyframework" "/img/osc.ico")
                 #shortcut("TinyFramework GIT网址" "http://git.oschina.net/tinyframework/tiny" "/img/git.ico")
                 #shortcut("TinyFramework文档" "http://www.tinygroup.org/confluence/" "/img/confluence.png")
+                #shortcut("TinyEclipse插件更新地址" "http://www.tinygroup.org/TinyStudioSite/" "/img/eclipse.jpg")
             </div>
         </div>
         <div class="text-left">
