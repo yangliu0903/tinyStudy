@@ -12,6 +12,7 @@ import org.tinygroup.service.annotation.ServiceViewMapping;
 import org.tinygroup.support.BeanSupport;
 import org.tinygroup.tinydb.Bean;
 import org.tinygroup.tinydb.DbOperatorFactory;
+import org.tinygroup.tinydb.exception.TinyDbException;
 import org.tinygroup.tinydb.operator.DBOperator;
 @ServiceComponent()
 public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean>{
@@ -27,24 +28,36 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 	 /** 初始化bean。 */
     protected void init() throws Exception {
     	Assert.assertNotNull(beanType, "beanType must not null");
-    	operator=DbOperatorFactory.getDBOperator(beanType,getClass().getClassLoader());
+    	operator=DbOperatorFactory.getDBOperator(getClass().getClassLoader());
     }
 	
 	
 	@ServiceMethod(serviceId = "addUserTiny")
 	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
 	public void addUser(Bean TUser) {
-		operator.insert(TUser);
+		try {
+			operator.insert(TUser);
+		} catch (TinyDbException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	@ServiceMethod(serviceId = "updateUserTiny")
 	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
 	public void updateUser(Bean TUser) {
-		operator.update(TUser);
+		try {
+			operator.update(TUser);
+		} catch (TinyDbException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	@ServiceMethod(serviceId = "deleteUserTiny")
 	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
 	public void deleteUserById(String id) {
-		operator.deleteById(id);
+		try {
+			operator.deleteById(id,beanType);
+		} catch (TinyDbException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	@ServiceMethod(serviceId = "queryUsersTiny")
 	@ServiceResult(name = "users")
@@ -53,11 +66,15 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 		if(TUser==null){
 			TUser=new Bean(beanType);
 		}
-		Bean[] beans= operator.getBeans(TUser);
-		if(beans!=null){
-			return Arrays.asList(beans);
+		try {
+			Bean[] beans = operator.getBeans(TUser);
+			if(beans!=null){
+				return Arrays.asList(beans);
+			}
+			return null;
+		} catch (TinyDbException e) {
+			throw new RuntimeException(e);
 		}
-		return null;
 	}
 	@ServiceMethod(serviceId = "queryUserByIdTiny")
 	@ServiceResult(name = "user")
@@ -66,6 +83,10 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 		if(id==null){
 			return null;
 		}
-		return operator.getBean(id);
+		try {
+			return operator.getBean(id,beanType);
+		} catch (TinyDbException e) {
+			throw new RuntimeException(e);
+		}
 	}
 }
