@@ -48,9 +48,15 @@
             #@thumbnailsItem("KeepUp" "初级程序员" "345977373" "345977373@qq.com" "img/moveup.jpg")
             擅长后台开发
             #end
+            #@thumbnailsItem("耗子" "初级程序员" "654879871" "654879871@qq.com" "img/haozi.png")
+            测试、示例
+            #end
+
+#*
             #@thumbnailsItem("虚位以待" "不明" "不明" "不明" "img/xwyd.jpg")
             不明
             #end
+*#
         #end
     #end
 #end
