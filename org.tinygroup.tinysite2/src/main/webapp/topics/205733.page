@@ -1,0 +1,829 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "Tiny框架启动过程日志 ")
+#[[<div class="BlogContent"><pre class="brush:xml; toolbar: true; auto-links: false;">-1    [main] INFO   - WEB环境属性开始
+-2    [main] INFO   - javax.servlet.context.tempdir=[D:\git\tiny\web\org.tinygroup.webstandard\target\work]
+-2    [main] INFO   - WEB 应用启动中...
+-2    [main] INFO   - WEB 应用信息：[jetty/6.1.26]
+-3    [main] INFO   - TINY_WEBROOT：[D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp]
+-6    [main] INFO   - 应用参数&lt;TINY_WEBROOT&gt;=&lt;D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp&gt;
+-6    [main] INFO   - ServerContextName：[Archetype Created Web Application]
+-6    [main] INFO   - WEB环境属性结束
+-112  [main] INFO   - 加载Spring Bean文件开始...
+-130  [main] INFO   - 正在进行全路径扫描....
+-135  [main] INFO   - 查找WEB-INF/classes路径开始...
+-136  [main] INFO   - WEB-INF/classes路径是:file:/D:/git/tiny/web/org.tinygroup.webstandard/target/classes/
+-136  [main] INFO   - WEB-INF/lib路径是:file:/D:/git/tiny/web/org.tinygroup.webstandard/target/lib/
+-137  [main] INFO   - 查找WEB-INF/classes路径完成。
+-137  [main] INFO   - 查找Web工程中的jar文件列表开始...
+-142  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-142  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar&gt;。
+-142  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-143  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar&gt;。
+-143  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-143  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar&gt;。
+-143  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-143  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar&gt;。
+-144  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-144  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar&gt;。
+-145  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-145  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar&gt;。
+-145  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-145  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar&gt;。
+-145  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-146  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar&gt;。
+-146  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-146  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar&gt;。
+-146  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-146  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar&gt;。
+-147  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-147  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar&gt;。
+-147  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-147  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar&gt;。
+-147  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-147  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar&gt;。
+-148  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-149  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar&gt;。
+-149  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-149  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar&gt;。
+-149  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-149  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar&gt;。
+-150  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-150  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar&gt;。
+-150  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-150  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar&gt;。
+-150  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-150  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar&gt;。
+-152  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-152  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar&gt;。
+-153  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-153  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar&gt;。
+-153  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-154  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar&gt;。
+-154  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-154  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar&gt;。
+-157  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-157  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar&gt;。
+-158  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-158  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar&gt;。
+-158  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-158  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar&gt;。
+-159  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-159  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar&gt;。
+-160  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-160  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar&gt;。
+-160  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-160  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar&gt;。
+-160  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-160  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar&gt;。
+-161  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-161  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar&gt;。
+-161  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-161  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar&gt;。
+-161  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-161  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar&gt;。
+-162  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-162  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar&gt;。
+-162  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-162  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar&gt;。
+-163  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-163  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar&gt;。
+-163  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-163  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar&gt;。
+-164  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-164  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar&gt;。
+-164  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-164  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-164  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-164  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-165  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-165  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-165  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-165  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar&gt;。
+-165  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-166  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar&gt;。
+-166  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-166  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar&gt;。
+-166  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-166  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar&gt;。
+-167  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-167  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar&gt;。
+-168  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-168  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar&gt;。
+-168  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-168  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar&gt;。
+-168  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-168  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar&gt;。
+-169  [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-169  [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar&gt;。
+-170  [main] INFO   - 查找Web工程中的jar文件列表完成。
+-175  [main] INFO   - 线程组&lt;file-resolver-threads&gt;运行开始,线程数1...
+-175  [file-resolver-threads-file-processor-thread-0] INFO   - 线程&lt;file-resolver-threads-file-processor-thread-0&gt;运行开始...
+-176  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar]...
+-177  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar]扫描完成。
+-177  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar]...
+-179  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar]扫描完成。
+-179  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar]...
+-181  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar]扫描完成。
+-181  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar]...
+-256  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar]扫描完成。
+-256  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar]...
+-257  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar]扫描完成。
+-257  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar]...
+-258  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar]扫描完成。
+-258  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar]...
+-259  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-259  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar]...
+-260  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar]扫描完成。
+-260  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar]...
+-261  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar]扫描完成。
+-261  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar]...
+-262  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar]扫描完成。
+-262  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar]...
+-263  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar]扫描完成。
+-263  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\target\lib]...
+-263  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\target\lib]扫描完成。
+-263  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar]...
+-268  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar]扫描完成。
+-268  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar]...
+-269  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-269  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar]...
+-270  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar]扫描完成。
+-271  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar]...
+-271  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar]扫描完成。
+-272  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar]...
+-272  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar]扫描完成。
+-272  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar]...
+-274  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar]扫描完成。
+-274  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar]...
+-275  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar]扫描完成。
+-275  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar]...
+-277  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar]扫描完成。
+-277  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\target\classes]...
+-277  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\target\classes]扫描完成。
+-278  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar]...
+-278  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar]扫描完成。
+-279  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar]...
+-280  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar]扫描完成。
+-280  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar]...
+-281  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar]扫描完成。
+-281  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar]...
+-282  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar]扫描完成。
+-283  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar]...
+-284  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar]扫描完成。
+-284  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar]...
+-288  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar]扫描完成。
+-288  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar]...
+-289  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar]扫描完成。
+-289  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar]...
+-290  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar]扫描完成。
+-290  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar]...
+-291  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar]扫描完成。
+-291  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar]...
+-300  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar]扫描完成。
+-300  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar]...
+-309  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar]扫描完成。
+-309  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar]...
+-313  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar]扫描完成。
+-313  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar]...
+-314  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar]扫描完成。
+-315  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar]...
+-316  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-316  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar]...
+-316  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-316  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar]...
+-317  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar]扫描完成。
+-317  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar]...
+-317  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar]扫描完成。
+-317  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar]...
+-318  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar]扫描完成。
+-318  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar]...
+-319  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-319  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar]...
+-319  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-319  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar]...
+-320  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar]扫描完成。
+-321  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar]...
+-322  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar]扫描完成。
+-322  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar]...
+-325  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar]扫描完成。
+-325  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar]...
+-326  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar]扫描完成。
+-326  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar]...
+-327  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar]扫描完成。
+-327  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar]...
+-333  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar]扫描完成。
+-333  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar]...
+-333  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar]扫描完成。
+-333  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar]...
+-334  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar]扫描完成。
+-334  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar]...
+-336  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar]扫描完成。
+-336  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp]...
+-338  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp]扫描完成。
+-338  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar]...
+-341  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar]扫描完成。
+-341  [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar]...
+-342  [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar]扫描完成。
+-342  [file-resolver-threads-file-processor-thread-0] INFO   - 线程&lt;file-resolver-threads-file-processor-thread-0&gt;运行结束
+-342  [main] INFO   - 线程组&lt;file-resolver-threads&gt;运行结束, 用时:167ms
+-342  [main] INFO   - 线程组:&lt;file-resolver-threads&gt;执行时间：167
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar!/simpleplugin.beans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayer.beans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayout.springbeans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar!/Cache.beans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar!/el.beans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar!/Cache.beans.xml
+-342  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar!/serviceplugin.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar!/context2object.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar!/exceptionhandler.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar!/velocity.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar!/rmi.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:file:D:/git/tiny/web/org.tinygroup.webstandard/target/classes/Application.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:file:D:/git/tiny/web/org.tinygroup.webstandard/target/classes/spring-context2.springbeans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar!/fileresolver.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar!/xstream.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar!/exception.beans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.springbeans.xml
+-343  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/plugin.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar!/binarytree.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar!/flowplugin.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar!/dict.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar!/annotation.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/flow.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar!/uicomponents.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Database.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.springbeans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/cepcore.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar!/Metadata.beans.xml
+-344  [main] INFO   - 添加Spring配置文件:jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar!/order.beans.xml
+-346  [main] INFO   - Refreshing org.springframework.context.support.FileSystemXmlApplicationContext@3cdc5434: display name [org.springframework.context.support.FileSystemXmlApplicationContext@3cdc5434]; startup date [Thu Mar 06 15:08:26 CST 2014]; root of context hierarchy
+-382  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar!/simpleplugin.beans.xml]
+-441  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayer.beans.xml]
+-484  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayout.springbeans.xml]
+-503  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar!/Cache.beans.xml]
+-520  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar!/el.beans.xml]
+-537  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar!/Cache.beans.xml]
+-560  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.beans.xml]
+-593  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar!/serviceplugin.beans.xml]
+-614  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar!/context2object.beans.xml]
+-635  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar!/exceptionhandler.beans.xml]
+-659  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar!/velocity.beans.xml]
+-680  [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar!/rmi.beans.xml]
+-700  [main] INFO   - Loading XML bean definitions from URL [file:D:/git/tiny/web/org.tinygroup.webstandard/target/classes/Application.beans.xml]
+-722  [main] INFO   - Loading XML bean definitions from URL [file:D:/git/tiny/web/org.tinygroup.webstandard/target/classes/spring-context2.springbeans.xml]
+-1306 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar!/fileresolver.beans.xml]
+-1325 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar!/xstream.beans.xml]
+-1338 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.beans.xml]
+-1355 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar!/exception.beans.xml]
+-1376 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.springbeans.xml]
+-1398 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/plugin.beans.xml]
+-1421 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar!/binarytree.beans.xml]
+-1441 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar!/flowplugin.beans.xml]
+-1459 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar!/dict.beans.xml]
+-1480 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar!/annotation.beans.xml]
+-1492 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/flow.beans.xml]
+-1504 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar!/uicomponents.beans.xml]
+-1517 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Database.beans.xml]
+-1535 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.springbeans.xml]
+-1547 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/cepcore.beans.xml]
+-1561 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar!/Metadata.beans.xml]
+-1575 [main] INFO   - Loading XML bean definitions from URL [jar:file:D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar!/order.beans.xml]
+-1586 [main] INFO   - Bean factory for application context [org.springframework.context.support.FileSystemXmlApplicationContext@3cdc5434]: org.springframework.beans.factory.support.DefaultListableBeanFactory@24367013
+-1782 [main] INFO   - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@24367013: defining beans [gZIPFilter,serviceTinyProcessor,uiEngineTinyProcessor,velocityViewServlet,tinyProcessorFileProcessor,tinyFilterFileProcessor,fullContextServlet,mappingModelManager,handlerMapping,mappingModelExecute,tinyProcessorWapper,mvcTinyProcessor,pageFlowTinyProcessor,fullContextProcessor,velocityViewProcessor,tinyProcessorManager,tinyFilterManager,basicTinyFilter,setLocaleTinyFilter,parserTinyFilter,bufferedTinyFilter,lazyCommitTinyFilter,rewriteTinyFilter,sessionTinyFilter,pageCacheTinyFilter,uploadService,customDateRegistrar,customEditorConfigurer,hTMLParameterValueFilter,uploadedFileExtensionWhitelist,tinyFilterWrapper,encondingHttpFilter,controllerAnnotationAction,urlNormalizer,simpleMemoryStore,cookieStore,uuid,sessionModelEncoderImpl,sessionLifecycleLogger,sessionAttributeWhitelist,tinyListenerProcessor,webExceptionProcessor,webExceptionHandlerManager,tinyProcessorConfigManager,tinyFilterConfigManager,velocityContextConfiguration,fullContextUrlRedirectComponent,forwardComponent,redirectComponent,jcsCache,jcsCacheProcessor,el,cacheInitConfig,validatorMapStorage,validatorManagerWrapper,annotationValidatorManager,xmlValidatorManager,complexValidatorManager,validatorClassFieldAction,validatorFieldAnnotaionAction,validateMapFileProcessor,validateFileProcessor,validateComponent,enumValidator,equalsValidator,falseValidator,notEqualsValidator,notNullValidator,nullValidator,trueValidator,integerRangeValidator,doubleRangeValidator,floatRangeValidator,patternValidator,sizeValidator,servicePlugin,classNameObjectGenerator,generatorFileProcessor,exceptionHandlerManager,velocityMacroFileProcessor,velocityHelper,CEPCoreRMIRemoteImpl,fileResolver,fileResolverProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,lobHandler,defaultDataSource,dataSource1,dataSource2,dynamicDataSource,dataSourceTransactionManager,transactionTemplate,beanNameAutoProxyCreator,jdbcTemplate,fullContextFileRepository,fullContextFileFinder,i18nFileProcessor,xStreamFileProcessor,orderFileProcessor,springBeansFileProcessor,configurationFileProcessor,fileMonitorProcessor,serviceRegistry,service,annotationLoader,serviceComponentClassAction,xmlSysServiceFileProcessor,xmlServiceFileProcessor,serviceParamValidate,serviceMappingManager,serviceMappingFileProcessor,context2ObjectComponent,queryAllFlowComponent,callMethodComponent,keyChangeComponent,callElComponent,tinyPluginFileProcessor,tinyPluginManager,PluginMgtProcessor,avlTreeImpl,flowPlugin,dictLoadFileProcessor,dictManager,dictLoadProcessor,annotationExcuteManager,annotationFileProcessor,annotationClassFileProcessor,flowExecutor,flowFileProcessor,flowComponentProcessor,pageFlowExecutor,pageFlowFileProcessor,pageFlowComponentProcessor,uiComponentManager,uIComponentFileProcessor,tableProcessor,initDataProcessor,processorManager,customeSqlProcessor,viewProcessor,dialectFunctionProcessor,procedureProcessor,oracleSqlProcessor,mysqlSqlProcessor,derbySqlProcessor,h2SqlProcessor,sqlserverSqlProcessor,db2SqlProcessor,initDataSqlProcessor,viewSqlProcessor,oracleProcedureSqlProcessor,tableFileResolver,customSqlFileResolver,dialectFunctionlFileResolver,initDataFileResolver,procedureFileResolver,processorFileResolver,viewFileResolver,callService,callFlow,callPageFlow,cepcore,cepCoreManagerCentral,nodeWeightPloyStrategy,cepCoreManagerNode,cepcore_aop_bean,requestParamValidate,exceptionProcessor,cepCoreAopConfig,CEPProcessor,constantProcessor,errorMessageProcessor,standardTypeProcessor,businessTypeProcessor,standardFieldProcessor,constantFileResolver,businessTypeFileResolver,standardFieldFileResolver,errorMessageFileResolver,standardTypeFileResolver,orderProcessor]; root of factory hierarchy
+-1894 [main] INFO   - 开始读取组件配置文件:tinyfilter.config.xml
+-1897 [main] INFO   - 读取组件配置文件:tinyfilter.config.xml完成
+-1897 [main] INFO   - 开始读取组件配置文件:tinylistener.config.xml
+-1898 [main] INFO   - 读取组件配置文件:tinylistener.config.xml完成
+-1898 [main] INFO   - 开始读取组件配置文件:tinyprocessor.config.xml
+-1900 [main] INFO   - 读取组件配置文件:tinyprocessor.config.xml完成
+-1900 [main] INFO   - 开始读取组件配置文件:velocitycontext.config.xml
+-1901 [main] INFO   - 读取组件配置文件:velocitycontext.config.xml完成
+-1901 [main] INFO   - 开始读取组件配置文件:webexceptionhandler.config.xml
+-1901 [main] INFO   - 读取组件配置文件:webexceptionhandler.config.xml完成
+-1902 [main] INFO   - 开始读取组件配置文件:jcscache.config.xml
+-1902 [main] INFO   - 读取组件配置文件:jcscache.config.xml完成
+-1902 [main] INFO   - 开始读取组件配置文件:cacheinit.config.xml
+-1903 [main] INFO   - 读取组件配置文件:cacheinit.config.xml完成
+-1903 [main] INFO   - 开始读取组件配置文件:filefind.config.xml
+-1905 [main] INFO   - 读取组件配置文件:filefind.config.xml完成
+-1905 [main] INFO   - 开始读取组件配置文件:filemonitor.config.xml
+-1905 [main] INFO   - 读取组件配置文件:filemonitor.config.xml完成
+-1906 [main] INFO   - 开始读取组件配置文件:fileresolver.config.xml
+-1906 [main] INFO   - 读取组件配置文件:fileresolver.config.xml完成
+-1906 [main] INFO   - 开始读取组件配置文件:annotation.config.xml
+-1907 [main] INFO   - 读取组件配置文件:annotation.config.xml完成
+-1907 [main] INFO   - 开始读取组件配置文件:cepcoreaop.config.xml
+-1908 [main] INFO   - 读取组件配置文件:cepcoreaop.config.xml完成
+-1908 [main] INFO   - 开始读取组件配置文件:exceptionhandler.config.xml
+-1909 [main] INFO   - 读取组件配置文件:exceptionhandler.config.xml完成
+-2032 [main] INFO   - 正在分发应用配置信息...
+-2033 [main] INFO   - 添加包含文件正则表达式: [org\.tinygroup\.(.)*\.jar]...
+-2034 [main] INFO   - 开始初始化AOP配置
+-2034 [main] INFO   - 初始化AOP配置完成
+-2178 [main] INFO   - 服务中心节点不存在,加入服务中心节点列表
+-2179 [main] INFO   - NodeServiceContainer2负载均衡bean:
+-2179 [main] INFO   - 应用配置信息分发完毕
+-2179 [main] INFO   - 全路径扫描完成。
+-2179 [main] INFO   - 加载Spring Bean文件结束。
+-2179 [main] INFO   - 启动应用开始...
+-2179 [main] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor正在启动...
+-2179 [main] INFO   - 正在进行全路径扫描....
+-2179 [main] INFO   - 查找WEB-INF/classes路径开始...
+-2180 [main] INFO   - WEB-INF/classes路径是:file:/D:/git/tiny/web/org.tinygroup.webstandard/target/classes/
+-2180 [main] INFO   - WEB-INF/lib路径是:file:/D:/git/tiny/web/org.tinygroup.webstandard/target/lib/
+-2180 [main] INFO   - 查找WEB-INF/classes路径完成。
+-2180 [main] INFO   - 查找Web工程中的jar文件列表开始...
+-2182 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2182 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar&gt;。
+-2182 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2182 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar&gt;。
+-2183 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2183 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar&gt;。
+-2183 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2183 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar&gt;。
+-2183 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2183 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar&gt;。
+-2184 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2184 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar&gt;。
+-2184 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2184 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar&gt;。
+-2184 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2184 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar&gt;。
+-2184 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2184 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar&gt;。
+-2185 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2185 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar&gt;。
+-2185 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2185 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar&gt;。
+-2185 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2185 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar&gt;。
+-2185 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2185 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar&gt;。
+-2186 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2186 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar&gt;。
+-2186 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2186 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar&gt;。
+-2186 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2186 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar&gt;。
+-2187 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2187 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar&gt;。
+-2187 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2187 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar&gt;。
+-2187 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2187 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar&gt;。
+-2188 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2188 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar&gt;。
+-2188 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2188 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar&gt;。
+-2188 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2189 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar&gt;。
+-2189 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2189 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar&gt;。
+-2190 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2190 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar&gt;。
+-2191 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2191 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar&gt;。
+-2191 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2191 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar&gt;。
+-2191 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2192 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar&gt;。
+-2192 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2192 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar&gt;。
+-2192 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2192 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar&gt;。
+-2192 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2192 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar&gt;。
+-2192 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2192 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar&gt;。
+-2193 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2193 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar&gt;。
+-2193 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2193 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar&gt;。
+-2193 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2193 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar&gt;。
+-2193 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2193 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar&gt;。
+-2194 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2194 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar&gt;。
+-2194 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2194 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar&gt;。
+-2194 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2194 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar&gt;。
+-2194 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2194 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-2195 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2195 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-2195 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2195 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar&gt;。
+-2195 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2195 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar&gt;。
+-2195 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2195 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar&gt;。
+-2196 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2196 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar&gt;。
+-2196 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2196 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar&gt;。
+-2196 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2196 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar&gt;。
+-2197 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2197 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar&gt;。
+-2197 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2197 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar&gt;。
+-2197 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2197 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar&gt;。
+-2197 [main] INFO   - 文件&lt;file:D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar&gt;由于匹配了包含正则表达式&lt;org\.tinygroup\.(.)*\.jar&gt;而被扫描。
+-2197 [main] INFO   - 扫描到jar文件&lt;jar:file:/D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar&gt;。
+-2198 [main] INFO   - 查找Web工程中的jar文件列表完成。
+-2200 [main] INFO   - 线程组&lt;file-resolver-threads&gt;运行开始,线程数1...
+-2200 [file-resolver-threads-file-processor-thread-0] INFO   - 线程&lt;file-resolver-threads-file-processor-thread-0&gt;运行开始...
+-2200 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar]...
+-2201 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.simplechannel/0.1.0-SNAPSHOT/org.tinygroup.simplechannel-0.1.0-SNAPSHOT.jar]扫描完成。
+-2201 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar]...
+-2203 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.springutil/0.1.0-SNAPSHOT/org.tinygroup.springutil-0.1.0-SNAPSHOT.jar]扫描完成。
+-2203 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar]...
+-2204 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xmlparser/0.1.0-SNAPSHOT/org.tinygroup.xmlparser-0.1.0-SNAPSHOT.jar]扫描完成。
+-2204 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar]...
+-2240 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar]扫描完成。
+-2241 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar]...
+-2242 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.application/0.1.0-SNAPSHOT/org.tinygroup.application-0.1.0-SNAPSHOT.jar]扫描完成。
+-2242 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar]...
+-2244 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.jcscache/0.1.0-SNAPSHOT/org.tinygroup.jcscache-0.1.0-SNAPSHOT.jar]扫描完成。
+-2244 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar]...
+-2245 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-2245 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar]...
+-2246 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.elmvel/0.1.0-SNAPSHOT/org.tinygroup.elmvel-0.1.0-SNAPSHOT.jar]扫描完成。
+-2246 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar]...
+-2247 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.monitor/0.1.0-SNAPSHOT/org.tinygroup.monitor-0.1.0-SNAPSHOT.jar]扫描完成。
+-2247 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar]...
+-2248 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.testutil/0.1.0-SNAPSHOT/org.tinygroup.testutil-0.1.0-SNAPSHOT.jar]扫描完成。
+-2248 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar]...
+-2249 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cache/0.1.0-SNAPSHOT/org.tinygroup.cache-0.1.0-SNAPSHOT.jar]扫描完成。
+-2249 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\target\lib]...
+-2249 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\target\lib]扫描完成。
+-2249 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar]...
+-2255 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar]扫描完成。
+-2255 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar]...
+-2256 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.serviceplugin/0.1.0-SNAPSHOT/org.tinygroup.serviceplugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-2256 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar]...
+-2258 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar]扫描完成。
+-2258 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar]...
+-2259 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exceptionhandler/0.1.0-SNAPSHOT/org.tinygroup.exceptionhandler-0.1.0-SNAPSHOT.jar]扫描完成。
+-2259 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar]...
+-2260 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.el/0.1.0-SNAPSHOT/org.tinygroup.el-0.1.0-SNAPSHOT.jar]扫描完成。
+-2260 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar]...
+-2262 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar]扫描完成。
+-2262 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar]...
+-2263 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar]扫描完成。
+-2263 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar]...
+-2265 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.parser/0.1.0-SNAPSHOT/org.tinygroup.parser-0.1.0-SNAPSHOT.jar]扫描完成。
+-2265 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\target\classes]...
+-2266 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\target\classes]扫描完成。
+-2266 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar]...
+-2267 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.config/0.1.0-SNAPSHOT/org.tinygroup.config-0.1.0-SNAPSHOT.jar]扫描完成。
+-2267 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar]...
+-2270 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.fileresolver/0.1.0-SNAPSHOT/org.tinygroup.fileresolver-0.1.0-SNAPSHOT.jar]扫描完成。
+-2270 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar]...
+-2271 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.channel/0.1.0-SNAPSHOT/org.tinygroup.channel-0.1.0-SNAPSHOT.jar]扫描完成。
+-2271 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar]...
+-2272 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.xstream/0.1.0-SNAPSHOT/org.tinygroup.xstream-0.1.0-SNAPSHOT.jar]扫描完成。
+-2272 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar]...
+-2274 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.formater/0.1.0-SNAPSHOT/org.tinygroup.formater-0.1.0-SNAPSHOT.jar]扫描完成。
+-2274 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar]...
+-2279 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar]扫描完成。
+-2279 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar]...
+-2280 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.exception/0.1.0-SNAPSHOT/org.tinygroup.exception-0.1.0-SNAPSHOT.jar]扫描完成。
+-2280 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar]...
+-2281 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar]扫描完成。
+-2281 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar]...
+-2282 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.logger/0.1.0-SNAPSHOT/org.tinygroup.logger-0.1.0-SNAPSHOT.jar]扫描完成。
+-2282 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar]...
+-2292 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.commons/0.1.0-SNAPSHOT/org.tinygroup.commons-0.1.0-SNAPSHOT.jar]扫描完成。
+-2293 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar]...
+-2300 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.convert/0.1.0-SNAPSHOT/org.tinygroup.convert-0.1.0-SNAPSHOT.jar]扫描完成。
+-2300 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar]...
+-2304 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar]扫描完成。
+-2304 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar]...
+-2305 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.context/0.1.0-SNAPSHOT/org.tinygroup.context-0.1.0-SNAPSHOT.jar]扫描完成。
+-2305 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar]...
+-2307 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-2307 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar]...
+-2308 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-2308 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar]...
+-2309 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.threadgroup/0.1.0-SNAPSHOT/org.tinygroup.threadgroup-0.1.0-SNAPSHOT.jar]扫描完成。
+-2309 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar]...
+-2310 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.queue/0.1.0-SNAPSHOT/org.tinygroup.queue-0.1.0-SNAPSHOT.jar]扫描完成。
+-2310 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar]...
+-2311 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.binarytree/0.1.0-SNAPSHOT/org.tinygroup.binarytree-0.1.0-SNAPSHOT.jar]扫描完成。
+-2311 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar]...
+-2312 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowplugin/0.1.0-SNAPSHOT/org.tinygroup.flowplugin-0.1.0-SNAPSHOT.jar]扫描完成。
+-2312 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar]...
+-2313 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar]扫描完成。
+-2313 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar]...
+-2315 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar]扫描完成。
+-2315 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar]...
+-2317 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar]扫描完成。
+-2317 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar]...
+-2320 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar]扫描完成。
+-2320 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar]...
+-2322 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar]扫描完成。
+-2322 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar]...
+-2323 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.i18n/0.1.0-SNAPSHOT/org.tinygroup.i18n-0.1.0-SNAPSHOT.jar]扫描完成。
+-2323 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar]...
+-2331 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar]扫描完成。
+-2331 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar]...
+-2332 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar]扫描完成。
+-2332 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar]...
+-2334 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar]扫描完成。
+-2334 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar]...
+-2338 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar]扫描完成。
+-2338 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp]...
+-2340 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:\git\tiny\web\org.tinygroup.webstandard\src\main\webapp]扫描完成。
+-2340 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar]...
+-2345 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar]扫描完成。
+-2345 [file-resolver-threads-file-processor-thread-0] INFO   - 正在扫描路径[D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar]...
+-2347 [file-resolver-threads-file-processor-thread-0] INFO   - 路径[D:/MavenRepository/org/tinygroup/org.tinygroup.order/0.1.0-SNAPSHOT/org.tinygroup.order-0.1.0-SNAPSHOT.jar]扫描完成。
+-2347 [file-resolver-threads-file-processor-thread-0] INFO   - 线程&lt;file-resolver-threads-file-processor-thread-0&gt;运行结束
+-2348 [main] INFO   - 线程组&lt;file-resolver-threads&gt;运行结束, 用时:148ms
+-2348 [main] INFO   - 线程组:&lt;file-resolver-threads&gt;执行时间：148
+-2348 [main] INFO   - 开始读取组件配置文件:tinyfilter.config.xml
+-2349 [main] INFO   - 读取组件配置文件:tinyfilter.config.xml完成
+-2349 [main] INFO   - 开始读取组件配置文件:tinylistener.config.xml
+-2349 [main] INFO   - 读取组件配置文件:tinylistener.config.xml完成
+-2349 [main] INFO   - 开始读取组件配置文件:tinyprocessor.config.xml
+-2350 [main] INFO   - 读取组件配置文件:tinyprocessor.config.xml完成
+-2350 [main] INFO   - 开始读取组件配置文件:velocitycontext.config.xml
+-2350 [main] INFO   - 读取组件配置文件:velocitycontext.config.xml完成
+-2350 [main] INFO   - 开始读取组件配置文件:webexceptionhandler.config.xml
+-2351 [main] INFO   - 读取组件配置文件:webexceptionhandler.config.xml完成
+-2351 [main] INFO   - 开始读取组件配置文件:jcscache.config.xml
+-2352 [main] INFO   - 读取组件配置文件:jcscache.config.xml完成
+-2352 [main] INFO   - 开始读取组件配置文件:cacheinit.config.xml
+-2352 [main] INFO   - 读取组件配置文件:cacheinit.config.xml完成
+-2354 [main] INFO   - 开始读取组件配置文件:filefind.config.xml
+-2355 [main] INFO   - 读取组件配置文件:filefind.config.xml完成
+-2355 [main] INFO   - 开始读取组件配置文件:filemonitor.config.xml
+-2355 [main] INFO   - 读取组件配置文件:filemonitor.config.xml完成
+-2355 [main] INFO   - 开始读取组件配置文件:fileresolver.config.xml
+-2355 [main] INFO   - 读取组件配置文件:fileresolver.config.xml完成
+-2356 [main] INFO   - 开始读取组件配置文件:annotation.config.xml
+-2356 [main] INFO   - 读取组件配置文件:annotation.config.xml完成
+-2356 [main] INFO   - 开始读取组件配置文件:cepcoreaop.config.xml
+-2356 [main] INFO   - 读取组件配置文件:cepcoreaop.config.xml完成
+-2356 [main] INFO   - 开始读取组件配置文件:exceptionhandler.config.xml
+-2357 [main] INFO   - 读取组件配置文件:exceptionhandler.config.xml完成
+-2358 [main] INFO   - 正在分发应用配置信息...
+-2359 [main] INFO   - 添加包含文件正则表达式: [org\.tinygroup\.(.)*\.jar]...
+-2359 [main] INFO   - 开始初始化AOP配置
+-2359 [main] INFO   - 初始化AOP配置完成
+-2359 [main] INFO   - 服务中心节点已存在,无需添加
+-2359 [main] INFO   - NodeServiceContainer2负载均衡bean:
+-2361 [main] INFO   - 应用配置信息分发完毕
+-2361 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/i18n/validate_zh_CN.properties]，并开始加载...
+-2362 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/i18n/validate_zh_CN.properties]，加载完毕。
+-2363 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar!/i18n/rmi_zh_CN.properties]，并开始加载...
+-2366 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.rmi/0.1.0-SNAPSHOT/org.tinygroup.rmi-0.1.0-SNAPSHOT.jar!/i18n/rmi_zh_CN.properties]，加载完毕。
+-2366 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/i18n/service_zh_CN.properties]，并开始加载...
+-2367 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/i18n/service_zh_CN.properties]，加载完毕。
+-2367 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar!/i18n/vfs_en_US.properties]，并开始加载...
+-2368 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.vfs/0.1.0-SNAPSHOT/org.tinygroup.vfs-0.1.0-SNAPSHOT.jar!/i18n/vfs_en_US.properties]，加载完毕。
+-2368 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/i18n/plugin_en_US.properties]，并开始加载...
+-2368 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/i18n/plugin_en_US.properties]，加载完毕。
+-2369 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/i18n/plugin_zh_CN.properties]，并开始加载...
+-2369 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/i18n/plugin_zh_CN.properties]，加载完毕。
+-2369 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/i18n/flow_zh_CN.properties]，并开始加载...
+-2370 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/i18n/flow_zh_CN.properties]，加载完毕。
+-2370 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/i18n/cepcore_en_US.properties]，并开始加载...
+-2371 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/i18n/cepcore_en_US.properties]，加载完毕。
+-2371 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/i18n/cepcore_zh_CN.properties]，并开始加载...
+-2371 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/i18n/cepcore_zh_CN.properties]，加载完毕。
+-2371 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/i18n/cepcore_en_US.properties]，并开始加载...
+-2372 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/i18n/cepcore_en_US.properties]，加载完毕。
+-2372 [main] INFO   - 找到国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/i18n/cepcore_zh_CN.properties]，并开始加载...
+-2373 [main] INFO   - 国际化资源配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcore/0.1.0-SNAPSHOT/org.tinygroup.cepcore-0.1.0-SNAPSHOT.jar!/i18n/cepcore_zh_CN.properties]，加载完毕。
+-2373 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.xstream.xml]，并开始加载...
+-2394 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.xstream.xml]，加载完毕。
+-2394 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar!/context2object.xstream.xml]，并开始加载...
+-2399 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.context2object/0.1.0-SNAPSHOT/org.tinygroup.context2object-0.1.0-SNAPSHOT.jar!/context2object.xstream.xml]，加载完毕。
+-2399 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar!/velocity.xstream.xml]，并开始加载...
+-2410 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.velocity/0.1.0-SNAPSHOT/org.tinygroup.velocity-0.1.0-SNAPSHOT.jar!/velocity.xstream.xml]，加载完毕。
+-2410 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.xstream.xml]，并开始加载...
+-2417 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.xstream.xml]，加载完毕。
+-2418 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/plugin.xstream.xml]，并开始加载...
+-2423 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.plugin/0.1.0-SNAPSHOT/org.tinygroup.plugin-0.1.0-SNAPSHOT.jar!/plugin.xstream.xml]，加载完毕。
+-2423 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar!/dict.xstream.xml]，并开始加载...
+-2428 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.dict/0.1.0-SNAPSHOT/org.tinygroup.dict-0.1.0-SNAPSHOT.jar!/dict.xstream.xml]，加载完毕。
+-2429 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar!/annotation.xstream.xml]，并开始加载...
+-2436 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.annotation/0.1.0-SNAPSHOT/org.tinygroup.annotation-0.1.0-SNAPSHOT.jar!/annotation.xstream.xml]，加载完毕。
+-2436 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/flow.xstream.xml]，并开始加载...
+-2448 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flow/0.1.0-SNAPSHOT/org.tinygroup.flow-0.1.0-SNAPSHOT.jar!/flow.xstream.xml]，加载完毕。
+-2448 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar!/uicomponents.xstream.xml]，并开始加载...
+-2456 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.uiengine/0.1.0-SNAPSHOT/org.tinygroup.uiengine-0.1.0-SNAPSHOT.jar!/uicomponents.xstream.xml]，加载完毕。
+-2456 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Database.xstream.xml]，并开始加载...
+-2470 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Database.xstream.xml]，加载完毕。
+-2470 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/InitData.xstream.xml]，并开始加载...
+-2476 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/InitData.xstream.xml]，加载完毕。
+-2476 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Processor.xstream.xml]，并开始加载...
+-2482 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/Processor.xstream.xml]，加载完毕。
+-2482 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/View.xstream.xml]，并开始加载...
+-2488 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.database/0.1.0-SNAPSHOT/org.tinygroup.database-0.1.0-SNAPSHOT.jar!/View.xstream.xml]，加载完毕。
+-2488 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/event.xstream.xml]，并开始加载...
+-2493 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.event/0.1.0-SNAPSHOT/org.tinygroup.event-0.1.0-SNAPSHOT.jar!/event.xstream.xml]，加载完毕。
+-2493 [main] INFO   - 找到XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar!/metadata.xstream.xml]，并开始加载...
+-2507 [main] INFO   - XStream配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.metadata/0.1.0-SNAPSHOT/org.tinygroup.metadata-0.1.0-SNAPSHOT.jar!/metadata.xstream.xml]，加载完毕。
+-2550 [main] INFO   - 正在加载注解配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.annotation.xml]
+-2554 [main] INFO   - 加载注解配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/validate.annotation.xml]结束
+-2554 [main] INFO   - 正在加载注解配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.annotation.xml]
+-2556 [main] INFO   - 加载注解配置文件[D:/MavenRepository/org/tinygroup/org.tinygroup.service/0.1.0-SNAPSHOT/org.tinygroup.service-0.1.0-SNAPSHOT.jar!/service.annotation.xml]结束
+-2556 [main] INFO   - 线程组&lt;annotation-muti&gt;运行开始,线程数1...
+-2557 [annotation-muti-file-processor-thread-0] INFO   - 线程&lt;annotation-muti-file-processor-thread-0&gt;运行开始...
+-2583 [annotation-muti-file-processor-thread-0] INFO   - 线程&lt;annotation-muti-file-processor-thread-0&gt;运行结束
+-2583 [main] INFO   - 线程组&lt;annotation-muti&gt;运行结束, 用时:27ms
+-2583 [main] INFO   - 线程组:&lt;annotation-muti&gt;执行时间：27
+-2583 [main] INFO   - 正在注册Service
+-2583 [main] INFO   - 注册Service结束
+-2583 [main] INFO   - 正在读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar!/servicebasicservice.sysservice.xml]
+-2588 [main] INFO   - 读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.servicebasicservice/0.1.0-SNAPSHOT/org.tinygroup.servicebasicservice-0.1.0-SNAPSHOT.jar!/servicebasicservice.sysservice.xml]结束
+-2588 [main] INFO   - 正在读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar!/flowbasicservice.sysservice.xml]
+-2593 [main] INFO   - 读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasicservice/0.1.0-SNAPSHOT/org.tinygroup.flowbasicservice-0.1.0-SNAPSHOT.jar!/flowbasicservice.sysservice.xml]结束
+-2593 [main] INFO   - 正在读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar!/cepcorebasicservice.sysservice.xml]
+-2601 [main] INFO   - 读取SysService文件[D:/MavenRepository/org/tinygroup/org.tinygroup.cepcorebasicservice/0.1.0-SNAPSHOT/org.tinygroup.cepcorebasicservice-0.1.0-SNAPSHOT.jar!/cepcorebasicservice.sysservice.xml]结束
+-2601 [main] INFO   - 正在注册SysService
+-2604 [main] INFO   - 添加服务[serviceId:serviceGetServiceCount]
+-2604 [main] INFO   - 添加服务[serviceId:serviceGetServiceRegistryItems]
+-2608 [main] INFO   - 添加服务[serviceId:serviceGetFlow]
+-2608 [main] INFO   - 添加服务[serviceId:serviceGetFlowWithVersion]
+-2608 [main] INFO   - 添加服务[serviceId:serviceRemoveFlow]
+-2608 [main] INFO   - 添加服务[serviceId:serviceRemoveFlowWithVersion]
+-2609 [main] INFO   - 添加服务[serviceId:serviceGetNodeName]
+-2610 [main] INFO   - 添加服务[serviceId:serviceCEPCoreStart]
+-2610 [main] INFO   - 添加服务[serviceId:serviceCEPCoreStop]
+-2610 [main] INFO   - 添加服务[serviceId:serviceSetTimeout]
+-2610 [main] INFO   - 添加服务[serviceId:serviceGetProcessorCount]
+-2610 [main] INFO   - 添加服务[serviceId:serviceGetTimeOutConfig]
+-2610 [main] INFO   - 添加服务[serviceId:serviceGetThreadCount]
+-2613 [main] INFO   - 添加服务[serviceId:cepNodeRegisteNode]
+-2613 [main] INFO   - 添加服务[serviceId:cepNodeRegisteNodes]
+-2613 [main] INFO   - 添加服务[serviceId:cepNodeUnRegisteNode]
+-2613 [main] INFO   - 添加服务[serviceId:cepNodeUnRegisteNodes]
+-2613 [main] INFO   - 添加服务[serviceId:cepNodeBreathCheck]
+-2613 [main] INFO   - 注册SysService结束
+-2613 [main] INFO   - 正在读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/flowComponent.fc.xml]
+-2615 [main] INFO   - 添加组件Component[name:validateComponent,bean:validateComponent]
+-2615 [main] INFO   - 读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/flowComponent.fc.xml]结束
+-2616 [main] INFO   - 正在读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.fc.xml]
+-2621 [main] INFO   - 添加组件Component[name:queryAllFlowComponent,bean:queryAllFlowComponent]
+-2621 [main] INFO   - 添加组件Component[name:context2ObjectComponent,bean:context2ObjectComponent]
+-2621 [main] INFO   - 添加组件Component[name:keyChangeComponent,bean:keyChangeComponent]
+-2621 [main] INFO   - 添加组件Component[name:callMethodComponent,bean:callMethodComponent]
+-2621 [main] INFO   - 添加组件Component[name:callElComponent,bean:callElComponent]
+-2621 [main] INFO   - 读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.fc.xml]结束
+-2621 [main] INFO   - 正在读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.fc.xml]
+-2626 [main] INFO   - 添加组件Component[name:callService,bean:callService]
+-2626 [main] INFO   - 添加组件Component[name:callFlow,bean:callFlow]
+-2626 [main] INFO   - 添加组件Component[name:callPageFlow,bean:callPageFlow]
+-2626 [main] INFO   - 读取逻辑组件fc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.fc.xml]结束
+-2626 [main] INFO   - 正在读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayer.pagefc.xml]
+-2629 [main] INFO   - 添加组件Component[name:fullContextUrlRedirectComponent,bean:fullContextUrlRedirectComponent]
+-2629 [main] INFO   - 添加组件Component[name:forwardComponent,bean:forwardComponent]
+-2629 [main] INFO   - 添加组件Component[name:redirectComponent,bean:redirectComponent]
+-2629 [main] INFO   - 读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.weblayer/0.1.0-SNAPSHOT/org.tinygroup.weblayer-0.1.0-SNAPSHOT.jar!/weblayer.pagefc.xml]结束
+-2629 [main] INFO   - 正在读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/flowComponent.pagefc.xml]
+-2631 [main] INFO   - 添加组件Component[name:validateComponent,bean:validateComponent]
+-2631 [main] INFO   - 读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.validate/0.1.0-SNAPSHOT/org.tinygroup.validate-0.1.0-SNAPSHOT.jar!/flowComponent.pagefc.xml]结束
+-2631 [main] INFO   - 正在读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.pagefc.xml]
+-2636 [main] INFO   - 添加组件Component[name:queryAllFlowComponent,bean:queryAllFlowComponent]
+-2636 [main] INFO   - 添加组件Component[name:context2ObjectComponent,bean:context2ObjectComponent]
+-2636 [main] INFO   - 添加组件Component[name:keyChangeComponent,bean:keyChangeComponent]
+-2637 [main] INFO   - 添加组件Component[name:callMethodComponent,bean:callMethodComponent]
+-2637 [main] INFO   - 添加组件Component[name:callElComponent,bean:callElComponent]
+-2637 [main] INFO   - 读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowbasiccomponent/0.1.0-SNAPSHOT/org.tinygroup.flowbasiccomponent-0.1.0-SNAPSHOT.jar!/flowbasiccomponent.pagefc.xml]结束
+-2637 [main] INFO   - 正在读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.pagefc.xml]
+-2642 [main] INFO   - 添加组件Component[name:callService,bean:callService]
+-2642 [main] INFO   - 添加组件Component[name:callFlow,bean:callFlow]
+-2642 [main] INFO   - 添加组件Component[name:callPageFlow,bean:callPageFlow]
+-2642 [main] INFO   - 读取页面组件pagefc文件[D:/MavenRepository/org/tinygroup/org.tinygroup.flowservicecomponent/0.1.0-SNAPSHOT/org.tinygroup.flowservicecomponent-0.1.0-SNAPSHOT.jar!/flowservicecomponent.pagefc.xml]结束
+-2642 [main] INFO   - 开始读取plugin配置文件:serviceplugin.plugin.xml
+-2645 [main] INFO   - 读取plugin配置文件:serviceplugin.plugin.xml完成
+-2645 [main] INFO   - 开始读取plugin配置文件:flowplugin.plugin.xml
+-2647 [main] INFO   - 读取plugin配置文件:flowplugin.plugin.xml完成
+-2647 [main] INFO   - 字典加载器配置文件处理开始
+-2647 [main] INFO   - 字典加载器配置文件处理结束
+-2713 [main] INFO   - Velocity配置文件：file:/D:/git/tiny/web/org.tinygroup.webstandard/target/classes/velocity.properties
+-2786 [main] INFO   - 开始读取generator配置文件:context2object.generatorconfig.xml
+-2788 [main] INFO   - 开始读取generator配置TypeConverter
+-2788 [main] INFO   - 处理TypeConverter,beanName:,className:org.tinygroup.context2object.impl.BigDecimalConverter
+-2789 [main] INFO   - 读取generator配置TypeConverter完成
+-2789 [main] INFO   - 开始读取generator配置TypeCreator
+-2789 [main] INFO   - 处理TypeCreator,beanName:,className:org.tinygroup.context2object.impl.ListTypeCreator
+-2789 [main] INFO   - 读取generator配置TypeCreator完成
+-2789 [main] INFO   - 读取generator配置文件:context2object.generatorconfig.xml完成
+-2791 [main] INFO   - 全路径扫描完成。
+-2791 [main] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor启动完毕。
+-2791 [main] INFO   - 应用处理器class org.tinygroup.plugin.applicationprocessor.PluginMgtProcessor正在启动...
+-2791 [main] INFO   - 启动插件管理器
+-2791 [main] INFO   - 开始启动插件：servicePlugin...
+-2792 [main] INFO   - 注册事件处理器[id:ServiceProcessorImpl]
+-2792 [main] INFO   - 插件：servicePlugin启动完毕。
+-2792 [main] INFO   - 开始启动插件：flowPlugin...
+-2796 [main] INFO   - 注册事件处理器[id:FlowPluginProcessor]
+-2796 [main] INFO   - 插件：flowPlugin启动完毕。
+-2796 [main] INFO   - 启动插件管理器成功
+-2796 [main] INFO   - 应用处理器class org.tinygroup.plugin.applicationprocessor.PluginMgtProcessor启动完毕。
+-2796 [main] INFO   - 应用处理器class org.tinygroup.cepcore.applicationprocessor.CEPProcessor正在启动...
+-2796 [main] INFO   - CEPCore启动
+-2796 [main] INFO   - 应用处理器class org.tinygroup.cepcore.applicationprocessor.CEPProcessor启动完毕。
+-2796 [main] INFO   - 应用处理器class org.tinygroup.dict.applicationprocessor.DictLoadProcessor正在启动...
+-2803 [main] INFO   - Creating cache manager from config file: /cache.ccf
+-2807 [main] INFO   - thread_pool.default PoolConfiguration = useBoundary = [true] boundarySize = [2000] maximumPoolSize = [150] minimumPoolSize = [4] keepAliveTime = [300000] whenBlockedPolicy = [RUN] startUpSize = [4]
+-2810 [main] INFO   - Setting default auxiliaries to DC
+-2813 [main] INFO   - setting defaultCompositeCacheAttributes to [ useLateral = true, useRemote = true, useDisk = true, maxObjs = 200000, maxSpoolPerRun = -1, diskUsagePattern = 1 ]
+-2815 [main] INFO   - setting defaultElementAttributes to [ IS_LATERAL = true, IS_SPOOL = true, IS_REMOTE = true, IS_ETERNAL = true, MaxLifeSeconds = 7000, IdleTime = 1800, CreateTime = 1394089708498, LastAccessTime = 1394089708498, getTimeToLiveSeconds() = 6999, createTime = 1394089708498 ]
+-2815 [main] INFO   - No special ElementAttribute class defined for key [jcs.region.testCache1.elementattributes], using default class.
+-2825 [main] INFO   - initialized LRUMemoryCache for testCache1
+-2825 [main] INFO   - Constructed cache with name [testCache1] and cache attributes [ useLateral = true, useRemote = true, useDisk = true, maxObjs = 200002, maxSpoolPerRun = -1, diskUsagePattern = 0 ]
+-2893 [main] INFO   - Region [testCache1] Cache file root directory: D:/jcs/raf
+-2896 [main] INFO   - Region [testCache1] Set maxKeySize to: &apos;5000&apos;
+-2897 [main] INFO   - Region [testCache1] Indexed Disk Cache is alive.
+-2897 [main] INFO   - Parsed regions [testCache1]
+-2897 [main] INFO   - Finished configuration in 88 ms.
+-2897 [main] INFO   - 应用处理器class org.tinygroup.dict.applicationprocessor.DictLoadProcessor启动完毕。
+-2897 [main] INFO   - 应用处理器class org.tinygroup.weblayer.listener.TinyListenerProcessor正在启动...
+-2902 [main] INFO   - 应用处理器class org.tinygroup.weblayer.listener.TinyListenerProcessor启动完毕。
+-2902 [main] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileMonitorProcessor正在启动...
+-2902 [main] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileMonitorProcessor启动完毕。
+-2903 [main] INFO   - WEB 应用启动完成。
+-2904 [main] INFO   - filter初始化开始...
+-2907 [main] INFO   - tiny-filter:setLocaleTinyFilter开始被加载
+-2911 [main] INFO   - tiny-filter:setLocaleTinyFilter加载结束
+-2911 [main] INFO   - tiny-filter:basicTinyFilter开始被加载
+-2914 [main] INFO   - tiny-filter:basicTinyFilter加载结束
+-2914 [main] INFO   - tiny-filter:sessionTinyFilter开始被加载
+-2922 [main] INFO   - tiny-filter:sessionTinyFilter加载结束
+-2922 [main] INFO   - tiny-filter:parserTinyFilter开始被加载
+-2945 [main] INFO   - Upload Parameters: {
+  Repository Path                  = C:\Users\luoguo\AppData\Local\Temp
+  Maximum Request Size             = n/a
+  Maximum File Size                = n/a
+  Threshold before Writing to File = 10K
+  Keep Form Field in Memory        = false
+  File Name Key                    = [
+                                       [1/1] filename
+                                     ]
+}
+-2948 [main] INFO   - tiny-filter:parserTinyFilter加载结束
+-2948 [main] INFO   - tiny-filter:bufferedTinyFilter开始被加载
+-2952 [main] INFO   - tiny-filter:bufferedTinyFilter加载结束
+-2952 [main] INFO   - tiny-filter:rewriteTinyFilter开始被加载
+-2956 [main] INFO   - tiny-filter:rewriteTinyFilter加载结束
+-2956 [main] INFO   - tiny-filter:lazyCommitTinyFilter开始被加载
+-2959 [main] INFO   - tiny-filter:lazyCommitTinyFilter加载结束
+-2959 [main] INFO   - tiny-filter:tinyFilterWrapper开始被加载
+-2963 [main] INFO   - tiny-filter:tinyFilterWrapper加载结束
+-3022 [main] INFO   - filter包装类开始实例化filter
+-3024 [main] INFO   - 实例化filter：&lt;gZIPFilter&gt;
+-3024 [main] INFO   - filter包装类实例化filter结束
+-3038 [main] INFO   - Upload Parameters: {
+  Repository Path                  = C:\temp
+  Maximum Request Size             = n/a
+  Maximum File Size                = n/a
+  Threshold before Writing to File = 1K
+  Keep Form Field in Memory        = true
+  File Name Key                    = [
+                                       [1/1] filename
+                                     ]
+}
+-3038 [main] INFO   - tiny-filter:&lt;SetLocaleTinyFilter&gt;初始化开始
+-3038 [main] INFO   - tiny-filter:&lt;SetLocaleTinyFilter&gt;初始化结束
+-3038 [main] INFO   - tiny-processor:pageFlowTinyProcessor开始被加载
+-3042 [main] INFO   - tiny-processor:pageFlowTinyProcessor加载结束
+-3042 [main] INFO   - tiny-processor:mvcTinyProcessor开始被加载
+-3054 [main] INFO   - tiny-processor:mvcTinyProcessor加载结束
+-3054 [main] INFO   - tiny-processor:uiEngineTinyProcessor开始被加载
+-3057 [main] INFO   - tiny-processor:uiEngineTinyProcessor加载结束
+-3057 [main] INFO   - tiny-processor:serviceTinyProcessor开始被加载
+-3175 [main] INFO   - tiny-processor:serviceTinyProcessor加载结束
+-3175 [main] INFO   - tiny-processor:velocityViewProcessor开始被加载
+-3178 [main] INFO   - tiny-processor:velocityViewProcessor加载结束
+-3178 [main] INFO   - tiny-processor:fullContextProcessor开始被加载
+-3181 [main] INFO   - tiny-processor:fullContextProcessor加载结束
+-3181 [main] INFO   - tiny-mvc 开始初始化操作
+-3181 [main] INFO   - tiny-mvc 初始化操作结束
+-3186 [main] INFO   - filter初始化结束...</pre><p>启动好之后，按Ctrl+C停止</p><p></p><pre class="brush:xml; toolbar: true; auto-links: false;">-12397 [Shutdown] INFO   - WEB 应用停止中...
+-12398 [Shutdown] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor正在停止...
+-12398 [Shutdown] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor停止完毕。
+-12399 [Shutdown] INFO   - 应用处理器class org.tinygroup.plugin.applicationprocessor.PluginMgtProcessor正在停止...
+-12399 [Shutdown] INFO   - 应用处理器class org.tinygroup.plugin.applicationprocessor.PluginMgtProcessor停止完毕。
+-12400 [Shutdown] INFO   - 应用处理器class org.tinygroup.cepcore.applicationprocessor.CEPProcessor正在停止...
+-12401 [Shutdown] INFO   - CEPCore停止
+-12402 [Shutdown] INFO   - 应用处理器class org.tinygroup.cepcore.applicationprocessor.CEPProcessor停止完毕。
+-12402 [Shutdown] INFO   - 应用处理器class org.tinygroup.dict.applicationprocessor.DictLoadProcessor正在停止...
+-12403 [Shutdown] INFO   - 应用处理器class org.tinygroup.dict.applicationprocessor.DictLoadProcessor停止完毕。
+-12403 [Shutdown] INFO   - 应用处理器class org.tinygroup.weblayer.listener.TinyListenerProcessor正在停止...
+-12403 [Shutdown] INFO   - 应用处理器class org.tinygroup.weblayer.listener.TinyListenerProcessor停止完毕。
+-12404 [Shutdown] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileMonitorProcessor正在停止...
+-12404 [Shutdown] INFO   - 应用处理器class org.tinygroup.fileresolver.applicationprocessor.FileMonitorProcessor停止完毕。
+-12405 [Shutdown] INFO   - Closing org.springframework.context.support.FileSystemXmlApplicationContext@3cdc5434: display name [org.springframework.context.support.FileSystemXmlApplicationContext@3cdc5434]; startup date [Thu Mar 06 15:08:26 CST 2014]; root of context hierarchy
+-12406 [Shutdown] INFO   - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@24367013: defining beans [gZIPFilter,serviceTinyProcessor,uiEngineTinyProcessor,velocityViewServlet,tinyProcessorFileProcessor,tinyFilterFileProcessor,fullContextServlet,mappingModelManager,handlerMapping,mappingModelExecute,tinyProcessorWapper,mvcTinyProcessor,pageFlowTinyProcessor,fullContextProcessor,velocityViewProcessor,tinyProcessorManager,tinyFilterManager,basicTinyFilter,setLocaleTinyFilter,parserTinyFilter,bufferedTinyFilter,lazyCommitTinyFilter,rewriteTinyFilter,sessionTinyFilter,pageCacheTinyFilter,uploadService,customDateRegistrar,customEditorConfigurer,hTMLParameterValueFilter,uploadedFileExtensionWhitelist,tinyFilterWrapper,encondingHttpFilter,controllerAnnotationAction,urlNormalizer,simpleMemoryStore,cookieStore,uuid,sessionModelEncoderImpl,sessionLifecycleLogger,sessionAttributeWhitelist,tinyListenerProcessor,webExceptionProcessor,webExceptionHandlerManager,tinyProcessorConfigManager,tinyFilterConfigManager,velocityContextConfiguration,fullContextUrlRedirectComponent,forwardComponent,redirectComponent,jcsCache,jcsCacheProcessor,el,cacheInitConfig,validatorMapStorage,validatorManagerWrapper,annotationValidatorManager,xmlValidatorManager,complexValidatorManager,validatorClassFieldAction,validatorFieldAnnotaionAction,validateMapFileProcessor,validateFileProcessor,validateComponent,enumValidator,equalsValidator,falseValidator,notEqualsValidator,notNullValidator,nullValidator,trueValidator,integerRangeValidator,doubleRangeValidator,floatRangeValidator,patternValidator,sizeValidator,servicePlugin,classNameObjectGenerator,generatorFileProcessor,exceptionHandlerManager,velocityMacroFileProcessor,velocityHelper,CEPCoreRMIRemoteImpl,fileResolver,fileResolverProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,lobHandler,defaultDataSource,dataSource1,dataSource2,dynamicDataSource,dataSourceTransactionManager,transactionTemplate,beanNameAutoProxyCreator,jdbcTemplate,fullContextFileRepository,fullContextFileFinder,i18nFileProcessor,xStreamFileProcessor,orderFileProcessor,springBeansFileProcessor,configurationFileProcessor,fileMonitorProcessor,serviceRegistry,service,annotationLoader,serviceComponentClassAction,xmlSysServiceFileProcessor,xmlServiceFileProcessor,serviceParamValidate,serviceMappingManager,serviceMappingFileProcessor,context2ObjectComponent,queryAllFlowComponent,callMethodComponent,keyChangeComponent,callElComponent,tinyPluginFileProcessor,tinyPluginManager,PluginMgtProcessor,avlTreeImpl,flowPlugin,dictLoadFileProcessor,dictManager,dictLoadProcessor,annotationExcuteManager,annotationFileProcessor,annotationClassFileProcessor,flowExecutor,flowFileProcessor,flowComponentProcessor,pageFlowExecutor,pageFlowFileProcessor,pageFlowComponentProcessor,uiComponentManager,uIComponentFileProcessor,tableProcessor,initDataProcessor,processorManager,customeSqlProcessor,viewProcessor,dialectFunctionProcessor,procedureProcessor,oracleSqlProcessor,mysqlSqlProcessor,derbySqlProcessor,h2SqlProcessor,sqlserverSqlProcessor,db2SqlProcessor,initDataSqlProcessor,viewSqlProcessor,oracleProcedureSqlProcessor,tableFileResolver,customSqlFileResolver,dialectFunctionlFileResolver,initDataFileResolver,procedureFileResolver,processorFileResolver,viewFileResolver,callService,callFlow,callPageFlow,cepcore,cepCoreManagerCentral,nodeWeightPloyStrategy,cepCoreManagerNode,cepcore_aop_bean,requestParamValidate,exceptionProcessor,cepCoreAopConfig,CEPProcessor,constantProcessor,errorMessageProcessor,standardTypeProcessor,businessTypeProcessor,standardFieldProcessor,constantFileResolver,businessTypeFileResolver,standardFieldFileResolver,errorMessageFileResolver,standardTypeFileResolver,orderProcessor]; root of factory hierarchy
+-12433 [Shutdown] INFO   - WEB 应用停止完成。</pre><p></p></div>]]#

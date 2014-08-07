@@ -1,0 +1,119 @@
+#pageTitle("component" "component")
+#title("组件" "Tiny Framework的组件介绍")
+
+
+#@row()
+
+<!-- Sidebar -->
+    #@span9()
+        #@filter("特性列表")
+            #filterItem("All")
+            #filterItem("Design")
+            #filterItem("Development")
+            #filterItem("CMS")
+            #filterItem("Integration")
+            #filterItem("Information Architecture")
+        #end
+    #end
+    #@filterContainer()
+    <!-- Content -->
+        #@filterContainerItem(3 "design")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "development")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "cms")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "information-architecture")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "dsign")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "dsign")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+        #@filterContainerItem(3 "dsign")
+        <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
+                                  class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
+                class="view"><i class="icon-search icon-white"></i></span></a>
+
+            <div class="caption">
+                <h3><a href="#">Cyril Hahn</a></h3>
+                <em class="data-time">by <a href="#">Admin</a> on <span>April 20th</span>, 2013</em>
+
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam <strong>nonummy nibh
+                    euismod</strong>.</p>
+                <a class="btn btn-primary" href="#">View</a></div>
+        </div>
+        #end
+    #end
+#end

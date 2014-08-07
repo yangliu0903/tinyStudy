@@ -1,0 +1,152 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "基于实体模型开发主题管理简析 ")
+#[[<div class="BlogContent"><p>实体模型主要实现单表操作(insert, update, delete, select)，凡是需要这4条SQL语句要完成的功能，基本上都可以完成。多表处理的，需要用到关系模型，后续专门讲述。</p><p>前面写过一篇文章叫“主题切换及其管理”，连接地址为<a href="http://my.oschina.net/u/1245989/blog/165402" target="_blank" rel="nofollow">http://my.oschina.net/u/1245989/blog/165402</a>。</p><p>里面有详细的模型配置文件，但只是一个结果而已，接下来，对其进行详细剖析，讲述如何进进行配置。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;entity-model id=&quot;theme&quot; name=&quot;theme&quot; title=&quot;主题&quot;
+	enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; version=&quot;2.0&quot; cache-enabled=&quot;true&quot;&gt;</pre>上面是根节点，描述了模型的基本信息，几鼐enable-开头的标记，主要是为工具提供的参数，使得工具进行处理时，通过这些参数控制对文档的编辑，删除等处理。<p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;groups&gt;
+  &lt;group id=&quot;basicgroup&quot; name=&quot;basicgroup&quot; title=&quot;基本字段&quot;
+    enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;
+    &lt;field standard-field-id=&quot;theme_id&quot; primary=&quot;true&quot; unique=&quot;true&quot;
+      display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot; editable=&quot;false&quot;
+      hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;theme_id&quot; /&gt;
+    &lt;field standard-field-id=&quot;theme_code&quot; primary=&quot;false&quot; unique=&quot;false&quot;
+      display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot; editable=&quot;false&quot;
+      hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;theme_code&quot; /&gt;
+    &lt;field standard-field-id=&quot;theme_title&quot; primary=&quot;false&quot; unique=&quot;false&quot;
+      display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot; editable=&quot;false&quot;
+      hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;theme_title&quot; /&gt;
+    &lt;field standard-field-id=&quot;theme_css_path&quot; primary=&quot;false&quot;
+      unique=&quot;false&quot; display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot;
+      editable=&quot;false&quot; hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;theme_css_path&quot; /&gt;
+    &lt;field standard-field-id=&quot;theme_thumbnail&quot; primary=&quot;false&quot;
+      unique=&quot;false&quot; display=&quot;false&quot; not-null=&quot;false&quot; auto-increase=&quot;false&quot;
+      editable=&quot;false&quot; hidden=&quot;false&quot; table-field=&quot;true&quot; id=&quot;theme_thumbnail&quot; /&gt;
+  &lt;/group&gt;
+&lt;/groups&gt;</pre>上面定义了实体模型中的字段，一个实体的字段可以分成多个分组，这样即便于展现，又便于管理。所有字段都是引用标准字段的，标准字段相关内容参见元数据相关文章。其中field的属性：<pre class="brush:xml; toolbar: true; auto-links: false;">table-field=&quot;true&quot;</pre><p><br></br></p><p>定义了其是否是一个表字段，实体模型对象与数据表是一一对应的，但是实体模型中的字段不一定都是建表所有的。</p><p>比如：我们要做一个用户管理，其中要做一个修改密码的功能，一般来说，修改密码都有一个重复输入密码的框来进行验证，避免用户打入时不小心输入错误，而无法登录的问题。很显然，我们在做功能的时候是需要有这个域的，但是在数据库表中，是不需要有这么个字段的，因此，可以通过配置其属性table-field=&quot;false&quot;，来增加这个域，但是以建表的时候，又忽略它。</p><p>如此，就可以把模型的字段定义好了。</p><p>模型上，有两种类型的操作对象可以配置，一种是操作，一种是视图。</p><p>下面逐个进行分析：</p><p>首先是新建操作</p><p><span></span></p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;operation id=&quot;thememodelopadduuid&quot; name=&quot;addTheme&quot; title=&quot;新增&quot;
+  enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; type=&quot;add&quot; fixed-size=&quot;false&quot;
+  modal=&quot;true&quot;&gt;
+  &lt;operation-group id=&quot;addopbasicgroup&quot; name=&quot;basicgroup&quot;
+    title=&quot;操作字段&quot; enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;
+    &lt;operation-fields&gt;
+      &lt;operation-field editable=&quot;true&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_code&quot; /&gt;
+      &lt;operation-field editable=&quot;true&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_title&quot; /&gt;
+      &lt;operation-field editable=&quot;true&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_css_path&quot;&gt;
+        &lt;input-mode type=&quot;textWholeLineMode&quot;&gt;&lt;/input-mode&gt;
+      &lt;/operation-field&gt;
+      &lt;operation-field editable=&quot;true&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_thumbnail&quot;&gt;
+        &lt;input-mode type=&quot;textWholeLineMode&quot;&gt;&lt;/input-mode&gt;
+      &lt;/operation-field&gt;
+    &lt;/operation-fields&gt;
+  &lt;/operation-group&gt;
+&lt;/operation&gt;</pre>操作的基本描述：<p><br></br></p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;operation id=&quot;thememodelopadduuid&quot; name=&quot;addTheme&quot; title=&quot;新增&quot;
+  enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; type=&quot;add&quot; fixed-size=&quot;false&quot;
+  modal=&quot;true&quot;&gt;</pre><p>type=&quot;add&quot;，是指这个操作的操作类型是什么，可选的范围在模型类型定义文件中获取，fixed-size表示窗口大小是否允许修改，如果是true，则表示不允许修改，如果是false，则可以修改。modal属性标明了是否是模式窗口，建议所有的操作都采用模式窗口方式。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;operation-group id=&quot;addopbasicgroup&quot; name=&quot;basicgroup&quot;
+    title=&quot;操作字段&quot; enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;</pre>操作分组，是一个嵌套结构，也就是说operation-group 节点下面可以有多个operation-group节点，上面只包含了基本的信息，实际上它下面还有大量的其它属性可用。<p><br></br></p><p><span style="line-height:1.5;font-size:10pt;">display-mode表明分组的显示方式，其值可以为：Tab,FieldSet,Wizard,Expander,Accordion,Carousel等，以控制字段的显示方式，实际上，通过配置</span><span style="line-height:1.5;font-size:10pt;"><span>display-mode及多层分组</span>可以做出非常漂亮的界面组织形式，强烈建议必须掌握。如果不会用<span>display-mode和operation-group嵌套，做出来的界面只能叫normal，如果会用的话，做出来的界面就是professional，差别是非常大的。</span><span></span></span></p><p><span style="line-height:1.5;font-size:10pt;"><span>有时，界面中还要引用其它操作或视图的内容，显示在当前操作界面中。此时可以在operation-group节点下添加reference节点来完成：</span></span></p><p><span style="line-height:1.5;font-size:10pt;"><span></span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;reference id=&quot;&quot; type=&quot;operation|view&quot; model-id=&quot;&quot; /&gt;</pre><p>id为所引用对象的id，type可以有两种选择，operation或view，model-id表示引用的模型的ID，如果是当前模型，则可以忽略。</p><p><span>当然，引用的内容也有可能来自其它页面，这个时候可以用属性url=&quot;&quot;的方式进行指定。</span></p><p><span>好吧，由于我们的主题管理太过简单，所以这些内容都没有用到，先跳过之。</span></p><p><span style="font-size:10pt;line-height:1.5;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;operation-field editable=&quot;true&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_code&quot; /&gt;</pre><p><br></br></p><p><span style="font-size:10pt;line-height:1.5;">指操作时用的字段，它只能从group中的field中进行引用。editable=&quot;true&quot; 表示是否可编辑，hidden=&quot;false&quot;表示是否隐藏。在它下面可以添加子节点input-mode，可以用来指定各种输入模式，如果不指定则表示用标准的文本输入框模式</span></p><p><span style="font-size:10pt;line-height:1.5;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;input-mode type=&quot;textWholeLineMode&quot;&gt;&lt;/input-mode&gt;</pre>通过指定输入模式，可以把我们的界面中的输入形式丰富起来。<br></br><p><br></br></p><p>对于添加操作来说，没有查询字段，对于修改和删除字段，则需要添加查询字段，一般来说是主键，如果不配置查询字段，后续会非常严重！会导致全表删除或修改。</p><p>在修改及删除中就存在查询字段，来控制修改的范围。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;condition-fields&gt;
+  &lt;condition-field editable=&quot;false&quot; hidden=&quot;false&quot;
+    field-id=&quot;theme_id&quot; connect-mode=&quot;AND&quot; /&gt;
+&lt;/condition-fields&gt;</pre>其它的操作，基本类似。<p><br></br></p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;view id=&quot;thememodeloptableuuid&quot; name=&quot;tabletheme&quot; title=&quot;主题管理&quot;
+  enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; type=&quot;table&quot; page-size=&quot;10&quot;
+  allow-edit=&quot;false&quot; allow-filter-front=&quot;false&quot; fixed-size=&quot;false&quot;
+  modal=&quot;false&quot; front-paging=&quot;false&quot;&gt;
+  &lt;view-groups&gt;
+    &lt;view-group id=&quot;viewbasicgroup&quot; name=&quot;basicgroup&quot; title=&quot;基本信息&quot;
+      enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;true&quot;
+        field-id=&quot;theme_id&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_code&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_title&quot; aggregate-by-view=&quot;false&quot; /&gt;
+    &lt;/view-group&gt;
+  &lt;/view-groups&gt;
+  &lt;references&gt;
+    &lt;operation-reference type=&quot;operation&quot; id=&quot;thememodelopadduuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopaddcopyuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopdeleteuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopupdateuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopqueryuuid&quot; /&gt;
+  &lt;/references&gt;
+&lt;/view&gt;</pre>视图节点描述，除了基本的信息之外，需要注意的是type=&quot;table&quot;，这个类型可以有多种选择，具体参照模型类型定义文件<span>，这里的是表格。后面定义了分布大小，窗口是否固定大小，是否模式窗口，是否支持前台分页等。</span><p><br></br></p><p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;view id=&quot;thememodeloptableuuid&quot; name=&quot;tabletheme&quot; title=&quot;主题管理&quot;
+  enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; type=&quot;table&quot; page-size=&quot;10&quot;
+  allow-edit=&quot;false&quot; allow-filter-front=&quot;false&quot; fixed-size=&quot;false&quot;
+  modal=&quot;false&quot; front-paging=&quot;false&quot;&gt;</pre><p>View-groups中可以有多个group，如果有多个group，支持二层表头模式，大致如下：</p><p><img src="http://static.oschina.net/uploads/space/2013/1006/113343_77xD_1245989.png" alt=""></img></p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;view-groups&gt;
+    &lt;view-group id=&quot;viewbasicgroup&quot; name=&quot;basicgroup&quot; title=&quot;基本信息&quot;
+      enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;true&quot;
+        field-id=&quot;theme_id&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_code&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_title&quot; aggregate-by-view=&quot;false&quot; /&gt;
+    &lt;/view-group&gt;
+  &lt;/view-groups&gt;</pre><span></span><p><br></br></p><p>下面是引用的操作，引用了操作或视图后，可以在操作列表中显示相关的按钮，以便于进行相应的操作。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;references&gt;
+    &lt;operation-reference type=&quot;operation&quot; id=&quot;thememodelopadduuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopaddcopyuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopdeleteuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopupdateuuid&quot; /&gt;
+    &lt;operation-reference type=&quot;operation&quot;
+      id=&quot;thememodelopqueryuuid&quot; /&gt;
+  &lt;/references&gt;</pre><p>上面就引用了添加，修改删除，复制添加等操作。具体如下图所示：</p><p><img src="http://static.oschina.net/uploads/space/2013/1006/113634_7ZCS_1245989.png" alt=""></img></p>下面是选择并修改主题的视图：<pre class="brush:xml; toolbar: true; auto-links: false;">&lt;view id=&quot;thememodelopcarduuid&quot; name=&quot;cardtheme&quot; title=&quot;主题选择&quot;
+  enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; type=&quot;card&quot; page-size=&quot;0&quot;
+  allow-edit=&quot;false&quot; allow-filter-front=&quot;true&quot; fixed-size=&quot;false&quot;
+  modal=&quot;false&quot; front-paging=&quot;false&quot;&gt;
+  &lt;customize-stage-configs&gt;
+    &lt;customize-stage-config stage-name=&quot;card&quot;
+      view-path=&quot;/biz/theme/theme_card.page&quot;&gt;
+    &lt;/customize-stage-config&gt;
+  &lt;/customize-stage-configs&gt;
+  &lt;condition-fields&gt;
+  &lt;/condition-fields&gt;
+  &lt;view-groups&gt;
+    &lt;view-group id=&quot;viewbasicgroup&quot; name=&quot;basicgroup&quot; title=&quot;基本信息&quot;
+      enable-delete=&quot;true&quot; enable-modity=&quot;true&quot;&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;true&quot;
+        field-id=&quot;theme_id&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_code&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_title&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_css_path&quot; aggregate-by-view=&quot;false&quot; /&gt;
+      &lt;display-field editable=&quot;false&quot; hidden=&quot;false&quot;
+        field-id=&quot;theme_thumbnail&quot; aggregate-by-view=&quot;false&quot; /&gt;
+    &lt;/view-group&gt;
+  &lt;/view-groups&gt;
+&lt;/view&gt;</pre>从配置可以看到，采用的类型是card类型，也就是卡片。<p><br></br></p><p>由于其渲染方式比较特殊，因此采用下面的配置来修改渲染模板为自定义模板：</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;customize-stage-configs&gt;
+    &lt;customize-stage-config stage-name=&quot;card&quot;
+      view-path=&quot;/biz/theme/theme_card.page&quot;&gt;
+    &lt;/customize-stage-config&gt;
+  &lt;/customize-stage-configs&gt;</pre><div>theme_card.page的文件内容如下：<br></br></div><pre class="brush:html; toolbar: true; auto-links: false;">#@wijDialog(&quot;${modelDefine.id}_${operationDefine.id}&quot; &quot;${operationDefine.title}&quot; &quot;&quot; $option $captionButtons)
+#foreach($bean in $modelProcessResult.beans)
+	&lt;a href=&quot;javascript:doChangeTheme(&apos;${TINY_CONTEXT_PATH}$bean.themeCssPath&apos;)&quot;&gt;&lt;img title=&quot;$bean.themeTitle&quot; style=&quot;float:left;border:1px solid;margin:5px 5px;width:50pt;&quot; src=&quot;${TINY_CONTEXT_PATH}$bean.themeThumbnail&quot; /&gt;&lt;/a&gt;
+#end
+
+#end##dialog
+
+&lt;script&gt;
+	function doChangeTheme(path){
+		var list=$(&quot;link&quot;);
+		for(var i=0;i&lt;list.length;i++){
+			var link=list.get(i);
+			var pos=link.href.indexOf(&quot;/themes/&quot;);
+			if(pos&gt;0){
+				pos=link.href.indexOf(contextPath+&quot;/&quot;);
+				link.href=link.href.substr(0,pos)+ path;
+			}
+		}
+	}
+
+&lt;/script&gt;</pre><span></span><p><br></br></p><p>就产生了下面的窗口：</p><p><img src="http://static.oschina.net/uploads/space/2013/1006/114309_ViU9_1245989.png" alt=""></img></p><p>因此，只需要通过简单的配置就可以生成非常漂亮的界面。实际上，还支持数据校验等功能，上面没有演示。</p><p>只要在group下的field节点下，增加下面的节点即可：</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;validate-rules&gt;
+  &lt;validate-rule rule-name=&quot;required&quot; /&gt;
+  &lt;validate-rule rule-name=&quot;max&quot; rule-value=&quot;30&quot;/&gt;
+&lt;/validate-rules&gt;</pre>这里的校验规则同时支持前后台校验，也就是说，JS校验首先会通不过。<p>如果被使用者禁用了前台校验，直接向后台提交数据，还会进行一次后台数据校验，确保数据的合法有效。</p><p>当然，上面的文章还只是简明扼要的讲一下，详细参见开发手册。</p><p><span></span></p><p><span></span></p></div>]]#

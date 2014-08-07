@@ -1,0 +1,12 @@
+#@section()
+    #@container()
+    #header
+    #navbar
+    #hr
+    #end
+    #@container()
+        $pageContent
+    #end
+#end
+#footer
+#toTop

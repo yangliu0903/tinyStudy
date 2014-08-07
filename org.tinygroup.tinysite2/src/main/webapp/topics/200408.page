@@ -1,0 +1,35 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "一个Maven工程中，不同的模块需要不同的JDK进行编译的解决方案 ")
+#[[<div class="BlogContent"><p>本人在构建数据库分区，分表的时候，由于jdbc3（jdk1.5中实现）和jdbc4(jdk1.6后实现)两个规范上存在相当大的差异，导致无论采用哪个jdk进行编译，都会导致整个pom树无法正确构建，总有一个要出问题。</p><p>说实际的这个问题卡了比较长的时候，最后还是研究maven编译插件，才真正解决。</p><p>解决的办法就是，在主Pom中定义下面的编译插件：</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;build&gt;
+    [...]
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;3.1&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;verbose&gt;true&lt;/verbose&gt;
+          &lt;fork&gt;true&lt;/fork&gt;
+          &lt;executable&gt;${JDK1.5JAVAC}&lt;/executable&gt;
+          &lt;compilerVersion&gt;1.5&lt;/compilerVersion&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+    [...]
+  &lt;/build&gt;</pre><p><br></br></p><p><br></br></p>在dbclusterjdbc4中添加下面的编译插件：<p><br></br></p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;build&gt;
+    [...]
+    &lt;plugins&gt;
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;version&gt;3.1&lt;/version&gt;
+        &lt;configuration&gt;
+          &lt;verbose&gt;true&lt;/verbose&gt;
+          &lt;fork&gt;true&lt;/fork&gt;
+          &lt;executable&gt;${JDK1.6JAVAC}&lt;/executable&gt;
+          &lt;compilerVersion&gt;1.6&lt;/compilerVersion&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
+    &lt;/plugins&gt;
+    [...]
+  &lt;/build&gt;</pre>然后在settings.xml中定义JDK1.5JAVAC<span>和<span>JDK1.6JAVAC变量，指向两个jdk的javac文件即可。</span></span><p><br></br></p></div>]]#

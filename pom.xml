@@ -11,6 +11,7 @@
         <module>org.tinygroup.helloworld</module>
         <module>org.tinygroup.websample</module>
         <module>org.tinygroup.tinysite</module>
+        <module>org.tinygroup.tinysite2</module>
         <module>org.tinygroup.offer</module>
     </modules>
 </project>

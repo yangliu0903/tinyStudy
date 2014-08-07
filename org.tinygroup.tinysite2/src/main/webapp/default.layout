@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="${TINY_CONTEXT_PATH}/img/tiny32.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="${TINY_CONTEXT_PATH}/img/tiny32.png" type="image/x-icon"/>
+    <title>TinyFramework-$!pageTitle</title>
+    <meta name="description" content="Tiny Framework 是基于Java语言的面向组件的企业级开发框架。"/>
+    <meta name="keywords" content="TinyFramework,悠然,悠悠然然,Tiny,Framework,CEP,通用事件处理,ui引擎,ui engine,模块化,业务单元,文档生成,xml parser,html parser,xml,html,parser,spider,网络爬虫,flow,流程,业务流,页面流,Java,SOA,框架,组件,分层,水平扩展,分区,分表,db router,db cluster,framework,框架,分布式计算,VFS,Web" />
+    <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
+    <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
+</head>
+<body class="boxed"  style="background: url($!TINY_CONTEXT_PATH/img/bg/parquet-bg.jpg);">
+    #@section()
+        #@container()
+        #header
+        #navbar
+        #hr
+        #end
+        #@container()
+            ${pageContent}
+        #end
+    #end
+#footer
+#toTop
+
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F08ed66f35813cc4b68c4607c2a40d33c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+#*<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-51345317-1', 'tinygroup.org');
+    ga('send', 'pageview');
+
+</script>*#
+</body>
+</html>

@@ -1,0 +1,295 @@
+#pageTitle("topic" "topic")
+#title("Tiny框架" "TinyDbRouter开源喽~~~ ")
+#[[<div class="BlogContent"><p>前面有过一篇<a href="http://my.oschina.net/tinyframework/blog/194551" target="_blank" rel="nofollow">文章</a>介绍<a href="http://my.oschina.net/tinyframework/blog/194551" target="_blank" rel="nofollow">TinyDbRouter</a>,但是当时没有开出来，主要原因是：1偶的粉丝数太少，期望到100的时候，纪念性的发布这个重量级框架，另外一个原因是当时有个编译问题没有完美的解决，偶担心同学们使用的时候不方便--其实偶也不方便，尤其是发布和测试的时候。</p><p>现在粉够100了，那个<a href="http://my.oschina.net/tinyframework/blog/200408" target="_blank" rel="nofollow">编译问题</a>也顺利的解决了，OK，没有什么理由不快些把它开放给大家。</p><p><strong><span style="color:#E53333;">前面偶起的名字是TinyDBCluster，后来由于有同学们反应说这个与数据库集群歧义，因此还是改成TinyDBRouter了，如果看到两个名字，请把它们当成一样的，后面就专门用</span></strong><span style="color:#E53333;"><strong>TinyDBRouter</strong></span><strong><span style="color:#E53333;">。</span></strong></p><p>其实在开发TinyDbRouter之前，偶主要是想找一个比较合适的数据库分区、分表方案，为此也学习了各种实现方案，比如就了解过routing4db，偶也专门做了<a href="http://my.oschina.net/tinyframework/blog/188780" target="_blank" rel="nofollow">对比</a>，当然由于对<span>routing4db的了解毕竟有不足，因此可能有许多不准确的地方；</span><span style="line-height:1.5;font-size:12.5px;">另外也对淘宝系的tddl做了相关研究，但是最后偶还是决定自己尝试写一下，当然写完之后感觉还是不错的，因此才有现在开源的TinyDbRouter。</span></p><p><span style="line-height:1.5;font-size:12.5px;">好的，上面是一些背景情况，现在言归正传，我们正式说框架。</span></p><p><span style="line-height:1.5;font-size:12.5px;">关于Tiny DBRouter的原理性文章，请<a href="http://my.oschina.net/tinyframework/blog/194551" target="_blank" rel="nofollow">移步查阅</a>，这里主要讲使用。</span></p><p><span style="line-height:1.5;font-size:12.5px;">要想使用<span>Tiny DBRouter，很简单，首先搞清楚是jdbc3(JDK1.5)还是jdbc4(JDK1.6及以上)的规范。</span></span></p><p><span style="line-height:1.5;font-size:12.5px;">然后选择对应的Maven坐标：</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
+	&lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+	&lt;artifactId&gt;org.tinygroup.dbrouterjdbc3&lt;/artifactId&gt;
+	&lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">或者</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
+	&lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
+	&lt;artifactId&gt;org.tinygroup.dbrouterjdbc4&lt;/artifactId&gt;
+	&lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</pre><p><span style="line-height:1.5;font-size:12.5px;">之所以是SNAPSHOT版本，是因为Tiny框架的升级是阶段性升级的，过一段时间就会变成0.0.13正式版本。</span></p><p>当把相关jar包下载到本地之后，接下来就是配置分区分表数据源了。</p><p>我们拿一个例子来说明：</p><p>differentSchemaAggregate.xml</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;routers&gt;
+    &lt;router id=&quot;aggregate&quot; user-name=&quot;luog&quot; password=&quot;123456&quot;
+             key-generator-class=&quot;org.tinygroup.dbrouter.impl.keygenerator.RouterKeyGeneratorLong&quot;&gt;
+        &lt;key-generator-config increment=&quot;1&quot; step=&quot;100&quot; data-source-id=&quot;ds0&quot;/&gt;
+        &lt;data-source-configs&gt;
+            &lt;data-source-config id=&quot;ds0&quot; driver=&quot;com.mysql.jdbc.Driver&quot;
+                                user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test0&quot;
+                                test-sql=&quot;&quot;/&gt;
+            &lt;data-source-config id=&quot;ds1&quot; driver=&quot;com.mysql.jdbc.Driver&quot;
+                                user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test1&quot;
+                                test-sql=&quot;&quot;/&gt;
+            &lt;data-source-config id=&quot;ds2&quot; driver=&quot;com.mysql.jdbc.Driver&quot;
+                                user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test2&quot;
+                                test-sql=&quot;&quot;/&gt;
+        &lt;/data-source-configs&gt;
+        &lt;partitions&gt;
+            &lt;partition id=&quot;abc&quot; mode=&quot;2&quot;&gt;
+                &lt;partition-rules&gt;
+                    &lt;partition-rule
+                            class=&quot;org.tinygroup.dbrouter.impl.partionrule.PartionRuleByTableName&quot;
+                            table-name=&quot;score&quot;/&gt;
+                &lt;/partition-rules&gt;
+                &lt;shards&gt;
+                    &lt;shard id=&quot;shard0&quot; data-source-id=&quot;ds0&quot;&gt;
+                        &lt;shard-rules&gt;
+                            &lt;shard-rule
+                                    class=&quot;org.tinygroup.dbrouter.impl.shardrule.ShardRuleByIdDifferentSchema&quot;
+                                    table-name=&quot;score&quot; primary-key-field-name=&quot;id&quot; remainder=&quot;0&quot;/&gt;
+                        &lt;/shard-rules&gt;
+                    &lt;/shard&gt;
+                    &lt;shard id=&quot;shard1&quot; data-source-id=&quot;ds1&quot;&gt;
+                        &lt;shard-rules&gt;
+                            &lt;shard-rule
+                                    class=&quot;org.tinygroup.dbrouter.impl.shardrule.ShardRuleByIdDifferentSchema&quot;
+                                    table-name=&quot;score&quot; primary-key-field-name=&quot;id&quot; remainder=&quot;1&quot;/&gt;
+                        &lt;/shard-rules&gt;
+                    &lt;/shard&gt;
+                    &lt;shard id=&quot;shard2&quot; data-source-id=&quot;ds2&quot;&gt;
+                        &lt;shard-rules&gt;
+                            &lt;shard-rule
+                                    class=&quot;org.tinygroup.dbrouer.impl.shardrule.ShardRuleByIdDifferentSchema&quot;
+                                    table-name=&quot;score&quot; primary-key-field-name=&quot;id&quot; remainder=&quot;2&quot;/&gt;
+                        &lt;/shard-rules&gt;
+                    &lt;/shard&gt;
+                &lt;/shards&gt;
+            &lt;/partition&gt;
+        &lt;/partitions&gt;
+    &lt;/router&gt;
+&lt;/routers&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">内容虽然比较长，但是其实很简单的，听偶娓娓道来：</span></p><span></span><p>一个配置文件可以配置多个数据库集群，因此根节点叫routers，接下来一段router就是一个集群喽。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;router id=&quot;aggregate&quot; user-name=&quot;luog&quot; password=&quot;123456&quot;
+             key-generator-bean=&quot;routerKeyGeneratorLong&quot;&gt;</pre><p>id非常重要，在通过jdbc访问数据库集群的时候，在url中要用到id,用户名和密码就是在通过jdbc连接时的用户名密码，呵呵，现在密码是明码，后续版本密码部分，会改为加密存储。</p><p>采用逻辑主键时，经常需要生成一个主键，由于集群环境中，主键的生成是一个细致活，原来采用数据库的自动生成序列、自增长啥的都不好用了，因此，一定需要一个集群模式的主键生成器。不过不用担心，框架已经提供了整型、长整型、UUID三种分布式主键生成器，大多数的情况下都够用了，如果再不够，请给我们提需求或者自已动手丰衣足食，自行进行扩展。</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;key-generator-config increment=&quot;1&quot; step=&quot;100&quot; data-source-id=&quot;ds0&quot;/&gt;</pre><p>这里定义了数据主键生成的一些参数配置，首先，需要一个数据源的名称，因为有一些数据需要在数据库中存储。increment表示<span>每次主键增长幅度，step表示每申请一次缓冲多个主键。当然，这两个参数都可以忽略，这时就采用系统默认值了--多数情况下都够了。</span></p><p><span></span></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;data-source-configs&gt;
+   &lt;data-source-config id=&quot;ds0&quot; driver=&quot;com.mysql.jdbc.Driver&quot; user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test0&quot; test-sql=&quot;&quot;/&gt;
+   &lt;data-source-config id=&quot;ds1&quot; driver=&quot;com.mysql.jdbc.Driver&quot; user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test1&quot; test-sql=&quot;&quot;/&gt;
+   &lt;data-source-config id=&quot;ds2&quot; driver=&quot;com.mysql.jdbc.Driver&quot; user-name=&quot;root&quot; password=&quot;123456&quot; url=&quot;jdbc:mysql://192.168.51.29:3306/test2&quot; test-sql=&quot;&quot;/&gt;
+        &lt;/data-source-configs&gt;</pre><p>这里定义的就是集群中要用到的数据源的列表，熟悉jdbc的同学一看就知道什么意思就不讲了，为什么这里统一一个区域定义数据源呢？？因为如果是同库分表的话，数据源实际上就是一个，这个时候只用定义一个就够了。</p><p>接下来就是定义分区了：</p><p>一个集群可以包含多个分区，一个分区可以包含多个分片。</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;partition id=&quot;abc&quot; mode=&quot;2&quot;&gt;</pre>mode这里用于声明分区的模式，分区有两种方式，为1的时候表示读写分离模式，为2的时候表示分表模式。<br></br><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;partition-rule class=&quot;org.tinygroup.dbrouter.impl.partionrule.PartionRuleByTableName&quot; table-name=&quot;score&quot;/&gt;
+&lt;/partition-rules&gt;</pre><p>一个分区可以包含多个分区规则，分区规则主要用于确定哪些表跑到一个分区。这里很简单，配置的是只要表名是score，就跑到本分区来执行。</p><p>一个区分又可以有多个分片，每个分片可以有一到多个分片规则，以决定是否到当前分片执行。</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;shard id=&quot;shard0&quot; data-source-id=&quot;ds0&quot;&gt;
+    &lt;shard-rules&gt;
+        &lt;shard-rule
+                class=&quot;org.tinygroup.dbrouter.impl.shardrule.ShardRuleByIdDifferentSchema&quot;
+                table-name=&quot;score&quot; primary-key-field-name=&quot;id&quot; remainder=&quot;0&quot;/&gt;
+    &lt;/shard-rules&gt;
+&lt;/shard&gt;</pre><p><span style="font-size:12.5px;line-height:1.5;">上面的规则是指根据score表的id值对shard数进行取余，余数为0的命中。 另外的两个就是说余数为1和为2的时候执行。</span></p><p>很明显分片规则和分区规则都是可以自行扩展的---凡是可以指定bean或类名的，都是可以进行扩展滴。</p><p>用白话总结一下，上面的配置：</p><p><span style="font-size:12.5px;line-height:1.5;"></span></p><pre class="brush:php; toolbar: true; auto-links: false;">定义了一个标识为“aggregate”的集群，其用户名密码为“luog”和&quot;123456&quot;，定义的主键产生器是每次增加1，每次取100个，用完之后，再去取100个，以此类推。
+
+定义了三个数据源，备用。
+
+定义了一个分区abc，把所有score表的处理都交给此分区进行处理，它的分区模式是分表模式。也就是说score表中的数据会被分解到多个表当中去。
+
+接下来给分区abc定义了三个分片，这三个分片分别指向上面的三个数据源中的一个，第一个负责处理socre表中的id对3取余余数为0的数据；第二个负责处理score表中的id对3取余余数为1的数据；第三个负责处理score表中的id对3取余余数为2的数据；</pre><p><span style="font-size:12.5px;line-height:1.5;">OK，上面的定义就算完成了，下面上大菜，看测试用例：</span></p><p><span style="font-size:12.5px;line-height:1.5;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public class AggregateTest extends TestCase {
+
+
+&amp;nbsp; &amp;nbsp; Statement stmt;
+
+
+&amp;nbsp; &amp;nbsp; private static boolean hasInit;
+
+
+&amp;nbsp; &amp;nbsp; @Override
+&amp;nbsp; &amp;nbsp; protected void setUp() throws Exception {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; super.setUp();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; RouterManager routerManager = RouterManagerBeanFactory.getManager();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; routerManager.addRouters(&quot;/differentSchemaAggregate.xml&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Class.forName(&quot;org.tinygroup.dbrouterjdbc3.jdbc.TinyDriver&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Connection conn = DriverManager.getConnection(&quot;jdbc:dbrouter://aggregate&quot;, &quot;luog&quot;, &quot;123456&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt = conn.createStatement();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; prepareRecord();
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; private void prepareRecord() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; //删除数据
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (!hasInit) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.execute(&quot;delete from score&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(1,&apos;xiaohuihui&apos;,99,&apos;shuxue&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(2,&apos;xiaohuihui&apos;,97,&apos;yuwen&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(3,&apos;xiaom&apos;,95,&apos;shuxue&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(4,&apos;xiaof&apos;,97,&apos;yingyu&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(5,&apos;xiaom&apos;,100,&apos;yuwen&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(6,&apos;xiaof&apos;,95,&apos;yuwen&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(7,&apos;xiaohuihui&apos;,95,&apos;yingyu&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(8,&apos;xiaom&apos;,96,&apos;yingyu&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; stmt.executeUpdate(&quot;insert into score(id,name,score,course) values(9,&apos;xiaof&apos;,96,&apos;shuxue&apos;)&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; hasInit = true;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+
+
+&amp;nbsp; &amp;nbsp; @Override
+&amp;nbsp; &amp;nbsp; protected void tearDown() throws Exception {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; super.tearDown();
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testCount() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select count(*),name from score group by name&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String name = resultSet.getString(2);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (name.equals(&quot;xiaohuihui&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(3, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaom&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(3, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaof&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(3, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMax() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select max(score) score,course from score group by course&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String course = resultSet.getString(2);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (course.equals(&quot;shuxue&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(99, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (course.equals(&quot;yingyu&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (course.equals(&quot;yuwen&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+
+
+&amp;nbsp; &amp;nbsp; public void testMaxSingle() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select max(score) score from score&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testSum() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select sum(score) score,name from score group by name&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String name = resultSet.getString(2);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (name.equals(&quot;xiaohuihui&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(291, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaom&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(291, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaof&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(288, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMin() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select min(score) score,name from score group by name&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String name = resultSet.getString(2);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (name.equals(&quot;xiaohuihui&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaom&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaof&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMinSingle() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select min(score) score from score&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testAvg() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select avg(score) score,name from score group by name&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String name = resultSet.getString(2);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (name.equals(&quot;xiaohuihui&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaom&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaof&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(96.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMultiWithOrderby() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select min(score) minscore,max(score) maxscore,sum(score) sumscore,avg(score) avgscore, name from score group by name order by name&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; while (resultSet.next()) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String name = resultSet.getString(&quot;name&quot;);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; if (name.equals(&quot;xiaohuihui&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(99.0, resultSet.getDouble(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(291.0, resultSet.getDouble(3));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, resultSet.getDouble(4));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaom&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100.0, resultSet.getDouble(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(291.0, resultSet.getDouble(3));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, resultSet.getDouble(4));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; } else if (name.equals(&quot;xiaof&quot;)) {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, resultSet.getDouble(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(288.0, resultSet.getDouble(3));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(96.0, resultSet.getDouble(4));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; }
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMultiSingle() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select min(score) minscore,max(score) maxscore,sum(score) sumscore,avg(score) avgscore from score&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(95.0, resultSet.getDouble(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100.0, resultSet.getDouble(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(870.0, resultSet.getDouble(3));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97.0, Math.ceil(resultSet.getDouble(4)));
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMaxWithFirstAndLast() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select max(score) score,name,course from score group by name order by score&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.absolute(1);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;xiaof&quot;, resultSet.getString(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.first();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertTrue(resultSet.isFirst());
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;xiaof&quot;, resultSet.getString(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.last();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertTrue(resultSet.isLast());
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;xiaom&quot;, resultSet.getString(2));
+
+
+&amp;nbsp; &amp;nbsp; }
+
+
+&amp;nbsp; &amp;nbsp; public void testMaxWithOrderBy() throws SQLException {
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; String sql = &quot;select max(score) score,course from score group by course order by score&quot;;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; ResultSet resultSet = stmt.executeQuery(sql);
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;yingyu&quot;, resultSet.getString(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(97, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;shuxue&quot;, resultSet.getString(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(99, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; resultSet.next();
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(&quot;yuwen&quot;, resultSet.getString(2));
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; assertEquals(100, resultSet.getInt(1));
+&amp;nbsp; &amp;nbsp; }
+
+
+
+
+}<div></div></pre><p><span style="font-size:12.5px;line-height:1.5;">上面首先在setUp中做了一点初始化工作，主要就是下面两句：用于加载一个集群配置，实际使用有两种方法：</span></p><p><span style="font-size:12.5px;line-height:1.5;">编程方式，约定方式。下面用的就是编译方式，如果用编写方式就简单了，只要按约定放在合适的位置，框架会自动加载配置文件，就可以不写下面的两行了。</span></p><p><span style="font-size:12.5px;line-height:1.5;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">RouterManager routerManager = RouterManagerBeanFactory.getManager();
+		routerManager.addRouters(&quot;/differentSchemaAggregate.xml&quot;);</pre><p><span style="font-size:12.5px;line-height:1.5;">其它的工作就与普通的JDBC没有任何不同了。</span></p><p><span style="font-size:12.5px;line-height:1.5;">我们看看初始化之后， 数据的情况：</span></p><p><span style="font-size:12.5px;line-height:1.5;"><img src="http://static.oschina.net/uploads/space/2014/0220/081944_Nyy7_1245989.png" alt=""></img><br></br></span></p><p>从上面可以看到，数据确实已经插入到三个数据表中。</p><p><span style="line-height:1.5;font-size:12.5px;">后面的几个测试用例主要测试的是聚合统计方面的处理，实际上，所有的SQL语句都可以正常的执行，对于上层应用来说，它根本就不知道分表了。</span></p><p>急性子的同学们可能要问：</p><p>那如果我输入select * from score where id=3，结果会正确出来么？当然</p><p>那如果我输入select * from score order by id，结果会正确出来么？当然</p><p>我要说的，还远不止如此：</p><p>实际上TinyDBRouter已经竭尽全力，来支持数据库的特性：</p><p>比如：自增长</p><p>还是上面的score类子，如果在插入的时候不指定id值，如下：</p><pre class="brush:sql; toolbar: true; auto-links: false;">insert into score(name,score,course) values(&apos;xiaohuihui&apos;,97,&apos;yuwen&apos;)</pre><p><span style="font-size:12.5px;line-height:1.5;">TinyDBRouter会同样进行正常的插入，完全透明的处理好分布式主键的问题。这个与类似的框架比就先进许多了。类似的框架都是需要必须输入id，并且自己保证或必须调用其分库分表方案中提供的API来获取主键。这实际上就是有侵入性，也就是人编程人员可以感知到分库分表的存在，且必须按照相应规范进行使用。而使用TinyDBRouter，开发人员可以完全不知道有这么一层存在。</span></p>比如统计处理：<p>假设在一个表中有9条数据，我们执行下面的语句：</p><pre class="brush:sql; toolbar: true; auto-links: false;">select avg(score) score,name from score group by name</pre><p><span style="font-size:12.5px;line-height:1.5;">我们都知道实际处理是名字相同的score值加起来，然后除以记录数，得到平均值。</span></p><p>但是现在数据都分成3个表了，如果在3个表上执行同样的处理：</p><pre class="brush:sql; toolbar: true; auto-links: false;">select avg(score) score,name from score group by name</pre><div>然后再进行平均值计算，可不可以呢？？？答案是否定的。卖个关子这里不做解释，有不理解的同学，下面回帖发问。但是TinyDBRouter框架却可以保证结果的正确性。</div><span></span><p>数据库支持的普适性：</p><p>TinyDBRouter理论上支持各种数据库，各种ORMapping框架，而一般的框架是针对某种ORMapping框架做的，比如：专门针对iBatis,Hibernate的；有的只针对MySql或Oracle等。</p>SQL支持的普适性：<p><span>TinyDBRouter</span>理论上支持所有不违反<span><span>TinyDBRouter</span>适应规则的SQL。而许多同类框架则有诸多限制。</span></p><p><span><span><span>TinyDBRouter</span>使用限制：</span></span></p><ul><li><span style="line-height:1.5;font-size:12.5px;color:#E53333;"><strong>不支持跨分区关联查询</strong></span></li><li><span style="line-height:1.5;font-size:12.5px;color:#E53333;"><strong>分表模式中只支持光标分页，不支持SQL分页</strong></span></li><li><span style="line-height:1.5;font-size:12.5px;color:#E53333;"><strong>不支持savePoint</strong></span></li><li><span style="line-height:1.5;font-size:12.5px;color:#E53333;"><strong>暂时不支持存储过程</strong></span></li></ul><p><span><span>总结</span></span></p><p><span><span>TinyDBRouter确实是非常优秀的分区分表方案，当然它也有缺点，那就是测试还不够充分,没有得到充分的验证。</span></span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p></div>]]#

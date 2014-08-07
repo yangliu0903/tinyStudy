@@ -1,0 +1,6 @@
+<ui-components>
+    <ui-component name="tinysite" dependencies="">
+        <css-resource>/css/shCore.css,/css/shCoreEclipse.css,/css/font.css,/css/bootstrap.min.css,/css/bootstrap-responsive.min.css,/css/style.css,/css/slides.css,/css/masonry.css,/css/fancybox.css,/css/colors/custom.css</css-resource>
+        <js-resource>/js/jquery-1.9.1.js,/js/fancybox.js,/js/shCore.js,/js/shBrushJava.js,/js/shBrushCpp.js,/js/shBrushXml.js,/js/slides.min.js,/js/bootstrap.min.js,/js/masonry.min.js,/js/functions.js</js-resource>
+    </ui-component>
+</ui-components>

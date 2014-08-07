@@ -1,0 +1,433 @@
+#macro a( aHref,title,aTarget )
+<a#if(title) title="title"#end#if(aHref)
+              href="#linkConvert(aHref)"#end#if(aTarget)
+              target="aTarget"#end>
+    #bodyContent
+</a>
+#end
+
+#macro img( imgHref,imgTitle)
+<!-- imgHref.charAt(0) -->
+        <img#if(imgTitle) alt="imgTitle"#end#if(imgHref)
+                           src="#linkConvert(imgHref)"#end#>
+</a>
+#end
+
+#macro linkConvert (href)
+    #if(href.charAt(0)=='/')#if(TINY_CONTEXT_PATH.chatAt(0)!='/')#else${TINY_CONTEXT_PATH}#end#endhref
+#end
+
+#macro section()
+<div class="section">
+    #bodyContent
+</div>
+#end
+
+#macro container()
+<div class="container">
+    #bodyContent
+</div>
+#end
+
+#macro row()
+<div class="row">
+    #bodyContent
+</div>
+#end
+
+#macro span1()
+<div class="span1">
+    #bodyContent
+</div>
+#end
+
+#macro span2()
+<div class="span2">
+    #bodyContent
+</div>
+#end
+
+#macro span3()
+<div class="span3">
+    #bodyContent
+</div>
+#end
+
+#macro span4()
+<div class="span4">
+    #bodyContent
+</div>
+#end
+
+#macro span5()
+<div class="span5">
+    #bodyContent
+</div>
+#end
+
+
+#macro span6()
+<div class="span6">
+    #bodyContent
+</div>
+#end
+
+#macro span7()
+<div class="span7">
+    #bodyContent
+</div>
+#end
+
+#macro span8()
+<div class="span8">
+    #bodyContent
+</div>
+#end
+
+#macro span9()
+<div class="span9">
+    #bodyContent
+</div>
+#end
+
+#macro span10()
+<div class="span10">
+    #bodyContent
+</div>
+#end
+
+#macro span11()
+<div class="span11">
+    #bodyContent
+</div>
+#end
+
+#macro span12()
+<div class="span12">
+    #bodyContent
+</div>
+#end
+
+#macro(hr)
+<hr/>
+#end
+
+#macro dropdownMenu( dropdownTitle,dropdownHref,dropdownSubTitle )
+<li class="dropdown"><a href="dropdownHref?activePage=!menuKey">dropdownTitle</a> <b class="caret"></b>
+    <span>dropdownSubTitle</span>
+    !bodyContent
+</li>
+#end
+
+#macro menu( menuTitle,menuHref,menuSubTitle,menuKey)
+<li class="dropdown#if(menuKey==activePage) active#end"><a
+        href="#linkConvert(menuHref)">menuTitle</a>
+    <span>menuSubTitle</span>
+    !bodyContent
+</li>
+#end
+
+#macro nav()
+<ul class="nav">
+    #bodyContent
+</ul>
+#end
+
+#macro subMenu()
+<ul>
+    #bodyContent
+</ul>
+#end
+
+#macro subMenuItem(title,href,menuKey)
+<li><a href="#linkConvert(href)"#if(menuKey==activePage) class="current"#end >title</a></li>
+#end
+
+#macro pageTitle( title,page)
+    #set(pageTitle="title")
+    #set(activePage="page")
+#end
+
+#macro modalFooter()
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+</div>
+#end
+
+#macro breadcrumb()
+<ul class="breadcrumb">
+    #bodyContent
+</ul>
+#end
+
+#macro breadcrumbParentItem(title,url)
+<li>#@a(url,title)title#end <span class="divider">/</span></li>
+#end
+
+#macro breadcrumbItem( title)
+<li class="active">title</li>
+#end
+
+#macro thumbnails( thumbnailsId)
+<ul class="thumbnails"#if(thumbnailsId)id="thumbnailsId"#end>
+    #bodyContent
+</ul>
+#end
+
+#macro filterContainer()
+<ul id="portfolio" class="thumbnails ">
+    #bodyContent
+</ul>
+#end
+
+#macro filterContainerItem( column,type)
+<li class="spancolumn type" style="opacity: 1;">
+    <div class="thumbnail" style="text-align:left;">
+        #bodyContent
+    </div>
+</li>
+#end
+
+#macro clearfix()
+<div class="clearfix"></div>
+#end
+
+#macro thumbnailsItem( name,title,qq,email,imgUrl)
+<li class="span3">
+    <div class="thumbnail">
+        #img(imgUrl)
+        <div class="caption">
+            <h3><a href="#">name</a></h3>
+            <em>title</em>
+
+            <p>QQ:!qq</p>
+
+            <p>邮箱:!email</p>
+            #clearfix
+            !bodyContent
+        </div>
+    </div>
+</li>
+#end
+
+#macro slides()
+<div class="slides">
+    #bodyContent
+</div>
+#end
+
+#macro slidesItem( imgSrc,title,href)
+<div>#@a(href,title)#img(imgSrc,title) #end
+#bodyContent
+</div>
+#end
+
+#macro slidesDetail()
+<div class="detail">
+    #bodyContent
+</div>
+#end
+
+#macro slidesDetailInfo( title,subTitle)
+<h3>#@a(href,title)title#end</h3>
+<em>subTitle</em>
+    #bodyContent
+#end
+
+#macro title( title,subTitle)
+<div class="row">
+    #@span4()
+        <h1 class="no-margin">title</h1>
+
+        <p class="lead">subTitle</p>
+    #end
+    #@span8()
+        <div align="right">
+            #*
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- titlebarad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-9864431858561260"
+                 data-ad-slot="5845240839"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            *#
+        </div>
+    #end
+</div>
+#end
+
+#macro wideBanner()
+<!-- Wide Banner -->
+<div class="wide-bg">
+    <div class="container">
+        #bodyContent
+    </div>
+</div>
+#end
+
+#macro sidebar( title)
+<!-- Sidebar -->
+<div class="span3 sidebar">
+    #if(title)
+        <h3 class="half-margin">!title</h3>
+    #end
+    <ul class="nav nav-tabs nav-stacked">
+        #bodyContent
+    </ul>
+</div>
+#end
+
+#macro sidebarItem( title,href )
+<li>#@a(href,title)title#end</li>
+#end
+
+#macro lead(id,title)
+<p class="lead no-margin" id="id">title</p>
+<div class="">
+    #bodyContent
+</div>
+<hr class="no-margin" style="margin: 5pt;5pt;5pt;5pt;"/>
+#end
+
+#macro filter()
+<!-- Portfolio Filter -->
+<div id="filter" class="half-margin">
+    #bodyContent
+</div>
+<div class="clearfix"></div>
+</div>
+#end
+
+#macro filterItem(title,current)
+<button class="btn btn-small half-margin#if(current) current#end">title</button>
+#end
+
+#macro shortcut( title,href,icon)
+    #@a(href,title,"_blank")#img(icon)#end
+#end
+
+#macro caption(title)
+<div class="head" style="text-align: left;">
+    <h3><strong>title</strong></h3>
+    #bodyContent
+</div>
+#end
+
+#macro masonry()
+<div id="masonry">
+    #bodyContent
+</div>
+#end
+#macro masonryItem( masonryItemClass)
+<div class="single masonryItemClass">
+    #bodyContent
+</div>
+#end
+
+#macro logo()
+<p class="logo"> #@a("/index.page")<span>Tiny 框架</span>#end</p>
+#end
+
+#macro toTop()
+<div id="toTop">Top</div>
+#end
+
+#macro fancybox( smallPic,bigPic,title)
+<a href="bigPic" title="title" class="thumb fancybox"><img src="smallPic" alt="title"/> </a>
+#end
+
+#################################################下面是业务相关#########################################################
+#macro donate( name,amount,date,mode)
+<tr>
+    <td style="text-align: center"><h3><strong>name</strong></h3></td>
+    <td style="text-align: right"><b style="color:blue">amount</b>勇气</td>
+    <td>#if(mode)mode#{else}通过扫描鼓励#end</td>
+    <td style="text-align: right">date</td>
+</tr>
+#end
+
+#headermacro()
+<!-- Header -->
+    #@row()
+        #@span3()
+        #logo
+        #end
+        #@span9()
+        <div class="top-header text-right"><em>QQ群:<em>228977971</em> 邮箱：<a
+                href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
+
+            <div class="social">
+                #shortcut("Sonar代码检查","http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny","/img/sonar.ico")
+                #shortcut("Hudson持续集成","http://www.tinygroup.org/hudson/job/tiny/","/img/hudson.png")
+                #shortcut("TinyFramework OSC首页","http://my.oschina.net/tinyframework","/img/osc.ico")
+                #shortcut("TinyFramework GIT网址","http://git.oschina.net/tinyframework/tiny","/img/git.ico")
+                #shortcut("TinyFramework文档","http://www.tinygroup.org/confluence/","/img/confluence.png")
+                #shortcut("TinyEclipse插件更新地址","http://www.tinygroup.org/TinyStudioSite/","/img/eclipse.jpg")
+            </div>
+        </div>
+        <div class="text-left">
+            <h2></bit> Think big, start small, scale fast.</h2>
+        </div>
+        #end
+    #end
+#end
+
+#macro footer()
+    #@section()
+        #@container()
+        <!-- Footer -->
+            #@row()
+                #@span12()
+                <div class="footer">
+                    <hr/>
+                    <p class="text-center">&copy;Copy Right 2009~2014 <strong>tiny group</strong><br/>
+                        www.tinygroup.org</p>
+                </div>
+                #end
+            #end
+        #end
+    #end
+
+#end
+
+#macro navbar()
+<!-- Navbar -->
+<div class="navbar"#* id="nav-follow"*#>
+    <div class="navbar-inner">
+        <div class="container"><a data-target=".navbar-responsive-collapse" data-toggle="collapse"
+                                  class="btn btn-navbar"><i class="icon-th-list"></i></a> <a
+                data-target=".navbar-responsive-collapse" data-toggle="collapse" class="brand">Navbar</a>
+
+            <div class="nav-collapse collapse navbar-responsive-collapse">
+                #@nav()
+                    #@menu("Homepage","/index.page","首页","home")
+ #*                       #@subMenu()
+                            #@subMenuItem("设计理念","/philosophy.page","philosophy")#end
+                            #@subMenuItem("设计原则","/principle.page","principle")#end
+                        #end
+ *#                   #end
+                    #@menu("philosophy","/philosophy.page","设计理念","philosophy")#end
+                    #@menu("principle","/principle.page","设计原则","principle")#end
+                    #@menu("functions","/function.page","框架概要","functions")#end
+                ##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
+                    #@menu("topic" "#" "相关文章" "topic")
+                        #@subMenu()
+                            #subMenuItem("Tiny框架","/topics/cat_377413.page",menuKey)
+                            #subMenuItem("Tiny示例","/topics/cat_451799.page",menuKey)
+                            #subMenuItem("算法感想","/topics/cat_377414.page",menuKey)
+                            #subMenuItem("悠然乱弹","/topics/cat_451101.page",menuKey)
+                        #end
+                    #end
+                    #@menu("FAQ","/faq.page","常见问题解答","faq")#end
+                    #@menu("encourage us","/encourage.page","鼓励我们","encourage")#end
+                    #@menu("About us","/about.page","关于我们","about")#end
+                #end
+            </div>
+        </div>
+    </div>
+</div>
+#end
+
