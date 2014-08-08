@@ -1,5 +1,5 @@
-#pageTitle("关于" "about")
-#title("about us" "关于我们")
+#pageTitle("关于","about")
+#title("about us","关于我们")
 #@row()
     #@span12()
     <p>Tiny Framework从正式开始写到现已经走过了近5个年头，实际上在真正开始之前已经做了诸多的准备工作，更多的是在整个软件架构中蕴含了构建者多年软件从业经验所积累的丰富经验及通过踩下的无数的坑所积累起来的经验。</p>
@@ -15,45 +15,45 @@
 
         <!-- About Content -->
         #@thumbnails()
-            #@thumbnailsItem("悠悠然然" "发起人 架构师" "113322667" "luo_guo@icloud.com" "img/luoguo.png")
+            #@thumbnailsItem("悠悠然然","发起人 架构师","113322667","luo_guo@icloud.com","img/luoguo.png")
                 架构、忽悠、挑毛病
             #end
-            #@thumbnailsItem("Atizose" "高级程序员" "279708573" "279708573@qq.com" "img/atirose.jpg")
+            #@thumbnailsItem("Atizose","高级程序员","279708573","279708573@qq.com","img/atirose.jpg")
                 擅于攻坚克难
             #end
-            #@thumbnailsItem("ballackhui" "高级程序员" "267267289" "267267289@qq.com" "img/ballckhui.jpg")
+            #@thumbnailsItem("ballackhui","高级程序员","267267289","267267289@qq.com","img/ballckhui.jpg")
                 擅于Java后台开发
             #end
-            #@thumbnailsItem("达达" "高级程序员" "305702665" "305702665@qq.com" "img/dada.png")
+            #@thumbnailsItem("达达","高级程序员","305702665","305702665@qq.com","img/dada.png")
                 擅于Eclipse插件开发
             #end
-            #@thumbnailsItem("nishihe" "高级程序员" "312016714" "312016714@qq.com" "img/nishihe.jpg")
+            #@thumbnailsItem("nishihe","高级程序员","312016714","312016714@qq.com","img/nishihe.jpg")
             擅于Java应用级开发
             #end
-            #@thumbnailsItem("塔罗大道" "高级程序员" "78375102" "78375102@qq.com" "img/tldd.jpg")
+            #@thumbnailsItem("塔罗大道","高级程序员","78375102","78375102@qq.com","img/tldd.jpg")
             擅于技术研究
             #end
-            #@thumbnailsItem("Kraken" "中级程序员" "1458307249" "1458307249@qq.com" "img/Kraken.jpg")
+            #@thumbnailsItem("Kraken","中级程序员","1458307249","1458307249@qq.com","img/Kraken.jpg")
             负责模板引擎
             #end
-            #@thumbnailsItem("旺旺旺" "初级程序员" "343512613" "343512613@qq.com" "img/www.jpg")
+            #@thumbnailsItem("旺旺旺","初级程序员","343512613","343512613@qq.com","img/www.jpg")
             测试、示例
             #end
-            #@thumbnailsItem("reman" "高级程序员" "309688283" "309688283@qq.com" "img/reman.jpg")
+            #@thumbnailsItem("reman","高级程序员","309688283","309688283@qq.com","img/reman.jpg")
             负责TinyReport开发
             #end
-            #@thumbnailsItem("秋窗寒雨" "初级程序员" "100218084" "100218084@qq.com" "img/qchy.jpg")
+            #@thumbnailsItem("秋窗寒雨","初级程序员","100218084","100218084@qq.com","img/qchy.jpg")
             测试、示例
             #end
-            #@thumbnailsItem("KeepUp" "初级程序员" "345977373" "345977373@qq.com" "img/moveup.jpg")
+            #@thumbnailsItem("KeepUp","初级程序员","345977373","345977373@qq.com","img/moveup.jpg")
             擅长后台开发
             #end
-            #@thumbnailsItem("耗子" "初级程序员" "654879871" "654879871@qq.com" "img/haozi.png")
+            #@thumbnailsItem("耗子","初级程序员","654879871","654879871@qq.com","img/haozi.png")
             测试、示例
             #end
 
 #*
-            #@thumbnailsItem("虚位以待" "不明" "不明" "不明" "img/xwyd.jpg")
+            #@thumbnailsItem("虚位以待","不明","不明","不明","img/xwyd.jpg")
             不明
             #end
 *#

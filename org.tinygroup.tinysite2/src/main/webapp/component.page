@@ -1,12 +1,12 @@
-#pageTitle("component" "component")
-#title("组件" "Tiny Framework的组件介绍")
+#pageTitle("component","component")
+#title("组件","Tiny Framework的组件介绍")
 
 
 #@row()
 
 <!-- Sidebar -->
     #@span9()
-        #@filter("特性列表")
+        #@filter()
             #filterItem("All")
             #filterItem("Design")
             #filterItem("Development")
@@ -17,7 +17,7 @@
     #end
     #@filterContainer()
     <!-- Content -->
-        #@filterContainerItem(3 "design")
+        #@filterContainerItem(3,"design")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -31,7 +31,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "development")
+        #@filterContainerItem(3,"development")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -45,7 +45,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "cms")
+        #@filterContainerItem(3,"cms")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -59,7 +59,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "information-architecture")
+        #@filterContainerItem(3,"information-architecture")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -73,7 +73,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "dsign")
+        #@filterContainerItem(3,"dsign")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -87,7 +87,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "dsign")
+        #@filterContainerItem(3,"dsign")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>
@@ -101,7 +101,7 @@
                 <a class="btn btn-primary" href="#">View</a></div>
         </div>
         #end
-        #@filterContainerItem(3 "dsign")
+        #@filterContainerItem(3,"dsign")
         <div class="thumbnail"><a href="tinysite/img/example-slide-2.jpg" title="Box Boutique" rel="thumbnails"
                                   class="thumb fancybox"><img src="tinysite/img/example-slide-2.jpg" alt="Photo"/> <span
                 class="view"><i class="icon-search icon-white"></i></span></a>

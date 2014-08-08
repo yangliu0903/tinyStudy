@@ -1,5 +1,5 @@
-#pageTitle("鼓励" "encourage")
-#title("encourage" "鼓励与支持")
+#pageTitle("鼓励","encourage")
+#title("encourage","鼓励与支持")
 #@row()
     #@span12()
     <div class="thumbnail" style="text-align: left;">
@@ -12,13 +12,13 @@
     #@span6()
         <div style="text-align: right">
             <p  style="color:red"><strong>支付宝二维码</strong>　　　　　</p>
-        #img("img/appxl1rc0koh8fj044.png"  "支付宝二维码")
+        #img("img/appxl1rc0koh8fj044.png","支付宝二维码")
         </div>
     #end
 
     #@span6()
     <p  style="color:red">　　　　<strong>微信公众帐号</strong> </p>
-        #img("img/qrcode_for_gh_2ee3199c0201_256.jpg"  "微信公众帐号")
+        #img("img/qrcode_for_gh_2ee3199c0201_256.jpg","微信公众帐号")
     #end
     #@span10()
     #hr
@@ -32,13 +32,13 @@
         </tr>
         </thead>
         <tbody>
-        #donate("孔维杰" "1.00" "2014-06--3 11:10")
-        #donate("陈佼" "1.00" "2014-05-29 9:01")
-        #donate("李家宁" "2.00" "2014-05-26 14:04")
-        #donate("李思思" "10.24" "2014-05-26 13:42")
-        #donate("黄亿华" "1.00" "2014-05-26 13:41")
-        #donate("岳庆伟" "1.00" "2014-05-26 13:34")
-        #donate("余青松" "2.00" "2014-05-26 13:01")
+        #donate("孔维杰","1.00","2014-06-3 11:10")
+        #donate("陈佼","1.00","2014-05-29 9:01")
+        #donate("李家宁","2.00","2014-05-26 14:04")
+        #donate("李思思","10.24","2014-05-26 13:42")
+        #donate("黄亿华","1.00","2014-05-26 13:41")
+        #donate("岳庆伟","1.00","2014-05-26 13:34")
+        #donate("余青松","2.00","2014-05-26 13:01")
         </tbody>
     </table>
     #end

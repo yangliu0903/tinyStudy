@@ -1,5 +1,5 @@
 #pageTitle("首页","home")
-#title("Tiny framework" "基于组件化的J2EE开发框架")
+#title("Tiny framework","基于组件化的J2EE开发框架")
 Title
 
 #@slides()

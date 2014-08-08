@@ -1,7 +1,7 @@
 #macro a( aHref,title,aTarget )
-<a#if(title) title="title"#end#if(aHref)
-              href="#linkConvert(aHref)"#end#if(aTarget)
-              target="aTarget"#end>
+<a  #if(title) title="${title}" #end
+    #if(aHref) href="#linkConvert(aHref)" #end
+    #if(aTarget) target="${aTarget}" #end >
     #bodyContent
 </a>
 #end
@@ -9,12 +9,12 @@
 #macro img( imgHref,imgTitle)
 <!-- imgHref.charAt(0) -->
         <img#if(imgTitle) alt="imgTitle"#end#if(imgHref)
-                           src="#linkConvert(imgHref)"#end#>
+                           src="#linkConvert(imgHref)"#end>
 </a>
 #end
 
-#macro linkConvert (href)
-    #if(href.charAt(0)=='/')#if(TINY_CONTEXT_PATH.chatAt(0)!='/')#else${TINY_CONTEXT_PATH}#end#endhref
+#macro linkConvert(href)
+ #if(href.startsWith("/"))${TINY_CONTEXT_PATH}${href}#else${href}#end
 #end
 
 #macro section()
@@ -108,22 +108,22 @@
 </div>
 #end
 
-#macro(hr)
+#macro hr()
 <hr/>
 #end
 
-#macro dropdownMenu( dropdownTitle,dropdownHref,dropdownSubTitle )
-<li class="dropdown"><a href="dropdownHref?activePage=!menuKey">dropdownTitle</a> <b class="caret"></b>
-    <span>dropdownSubTitle</span>
-    !bodyContent
+#macro dropdownMenu(dropdownTitle,dropdownHref,dropdownSubTitle)
+<li class="dropdown"><a href="dropdownHref?activePage=!menuKey">${dropdownTitle}</a> <b class="caret"></b>
+    <span>${dropdownSubTitle}</span>
+    #bodyContent
 </li>
 #end
 
-#macro menu( menuTitle,menuHref,menuSubTitle,menuKey)
+#macro menu(menuTitle,menuHref,menuSubTitle,menuKey)
 <li class="dropdown#if(menuKey==activePage) active#end"><a
-        href="#linkConvert(menuHref)">menuTitle</a>
-    <span>menuSubTitle</span>
-    !bodyContent
+        href="#linkConvert(menuHref)">${menuTitle}</a>
+    <span>${menuSubTitle}</span>
+    #bodyContent
 </li>
 #end
 
@@ -197,14 +197,14 @@
     <div class="thumbnail">
         #img(imgUrl)
         <div class="caption">
-            <h3><a href="#">name</a></h3>
-            <em>title</em>
+            <h3><a href="#">${name}</a></h3>
+            <em>${title}</em>
 
-            <p>QQ:!qq</p>
+            <p>QQ:${qq}</p>
 
-            <p>邮箱:!email</p>
-            #clearfix
-            !bodyContent
+            <p>邮箱:${email}</p>
+            #clearfix()
+            #bodyContent
         </div>
     </div>
 </li>
@@ -335,7 +335,7 @@
 <div id="toTop">Top</div>
 #end
 
-#macro fancybox( smallPic,bigPic,title)
+#macro fancybox(smallPic,bigPic,title)
 <a href="bigPic" title="title" class="thumb fancybox"><img src="smallPic" alt="title"/> </a>
 #end
 
@@ -349,23 +349,23 @@
 </tr>
 #end
 
-#headermacro()
+#macro header()
 <!-- Header -->
     #@row()
         #@span3()
-        #logo
+        #logo()
         #end
         #@span9()
         <div class="top-header text-right"><em>QQ群:<em>228977971</em> 邮箱：<a
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
-                #shortcut("Sonar代码检查","http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny","/img/sonar.ico")
-                #shortcut("Hudson持续集成","http://www.tinygroup.org/hudson/job/tiny/","/img/hudson.png")
-                #shortcut("TinyFramework OSC首页","http://my.oschina.net/tinyframework","/img/osc.ico")
-                #shortcut("TinyFramework GIT网址","http://git.oschina.net/tinyframework/tiny","/img/git.ico")
-                #shortcut("TinyFramework文档","http://www.tinygroup.org/confluence/","/img/confluence.png")
-                #shortcut("TinyEclipse插件更新地址","http://www.tinygroup.org/TinyStudioSite/","/img/eclipse.jpg")
+                #@shortcut("Sonar代码检查","http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny","/img/sonar.ico")#end
+                #@shortcut("Hudson持续集成","http://www.tinygroup.org/hudson/job/tiny/","/img/hudson.png")#end
+                #@shortcut("TinyFramework OSC首页","http://my.oschina.net/tinyframework","/img/osc.ico")#end
+                #@shortcut("TinyFramework GIT网址","http://git.oschina.net/tinyframework/tiny","/img/git.ico")#end
+                #@shortcut("TinyFramework文档","http://www.tinygroup.org/confluence/","/img/confluence.png")#end
+                #@shortcut("TinyEclipse插件更新地址","http://www.tinygroup.org/TinyStudioSite/","/img/eclipse.jpg")#end
             </div>
         </div>
         <div class="text-left">
@@ -404,21 +404,21 @@
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
                     #@menu("Homepage","/index.page","首页","home")
- #*                       #@subMenu()
+                       #@subMenu()
                             #@subMenuItem("设计理念","/philosophy.page","philosophy")#end
                             #@subMenuItem("设计原则","/principle.page","principle")#end
                         #end
- *#                   #end
+                    #end
                     #@menu("philosophy","/philosophy.page","设计理念","philosophy")#end
                     #@menu("principle","/principle.page","设计原则","principle")#end
                     #@menu("functions","/function.page","框架概要","functions")#end
-                ##                    #@menu("components" "component.page" "组件详细介绍" "component")#end
-                    #@menu("topic" "#" "相关文章" "topic")
+                    #@menu("components","/component.page","组件详细介绍","component")#end
+                    #@menu("topic","#","相关文章","topic")
                         #@subMenu()
-                            #subMenuItem("Tiny框架","/topics/cat_377413.page",menuKey)
-                            #subMenuItem("Tiny示例","/topics/cat_451799.page",menuKey)
-                            #subMenuItem("算法感想","/topics/cat_377414.page",menuKey)
-                            #subMenuItem("悠然乱弹","/topics/cat_451101.page",menuKey)
+                            #@subMenuItem("Tiny框架","/topics/cat_377413.page",menuKey)#end
+                            #@subMenuItem("Tiny示例","/topics/cat_451799.page",menuKey)#end
+                            #@subMenuItem("算法感想","/topics/cat_377414.page",menuKey)#end
+                            #@subMenuItem("悠然乱弹","/topics/cat_451101.page",menuKey)#end
                         #end
                     #end
                     #@menu("FAQ","/faq.page","常见问题解答","faq")#end

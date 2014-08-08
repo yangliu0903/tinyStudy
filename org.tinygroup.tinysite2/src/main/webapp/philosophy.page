@@ -1,5 +1,5 @@
-#pageTitle("philosophy" "philosophy")
-#title("philosophy" "主要介绍Tiny框架的设计理念")
+#pageTitle("philosophy","philosophy")
+#title("philosophy","主要介绍Tiny框架的设计理念")
 
 
 #@row()
