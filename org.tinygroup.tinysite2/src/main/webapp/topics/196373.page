@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "Tiny并行计算框架之实现机理 ")
+#pageTitle("topic","topic")
+#title("Tiny框架","Tiny并行计算框架之实现机理 ")
 #[[<div class="BlogContent"><p>上面一篇介绍了<a href="http://my.oschina.net/tinyframework/blog/196070" target="_blank" rel="nofollow">Tiny并行计算框架之使用</a>，这一篇呢，主要介绍其实现机理。</p><p>当然，秉承偶的一向的观点，让新手也能看得懂。</p><p>首先看工作的接口：</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface Work extends Serializable {
     /**
      * 返回工作类型，每个工作都有一个工作类型，包工头及工人只能处理同样类型的工作

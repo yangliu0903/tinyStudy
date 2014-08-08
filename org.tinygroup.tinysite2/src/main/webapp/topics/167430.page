@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "MDA数据校验规则定义 ")
+#pageTitle("topic","topic")
+#title("Tiny框架","MDA数据校验规则定义 ")
 #[[<div class="BlogContent"><p>及时有效的数据校验可以给用户良好的体验，避免用户输入半天，提交的时候，才告诉用户输入的数据有若干的问题。更悲催的是有时候，还会出现数据丢失的现象，这个时候，用户已经眼都红了。</p><p>Tiny MDA中集成了JQuery Validate用来进行前端数据校验，当然，为了避免恶意用户手工提交数据或禁用JS、动态修改JS等方式进行攻击，后台数据校验也是必须的。</p><p>Tiny框架提交的数据校验属于一次定义，前后台同时启作用。在良好用户体验及数据安全方面取得平衡。</p><p>目前 ，集成的数据校验规则与JQuery Validate基本相同，也可以扩展新的处理方式。</p><p></p><pre class="brush:java; toolbar: true; auto-links: false;">required
 email
 url

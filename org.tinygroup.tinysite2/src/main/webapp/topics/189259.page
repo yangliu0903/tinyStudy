@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "TinyIOC ")
+#pageTitle("topic","topic")
+#title("Tiny框架","TinyIOC ")
 #[[<div class="BlogContent"><p>在动不动就是SSH的年代，IOC，AOP不是啥新东东。Spring之所以庞大，是因为集成了太多太多的功能。</p><p>验证性的开发了一下，仅实现IOC、<span style="line-height:1.5;font-size:12.5px;">AOP、子容器简单实践一下。</span></p><p><span style="line-height:1.5;font-size:12.5px;">当然了，必须以HelloWorld示例：</span></p><p>接口：</p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">public interface Hello {
     void sayHello(String name);
 }</pre><p><span style="font-size:12.5px;line-height:1.5;">实现：</span></p><p><span style="line-height:1.5;font-size:12.5px;"></span></p><pre class="brush:java; toolbar: true; auto-links: false;">@Singleton

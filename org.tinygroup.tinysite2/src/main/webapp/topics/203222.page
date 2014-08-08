@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny乱弹" "悠然乱弹：从几个方法的重构讲开去--引言 ")
+#pageTitle("topic","topic")
+#title("Tiny乱弹","悠然乱弹：从几个方法的重构讲开去--引言 ")
 #[[<div class="BlogContent"><p>引言：</p><p>在学习代码的过程中，看到如下几个工具方法：</p><pre class="brush:java; toolbar: true; auto-links: false;">// 获取指定包名下的所有类
     public static List&lt;Class&lt;?&gt;&gt; getClassList(String packageName, boolean isRecursive) {
         List&lt;Class&lt;?&gt;&gt; classList = new ArrayList&lt;Class&lt;?&gt;&gt;();

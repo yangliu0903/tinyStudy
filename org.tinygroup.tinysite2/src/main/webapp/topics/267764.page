@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "从应用示例来认识Tiny框架 ")
+#pageTitle("topic","topic")
+#title("Tiny框架","从应用示例来认识Tiny框架 ")
 #[[<div class="BlogContent"><p>呵呵，Tiny框架神龙见首不见尾已经许多时间了，里面只看到一些几个孤零零的子框架。今天就通过Tiny开发示例的方式来重点展示一下利用Tiny框架是如何开发的。</p><span id="OSC_h1_1"></span><h1>HelloWorld</h1><p>首先从这个神一样的示例写起。</p><p>服务开发：</p><span id="OSC_h2_2"></span><h2>方式1：注解方式</h2><pre class="brush:java; toolbar: true; auto-links: false;">@ServiceComponent()
 public class HelloWorldAnnotationService{
 	@ServiceMethod(serviceId = &quot;sayHelloA&quot;)

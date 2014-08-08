@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Topics" "算法感想")
+#pageTitle("topic","topic")
+#title("Topics","算法感想")
 <p><a href="263440.page">从易于扩展扩展的角度来设计FizzBuzzWhizz </a></p>
 <p><a href="260989.page">悠然乱弹：拉钩网FizzBuzzWhizz试题之悠然版解答 </a></p>
 <p><a href="209860.page">如何模仿人的学习模式来教计算机程序解数学题？ </a></p>

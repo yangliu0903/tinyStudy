@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "Hello,World 百态 ")
+#pageTitle("topic","topic")
+#title("Tiny框架","Hello,World 百态 ")
 #[[<div class="BlogContent"><p><strong>最简陋HelloWorld</strong></p><p>首先，编写一个页面文件叫：hello.page，输入下面的信息，然后运行之！</p><pre class="brush:html; toolbar: true; auto-links: false;">Hello:$!name</pre><p>浏览器URL：<span>http://localhost:/hello.page</span></p>运行结果如下：<p><br></br></p><p><img src="http://static.oschina.net/uploads/space/2013/1016/160451_00NZ_1245989.jpg" alt=""></img></p><p>浏览器URL：http://localhost:/hello.page?name=abc</p><span>运行结果如下：</span><pre class="brush:html; toolbar: true; auto-links: false;">Hello:abc</pre>很明显，上面的HelloWorld仅仅是在展现层完成的，不管怎么样，他不是用JS直接在页面输出的。<p><br></br></p><p><strong>增加HelloWorld处理类</strong></p><p><strong></strong></p><pre class="brush:java; toolbar: true; auto-links: false;">@ServiceComponent()
 public class HelloWorldService {
 	@ServiceMethod(serviceId = &quot;helloWorldService&quot;)

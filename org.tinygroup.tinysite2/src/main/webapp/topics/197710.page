@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("算法感想" "数独解题程序 ")
+#pageTitle("topic","topic")
+#title("算法感想","数独解题程序 ")
 #[[<div class="BlogContent"><p>一个假期过去，明显编程水平大降，键盘都敲不好了，于是就想着恢复一下。怎么恢复呢？写个数独解题程序吧。</p><pre class="brush:java; toolbar: true; auto-links: false;">public class Sudoku {
     int[][] data = new int[9][9];//填好的数字
     List&lt;Integer&gt;[][] dataLeft = new ArrayList[9][9];//每个位置可能的数字

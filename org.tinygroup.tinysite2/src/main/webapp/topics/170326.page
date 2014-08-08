@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "XmlParser和HtmlParser ")
+#pageTitle("topic","topic")
+#title("Tiny框架","XmlParser和HtmlParser ")
 #[[<div class="BlogContent"><p>经常要用的Xml和Html解决，实际上这个领域也有非常好的解决方案。</p><p>相对来说现在各种开源的Xml解析功能比较丰富，机制也比较灵活，但是由于他功能比较完善，干的事情比较多，所以性能方面也慢一点；另外，由于Xml天生是有严格格式的，所以问题不大，但是Html文件的内容是良莠不齐，有的网站经常缺少关闭标签，有的开始是大写，关闭是小写等等，没有严格遵守规范的时候，连Dom结构也解不正确，对于数据抓取程序来说，这就会严重影响正确性。</p><p>另外，一个重要的问题是数据遍历，一般来说在数据遍历方面，开源框架没有在性能做过充分优化，因此，如果要进行高速检索，就需要进行程序扩展。为此，本人编写一套XmlParser和HtmlParser，在数据校验方面做了删减，不支持进行数据校验，在容错性方面做了扩充，在Html解决时，即使格式不正确，在大多数情况下也可以返回正确的结果。最坏的情况也，也可以解决出Dom，但是Dom结构不一定正确，而不会出现崩溃或解析异常的问题。</p><p>还有一个是简体中文标签的支持能力，比如： &lt;中文 属性1=&quot;1&quot; 属性2=&quot;b&quot; /&gt;</p><p>OK，费话少说，看看调用代码。</p><pre class="brush:xml; toolbar: true; auto-links: false;">XmlStringParser parser = new XmlStringParser();
 XmlDocument xmlDocument = parser.parse(&quot;&lt;aa a=\&quot;1\&quot;&gt;&lt;!--aa --&gt;&lt;a a=\&quot;aa\&quot;&gt;&lt;/a&gt;&lt;/aa&gt;&quot;);</pre>上面就已经把xml解析好了。<pre class="brush:xml; toolbar: true; auto-links: false;">HtmlStringParser parser = new HtmlStringParser();
 HtmlDocument xmlDocument = parser.parse(&quot;&lt;aa a=\&quot;1\&quot;&gt;&lt;!--aa --&gt;&lt;a a=\&quot;aa\&quot;&gt;&lt;/a&gt;&lt;/aa&gt;&quot;);</pre><span>上面就已经把html解析好了。</span><p>由于Xml及Html都是用得统一的接口，所以，会了Xml解析，Html也是一样样的。</p><p>解析出的Node，都实现了下面的接口，因此遍历方面也是非常方便的。</p><pre class="brush:java; toolbar: true; auto-links: false;">public interface Node&lt;T extends Node&lt;T&gt;&gt; extends ForEachProcessor&lt;T&gt; {

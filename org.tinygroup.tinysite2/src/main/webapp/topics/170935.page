@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("算法感想" "判定点是否在不规则多边形内部的问题 ")
+#pageTitle("topic","topic")
+#title("算法感想","判定点是否在不规则多边形内部的问题 ")
 #[[<div class="BlogContent"><p>问题如下：</p><p></p><pre class="brush:html; toolbar: true; auto-links: false;">话说在平面内有一个任意的不规则的封闭多边形，另外在这个平面内还有一个点，问题：如何高效的判定这个点是在这个多边形内部还是外部？
 
 补充：

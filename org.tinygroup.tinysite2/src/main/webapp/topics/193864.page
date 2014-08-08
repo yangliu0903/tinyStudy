@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("算法感想" "代码重构：代码的坏味道 ")
+#pageTitle("topic","topic")
+#title("算法感想","代码重构：代码的坏味道 ")
 #[[<div class="BlogContent"><p>今天在向maven仓库发文件，干不了什么活，于是就在osc中转转，转到共享代码里，看到一篇<br></br><a href="http://www.oschina.net/code/snippet_3307_296" target="_blank" rel="nofollow">Java 解析/读取XML 文件</a>&amp;nbsp;<a href="http://my.oschina.net/erliu" target="_blank" rel="nofollow">@老枪</a><br></br>于是就用这个例子来典型分析一下。<br></br>原文如下：</p><div><span id="OSC_h3_1"></span><h3><span style="font-weight:normal;">1.&amp;nbsp;</span><span style="font-weight:normal;">[代码]</span>students.xml&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<span style="font-weight:normal;"><span><a rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#413" rel="nofollow"></a><a href="http://www.oschina.net/code/snippet_3307_296#414" rel="nofollow"></a></span><a href="http://www.oschina.net/code/piece_full?code=296&amp;amp;piece=413#413" name="413" target="_blank" rel="nofollow"></a></span></h3><div><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;students&gt;
     &lt;student&gt;

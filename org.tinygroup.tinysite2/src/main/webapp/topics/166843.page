@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "基于实体模型开发主题管理简析 ")
+#pageTitle("topic","topic")
+#title("Tiny框架","基于实体模型开发主题管理简析 ")
 #[[<div class="BlogContent"><p>实体模型主要实现单表操作(insert, update, delete, select)，凡是需要这4条SQL语句要完成的功能，基本上都可以完成。多表处理的，需要用到关系模型，后续专门讲述。</p><p>前面写过一篇文章叫“主题切换及其管理”，连接地址为<a href="http://my.oschina.net/u/1245989/blog/165402" target="_blank" rel="nofollow">http://my.oschina.net/u/1245989/blog/165402</a>。</p><p>里面有详细的模型配置文件，但只是一个结果而已，接下来，对其进行详细剖析，讲述如何进进行配置。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;entity-model id=&quot;theme&quot; name=&quot;theme&quot; title=&quot;主题&quot;
 	enable-delete=&quot;true&quot; enable-modity=&quot;true&quot; version=&quot;2.0&quot; cache-enabled=&quot;true&quot;&gt;</pre>上面是根节点，描述了模型的基本信息，几鼐enable-开头的标记，主要是为工具提供的参数，使得工具进行处理时，通过这些参数控制对文档的编辑，删除等处理。<p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;groups&gt;
   &lt;group id=&quot;basicgroup&quot; name=&quot;basicgroup&quot; title=&quot;基本字段&quot;

@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("算法感想" "由fourinone初步学习想到的 ")
+#pageTitle("topic","topic")
+#title("算法感想","由fourinone初步学习想到的 ")
 #[[<div class="BlogContent"><p>最近希望做分布式计算方面的支持，当然，省先要了解一下相关的内容。</p><p>以前就看到过taobao的fourinone框架的说明，感觉非常好，值得研究，于是就下载了fourinone-3.04.25的开源版本，地址<a href="https://code.google.com/p/fourinone/" rel="nofollow">https://code.google.com/p/fourinone/</a>。</p><p><span>不看不知道，一看，吓了一跳，难不成这个是拿出来之前处理过，专门让人看不懂的？</span></p><p><span>不解一、所有的类都在一个包名下，<span>不同层次的代码都混在一起</span>。很明显的，底层是分布式计算的基础部分，这个与具体实现的功能无关。</span></p><p><span>实现集群配置、集群文件系统、MQ、分布式缓冲之类的功能是基于核心功能进行扩展出来的新功能，最好的办法当然是分成多个工程；不能分成多个工程，好呆分成不同的包名，全部混在一个包之中，只有两种可能，一种是层次分解不清晰，另外一种是人为处理，不想让人看明白。</span></p><p><span></span></p><pre class="brush:java; toolbar: true; auto-links: false;">ArrayAdapter.java
 ArrayInt.java
 AsyncExector.java

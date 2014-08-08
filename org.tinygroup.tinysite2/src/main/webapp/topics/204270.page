@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny示例" "用TinySpider进行网页抓取实例 ")
+#pageTitle("topic","topic")
+#title("Tiny示例","用TinySpider进行网页抓取实例 ")
 #[[<div class="BlogContent"><p>非常感谢@李少龙 的提醒</p><p>本例中用到的maven坐标变化如下：</p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;dependency&gt;
 &lt;groupId&gt;org.tinygroup&lt;/groupId&gt;
 &lt;artifactId&gt;org.tinygroup.spider&lt;/artifactId&gt;

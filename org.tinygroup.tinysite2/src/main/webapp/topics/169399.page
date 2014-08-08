@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny框架" "如何让Web.xml变得简洁？ ")
+#pageTitle("topic","topic")
+#title("Tiny框架","如何让Web.xml变得简洁？ ")
 #[[<div class="BlogContent"><p>曾经看到过一个web.xml有上千行，如果出现点问题，开发人员根本就不知道现场是怎么一种情况。</p><p>更要命的是在不同的应用服务器，比如说在旧的websphere版本上用listener启动Spring就是有问题的。</p><p>如果要进行软件升级，那悲催了，不仅要修改应用相关的内容，还要对web.xml进行修改。</p><p>要把几个模块集成在一起，完蛋了，光web.xml的合并就困难得不行不行。</p><p>Tiny构建者深知web.xml给程序员和现场实施人员带来的不便与困扰，因此设计了以下方案进行解决，从此再不用关心web.xml。</p><p>先来看一下，tiny框架中，web.xml中配置。</p><p><br></br></p><pre class="brush:xml; toolbar: true; auto-links: false;">&lt;web-app version=&quot;2.4&quot; xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot;
 	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
 	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee 

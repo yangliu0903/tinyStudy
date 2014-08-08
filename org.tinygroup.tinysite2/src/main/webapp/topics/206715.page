@@ -1,5 +1,5 @@
-#pageTitle("topic" "topic")
-#title("Tiny乱弹" "悠然乱弹：一毛钱关系 ")
+#pageTitle("topic","topic")
+#title("Tiny乱弹","悠然乱弹：一毛钱关系 ")
 #[[<div class="BlogContent"><p>有一程序嫒，<a href="http://www.oschina.net/question/873551_146348" target="_blank" rel="nofollow">咨询是做开发还是测试，或者是数据录入人员</a>，下面有诸多盆友在给支点子，有感而发，写此回复。</p><pre class="brush:java; toolbar: true; auto-links: false;">有个领导是这么说他的几个助手，主要任务就是帮他整理发票啥的。
 
 前面几任助理都是把发票整理好，算个总额，然后就完工了，然后觉得没有意思。
