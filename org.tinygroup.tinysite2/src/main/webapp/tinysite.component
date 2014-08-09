@@ -1,151 +1,151 @@
 #macro a( aHref,title,aTarget )
-<a  #b#if(title) title="${title}" #end
-    #b#if(aHref) href="#linkConvert(aHref)" #end
-    #b#if(aTarget) target="${aTarget}" #end >
-    #b#bodyContent
+<a  #if(title)#b title="${title}" #end
+    #if(aHref)#b href="#linkConvert(aHref)" #end
+    #if(aTarget)#b target="${aTarget}" #end >
+    #eol
+    #bodyContent
+    #eol
 </a>
 #end
 
 #macro img( imgHref,imgTitle)
-<!-- imgHref.charAt(0) -->
-        <img #b#if(imgTitle) alt="imgTitle"#end #b#if(imgHref)
-                           src="#linkConvert(imgHref)"#end>
-</a>
+        <img #if(imgTitle)#b alt="${imgTitle}"#end #if(imgHref)
+#b src="#linkConvert(imgHref)"#end>#eol
 #end
 
 #macro linkConvert(href)
- #if(href.startsWith("/"))${TINY_CONTEXT_PATH}${href}#else${href}#end
+ #if(href.startsWith("/"))${TINY_CONTEXT_PATH}${href}#else${href}#end#eol
 #end
 
 #macro section()
-<div class="section">
-    #bodyContent
+<div class="section">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro container()
-<div class="container">
-    #bodyContent
+<div class="container">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro row()
-<div class="row">
-    #bodyContent
+<div class="row">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span1()
-<div class="span1">
-    #bodyContent
+<div class="span1">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span2()
-<div class="span2">
-    #bodyContent
+<div class="span2">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span3()
-<div class="span3">
-    #bodyContent
+<div class="span3">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span4()
-<div class="span4">
-    #bodyContent
+<div class="span4">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span5()
-<div class="span5">
-    #bodyContent
+<div class="span5">#eol
+    #bodyContent#eol
 </div>
 #end
 
 
 #macro span6()
-<div class="span6">
-    #bodyContent
+<div class="span6">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span7()
-<div class="span7">
-    #bodyContent
+<div class="span7">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span8()
-<div class="span8">
-    #bodyContent
+<div class="span8">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span9()
-<div class="span9">
-    #bodyContent
+<div class="span9">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span10()
-<div class="span10">
-    #bodyContent
+<div class="span10">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span11()
-<div class="span11">
-    #bodyContent
+<div class="span11">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro span12()
-<div class="span12">
-    #bodyContent
+<div class="span12">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro hr()
-<hr/>
+<hr/>#eol
 #end
 
 #macro dropdownMenu(dropdownTitle,dropdownHref,dropdownSubTitle)
-<li class="dropdown"><a href="dropdownHref?activePage=!menuKey">${dropdownTitle}</a> <b class="caret"></b>
-    <span>${dropdownSubTitle}</span>
-    #bodyContent
+<li class="dropdown"><a href="${dropdownHref}?activePage=${menuKey}">${dropdownTitle}</a> <b class="caret"></b>
+    <span>${dropdownSubTitle}</span>#eol
+    #bodyContent#eol
 </li>
 #end
 
 #macro menu(menuTitle,menuHref,menuSubTitle,menuKey)
-<li class="dropdown#if(menuKey==activePage) active#end"><a
+<li class="dropdown#if(menuKey==activePage)#b active#end"><a
         href="#linkConvert(menuHref)">${menuTitle}</a>
-    <span>${menuSubTitle}</span>
-    #bodyContent
+    <span>${menuSubTitle}</span>#eol
+    #bodyContent#eol
 </li>
 #end
 
 #macro nav()
-<ul class="nav">
-    #bodyContent
+<ul class="nav">#eol
+    #bodyContent#eol
 </ul>
 #end
 
 #macro subMenu()
-<ul>
-    #bodyContent
+<ul>#eol
+    #bodyContent#eol
 </ul>
 #end
 
 #macro subMenuItem(title,href,menuKey)
-<li><a href="#linkConvert(href)"#if(menuKey==activePage) class="current"#end >${title}</a></li>
+<li><a href="#linkConvert(href)"#if(menuKey==activePage)#b class="current"#end >${title}</a></li>#eol
 #end
 
 #macro pageTitle( title,page)
-    #set(pageTitle="title")
-    #set(activePage="page")
+    #!set(pageTitle=title)
+    #!set(activePage=page)
 #end
 
 #macro modalFooter()
@@ -155,35 +155,35 @@
 #end
 
 #macro breadcrumb()
-<ul class="breadcrumb">
-    #bodyContent
+<ul class="breadcrumb">#eol
+    #bodyContent#eol
 </ul>
 #end
 
 #macro breadcrumbParentItem(title,url)
-<li>#@a(url,title)title#end <span class="divider">/</span></li>
+<li>#@a(url,title)${title}#end <span class="divider">/</span></li>#eol
 #end
 
 #macro breadcrumbItem( title)
-<li class="active">title</li>
+<li class="active">${title}</li>#eol
 #end
 
 #macro thumbnails( thumbnailsId)
-<ul class="thumbnails"#if(thumbnailsId)id="thumbnailsId"#end>
-    #bodyContent
+<ul class="thumbnails"#if(thumbnailsId)id="${thumbnailsId}"#end>#eol
+    #bodyContent#eol
 </ul>
 #end
 
 #macro filterContainer()
-<ul id="portfolio" class="thumbnails ">
-    #bodyContent
+<ul id="portfolio" class="thumbnails ">#eol
+    #bodyContent#eol
 </ul>
 #end
 
 #macro filterContainerItem( column,type)
-<li class="spancolumn type" style="opacity: 1;">
-    <div class="thumbnail" style="text-align:left;">
-        #bodyContent
+<li class="span${column}#b${type}" style="opacity: 1;">
+    <div class="thumbnail" style="text-align:left;">#eol
+        #bodyContent#eol
     </div>
 </li>
 #end
@@ -203,35 +203,38 @@
             <p>QQ:${qq}</p>
 
             <p>邮箱:${email}</p>
-            #clearfix()
-            #bodyContent
+            #clearfix()#eol
+            #bodyContent#eol
         </div>
     </div>
 </li>
 #end
 
 #macro slides()
-<div class="slides">
-    #bodyContent
+<div class="slides">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro slidesItem( imgSrc,title,href)
-<div>#@a(href,title)#img(imgSrc,title) #end
-#bodyContent
+<div>
+#@a(href,title)
+    #img(imgSrc,title)
+#end#eol
+#bodyContent#eol
 </div>
 #end
 
 #macro slidesDetail()
-<div class="detail">
-    #bodyContent
+<div class="detail">#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro slidesDetailInfo( title,subTitle)
-<h3>#@a(href,title)title#end</h3>
-<em>${subTitle}</em>
-    #bodyContent
+<h3>#@a(href,title)${title}#end</h3>
+<em>${subTitle}</em>#eol
+    #bodyContent#eol
 #end
 
 #macro title( title,subTitle)
@@ -262,8 +265,8 @@
 #macro wideBanner()
 <!-- Wide Banner -->
 <div class="wide-bg">
-    <div class="container">
-        #bodyContent
+    <div class="container">#eol
+        #bodyContent#eol
     </div>
 </div>
 #end
@@ -272,37 +275,37 @@
 <!-- Sidebar -->
 <div class="span3 sidebar">
     #if(title)
-        <h3 class="half-margin">!title</h3>
+        <h3 class="half-margin">${title}</h3>
     #end
-    <ul class="nav nav-tabs nav-stacked">
-        #bodyContent
+    <ul class="nav nav-tabs nav-stacked">#eol
+        #bodyContent#eol
     </ul>
 </div>
 #end
 
 #macro sidebarItem( title,href )
-<li>#@a(href,title)title#end</li>
+<li>#@a(href,title)${title}#end</li>
 #end
 
 #macro lead(id,title)
-<p class="lead no-margin" id="id">title</p>
-<div class="">
-    #bodyContent
+<p class="lead no-margin" id="${id}">${title}</p>
+<div class="">#eol
+    #bodyContent#eol
 </div>
 <hr class="no-margin" style="margin: 5pt;5pt;5pt;5pt;"/>
 #end
 
 #macro filter()
 <!-- Portfolio Filter -->
-<div id="filter" class="half-margin">
-    #bodyContent
+<div id="filter" class="half-margin">#eol
+    #bodyContent#eol
 </div>
 <div class="clearfix"></div>
 </div>
 #end
 
 #macro filterItem(title,current)
-<button class="btn btn-small half-margin#if(current) current#end">${title}</button>
+<button class="btn btn-small half-margin#b#if(current) ${current}#end">${title}</button>
 #end
 
 #macro shortcut( title,href,icon)
@@ -311,19 +314,19 @@
 
 #macro caption(title)
 <div class="head" style="text-align: left;">
-    <h3><strong>${title}</strong></h3>
-    #bodyContent
+    <h3><strong>${title}</strong></h3>#eol
+    #bodyContent#eol
 </div>
 #end
 
 #macro masonry()
-<div id="masonry">
-    #bodyContent
+<div id="masonry">#eol
+    #bodyContent#eol
 </div>
 #end
 #macro masonryItem( masonryItemClass)
-<div class="single ${masonryItemClass}">
-    #bodyContent
+<div class="single#b${masonryItemClass}">#eol
+    #bodyContent#eol
 </div>
 #end
 
@@ -336,7 +339,7 @@
 #end
 
 #macro fancybox(smallPic,bigPic,title)
-<a href="bigPic" title="title" class="thumb fancybox"><img src="smallPic" alt="title"/> </a>
+<a href="${bigPic}" title="${title}" class="thumb fancybox"><img src="${smallPic}" alt="${title}"/> </a>
 #end
 
 #################################################下面是业务相关#########################################################
@@ -344,7 +347,7 @@
 <tr>
     <td style="text-align: center"><h3><strong>${name}</strong></h3></td>
     <td style="text-align: right"><b style="color:blue">${amount}</b>勇气</td>
-    <td>#if(mode)mode#else通过扫描鼓励#end</td>
+    <td>#if(mode)${mode}#else通过扫描鼓励#end</td>
     <td style="text-align: right">${date}</td>
 </tr>
 #end
@@ -404,15 +407,17 @@
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 #@nav()
                     #@menu("Homepage","/index.page","首页","home")
+                        #*
                        #@subMenu()
                             #@subMenuItem("设计理念","/philosophy.page","philosophy")#end
                             #@subMenuItem("设计原则","/principle.page","principle")#end
                         #end
+                        *#
                     #end
                     #@menu("philosophy","/philosophy.page","设计理念","philosophy")#end
                     #@menu("principle","/principle.page","设计原则","principle")#end
                     #@menu("functions","/function.page","框架概要","functions")#end
-                    #@menu("components","/component.page","组件详细介绍","component")#end
+                    ## #@menu("components","/component.page","组件详细介绍","component")#end
                     #@menu("topic","#","相关文章","topic")
                         #@subMenu()
                             #@subMenuItem("Tiny框架","/topics/cat_377413.page",menuKey)#end

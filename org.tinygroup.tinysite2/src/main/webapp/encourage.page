@@ -21,7 +21,7 @@
         #img("img/qrcode_for_gh_2ee3199c0201_256.jpg","微信公众帐号")
     #end
     #@span10()
-    #hr
+    #hr()
     <table border="0" cellpadding="0" cellspacing="0" class="table table-hover">
         <thead>
         <tr ">
