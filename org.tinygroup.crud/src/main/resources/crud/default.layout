@@ -4,6 +4,7 @@
       hibernate服务方式：<a href="${TINY_CONTEXT_PATH}/queryUsers.servicepage">用户管理</a><br/>
       tinydb服务方式：<a href="${TINY_CONTEXT_PATH}/queryUsersTiny.servicepage?@beantype=TUser">用户管理</a><br/>
       tinydb流程组件方式：<a href="${TINY_CONTEXT_PATH}/crud.pageflow?tiny_flow_id=queryUsers">用户管理</a><br/>
+      MVC方式：<a href="${TINY_CONTEXT_PATH}/mvc/list.do">用户管理</a><br/>
       </td>
     </tr>
     <tr>  
