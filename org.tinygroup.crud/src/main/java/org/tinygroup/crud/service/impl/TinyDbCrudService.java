@@ -7,6 +7,7 @@ import org.tinygroup.commons.tools.Assert;
 import org.tinygroup.crud.service.CrudDbService;
 import org.tinygroup.service.annotation.ServiceComponent;
 import org.tinygroup.service.annotation.ServiceMethod;
+import org.tinygroup.service.annotation.ServiceParameter;
 import org.tinygroup.service.annotation.ServiceResult;
 import org.tinygroup.service.annotation.ServiceViewMapping;
 import org.tinygroup.support.BeanSupport;
@@ -34,7 +35,7 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 	
 	@ServiceMethod(serviceId = "addUserTiny")
 	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
-	public void addUser(Bean TUser) {
+	public void addUser(@ServiceParameter(name="TUser")Bean TUser) {
 		try {
 			operator.insert(TUser);
 		} catch (TinyDbException e) {
@@ -43,7 +44,7 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 	}
 	@ServiceMethod(serviceId = "updateUserTiny")
 	@ServiceViewMapping(value="/queryUsersTiny.servicepage?@beantype=TUser",type="redirect")
-	public void updateUser(Bean TUser) {
+	public void updateUser(@ServiceParameter(name="TUser")Bean TUser) {
 		try {
 			operator.update(TUser);
 		} catch (TinyDbException e) {
@@ -62,7 +63,7 @@ public class TinyDbCrudService extends BeanSupport implements CrudDbService<Bean
 	@ServiceMethod(serviceId = "queryUsersTiny")
 	@ServiceResult(name = "users")
 	@ServiceViewMapping("/crud/service/tinydb/list.page")
-	public List<Bean> queryUsers(Bean TUser) {
+	public List<Bean> queryUsers(@ServiceParameter(name="TUser")Bean TUser) {
 		if(TUser==null){
 			TUser=new Bean(beanType);
 		}

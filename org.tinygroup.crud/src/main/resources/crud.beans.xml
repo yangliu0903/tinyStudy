@@ -129,6 +129,10 @@
 	<bean id="hibernateCrudService" class="org.tinygroup.crud.service.impl.HibernateCrudService">
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
+	
+	<bean id="userAciton" class="org.tinygroup.crud.service.impl.UserAction">
+		<property name="crudDbDao" ref="hibernateCrudDao" />
+	</bean>
 
 	<bean id="tinyDbCrudService" class="org.tinygroup.crud.service.impl.TinyDbCrudService">
 		<property name="beanType" value="TUser" />
