@@ -248,6 +248,33 @@
                 <rewrite-handler bean-name="urlNormalizer" />
             </handlers>
         </rule> -->
+        <rule pattern="/filter/rewrite/show\.page">
+          <condition test="%{QUERY:keyword}" pattern="yancheng" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="110" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
+        <rule pattern="/filter/rewrite/show2\.page">
+          <condition test="%{QUERY:type}" pattern="!1" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="220" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
+        <rule pattern="/filter/rewrite/show3\.page">
+          <condition test="%{REQUEST_URI}" pattern="show3\.page" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="330" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
     </rewrite>
     <session>
         <id cookieEnabled="true" urlEncodeEnabled="false">
