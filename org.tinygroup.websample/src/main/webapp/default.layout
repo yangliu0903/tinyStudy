@@ -48,6 +48,7 @@
     helloworld示例:<a href="${TINY_CONTEXT_PATH}/helloworld/helloworld.page">helloworld</a><br/>
           四则运算示例:<a href="${TINY_CONTEXT_PATH}/fouroperate/fouroperate.page">四则运算</a><br/>
           增删改查示例:<a href="${TINY_CONTEXT_PATH}/crud/crud.page">增删改查</a><br/>
+          过滤器示例：<a href="${TINY_CONTEXT_PATH}/filter/filter.page">过滤器</a><br/>
       </td>
     </tr>
     <tr>  
