@@ -1,0 +1,14 @@
+<table border="1" width="100%">
+   <tr>
+      <td colspan="2">
+        Upload：<a href="${TINY_CONTEXT_PATH}/filter/upload/upload.page">上传文件过滤</a><br/>
+        Cookie：<a href="${TINY_CONTEXT_PATH}/filter/cookie/addcookie.page">Cookie过滤</a><br/>
+      </td>
+    </tr>
+    <tr>  
+      <td width="20%">内容展示</td>
+      <td>
+         $pageContent
+      </td>
+   </tr>
+</table>

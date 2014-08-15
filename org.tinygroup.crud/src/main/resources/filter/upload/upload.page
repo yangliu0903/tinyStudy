@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=" http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>表单文件上传</title></head>
+<body>
+<form enctype="multipart/form-data" action="${TINY_CONTEXT_PATH}/filter/list.do" method="post">
+请检查配置文件application.xml，调整过滤器属性。<br>
+1. parserTinyFilter过滤器的autoUpload属性值为true,否则uploadService文件上传功能会关闭。<br>
+2. uploadService的属性sizeMax表示全部文件大小上限，-1表示无限制。<br>
+3. uploadService的属性fileSizeMax表示单个文件大小上限，-1表示无限制。<br>
+请选择文件：<br>
+<input name="upload_file1" type="file"><br>
+<input name="upload_file2" type="file"><br>
+<input name="upload_file3" type="file"><br>
+<input name="upload_file4" type="file"><br>
+<input name="upload_file5" type="file"><br>
+<input type="submit" value="上传文件">
+</form>
+</body>
+</html>
