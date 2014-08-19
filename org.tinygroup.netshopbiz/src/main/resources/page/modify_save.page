@@ -1,0 +1,9 @@
+<script>
+	function closeModifyDialog(){
+		#if($refreshFunction)$refreshFunction();#end
+		$("#${modelDefine.id}_${operationDefine.id}").wijdialog('close');
+	}
+</script>
+#@wijAutoCloseDialog("${modelDefine.id}_${operationDefine.id}_modify_save" "提示信息" "closeModifyDialog")
+	成功修改密码！
+#end

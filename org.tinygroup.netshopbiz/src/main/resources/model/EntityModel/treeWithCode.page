@@ -1,0 +1,11 @@
+<script>
+function get${modelDefine.id}_${operationDefine.id}Data(){
+	var data=$jsonConverter.convert($modelProcessResult);
+    return data;
+}
+
+</script>
+  
+ #@wijTree("${modelDefine.id}_${operationDefine.id}_grid")
+ nodes:get${modelDefine.id}_${operationDefine.id}Data()
+ #end

@@ -1,0 +1,13 @@
+<ui-components>
+	<ui-component name="goodcss" dependencies="jquery">
+		<css-resource>/netshop/goodcss/css/gallery.css,/netshop/goodcss/css/home-base.css,/netshop/goodcss/css/goodcss.css</css-resource>
+		<js-resource>/netshop/goodcss/js/unslider.js,/netshop/goodcss/js/ga.js,/netshop/goodcss/js/script.js,/netshop/goodcss/js/general.js,/netshop/goodcss/js/jquery_002.js,/netshop/goodcss/js/goodcss.js</js-resource>
+	</ui-component>
+	<ui-component name="netshopui">
+		<css-resource>/netshop/styles/common.css,/netshop/styles/index.css</css-resource>
+	</ui-component>
+	<ui-component name="fancybox" dependencies="jquery">
+		<css-resource>/netshop/fancybox/jquery.fancybox.css</css-resource>
+		<js-resource>/netshop/fancybox/jquery.mousewheel-3.0.6.pack.js,/netshop/fancybox/jquery.fancybox.js</js-resource>
+	</ui-component>
+</ui-components>

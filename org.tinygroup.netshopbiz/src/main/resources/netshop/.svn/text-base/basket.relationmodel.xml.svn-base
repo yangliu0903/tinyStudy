@@ -1,0 +1,92 @@
+<relation-model id="basketRelation" name="basketRelation"
+	title="购物车关联查询" main-bean-type="basket">
+	<views>
+		<view id="queryProductsOfBasket" name="queryProductsOfBasket"
+			title="查询购物车产品信息" enable-delete="true" enable-modity="true" type="table"
+			page-size="10" allow-edit="false" allow-filter-front="false"
+			fixed-size="false" modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="user_uuid_uuid" connect-mode="AND" compare-mode="equals" />
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="false"
+						field-id="basket_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="user_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_num_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_total_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="true"
+						field-id="product_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_name_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_fare_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="online_time_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_stock_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_delivery_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_discount_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="unit_price_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_norm_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_priority_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_modify_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="true"
+						field-id="picture_uuid_uuid" aggregate-by-view="false" />
+				</view-group>
+			</view-groups>
+		</view>
+	</views>
+
+	<model-references>
+		<model-reference relation-id="basketProductRelation1" />
+		<model-reference relation-id="basketProductRelation2" />
+	</model-references>
+
+
+	<relation-groups>
+		<relation-group id="basicgroup" name="basicgroup"
+			title="基本信息" enable-delete="true" enable-modity="true">
+			<relation-field field-id="basket_uuid_uuid" model-id="basket" />
+			<relation-field field-id="user_uuid_uuid" model-id="basket" />
+			<relation-field field-id="product_num_uuid" model-id="basketProduct" />
+			<relation-field field-id="product_total_uuid"
+				model-id="basketProduct" />
+			<relation-field field-id="product_uuid_uuid" model-id="product" />
+			<relation-field field-id="product_name_uuid" model-id="product" />
+			<relation-field field-id="product_fare_uuid" model-id="product" />
+			<relation-field field-id="online_time_uuid" model-id="product" />
+			<relation-field field-id="product_stock_uuid"
+				model-id="product" />
+			<relation-field field-id="product_delivery_uuid"
+				model-id="product" />
+			<relation-field field-id="unit_price_uuid" model-id="product" />
+			<relation-field field-id="product_norm_uuid" model-id="product" />
+			<relation-field field-id="product_description_uuid"
+				model-id="product" />
+			<relation-field field-id="product_detial_uuid"
+				model-id="product" />
+			<relation-field field-id="picture_uuid_uuid"
+				model-id="product" />
+			<relation-field field-id="product_selled_uuid"
+				model-id="product" />
+			<relation-field field-id="product_modify_uuid"
+				model-id="product" />
+			<relation-field field-id="product_discount_uuid"
+				model-id="product" />
+			<relation-field field-id="product_priority_uuid"
+				model-id="product" />
+		</relation-group>
+	</relation-groups>
+</relation-model>

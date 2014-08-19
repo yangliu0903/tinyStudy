@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="${TINY_CONTEXT_PATH}/mainsite2/images/sitelogo.jpg" type="image/gif"/>
+	<link rel="shortcut icon" href="${TINY_CONTEXT_PATH}/mainsite2/images/sitelogo.jpg"/>
+    <title>$!pageTitle</title>
+    
+    <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
+    <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
+<!--
+    <link href="${TINY_CONTEXT_PATH}/wijmo/themes/arctic/jquery-wijmo.css" rel="stylesheet" />
+-->
+<style>
+.p-price strong, .p-market strong {
+color: #E4393C;
+}
+.fore1 {
+list-style:none;
+position:relative;
+float: left;
+padding-left: 6px;
+border-left: 0;
+width: 147px;
+height: 180px;
+padding: 5px;
+border-left: 1px dotted #F1F1F1;
+}
+
+.pix1 {
+line-height: 14px;
+font-size: 12px;
+z-index:1;
+background-position: 0 -100px;
+}
+
+.pi {
+position: absolute;
+top: 0;
+text-align: center;
+right: 0;
+top: 10px;
+width: 52px;
+height: 40px;
+padding: 12px 0 0;
+background-image: url(http://misc.360buyimg.com/product/skin/2013/i/20130330C.png);
+background-repeat: no-repeat;
+font-family: "microsoft yahei";
+color: #fff;
+line-height: 31px;
+overflow: hidden;
+font-size: 16px;
+zoom: 1;
+}
+</style>
+<style>
+.end_Cf_in{ width:100%; height:60px; float:left; margin:18px 0 0 0; text-align:center;}
+.end_Cf_in_top{ width:100%; height:26px;text-align:center;margin:0 auto;}
+.end_Cf_in_top li{ float:left; font-size:12px;}
+.end_Cf_in_top a{ color:#152e66;}
+.end_Cf_in_top .z1{ width:2px; height:12px; margin:0 8px 0 9px;}
+.end_Af{ width:870px; height:164px; margin:0 auto;}
+.end_Af_title{ width:870px; height:30px;}
+.end_Af_title li{ float:left; width:115px; height:30px;}
+.end_Af_title .z1{ margin-right:127px;}
+.end_Af_title h2{ font-size:18px; float:right; line-height:30px; color:#666;}
+.end_Af_title b{ width:30px; height:30px; background:url(../images/btn.gif) left -177px no-repeat; text-indent:-999em; display:block; float:left;}
+.end_Af_title q{ width:30px; height:30px; background:url(../images/btn.gif) -35px -177px no-repeat; text-indent:-999em; display:block; float:left;}
+.end_Af_title s{ width:30px; height:30px; background:url(../images/btn.gif) -70px -177px no-repeat; text-indent:-999em; display:block; float:left;}
+.end_Af_title tt{ width:30px; height:30px; background:url(../images/btn.gif) -105px -177px no-repeat; text-indent:-999em; display:block; float:left;}
+.end_Af_menu{ width:825px; height:120px; margin:9px 0 0 43px;}
+.end_Af_menu_x{ width:80px; height:115px; float:left; margin-right:160px;}
+.end_Af_menu li{ width:80px; height:25px;}
+.end_Af_menu a{ color:#676767;}
+.end_Af_menu_d{ width:80px; height:115px; float:left; margin-right:163px;}
+.end_Af_menu_s{ width:80px; height:115px; float:left; margin-right:163px;}
+.end_Af_menu_c{ width:80px; height:115px; float:left;}
+a{
+	text-decoration: none !important;;
+}
+
+</style>
+<script>
+	var contextPath="${TINY_CONTEXT_PATH}";
+	
+function date2str(x,y) {
+	var z = {M:x.getMonth()+1,d:x.getDate(),h:x.getHours(),m:x.getMinutes(),s:x.getSeconds()};
+	y = y.replace(/(M+|d+|h+|m+|s+)/g,function(v) {return ((v.length>1?"0":"")+eval('z.'+v.slice(-1))).slice(-2)});
+	return y.replace(/(y+)/g,function(v) {return x.getFullYear().toString().slice(-v.length)});
+}
+	function doChangeTheme(){
+		var theme=$("#theme_select").val();
+		if(theme!=""){
+			var list=$("link");
+			for(var i=0;i<list.length;i++){
+				var link=list.get(i);
+				var pos=link.href.indexOf("/themes/");
+				if(pos>0){
+					pos=link.href.indexOf(contextPath+"/");
+					link.href=link.href.substr(0,pos)+ contextPath+theme;
+					return;
+				}
+			}
+		}
+	}
+</script>
+<script>
+function loadPage(container,url,data){
+	var containerItem=$(container);
+	if(containerItem.length==0){
+		alert(container+"元素不存在！");
+		return;
+	}
+	containerItem.load(url,data);
+}
+
+
+var dialogStatus={};
+
+
+
+function loadDialogPage(container,url,data){
+	if(dialogStatus[data.operation_id]!=true){
+		$(container).load(url,data);
+	}else{
+		alert('窗口已经打开，不能重复打开！');
+	}
+}
+function wijtree(id,treeNodes){
+        
+}
+
+function loadConfirmService(container,title,message,url,data,callback){
+      var newdiv=$('<div></div>').attr('title',title).html(message);
+      newdiv.wijdialog({
+                 close:function(){
+    	           $(this).wijdialog("destroy").remove();
+                 },
+                 autoOpen: true, 
+                 width: 300, 
+                 height: 150, 
+                 modal: true, 
+                 buttons: {
+                   "确认": function () {
+                       $(container).load(url,data,function(responseTxt,statusTxt,xhr){
+                           if(statusTxt=="success"){
+                              callback();
+                           }
+                           if(statusTxt=="error"){
+                               alert("Error: "+xhr.status+": "+xhr.statusText);
+                           }
+                       });
+                          $(this).wijdialog("close");
+                     },
+                    "取消": function () {
+                        $(this).wijdialog("close");
+                    }
+                }
+     });
+}
+function toggleSelection(e, sender, id) {
+   e.stopPropagation();
+   //select/unselect all rows on basis of checkbox
+   if (sender.checked) {
+      $("#" + id).wijgrid("selection").selectAll();
+   } else {
+      $("#" + id).wijgrid("selection").clear();
+   }
+}
+function alertObject(obj){
+	alert(obj);
+}
+function loadGridJson(url,data,gridId){
+	$.getJSON(url,data,function(data) {
+		if(typeof(data.exception)=='undefined'){//说明成功了
+			$("#"+gridId).wijgrid({data:data.beans});
+			$("#"+gridId+"_footerPagingBar").wijpager("option","pageIndex",data.pageNumber);
+			$("#"+gridId+"_footerPagingBar").wijpager("option","pageCount",data.totalPages);
+			
+		}else{
+			//显示错误提示
+			alert('数据载入时，发生错误'+data.message);
+		}
+    });
+}
+
+
+
+
+/*
+jQuery.fn.outerHTML = function(s) {
+	return (s) ? this.before(s).remove() : jQuery("p").append(this.eq(0).clone()).html();
+}
+*/
+</script>
+<style>
+
+body {
+	font-family: "Trebuchet MS", "Helvetica", "Arial",  "tahoma", "sans-serif";
+	font-size: 12px;
+}
+
+</style>
+#*
+#foreach($component in $uiengine.getHealthUiComponents())
+<!--UI component $component.name start -->
+#if($component.cssResource)
+#set($resources=$component.cssResource.split(","))
+#foreach($path in $resources)
+#set($path=$path.trim())
+#set($newPath=$path.replaceAll("[$][{]TINY_THEME[}]","${TINY_THEME}"))
+<link href="${TINY_CONTEXT_PATH}$newPath" rel="stylesheet" />
+#end
+#end
+#if($component.jsResource)
+#set($resources=$component.jsResource.split(","))
+#foreach($path in $resources)
+#set($path=$path.trim())
+<script src="${TINY_CONTEXT_PATH}$path"></script>
+#end
+#end
+#if($component.jsCodelet)
+<script>
+#evaluate($!component.jsCodelet)
+</script>
+#end
+
+#if($component.cssCodelet)
+<style>
+#evaluate($!component.cssCodelet)
+</style>
+#end
+<!--UI component $component.name end -->
+
+#end
+*#
+
+</head>
+<body bgcolor="white" class="jquery-ui page page-id-5 page-template-default page-slug-accordion single-author singular">
+##wijmoCalendar("calendar_selector")
+$pageContent
+</body>
+</html>

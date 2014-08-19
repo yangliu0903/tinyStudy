@@ -1,0 +1,344 @@
+<entity-model id="orderflow" name="orderflow" title="订单流水表"
+	enable-delete="true" enable-modity="true" version="2.0" cache-enabled="true">
+	<operations>
+		<operation id="orderflowmodelopadduuid" name="addOrderflow"
+			title="新增" enable-delete="true" enable-modity="true" type="add"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="flow_uuid_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="addopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_no_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_createtime_uuid">
+						<input-mode type="dateMode"></input-mode>
+					</operation-field>
+					<operation-field editable="true" hidden="false"
+						field-id="flow_paytype_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_freight_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_total_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_remark_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_status_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="user_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_id_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_delivery_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_lattice_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderflowmodelopupdateuuid" name="modifyOrderflow"
+			title="修改" enable-delete="true" enable-modity="true" type="modify"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="flow_uuid_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="modifyopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_no_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_createtime_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_paytype_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_freight_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_total_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_remark_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_status_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="user_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_id_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_delivery_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_lattice_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderflowmodelopdeleteuuid" name="deleteOrderflow"
+			title="删除" enable-delete="true" enable-modity="true" type="delete"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="flow_uuid_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="deleteopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_no_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_createtime_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_paytype_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_freight_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_total_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_remark_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_status_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="user_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_id_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_delivery_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_lattice_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderflowmodelopqueryuuid" name="viewOrderflow"
+			title="查看" enable-delete="true" enable-modity="true" type="view"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="flow_uuid_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="viewopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_no_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_createtime_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_paytype_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_freight_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_total_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_remark_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_status_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="user_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_id_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_delivery_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_lattice_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderflowmodelopaddcopyuuid" name="copyAddOrderflow"
+			title="拷贝添加" enable-delete="true" enable-modity="true" type="copyAdd"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="flow_uuid_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="copyAddopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="true" hidden="false"
+						field-id="flow_no_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_createtime_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_paytype_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_freight_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_total_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_remark_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_status_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="user_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_id_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_delivery_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="receive_lattice_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+	</operations>
+	<views>
+		<view id="orderflowmodeloptableuuid" name="tableorderflow" title="表格查询"
+			enable-delete="true" enable-modity="true" type="table" page-size="10"
+			allow-edit="false" allow-filter-front="false" fixed-size="false"
+			modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="flow_no_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_createtime_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_paytype_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_freight_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_total_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_remark_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_status_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="user_uuid_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="receive_id_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="receive_delivery_uuid" compare-mode="containsWith" />
+				<condition-field editable="true" hidden="false"
+					field-id="receive_lattice_uuid" compare-mode="containsWith" />
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_no_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_createtime_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_paytype_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_freight_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_total_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_remark_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_status_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="user_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_id_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_delivery_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_lattice_uuid" aggregate-by-view="false" />
+				</view-group>
+			</view-groups>
+			<references>
+				<operation-reference type="operation"
+					id="orderflowmodelopadduuid" />
+				<operation-reference type="operation"
+					id="orderflowmodelopaddcopyuuid" />
+				<operation-reference type="operation"
+					id="orderflowmodelopdeleteuuid" />
+				<operation-reference type="operation"
+					id="orderflowmodelopupdateuuid" />
+				<operation-reference type="operation"
+					id="orderflowmodelopqueryuuid" />
+			</references>
+		</view>
+
+		<view id="queryOrderFlowsByUserId" name="queryOrderFlowsByUserId"
+			title="根据用户查询订单流水信息" enable-delete="true" enable-modity="true" type="table"
+			page-size="10" allow-edit="false" allow-filter-front="false"
+			fixed-size="false" modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="user_uuid_uuid" compare-mode="equals" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_status_uuid" compare-mode="equals" />	
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="true"
+						field-id="flow_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_no_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_createtime_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_paytype_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_freight_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_total_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_remark_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_status_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="user_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_id_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_delivery_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="receive_lattice_uuid" aggregate-by-view="false" />
+				</view-group>
+			</view-groups>
+		</view>
+	</views>
+	<groups>
+		<group id="basicgroup" name="basicgroup" title="基本信息"
+			enable-delete="true" enable-modity="true">
+			<field standard-field-id="flow_uuid" primary="true" unique="true"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_uuid_uuid" />
+			<field standard-field-id="flow_no" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_no_uuid" />
+			<field standard-field-id="flow_createtime" primary="false"
+				unique="false" display="false" not-null="false" auto-increase="false"
+				editable="false" hidden="false" table-field="true" id="flow_createtime_uuid" />
+			<field standard-field-id="flow_paytype" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_paytype_uuid" />
+			<field standard-field-id="flow_freight" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_freight_uuid" />
+			<field standard-field-id="flow_total" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_total_uuid" />
+			<field standard-field-id="flow_remark" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_remark_uuid" />
+			<field standard-field-id="flow_status" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_status_uuid" />
+			<field standard-field-id="user_uuid" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="user_uuid_uuid" />
+			<field standard-field-id="receive_id" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="receive_id_uuid" />
+			<field standard-field-id="receive_delivery" primary="false"
+				unique="false" display="false" not-null="false" auto-increase="false"
+				editable="false" hidden="false" table-field="true" id="receive_delivery_uuid" />
+			<field standard-field-id="receive_lattice" primary="false"
+				unique="false" display="false" not-null="false" auto-increase="false"
+				editable="false" hidden="false" table-field="true" id="receive_lattice_uuid" />
+		</group>
+	</groups>
+</entity-model>

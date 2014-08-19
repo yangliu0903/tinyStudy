@@ -1,0 +1,31 @@
+#@boxWithDate("中华人民共和国" "2012-8-3" "#")
+	<div class="post-entry">
+		<p>
+			A website plays a major role in the impending success of any given
+			business. To be precise, the web design is that one thing that might
+			just be determinant of your business’s accomplishment of being a
+			renowned individual in the
+			<span class="ellipsis">…</span>
+		</p>
+		<div class="read-more">
+			<a href="http://www.designers-den.com/web-design-taif/">Read more ?</a>
+		</div>
+		<p><!-- end of .read-more -->
+		</p>
+	</div><!-- end of .post-entry -->
+	<div class="post-data">
+		Tagged with:
+		<a href="http://www.designers-den.com/tag/web-design-taif/" rel="tag">Web
+			Design Taif</a>
+		,
+		<a href="http://www.designers-den.com/tag/web-development-taif/"
+			rel="tag">Web Development Taif</a>
+		<br>
+
+			Posted in
+			<a href="http://www.designers-den.com/category/web-design/" title="View all posts in Web Design">Web
+				Design</a>
+
+	</div><!-- end of .post-data -->
+	<div class="post-edit"></div>
+#end

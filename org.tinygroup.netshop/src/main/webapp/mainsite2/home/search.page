@@ -1,0 +1,63 @@
+<style>
+.p-price strong, .p-market strong {
+color: #E4393C;
+}
+.fore1 {
+list-style:none;
+position:relative;
+float: left;
+padding-left: 6px;
+border-left: 0;
+width: 140px;
+height: 200px;
+padding: 5px;
+border-left: 1px dotted #F1F1F1;
+}
+
+.pix1 {
+line-height: 14px;
+font-size: 12px;
+z-index:1;
+background-position: 0 -100px;
+}
+
+.pi {
+position: absolute;
+top: 0;
+text-align: center;
+right: 0;
+top: 10px;
+width: 52px;
+height: 40px;
+padding: 12px 0 0;
+background-image: url(http://misc.360buyimg.com/product/skin/2013/i/20130330C.png);
+background-repeat: no-repeat;
+font-family: "microsoft yahei";
+color: #fff;
+line-height: 31px;
+overflow: hidden;
+font-size: 16px;
+zoom: 1;
+}
+</style>
+#if(!$namelike)
+	无查询关键字
+#else
+	#callService("processModelService" "requestName=EntityModel_table_product_productmodeloptableuuid&pageSize=0&productName=$namelike" "modelProcessResult" "productListResult")
+	#setTitle("搜索结果")
+	#@boxWithDate("$namelike" "搜索结果")
+		<div style="flow:left;">
+		<ul class="lh">
+			#foreach($product in $productListResult.beans)
+				#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&targetUuid=$product.productUuid&pictureUuid=$product.pictureUuid" "modelProcessResult" "miniPics")
+				#if( $miniPics.beans.size() > 0 )
+					#set( $miniPic = $miniPics.beans.get(0))
+				#else
+					#set( $miniPic = 0)
+				#end 
+				#productItem("$!miniPic.pictureLink" "/mainsite2/detail/detail.page?productid=$product.productUuid" "$product.productName" "$product.unitPrice" "$product.productDiscount")
+			#end
+		</ul>
+		</div>
+	#end
+#end

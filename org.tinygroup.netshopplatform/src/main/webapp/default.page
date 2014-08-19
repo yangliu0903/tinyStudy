@@ -1,0 +1,61 @@
+<script id="scriptInit" type="text/javascript">
+     function selectFunction(){
+         alert("haha");     
+     }
+
+</script>
+
+#set($dataJson="[ 
+                        { 
+                            label: 'c++', 
+                            value: 'c++1'
+                        }, 
+                        { 
+                            label: 'java', 
+                            value: 'java1'
+                        }, 
+                        { 
+                            label: 'php', 
+                            value: 'php1'
+                        }, 
+                        { 
+                            label: 'coldfusion', 
+                            value: 'coldfusion1'
+                        }, { 
+                            label: 'javascript', 
+                            value: 'javascript1'
+                        }, 
+                        { 
+                            label: 'asp', 
+                            value: 'asp1'
+                        }, 
+                        { 
+                            label: 'ruby', 
+                            value: 'ruby1'
+                        }, 
+                        { 
+                            label: 'python', 
+                            value: 'python1'
+                        }, 
+                        { 
+                            label: 'c', 
+                            value: 'c1'
+                        }, 
+                        { 
+                            label: 'scala', 
+                            value: 'scala1'
+                        }, 
+                        { 
+                            label: 'groovy', 
+                            value: 'groovy1',
+                        }, 
+                        { 
+                            label: 'haskell', 
+                            value: 'haskell',
+                        }, 
+                        { 
+                            label: 'perl', 
+                            value: 'perl1'
+                        } 
+                    ]")
+#wijComboBox("comboBoxInput" "comboBoxInput" $dataJson "haskell" false)

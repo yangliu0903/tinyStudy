@@ -1,0 +1,99 @@
+
+.thumbs {
+	list-style: none;
+	flow:left;
+	width:100%;
+	position: relative;
+	padding: 0;
+}
+.thumbs li{
+	float: left;
+	background: #fff;
+	padding:8px;
+	position: relative;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.thumbs li a,
+.thumbs li img {
+	display: block;
+	position: relative;
+}
+.thumbs li {
+	overflow: hidden;
+}
+.thumbs li div {
+	position: absolute;
+	background:#eee;
+	border:1px solid #e4e4e4; margin:8px 0 0 8px; padding:10px;
+}
+.thumbs li div.animate {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+/* Initial state classes: */
+.slideFromTop {
+	left: 0px;
+	top: -100%;
+}
+.slideFromBottom {
+	left: 0px;
+	top: 100%;
+}
+.slideFromLeft {
+	top: 0px; 
+	left: -100%;
+}
+.slideFromRight {
+	top: 0px;
+	left: 100%;
+}
+/* Final state classes: */
+.slideTop {
+	top: 0px;
+}
+.slideLeft {
+	left: 0px;
+}
+
+/*.thumbs li div {
+	
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    
+
+}
+.thumbs li:hover div {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+   
+
+}
+*/
+
+.thumbs .like{display:block; float:left; height:60px;}
+.thumbs .like small{ font-size:14px; float:left; padding-top:20px; padding-right:10px;}
+.thumbs .like a{background:url(../images/icons.png) no-repeat 0 -120px; color:#000; text-decoration:none; font-size:16px; font-weight:bold; padding:20px 0 0 0; width:62px; height:30px; text-align:center; float:left;}
+.thumbs .like a:hover{background-position:-60px -120px; color:#5275ca;}
+
+.thumbs .date{float:left; font-size:20px; text-align:right;}
+.thumbs .date b{display:block; font-size:30px; font-weight:normal; line-height:30px;}
+
+.thumbs .view{background:#fff; width:90px; text-align:center; float:right; line-height:16px; padding:10px 0px; margin-top:8px; border:1px solid #e3e3e3;}
+.thumbs .view b{display:block;}
+
+.thumbs h1{clear:both; text-align:center; font-size:18px; font-weight:normal; padding:10px 0px 0 0;}
+.thumbs h1 a{color:#1c1c1c;}
+.thumbs h1 a:hover{text-decoration:none; color:#5275ca;}
+
+.thumbs a.view-more:link, .thumbs a.view-more:visited{background:url(../images/icons.png) no-repeat 0 -280px; display:block; width:18px; height:18px; overflow:hidden; text-indent:-220px; position:absolute; left:10px; bottom:10px;}
+.thumbs a.view-more:hover{background-position:-58px -280px;} 
+
+.thumbs a.go:link, .thumbs a.go:visited{background:url(../images/icons.png) no-repeat 0 -219px; display:block; width:23px; height:23px; overflow:hidden; text-indent:-220px; position:absolute; right:10px; bottom:10px;}
+.thumbs a.go:hover{background-position:-59px -219px;}

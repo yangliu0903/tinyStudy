@@ -1,0 +1,111 @@
+##TODO 增加处理 ，如果视图的参数有值，则自动放在hidden区域，然后调用操作时，如果是None模式，且有此参数，则传过去
+
+#set($viewGroups=$operationDefine.viewGroups)
+#if(${operationDefine.fixedSize})##如果是固定大小
+	#set($option={"autoOpen":true,"modal":${operationDefine.modal},"resizable":false,"width":"$operationDefine.width","height":"$operationDefine.height"})
+	#set($captionButtons="pin:{visible:true},refresh:{visible:false},toggle:{visible:true},minimize:{visible:false},maximize:{visible:false}")
+#else
+	#set($option={"autoOpen":true,"modal":${operationDefine.modal},"width":"$operationDefine.width","height":"$operationDefine.height"})
+	#set($captionButtons="pin:{visible:true},refresh:{visible:false},toggle:{visible:true},minimize:{visible:true},maximize:{visible:true}")
+#end
+
+#@wijDialog("${modelDefine.id}_${operationDefine.id}" "${operationDefine.title}" "" $option $captionButtons)
+
+<script>
+	function do_${modelDefine.id}_${operationDefine.id}Ajax(){
+		var pageNumber =0;
+		var pageSize=0;
+		var data={pageNumber:pageNumber ,pageSize:pageSize};
+		var tabSelectTab=$("#${modelDefine.id}_${operationDefine.id}ConditionTab_value").val();
+		var inputFields=$("*[name^="+tabSelectTab+"]");
+		for(var i=0;i<inputFields.length;i++){
+			var input=inputFields[i];
+			var name=$(input).attr("name").substring(tabSelectTab.length);
+			if($(input).val()!=""){
+				data[""+name]=$(input).val();
+			}
+		}
+		loadPage('#${modelDefine.id}_${operationDefine.id}_container','${modelRequestInfo.requestName}_detail.modellet',data);
+	}
+</script>
+
+#if($operationDefine.cssDefine)
+<style>
+	$operationDefine.cssDefine
+</style>
+#end
+##下面生成查询窗口
+#set($hasQuery=false)
+#if($operationDefine.conditionGroups)
+	##如果有分组
+	#set($queryTab={"collapsible":true})
+	#@wijTab("${modelDefine.id}_${operationDefine.id}ConditionTab" $queryTab)
+		#@wijTabHeader()
+			#foreach($groupName in $operationDefine.conditionGroups.split(","))
+				#wijTabHeaderItem("${modelDefine.id}_${operationDefine.id}_condition_$groupName" "$groupName")
+			#end
+		#end
+		#foreach($groupName in $operationDefine.conditionGroups.split(","))
+			#@wijTabItem("${modelDefine.id}_${operationDefine.id}_condition_$groupName")
+			#foreach($conditionField in $operationDefine.conditionFields)
+				#if($conditionField.hidden==false&&$conditionField.groups.indexOf($groupName)>=0)
+					#set($stdField=$modelDefine.getStandardField($conditionField.fieldId))
+					#set($camelName=$modelDefine.getCamelName($stdField.name))
+					#set($hasQuery=true)
+					#if($conditionField.inputMode)##如果有指定输入模式
+						#evaluate("#${conditionField.inputMode.type}(\$conditionField.inputMode \$stdField.title \$groupName\$camelName "" \$conditionField.editable)")
+					#else##没有指定输入模式，就采用输入框的方式
+						#textField($stdField.title "$groupName$camelName" "" $conditionField.editable)
+					#end
+				#end
+			#end
+			#end
+		#end
+	#end
+#else
+	#if($operationDefine.conditionFields.size>0)
+		##如果没有分组，则所有的显示在一行上
+		#@wijExpander("${modelDefine.id}_${operationDefine.id}ConditionExpender" "查询")
+		#foreach($conditionField in $operationDefine.conditionFields)
+			#set($stdField=$modelDefine.getStandardField($conditionField.fieldId))
+			#set($camelName=$modelDefine.getCamelName($stdField.name))
+			#if($conditionField.hidden==false)
+				#set($hasQuery=true)
+				#if($conditionField.inputMode)##如果有指定输入模式
+					#evaluate("#${conditionField.inputMode.type}(\$conditionField.inputMode \$stdField.title \$camelName "" \$conditionField.editable)")
+				#else##没有指定输入模式，就采用输入框的方式
+					#textField($stdField.title $camelName "" $conditionField.editable)
+				#end
+			#end
+		#end
+		#end
+	#end
+#end
+##下面添加查询参数
+
+#showQueryParameter($operationDefine)
+
+
+#if($hasQuery)##如果有查询，则添加查询按钮
+<button type="button" onclick="do_${modelDefine.id}_${operationDefine.id}_query();">查询</button>
+	<script>
+	function do_${modelDefine.id}_${operationDefine.id}_query(){
+
+		do_${modelDefine.id}_${operationDefine.id}Ajax();
+	}
+	</script>
+#end
+
+
+<div id="${modelDefine.id}_${operationDefine.id}_container" style="height:300pt;overflow-y:auto;margin:0 auto;"> 
+#include("card_detail.page")
+</div>
+
+##下面生成自定义Js
+#if($operationDefine.jsDefine)
+<script>
+	$operationDefine.jsDefine
+</script>
+#end
+
+#end##dialog

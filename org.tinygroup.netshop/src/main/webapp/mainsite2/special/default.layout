@@ -1,0 +1,28 @@
+
+
+<div id="leftcolumn">
+#@categoryBar("特色服务")
+#categoryItem("miniBank.page" "小微金融")
+#categoryItem("smkxfd.page" "市民卡消费贷")
+#categoryItem("kdjc.page" "快递寄存")
+#categoryItem("bgx.page" "保管箱")
+#end
+
+#@categoryBar("社区一卡通")
+#categoryItem("yktqc.page" "介绍")
+#categoryItem("yktqc.page" "缴费")
+#categoryItem("yktqc.page" "充值")
+#categoryItem("yktqc.page" "信息发布")
+#categoryItem("yktqc.page" "发票打印")
+#categoryItem("yktqc.page" "批量代扣")
+#categoryItem("yktqc.page" "代售电子机票")
+#categoryItem("yktqc.page" "报刊订阅")
+#categoryItem("yktqc.page" "保险费缴纳")
+#categoryItem("yktqc.page" "个税申报")
+#categoryItem("yktqc.page" "物业公司后台管理功能")
+#end
+
+</div>
+<div id="middlecolumn">
+$!pageContent
+</div>

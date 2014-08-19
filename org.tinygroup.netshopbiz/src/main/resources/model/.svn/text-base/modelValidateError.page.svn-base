@@ -1,0 +1,8 @@
+#@wijAlertDialog("errorMessagePage" "数据校验失败")
+#foreach($member in $validateResults.validateResultMap.entrySet())
+	#foreach($validateRule in $member.value)
+	$validateRule.messege <br>
+	#end
+#end 
+
+#end

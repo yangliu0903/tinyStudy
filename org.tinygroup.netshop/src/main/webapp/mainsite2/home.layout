@@ -1,0 +1,37 @@
+<div class="main">
+ <div class="head">
+    #top
+    #clearDiv
+    #logo
+    #searchBox
+	#clearDiv
+	#fastNav	
+  </div>
+$pageContent
+#footer
+
+</div>
+<div style="display:none">
+<form id="loginshumi" name="form1" method="post" action="https://account.fund123.cn/login/login/login.aspx" target="new">
+  <p>
+    <label for="username">姓名</label>
+    <input type="text" name="username" value="spzebra">
+  </p>
+  <p>
+    <label for="password">密码</label>
+    <input type="text" name="pwd" value="llllll">
+  </p>
+  <p>
+    <label for="modeHidden">登录方式</label>
+    <input type="text" name="mode" id="modeHidden" value="0">
+  </p>
+  <p>
+    <label for="verifyCode">校验码</label>
+    <input type="text" name="verifyCode" id="verifyCode">
+  </p>
+  <p>
+    <label for="ReturnUrl">返回Url</label>
+    <input type="text" name="ReturnUrl" id="ReturnUrl" value="http://my.fund123.cn/">
+  </p><input name="登录" type="submit" value="login">
+</form>
+</div>

@@ -1,0 +1,986 @@
+#macro(setTitle $title)
+#set($pageTitle="民生银行社区银行-$title")
+#end
+#macro(clearDiv)
+<div style="clear:both"></div>
+#end
+
+#macro(headMenu)
+<div class="nav clearfix">
+#fastNavMenu
+</div>
+#end
+
+#macro(fastNavMenu)
+<ul class="fast-nav">
+	<li><a href="${TINY_CONTEXT_PATH}/mainsite2/home/default.page"><span>首页</span></a></li>
+	<li><a href="${TINY_CONTEXT_PATH}/mainsite2/home/home.page"><span>网上商城</span></a></li>
+##	<li><a href="${TINY_CONTEXT_PATH}/mainsite2/shop/shoplist.page"><span>商铺</span></a></li>
+	<li><a href="${TINY_CONTEXT_PATH}/mainsite2/convenience/shop.page"><span>便民服务</span></a></li>
+	<li><a href="${TINY_CONTEXT_PATH}/mainsite2/special/miniBank.page"><span>小区金融</span></a></li>
+	<li><a href="javascript:loginshumi.submit();return false;"><span>金融超市</span></a></li>
+</ul>
+<script>
+// category
+	$(".category :has('.sub-category')")
+	 .hover(
+		function(){
+			$(this).children("p").addClass("on");
+			$(this).children(".sub-category").stop().show();
+		},
+		function(){
+			$(this).children("p").removeClass("on");
+			$(this).children(".sub-category").hide();
+		});
+</script>
+#end
+
+#macro(searchBox)
+<div class="search">
+  <form id="form1" name="form1" method="post" action="${TINY_CONTEXT_PATH}/mainsite2/home/search.page">
+    <ul>
+      <li>
+        <input name="namelike" type="text" class="input_t" id="namelike" value="" />
+      </li>         
+      <li>
+        <input type="submit" name="button" class="btn-search" id="button" value="搜索"/>
+      </li>
+    </ul>
+  </form>
+</div>
+#end
+
+#macro(notice)
+<div class="notic ">
+  <h5><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page" class="fr fn f12">更多>></a>活动公告</h5>
+  <ul>
+  #callService("processModelService" "requestName=EntityModel_table_news_queryAllNews&sortField=newsCreatetime&sortDirection=desc&pageSize=5&pageNumber=0" "modelProcessResult" "newsInfos")
+
+  #if($newsInfos.beans.size()==0)
+  	暂无公告
+  #else
+  	#foreach($newsInfo in $newsInfos.beans)
+  		<li><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page?showNewsInfoId=$newsInfo.newsUuid">$newsInfo.newsTitle</a></li>
+  	#end
+  #end	
+  
+  </ul>
+</div>
+#end
+
+#macro(focusList)
+<div class="notic">
+  <h5>热门关注</h5>
+  <ul>
+  #callService("processModelService" "requestName=EntityModel_table_news_queryAllNews&sortField=newsCreatetime&sortDirection=desc&pageSize=4&pageNumber=0" "modelProcessResult" "newsInfos")
+
+  #if($newsInfos.beans.size()==0)
+  	
+  #else
+  	#foreach($newsInfo in $newsInfos.beans)
+  		<li><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page?showNewsInfoId=$newsInfo.newsUuid">$newsInfo.newsTitle</a></li>
+  	#end
+  #end	
+  
+  </ul>
+</div>
+#end
+
+#macro(selledList)
+<div class="notic">
+  <h5>热销商品</h5>
+  <ul>
+  #callService("processModelService" "requestName=EntityModel_table_news_queryAllNews&sortField=newsCreatetime&sortDirection=desc&pageSize=4&pageNumber=0" "modelProcessResult" "newsInfos")
+
+  #if($newsInfos.beans.size()==0)
+  	
+  #else
+  	#foreach($newsInfo in $newsInfos.beans)
+  		<li><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page?showNewsInfoId=$newsInfo.newsUuid">$newsInfo.newsTitle</a></li>
+  	#end
+  #end	
+  
+  </ul>
+</div>
+#end
+
+#macro(notFinished $title)
+<a href="javascript:alert('尚未实现')">$title</a>
+#end
+
+#macro(serviceChannel)
+<div class="liucheng ">
+  <h5>服务通道</h5>
+  <ul>
+    <li><img src="../images/icon_4.gif" />#notFinished("在线客服")</li>
+    <li><img src="../images/icon_7.gif" />#link("http://www.hundsun.com" "官方微博" "_blank")</li>
+    <li><img src="../images/icon_5.gif" />#link("/mainsite2/faq/faq.page" "帮助中心")</li>
+    <li><img src="../images/icon_6.gif" />#link("/mainsite2/faq/faq.page" "新手入门")</li>
+  </ul>
+</div>
+#end
+
+#macro(fastNav)
+<div class="nav clearfix">
+	#category
+</div>
+#end	
+
+
+#macro(category)
+#callService("processModelService" "requestName=EntityModel_treeWithCode_productClass_productClassTree" "modelProcessResult" "categorys")
+<div style="display:none">
+<form id="loginshumi" name="form1" method="post" action="https://account.fund123.cn/login/login/login.aspx" target="new">
+  <p>
+    <label for="username">姓名</label>
+    <input type="text" name="username"  value="spzebra"/>
+  </p>
+  <p>
+    <label for="password">密码</label>
+    <input type="text" name="pwd" value="llllll"/>
+  </p>
+  <p>
+    <label for="modeHidden">登录方式</label>
+    <input type="text" name="mode" id="modeHidden" value="0"/>
+  </p>
+  <p>
+    <label for="verifyCode">校验码</label>
+    <input type="text" name="verifyCode" id="verifyCode" />
+  </p>
+  <p>
+    <label for="ReturnUrl">返回Url</label>
+    <input type="text" name="ReturnUrl" id="ReturnUrl" value="http://my.fund123.cn/"/>
+  </p><input name="登录" type="submit" value="login" />
+</form>
+</div>
+<div class="category">
+	<div class="hd">产品分类</div>
+	<div class="bd">
+		<ul>
+		#foreach($category in $categorys)
+			<li><p><img src='../images/ic_ifm.gif'><a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page?categoryid=$category.value&categoryname=$category.text">$category.text</a></p>
+			
+			#if( $category.nodes.size()>0)
+				<div class="sub-category">
+					<ul>
+						#foreach($subcategory in $category.nodes)
+						<li><a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page?categoryid=$category.value&categoryname=$category.text&firstViewCategory=$subcategory.id&firstViewCategoryName=$subcategory.text">$subcategory.text</a></li>
+						#end
+					</ul>
+				</div>
+			#end
+			
+			
+			<!--
+			#callService("processModelService" "requestName=EntityModel_tree_productClass_productClassTree&parentId=$category.classUuid" "modelProcessResult" "subcategorys")
+			#if( $subcategorys.size()>0)
+				<div class="sub-category">
+					<ul>
+						#foreach($subcategory in $subcategorys)
+						<li><a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page?categoryid=$category.classUuid&categoryname=$category.className&firstViewCategory=$subcategory.value&firstViewCategoryName=$subcategory.text">$subcategory.text</a></li>
+						#end
+					</ul>
+				</div>
+			#end
+			-->
+			
+			</li>
+		#end
+		</ul>
+	</div>
+</div>
+<!-- Fast nav -->
+#fastNavMenu
+<ul class="fast-nav">
+	#foreach($category in $categorys.beans)
+		<li>#link("/mainsite2/detail/product.page?categoryid=$category.classUuid&categoryname=$category.className" "<span>$category.className</span>")</li>
+	#end
+</ul>
+#end
+
+#macro(logo)
+<a class="logo" href="${TINY_CONTEXT_PATH}/mainsite2/home/default.page"></a>
+#end
+
+#macro(top)
+<div class="top">
+  <p class="fl ml10">罗果您好，欢迎来到民生社区银行！ #*[#link("/mainsite2/login/login.page" "登录")] / [#link("/mainsite2/login/register.page" "注册")]*# [#link("#" "退出")]</p>
+  <p class="fr mr20"> #link("/mainsite2/personal/personal.page" "我的空间") | #link("/mainsite2/personal/favorite.page" "我的关注") |  #link("/mainsite2/personal/basket.page" "我的购物车") | #link("/mainsite2/convenience/net.page" "银行网点") | #link("/mainsite2/faq/faq.page" "帮助中心")</p>
+</div>
+#end
+
+#macro(faqAtEnd)
+<div class="end_Af">
+    <div class="end_Af_title">
+      <ul>
+      #callService("processModelService" "requestName=EntityModel_tree_faqtype_faqTypeTree" "modelProcessResult" "faqTreeQueryResult")
+      
+      	#if( $faqTreeQueryResult.size() == 0 )
+			
+		#else
+			#foreach($fqlNode in $faqTreeQueryResult)
+				<li class="z1">
+		          <h3>$fqlNode.text</h3>
+		        </li>
+			#end
+		#end
+
+        
+      </ul>
+    </div>
+    <div class="end_Af_menu">
+      
+  	#if( $faqTreeQueryResult.size() == 0 )
+	#else
+		#foreach($fqlNode in $faqTreeQueryResult)
+			<div class="end_Af_menu_x">
+			<ul>
+			#foreach($fqlSubNode in $fqlNode.nodes)
+				<li><a href="faq.page?showfaqtype=$fqlSubNode.value&showfaqtypeName=$fqlSubNode.text" >$fqlSubNode.text</a></li>
+				
+    		#end
+	        </ul>
+	      	</div>
+		#end
+	#end
+	  
+     
+    </div>
+  </div>
+#end
+
+#macro(footer)
+#clearDiv
+##<div class="ad mt10"><a href="#" class="mr5 mt10 fr"><span class="more">更多品牌</span></a> <img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"><img src="../images/temp/pic7.png"></div>
+##faqAtEnd
+<hr />
+<div class="end_Cf_in">
+      <div class="end_Cf_in_top">
+        <ul>
+          <li><a href="http://www.hundsun.com/" target="_blank">关于我们</a></li>
+          <li class="z1"> | </li>
+            <li><a href="http://www.hundsun.com/" target="_blank">恒生电子股份有限公司首页</a></li>
+          <li class="z1"> | </li>
+          <li><a href="#" target="_blank">客户投诉及服务建议</a></li>
+          <li class="z1"> | </li>
+          <li><b>服务热线  28828888</b></li>
+        </ul>
+      </div>
+      <div class="end_Cf_in_min">
+        <ul>
+          <li>©版权所有  恒生电子股份有限公司版权所有</li>
+          <li>浙ICP备1234567</li>
+        </ul>
+      </div>
+      <div class="end_Cf_in_down"> 公司地址：杭州市滨江区江南大道3588号恒生软件园 </div>
+    </div>
+#end
+
+#macro(sliderBar)
+<div class="w710 mt10 fr ov_hid">
+<div class="slide" id="slide">
+
+#@slider("aadd" "100%" "350pt")
+
+#callService("processModelService" "requestName=EntityModel_table_activity_queryAllActivity" "modelProcessResult" "queryActivitys")
+	#foreach($queryActivity in $queryActivitys.beans)
+
+		#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&pictureUuid=$queryActivity.pictureUuid" "modelProcessResult" "activitypictureResult")
+		#if($activitypictureResult.beans.size()==0)
+		
+		#else
+			#set($activitypicture=$activitypictureResult.beans.get(0))
+		#end
+		
+		#@sliderItem("$!activitypicture.pictureLink")
+			#link("$queryActivity.activityLink" "<h1>详情</h1>")
+		#end
+	#end	
+#end
+</div>
+    #clearDiv
+</div>
+#end
+
+#macro(hotProduct)
+  <div class="rank_con">
+	 <table width="98%">
+		<tr>
+			<td><em class="one">1</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em class="two">2</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em class="three">3</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>4</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>5</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>6</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>7</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>8</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>9</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+		<tr>
+			<td><em>10</em></td>
+			<td>中国工商银行保本</td>
+			<td>21010</td>
+		</tr>
+	 </table>
+ </div>
+#end
+
+#macro(newProduct)
+<div class="new-products clearfix">
+	<div class="hd">
+		<!-- <a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page" class="fr">更多&gt;&gt;</a> -->
+		<a href="../detail/category.page" class="fr">更多&gt;&gt;</a>
+		<h2>商城推荐</h2>
+	</div>
+	#callService("processModelService" "requestName=EntityModel_table_product_queryAllProductOrderByTime&sortField=onlineTime&sortDirection=desc&pageSize=3" "modelProcessResult" "newProducts")
+	
+	#foreach($newProduct in $newProducts.beans)
+		#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&targetUuid=$newProduct.productUuid&pictureUuid=$newProduct.pictureUuid" "modelProcessResult" "miniPics")
+		#if( $miniPics.beans.size() > 0 )
+			#set( $miniPic = $miniPics.beans.get(0))
+		#else
+			#set( $miniPic = 0)
+		#end
+		#imageWithDetail("$!miniPic.pictureLink" "$newProduct.productName" "../detail/detail.page?productid=$newProduct.productUuid")
+	#end
+	
+</div>
+#end
+
+#macro(productsThumbs $id)
+<ul class="featured thumbs products" id="$id">
+$bodyContent
+</ul>
+<script>
+$(document).ready(function() {
+	$('#$id > li').hoverdir( {
+		hoverDelay	: 75
+	} );
+});
+</script>
+#end
+
+#macro(productHomeList $id $width $height)
+#@productsThumbs("$id")
+#productThumbsItem("1234" "../images/520x250_1.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#productThumbsItem("1234" "../images/520x250_2.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#productThumbsItem("1234" "../images/520x250_1.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#productThumbsItem("1234" "../images/520x250_2.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#productThumbsItem("1234" "../images/520x250_1.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#productThumbsItem("1234" "../images/520x250_2.jpg" "成交:3" "蛇年吉祥叶子蛇" )
+#end
+#end
+
+#macro(productItem $width $height $title $img $url $price $prePrice)
+<div style="width:$width;height:$height;flow:left;">
+#link("$url" "<img src='' width='200' height='200' />$title")
+价格：$prePrice-$price 
+</div>
+#end
+
+#macro(productItem $img $url $title $price $discount)
+<li class="fore1" id="timed1" clstag="homepage|keycount|home2013|15a">
+<div class="p-img ld">
+<a href="${TINY_CONTEXT_PATH}$url" title="$title">
+#if($discount!=0)
+<span class="pi pix1"><b id="icon37">$discount</b>折</span>
+#end
+<img src="$img" width="130" height="130" data-img="1" alt="$title"></a>
+</div>            
+<a href="${TINY_CONTEXT_PATH}$url" title="$title" >$title</a>
+<div class="p-price"><span>抢购价：</span><strong>￥$price</strong></div> 
+</li>
+#end
+
+#macro(productList $id $width $height)
+#callService("processModelService" "requestName=EntityModel_table_product_queryProductByClassId&classUuid=$id" "modelProcessResult" "productListResult")
+
+
+
+<div style="flow:left;">
+<ul class="lh">
+
+#foreach($product in $productListResult.beans)
+
+#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&targetUuid=$product.productUuid&pictureUuid=$product.pictureUuid" "modelProcessResult" "miniPics")
+<!-- $miniPics.beans.size() -->
+#if( $miniPics.beans.size() > 0 )
+	#set( $miniPic = $miniPics.beans.get(0))
+#else
+	#set( $miniPic = 0)
+#end
+#productItem("$!miniPic.pictureLink" "/mainsite2/detail/detail.page?productid=$product.productUuid" "$product.productName" "$product.unitPrice" "$product.productDiscount")
+#end
+</ul>
+</div>
+
+#end
+
+#macro(favoriteItem $img $title $desc $unit $count $price $transPrice $discount $id)
+#macro(redbold)
+<font color="red"><b>
+$bodyContent
+</b></font>
+#end
+<table width="100%" class="list_tb">
+<tbody>
+<tr>
+  <td rowspan="2" align="center" class="w100" width="100"><input class="checkitem" name="item" type="checkbox" checked="true" /><img src="$img" width="80"></td>
+  <td width="*"><h5 class="fl mr20">#link("/mainsite2/detail/detail.page?productid=$id" "$title")</h5></td>
+  
+  
+  <td rowspan="2" align="left" width="120">
+  规格：#@redbold()$unit#end<br />
+  数量：#@redbold()$count#end<br />
+  单价：#@redbold()￥$price#end<br />
+  运费：#@redbold()￥$transPrice#end<br />
+  折扣：#@redbold()#if($discount==0)无折扣#else$discount#end#end
+  </td>
+  <td rowspan="2" align="center" width="100">
+  #notFinished("删除")<br>
+  #notFinished("添加到购物车")<br>
+  </td>
+</tr>
+<tr>
+  <td>$desc</th>
+</tr>
+</tbody></table>
+<hr />
+#end
+
+#macro(favoriteShop $img $title )
+#macro(redbold)
+<font color="red"><b>
+$bodyContent
+</b></font>
+#end
+<table width="100%" class="list_tb">
+<tbody>
+<tr>
+  <td rowspan="2" align="center" class="w100" width="100"><input class="checkitem" name="item" type="checkbox" checked="true" /><img src="$img" width="80"></td>
+  <td width="*"><h5 class="fl mr20">$title</h5></td>
+  <td rowspan="2" align="center">
+  #notFinished("删除")<br>
+  </td>
+</tr>
+</tbody></table>
+<hr />
+#end
+
+#macro(basketItem $img $title $desc $unit $count $price $transPrice $discount)
+#macro(redbold)
+<font color="red"><b>
+$bodyContent
+</b></font>
+#end
+<table width="100%" class="list_tb">
+<tbody>
+<tr>
+  <td rowspan="2" align="center" class="w100" width="100"><input class="checkitem" name="item" type="checkbox" checked="true" /><img src="$img" width="80"></td>
+  <td width="*"><h5 class="fl mr20">$title</h5></td>
+  <td rowspan="2">
+  #@roundShadowBox()
+  规格：#@redbold()$unit#end<br />
+  数量：#@redbold()$count#end<br />
+  单价：#@redbold()￥$price#end<br />
+  运费：#@redbold()￥$transPrice#end<br />
+  折扣：#@redbold()#if($discount==0)无折扣#else$discount#end#end
+  #end
+  </td>
+  <td rowspan="2" align="center">
+  #notFinished("删除")<br>
+  #notFinished("选择")<br>
+  </td>
+</tr>
+<tr>
+  <td>$desc</th>
+</tr>
+</tbody></table>
+<hr />
+#end
+
+#macro(addressInput $name $mobile $tel $postCode $address)
+#@roundShadowBox()
+<TABLE class=submit_table>
+<TBODY>
+<TR>
+<TD class=title><SPAN class=start>*</SPAN>收货人姓名：</TD>
+<TD><INPUT id=custMail class=text maxLength=30 value="$name"> 
+</TD></TR>
+<TR>
+<TD class=title><SPAN class=start>*</SPAN>移动电话：</TD>
+<TD><INPUT id=custMail class=text maxLength=30 value="$mobile"> 
+</TD></TR>
+<TR>
+<TD class=title><SPAN class=start>*</SPAN>固定电话：</TD>
+<TD><INPUT id=custMail class=text maxLength=30 value="$tel"> 
+</TD></TR>
+<TR>
+<TD class=title><SPAN class=start>*</SPAN>邮政编码：</TD>
+<TD><INPUT id=custMail class=text maxLength=30 value="$postCode"> 
+</TD></TR>
+<TR>
+<TD class=title><SPAN class=start>*</SPAN>收货人地址：</TD>
+<TD><INPUT id=custMail class=text maxLength=30 value="$address" name=custInfForm.custMail> 
+</TD></TR>
+</TBODY></TABLE>
+#end
+#end
+
+#macro(orderInfoByFlow $flow)
+
+#@shadowBox()
+订单编号：<b>$flow.flowUuid</b>，成交日期：<b>$flow.flowCreatetime</b>，运费：<b>$flow.flowFreight</b>
+###link("/mainsite2/detail/detail.page" "查看详情")  
+	#if($flow.flowStatus!=1)
+		#notFinished("关闭订单")
+	#end
+<hr/>
+
+#callService("processModelService" "requestName=RelationModel_relationQuery_orderRelation_queryAllOrderDetailsByFlowId&flowUuid=$flow.flowUuid" "modelProcessResult" "orderDetials")
+
+
+<table id="movies" class="metrotable" width="100%">
+    <thead>
+        <tr>
+            <th>图片</th>
+            <th>产品名称</th>
+            <th>价格</th>
+            <th>数量</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+    #foreach($orderDetial in $orderDetials.beans)
+    	#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&pictureUuid=$orderDetial.pictureUuid" "modelProcessResult" "pics")
+		#if( $pics.beans.size() == 0)
+			#set($pic = $pic1 )
+		#else
+			#set($pic = $pics.beans.get(0) )
+		#end
+	    <tr>
+	        <td>#img("$pic.pictureLink" "" "100" "100")</td>
+	        <td>#link("/mainsite2/detail/detail.page?productid=$orderDetial.productUuid" "$orderDetial.productName")</td>
+	        <td>$orderDetial.detialPrice</td>
+	        <td>$orderDetial.detialNumber</td>
+	    </tr>
+    #end
+    <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+ 	</tr>
+	</tbody>
+</table>
+#end
+#end
+
+#macro(orderInfo $id)
+
+#@shadowBox()
+订单编号：<b>$id</b>，成交日期：<b>2013-3-7</b> #link("/mainsite2/detail/detail.page" "查看详情")  #notFinished("删除订单")
+<hr />
+<table id="movies" class="metrotable" width="100%">
+        <thead>
+            <tr>
+                <th>图片</th>
+                <th>产品名称</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>店铺掌柜</th>
+            </tr>
+        </thead>
+        <tbody>
+    <tr>
+        <td>#img("../images/ic_cable-fees.png")</td>
+        <td>#link("/mainsite2/detail/detail.page" "蛇年吉祥叶子蛇")</td>
+        <td>100</td>
+        <td>3</td>
+        <td>金铺</td>
+    </tr>
+    <tr>
+        <td>#img("../images/ic_cable-fees.png")</td>
+        <td>#link("/mainsite2/detail/detail.page" "蛇年吉祥叶子蛇")</td>
+        <td>100</td>
+        <td>3</td>
+        <td>金铺</td>
+    </tr>
+ 
+</tbody>
+    </table>
+#end
+#end
+
+
+#macro(orderInfoDetial $id $img $name $price $num  $freight)
+
+#@shadowBox()
+订单编号：<b>$id</b>，成交日期：<b>2013-3-7</b> #link("/mainsite2/detail/detail.page" "查看详情")  #notFinished("删除订单")
+<hr />
+<table id="movies" class="metrotable" width="100%">
+        <thead>
+            <tr>
+                <th>图片</th>
+                <th>产品名称</th>
+                <th>价格</th>
+                <th>数量</th>
+                <th>运费</th>
+                <th>店铺掌柜</th>
+            </tr>
+        </thead>
+        <tbody>
+    <tr>
+        <td>#img("../images/ic_cable-fees.png")</td>
+        <td>#link("/mainsite2/detail/detail.page" "蛇年吉祥叶子蛇")</td>
+        <td>100</td>
+        <td>3</td>
+        <td>金铺</td>
+    </tr>
+    <tr>
+        <td>#img("../images/ic_cable-fees.png")</td>
+        <td>#link("/mainsite2/detail/detail.page" "蛇年吉祥叶子蛇")</td>
+        <td>100</td>
+        <td>3</td>
+        <td>3</td>
+        <td>金铺</td>
+    </tr>
+ 
+</tbody>
+    </table>
+#end
+#end
+
+#macro(shopItem $img $url $title )
+<li class="fore1" id="timed1" clstag="homepage|keycount|home2013|15a">
+<div class="p-img ld">
+#link("$url" "<img src='$img' width='150' height='150' data-img='1' alt='$title' />")
+</div>            
+#link("$url" "$title")
+</li>
+#end
+
+#macro(miniBank)
+ <table cellspacing="0" cellpadding="0" width="570" border="0">
+    <tbody>
+      <tr>
+        <td id="table3" valign="top" align="middle"><table cellspacing="0" cellpadding="0" width="226" border="0">
+          <tbody>
+            <tr>
+              <td><table cellspacing="0" cellpadding="0" width="224" border="0">
+                <tbody>
+                  <tr>
+                    <td background="http://www.cmbc.com.cn/Templets/images/green.gif" colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                  </tr>
+                  <tr>
+                    <td background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                    <td width="224" background="http://www.cmbc.com.cn/Templets/images/top_blank.jpg" height="25">商贷通</td>
+                    <td background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                  </tr>
+                  <tr>
+                    <td bgcolor="#e5f6f4"><table cellspacing="0" cellpadding="0" width="224" border="0">
+                      <tbody>
+                        <tr>
+                          <td width="26" bgcolor="#e0f0ef" rowspan="13"></td>
+                          <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/cpgk.shtml">产品概况</a></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/dbfs.shtml">担保方式</a></td>
+                        </tr>
+                       
+                        <tr>
+                          <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/ywts.shtml">业务特色</a></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/bllc.shtml">办理流程</a></td>
+                        </tr>
+                        
+                        <tr>
+                          <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/dzzz.shtml">小微金融电子杂志</a></td>
+                        </tr>
+                      </tbody>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"></td>
+                  </tr>
+                </tbody>
+              </table>
+                <table cellspacing="0" cellpadding="0" width="224" border="0">
+                  <tbody>
+                    <tr>
+                      <td background="http://www.cmbc.com.cn/Templets/images/green.gif" colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                    </tr>
+                    <tr>
+                      <td background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                      <td width="224" background="http://www.cmbc.com.cn/Templets/images/top_blank.jpg" height="25">乐收银</td>
+                      <td background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                    </tr>
+                    <tr>
+                      <td bgcolor="#e5f6f4"><table cellspacing="0" cellpadding="0" width="224" border="0">
+                        <tbody>
+                          <tr>
+                            <td width="26" bgcolor="#e0f0ef" rowspan="13"></td>
+                            <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/lcpgk.shtml">产品概况</a></td>
+                          </tr>
+                            <tr>
+                            <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/lsydx.shtml">适用对象</a></td>
+                          </tr>
+                           <tr>
+                            <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/lcpgn.shtml">产品功能</a></td>
+                          </tr>
+                          <tr>
+                            <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/lcpts.shtml">产品特色</a></td>
+                          </tr>
+                          <tr>
+                            <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/sdt/lbllc.shtml">办理流程</a></td>
+                          </tr>
+                         </tbody>
+                      </table>
+                        <table cellspacing="0" cellpadding="0" width="224" border="0">
+                          <tbody>
+                            <tr>
+                              <td background="http://www.cmbc.com.cn/Templets/images/green.gif" colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                            </tr>
+                            <tr>
+                              <td height="25" colspan="2" background="http://www.cmbc.com.cn/Templets/images/top_blank.jpg">小微手机银行</td>
+                            </tr>
+                            <tr>
+                              <td width="26" bgcolor="#e0f0ef"> </td>
+                              <td width="191" height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/dzyh_shouji/shouji_smb.shtml">产品介绍</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table cellspacing="0" cellpadding="0" width="224" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="191" colspan="3" background="http://www.cmbc.com.cn/Templets/images/green.gif"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                            </tr>
+                            <tr>
+                              <td height="25" colspan="2"><table cellspacing="0" cellpadding="0" width="224" border="0">
+                                <tbody>
+                                  <tr>
+                                    <td background="http://www.cmbc.com.cn/Templets/images/green.gif" colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                                  </tr>
+                                  <tr>
+                                    <td height="25" colspan="2" background="http://www.cmbc.com.cn/Templets/images/top_blank.jpg">小微网上银行</td>
+                                  </tr>
+                                  <tr>
+                                    <td bgcolor="#e0f0ef"> </td>
+                                    <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/dzyh_xwwy/xwwy.shtml">产品介绍</a></td>
+                                  </tr>
+                                  <tr>
+                                    <td width="26" bgcolor="#e0f0ef"> </td>
+                                    <td width="191" height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="https://per.cmbc.com.cn/pweb/static/loginpre.html?blogin" target="_blank">新版小微网上银行登录</a></td>
+                                  </tr>
+                                </tbody>
+                              </table></td>
+                            </tr>
+                            <tr>
+                              <td width="26"></td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div></div>
+                <div></div>
+                <div id="topblank2">媒体关注</div>
+                <table cellspacing="0" cellpadding="0" width="226" bgcolor="#ffffff" border="0">
+                  <tbody>
+                    <tr>
+                      <td width="1" background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                      <td width="224"></td>
+                      <td width="1" background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                    </tr>
+                    <tr>
+                      <td valign="top" align="left" width="220" height="80"><table cellspacing="3" cellpadding="0" width="200" border="0">
+                        <tbody>
+                          <tr>
+                            <td width="10" height="15">·</td>
+                            <td height="18"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/2011-2/18/17_53_06_652.shtml" target="_blank">一支行深耕一行业 民生银行小微贷款走向专业化</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                        <table cellspacing="3" cellpadding="0" width="200" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="10" height="15">·</td>
+                              <td height="18"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/2011-2/18/17_45_34_786.shtml" target="_blank">探路小微贷新模式 民生银行设&ldquo;专业化&rdquo;支行</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table cellspacing="3" cellpadding="0" width="200" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="10" height="15">·</td>
+                              <td height="18"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/2012-3/21/15_58_18_880.shtml" target="_blank">专业服务 专注&ldquo;小微&rdquo;</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table cellspacing="3" cellpadding="0" width="200" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="10" height="15">·</td>
+                              <td height="18"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/2012-3/21/15_25_09_886.shtml" target="_blank">民生银行：全球最大小微金融机构之路</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <table cellspacing="3" cellpadding="0" width="200" border="0">
+                          <tbody>
+                            <tr>
+                              <td width="10" height="15">·</td>
+                              <td height="18"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/2012-3/21/15_07_57_856.shtml" target="_blank">2000亿之后：民生银行小微金融升级</a></td>
+                            </tr>
+                            <tr>
+                              <td height="18" colspan="2"><div align="right"><a href="http://www.cmbc.com.cn/sdt/news/gb_sdt/index.shtml" target="_blank">更多……</a></div></td>
+                            </tr>
+                          </tbody>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+               </td>
+            </tr>
+          </tbody>
+        </table>
+          <table cellspacing="0" cellpadding="0" width="224" border="0">
+            <tbody>
+              <tr>
+                <td background="http://www.cmbc.com.cn/Templets/images/green.gif" colspan="3"><img height="1" alt="" src="http://www.cmbc.com.cn/Templets/images/green.gif" width="224" /></td>
+              </tr>
+              <tr>
+                <td height="25" colspan="2" background="http://www.cmbc.com.cn/Templets/images/top_blank.jpg">小微网上银行</td>
+              </tr>
+              <tr>
+                <td bgcolor="#e0f0ef"> </td>
+                <td height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="http://www.cmbc.com.cn/dzyh_shouji/shouji_smb.shtml">产品介绍</a></td>
+              </tr>
+              <tr>
+                <td width="26" bgcolor="#e0f0ef"> </td>
+                <td width="191" height="30"> <img src="http://www.cmbc.com.cn/Templets/images/b4.jpg" alt="" /> <a href="https://per.cmbc.com.cn/pweb/static/loginpre.html?blogin" target="_blank">新版小微网上银行登录</a></td>
+              </tr>
+            </tbody>
+          </table></td>
+        <td width="1"></td>
+        <td valign="top" align="middle"><div></div>
+          <div id="topblank5">商贷通</div>
+          <table width="560">
+            <tbody>
+              <tr>
+                <td rowspan="3"><a href="http://www.cmbc.com.cn/e-service/shdk/info.asp"><img src="http://www.cmbc.com.cn/sdt/images/sdt.jpg" alt="" border="0" /></a></td>
+                <td><p>商贷通是中国民生银行向中小企业主、个体工商户等经营商户提供的快速融通资金、安全管理资金、提高资金效率等全方位的金融服务产品。</p>
+                  <p><strong>小微金融服务专线:4008695568</strong></p></td>
+              </tr>
+              <tr>
+                <td><p><strong>商贷通金融特色</strong>---用款方便：为支持您事业发展，我行贷款金额原则上不设最高额限制，期限最长可达10年；贷款额度支持随借随还功能，贷款资金可循环使用，帮助您省息省心。</p>
+                  <p>商贷通担保灵活：抵押、质押、保证、联保等11种担保方式，依据情况，为您服务！</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div><img src="http://www.cmbc.com.cn/Templets/images/top_blank2.jpg" alt="" /></div>
+          <table width="570">
+            <tbody>
+              <tr>
+                <td width="80" rowspan="2" align="center" valign="top"><img src="http://www.cmbc.com.cn/sdt/images/dbfs.jpg" alt="" width="70" height="70" align="middle" /></td>
+                <td width="210" align="left"><a href="http://www.cmbc.com.cn/sdt/dbfs.shtml"><strong>多达十一种，总有一款适合您</strong></a></td>
+                <td width="80" rowspan="2" align="center" valign="top"><img src="http://www.cmbc.com.cn/sdt/images/sbcl.jpg" alt="" width="70" height="70" /></td>
+                <td width="210"><a href="http://www.cmbc.com.cn/sdt/bllc.shtml"><strong>精简的申办资料</strong></a></td>
+              </tr>
+              <tr>
+                <td valign="top" align="left"><p><a href="http://www.cmbc.com.cn/sdt/dbfs.shtml">除住房、商业用房及工业厂房抵押外，还包括其他多种担保方式,自然人联合担保,市场开发商（或管理者）保证,产业链的核心企业法人保证,商铺承租权质押,应收账款质押, 共同担保方式.</a></p></td>
+                <td valign="top" align="left"><p><a href="http://www.cmbc.com.cn/sdt/bllc.shtml">您和相关担保人的身份证、户口本的原件及其复印件； 您所拥有或控制企业的资产证明材料，如财务报表、银行对帐单、税单证明、货物运输清单等资料；此次借款，您将用于何处的相……<br />
+                </a></p></td>
+              </tr>
+              <tr>
+                <td> </td>
+                <td colspan="3"><a href="http://www.cmbc.com.cn/sdt/cgal.shtml"><strong>&ldquo;百荣世贸商城&rdquo;某商户</strong></a></td>
+              </tr>
+              <tr>
+                <td align="center" valign="top"><img src="http://www.cmbc.com.cn/sdt/images/cgal.jpg" alt="" width="70" height="70" /></td>
+                <td colspan="3"><p><a href="http://www.cmbc.com.cn/sdt/cgal.shtml">&ldquo;百荣世贸商城&rdquo;是目前北京规模最大的现代化商品批发及物流中心，已经成为华北最大的服装、小商品批发中心。</a></p>
+                  <p><a href="http://www.cmbc.com.cn/sdt/cgal.shtml">梁先生，22岁，未婚，外地户籍。因扩大门店需要资金周转，银行给予借款人30万元、期限6个月的短期贷款，贷款利率为5.346%，及时解决了客户需要资金扩大经营规模的需求。</a></p></td>
+              </tr>
+            </tbody>
+          </table>
+          <table width="568">
+            <tbody>
+              <tr>
+                <td><div><img src="http://www.cmbc.com.cn/sdt/images/shenqing.jpg" alt="" width="570" height="28" /></div>
+                  <table cellspacing="0" cellpadding="0" width="569" border="0">
+                    <tbody>
+                      <tr>
+                        <td width="1" background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="9"></td>
+                        <td width="521" align="center" valign="middle"><table width="500" height="200" border="0" align="right" cellpadding="0" cellspacing="0">
+                          <tbody>
+                            <tr>
+                              <td width="547"><p> </p>
+                                ○ 为什么要选择我们？
+                                <p>1.客户导向 2.丰富的产品 3.灵活的支取方式 4.节约财务成本 5.丰富多彩的活动和服务。</p>
+                                <p><br />
+                                  ○ 您还在犹豫什么？</p>
+                                <p>只要您轻点鼠标和键盘在这里留下您的个人信息，我们将有专属您的客户经理在2工作日内与您联系，主动为您办理贷款业务，把您的焦虑和烦恼统统抛过来，我们将竭诚为您服务！</p>
+                                <p> </p>
+                                <p align="center"><a href="http://www.cmbc.com.cn/e-service/shdk/info.asp"><img src="http://www.cmbc.com.cn/sdt/images/do.jpg" alt="" width="88" height="27" border="0" align="middle" /></a></p></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                          <p><br />
+                          </p></td>
+                        <td width="1" background="http://www.cmbc.com.cn/Templets/images/green.gif" rowspan="1"></td>
+                      </tr>
+                      <tr>
+                        <td height="1" colspan="1" background="http://www.cmbc.com.cn/Templets/images/green.gif"></td>
+                      </tr>
+                    </tbody>
+                  </table></td>
+              </tr>
+            </tbody>
+          </table></td>
+      </tr>
+    </tbody>
+  </table>
+#end

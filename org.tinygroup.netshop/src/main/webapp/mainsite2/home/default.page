@@ -1,0 +1,93 @@
+#setTitle("社区银行")
+<div>
+<div style="float:left;">
+<embed type="application/x-shockwave-flash" src="http://www.cmbc.com.cn/Templets/images/pixviewer.swf" width="572" height="157" id="focusflash" name="focusflash" bgcolor="#FFFFFF" quality="High" allowscriptaccess="sameDomain" menu="false" wmode="opaque" flashvars="pics=http://www.cmbc.com.cn/Files/banner/201311060956064825.jpg|http://www.cmbc.com.cn/Files/banner/2013103016040795843.jpg|http://www.cmbc.com.cn/Files/banner/2013071811014735519.jpg|http://www.cmbc.com.cn/Files/banner/20130718111315348.jpg|http://www.cmbc.com.cn/Files/banner/2013080816050584724.jpg&amp;links=http://www.cmbc.com.cn/flash_ads_count/ads_circle_hitcount.asp?subid=25|http://www.cmbc.com.cn/flash_ads_count/ads_circle_hitcount.asp?subid=1|http://www.cmbc.com.cn/flash_ads_count/ads_circle_hitcount.asp?subid=2|http://www.cmbc.com.cn/flash_ads_count/ads_circle_hitcount.asp?subid=4|http://www.cmbc.com.cn/flash_ads_count/ads_circle_hitcount.asp?subid=5&amp;texts=|&amp;borderwidth=572&amp;borderheight=157&amp;textheight=0&amp;curhref=http://www.cmbc.com.cn/news_left/index/bigflashbanner2.asp">
+#clearDiv
+</div> 
+
+<div style="width:149pt;float:left;margin:5px;5px;">
+	#notice
+</div>
+<div style="width:149pt;float:left;">
+    #serviceChannel
+</div>
+	##focusList
+	##selledList
+</div>
+
+  #clearDiv
+ 
+<!-- 新品推荐 -->
+#newProduct
+
+#@boxWithDate("最热便民服务点" "关注最多")
+#callService("processModelService" "requestName=EntityModel_table_shop_shopmodeloptableuuid&pageSize=0" "modelProcessResult" "shopsResult")
+	<div style="float:left;">
+	<ul class="lh">	
+		#shopItem("http://ccm.ddcdn.com/ext/photo-s/04/2d/1b/a7/le-restaurant-inside.jpg" "/mainsite2/convenience/shopdetail.page?shopId=f82d22fd9b0444298eaf5750db18b715" "欧一希面馆" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/d6/a3/e3/sina-weibo-81175523.jpg" "/mainsite2/convenience/shopdetail.page?shopId=89d87ae0ffc84ed19513b41c6b5797e5" "杭州印象城购物中心" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/d6/c8/41/sina-weibo-81184833.jpg" "/mainsite2/convenience/shopdetail.page?shopId=52b87926b8d54c6985b804c30a8fff75" "新紫晶花艺" )
+		#shopItem("http://ccm.ddcdn.com/ext/photo-l/02/3a/4a/03/the-famouse-dong-por.jpg" "/mainsite2/convenience/shopdetail.page?shopId=6fb0ae5456da478ab86d6e4b35b192a7" "怡人花市" )
+		#shopItem("http://ccm.ddcdn.com/ext/photo-l/03/75/e2/b0/la-pedrera.jpg" "/mainsite2/convenience/shopdetail.page?shopId=570a031575aa4931b9032fd77274ec26" "尚铭堂餐厅" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/aa/34/12/wechat-78263314.jpg" "/mainsite2/convenience/shopdetail.page?shopId=38fcc565c5144613b2fdef62791bae0e" "七欣天迷宗蟹(富阳店)" )
+	</ul>
+	</div>
+#end
+#@boxWithDate("店铺推荐" "热销")
+#callService("processModelService" "requestName=EntityModel_table_shop_shopmodeloptableuuid&pageSize=0" "modelProcessResult" "shopsResult")
+	<div style="float:left;">
+	<ul class="lh">
+	#foreach($shop in $shopsResult.beans)
+		#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&pictureUuid=$shop.pictureUuid&targetUuid=$shop.shopUuid" "modelProcessResult" "miniPics2")
+	
+		#if( $miniPics2.beans.size() > 0 )
+			#set( $miniPic = $miniPics2.beans.get(0))
+		#else
+			#set( $miniPic = 0)
+		#end
+		#shopItem("$!miniPic.pictureLink" "/mainsite2/shop/detail.page?shopId=$shop.shopUuid" "$shop.shopName" )
+	#end
+	#foreach($shop in $shopsResult.beans)
+		#callService("processModelService" "requestName=EntityModel_table_picture_queryTargetPictureUrl&pictureUuid=$shop.pictureUuid&targetUuid=$shop.shopUuid" "modelProcessResult" "miniPics2")
+	
+		#if( $miniPics2.beans.size() > 0 )
+			#set( $miniPic = $miniPics2.beans.get(0))
+		#else
+			#set( $miniPic = 0)
+		#end
+		#shopItem("$!miniPic.pictureLink" "/mainsite2/shop/detail.page?shopId=$shop.shopUuid" "$shop.shopName" )
+	#end
+	</ul>
+	</div>
+#end
+	
+
+#@boxWithDate("最热便民服务点" "关注最多")
+#callService("processModelService" "requestName=EntityModel_table_shop_shopmodeloptableuuid&pageSize=0" "modelProcessResult" "shopsResult")
+	<div style="float:left;">
+	<ul class="lh">	
+		#shopItem("http://ccm.ddcdn.com/ext/photo-s/04/2d/1b/a7/le-restaurant-inside.jpg" "/mainsite2/convenience/shopdetail.page?shopId=f82d22fd9b0444298eaf5750db18b715" "欧一希面馆" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/d6/a3/e3/sina-weibo-81175523.jpg" "/mainsite2/convenience/shopdetail.page?shopId=89d87ae0ffc84ed19513b41c6b5797e5" "杭州印象城购物中心" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/d6/c8/41/sina-weibo-81184833.jpg" "/mainsite2/convenience/shopdetail.page?shopId=52b87926b8d54c6985b804c30a8fff75" "新紫晶花艺" )
+		#shopItem("http://ccm.ddcdn.com/ext/photo-l/02/3a/4a/03/the-famouse-dong-por.jpg" "/mainsite2/convenience/shopdetail.page?shopId=6fb0ae5456da478ab86d6e4b35b192a7" "怡人花市" )
+		#shopItem("http://ccm.ddcdn.com/ext/photo-l/03/75/e2/b0/la-pedrera.jpg" "/mainsite2/convenience/shopdetail.page?shopId=570a031575aa4931b9032fd77274ec26" "尚铭堂餐厅" )
+		#shopItem("http://ccm.ddcdn.com/photo-l/04/aa/34/12/wechat-78263314.jpg" "/mainsite2/convenience/shopdetail.page?shopId=38fcc565c5144613b2fdef62791bae0e" "七欣天迷宗蟹(富阳店)" )
+	</ul>
+	</div>
+#end
+
+#@boxWithDate("金融超市" "关注最多")
+#callService("processModelService" "requestName=EntityModel_table_shop_shopmodeloptableuuid&pageSize=0" "modelProcessResult" "shopsResult")
+	<div style="float:left;">
+	<ul class="lh">	
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+		#shopItem("${TINY_CONTEXT_PATH}/mainsite2/images/smjj.jpg" "http://www.fund123.cn" "数米基金" )
+	</ul>
+	</div>
+#end
+
+	

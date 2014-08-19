@@ -1,0 +1,87 @@
+<style>
+.p-price strong, .p-market strong {
+color: #E4393C;
+}
+.fore1 {
+list-style:none;
+position:relative;
+float: left;
+padding-left: 6px;
+border-left: 0;
+width: 140px;
+height: 200px;
+padding: 5px;
+border-left: 1px dotted #F1F1F1;
+}
+
+.pix1 {
+line-height: 14px;
+font-size: 12px;
+z-index:1;
+background-position: 0 -100px;
+}
+
+.pi {
+position: absolute;
+top: 0;
+text-align: center;
+right: 0;
+top: 10px;
+width: 52px;
+height: 40px;
+padding: 12px 0 0;
+background-image: url(http://misc.360buyimg.com/product/skin/2013/i/20130330C.png);
+background-repeat: no-repeat;
+font-family: "microsoft yahei";
+color: #fff;
+line-height: 31px;
+overflow: hidden;
+font-size: 16px;
+zoom: 1;
+}
+</style>
+
+#callService("processModelService" "requestName=EntityModel_treeWithCode_productClass_productClassTree&classCode=$categoryid" "modelProcessResult" "subcategorys")
+<div id="leftcolumn">
+
+#if(!$firstViewCategory )
+	#set( $firstViewCategory = "" )
+	
+#end
+#if(!$firstViewCategoryName )
+	#set( $firstViewCategoryName = "" )
+	
+#end
+#@categoryBar("$categoryname")
+#foreach($subcategory in $subcategorys)
+	#if($firstViewCategory=="")
+		#set( $firstViewCategory = $subcategory.id )
+		#set( $firstViewCategoryName = $subcategory.text )
+	#end
+		#categoryItem("product.page?categoryid=$categoryid&categoryname=$categoryname&firstViewCategory=$subcategory.id&firstViewCategoryName=$subcategory.text" "$subcategory.text")
+	#end
+	
+	<!--
+	#@categoryBarWithLink("product.page?categoryid=$categoryid&categoryname=$categoryname&firstViewCategory=$subcategory.value&firstViewCategoryName=$subcategory.text" "$subcategory.text")
+	#if($firstViewCategory=="")
+		#set( $firstViewCategory = $subcategory.id )
+		#set( $firstViewCategoryName = $subcategory.text )
+	#end
+		#foreach($subProduct in $subcategory.nodes)
+			#categoryItem("product.page?categoryid=$categoryid&categoryname=$categoryname&firstViewCategory=$subcategory.value&firstViewCategoryName=$subcategory.text" "$subcategory.text")
+	
+		#end
+	#end
+	-->
+#end
+</div>
+#setTitle("$categoryname")
+<div id="middlecolumn">
+
+#@boxWithDate("$!firstViewCategoryName" "$categoryname")
+	#if( $firstViewCategory =="")
+	#else
+		#productList("$firstViewCategory" "236" "150")
+	#end
+#end
+</div>

@@ -1,0 +1,72 @@
+<relation-model id="easyPictureRelation" name="easyPictureRelation" title="便民服务图片关联操作" main-bean-type="easyService">
+	
+	<views>
+		<view id="easyPictureQuery" name="easyPictureQuery" title="便民服务图片关联查询"
+			enable-delete="true" enable-modity="true" type="table" page-size="10"
+			allow-edit="false" allow-filter-front="false" fixed-size="false"
+			modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="easy_uuid_uuid" connect-mode="AND" compare-mode="containsWith" />
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="true"
+						field-id="easy_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="lattice_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_shop_name_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_shop_url_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="picture_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_type_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_distance_uuid" aggregate-by-view="false" />	
+					<display-field editable="false" hidden="false"
+						field-id="easy_phone_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_description_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_discount_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="easy_longitude_uuid" aggregate-by-view="false" />	
+					<display-field editable="false" hidden="false"
+						field-id="easy_latitude_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="picture_name_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="picture_link_uuid" aggregate-by-view="false" />				
+				</view-group>
+			</view-groups>
+			</view>
+	</views>
+	
+	<model-references>
+	    <model-reference relation-id="easyPictureRelation" />
+	</model-references>
+	
+	
+	<relation-groups>
+		<relation-group id="basicgroup" name="basicgroup" title="基本信息"
+			enable-delete="true" enable-modity="true">
+			<relation-field   field-id="easy_uuid_uuid" model-id="easyService"/>
+			<relation-field   field-id="lattice_uuid_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_shop_name_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_shop_url_uuid" model-id="easyService"/>
+			<relation-field   field-id="picture_uuid_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_type_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_distance_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_phone_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_discount_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_longitude_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_latitude_uuid" model-id="easyService"/>
+			<relation-field   field-id="easy_description_uuid" model-id="easyService"/>
+			<relation-field   field-id="picture_name_uuid" model-id="picture"/>
+			<relation-field   field-id="picture_link_uuid" model-id="picture"/>
+		</relation-group>
+	</relation-groups>
+</relation-model>

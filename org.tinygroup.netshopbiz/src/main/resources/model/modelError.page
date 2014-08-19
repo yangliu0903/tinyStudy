@@ -1,0 +1,6 @@
+#@wijAlertDialog("errorMessagePage" "错误信息")
+	简要信息：$exception.message
+	<hr>
+	详细错误信息：<br>
+$exceptionStackTrace
+#end

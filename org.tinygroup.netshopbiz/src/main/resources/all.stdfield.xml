@@ -1,0 +1,263 @@
+<standard-fields package-name="org.tinygroup.all">
+	<standard-field id="receive_mobilephone" title="移动电话"
+		business-type-id="Varchar32" name="receive_mobilephone"></standard-field>
+	<standard-field id="product_id" title="产品id"
+		business-type-id="Varchar32" name="product_id"></standard-field>
+	<standard-field id="counterjumper_uuid" title="助手表主键"
+		business-type-id="Varchar32" name="counterjumper_uuid"></standard-field>
+	<standard-field id="faqtype_uuid" title="分类"
+		business-type-id="Varchar32" name="faqtype_uuid"></standard-field>
+	<standard-field id="news_auth" title="发布人"
+		business-type-id="Varchar32" name="news_auth"></standard-field>
+	<standard-field id="receive_address" title="地址信息"
+		business-type-id="Varchar120" name="receive_address"></standard-field>
+	<standard-field id="flow_freight" title="运费"
+		business-type-id="Decimal18" name="flow_freight"></standard-field>
+	<standard-field id="realname_num" title="证件号码"
+		business-type-id="Varchar32" name="realname_num"></standard-field>
+	<standard-field id="dict_item_id" title="字典条目主键"
+		business-type-id="Varchar32" name="dict_item_id"></standard-field>
+	<standard-field id="unit_price" title="单价"
+		business-type-id="Decimal18" name="unit_price"></standard-field>
+	<standard-field id="product_detial" title="详细描述"
+		business-type-id="Text" name="product_detial"></standard-field>
+	<standard-field id="realname_name" title="姓名"
+		business-type-id="Varchar32" name="realname_name"></standard-field>
+	<standard-field id="news_level" title="新闻级别"
+		business-type-id="Varchar1" name="news_level"></standard-field>
+	<standard-field id="shop_uuid" title="店铺"
+		business-type-id="Varchar32" name="shop_uuid"></standard-field>
+	<standard-field id="shop_level" title="店铺等级"
+		business-type-id="Varchar1" name="shop_level"></standard-field>
+	<standard-field id="user_description" title="自我简介"
+		business-type-id="Varchar300" name="user_description"></standard-field>
+	<standard-field id="lattice_latitude" title="纬度"
+		business-type-id="Varchar16" name="lattice_latitude"></standard-field>
+	<standard-field id="dict_name" title="字典类型名称"
+		business-type-id="Varchar50" name="dict_name"></standard-field>
+	<standard-field id="faq_answer" title="解答"
+		business-type-id="Text" name="faq_answer"></standard-field>
+	<standard-field id="flow_createtime" title="创建时间"
+		business-type-id="Date" name="flow_createtime"></standard-field>
+	<standard-field id="lattice_address" title="地址"
+		business-type-id="Varchar300" name="lattice_address"></standard-field>
+	<standard-field id="parent_id" title="上级分类"
+		business-type-id="Varchar32" name="parent_id"></standard-field>
+	<standard-field id="shop_description" title="店铺介绍"
+		business-type-id="Text" name="shop_description"></standard-field>
+	<standard-field id="user_uuid" title="用户"
+		business-type-id="Varchar32" name="user_uuid"></standard-field>
+	<standard-field id="shop_id" title="店铺id"
+		business-type-id="Varchar32" name="shop_id"></standard-field>
+	<standard-field id="user_focus_uuid" title="主键"
+		business-type-id="Varchar32" name="user_focus_uuid"></standard-field>
+	<standard-field id="activity_name" title="名称"
+		business-type-id="Varchar32" name="activity_name"></standard-field>
+	<standard-field id="news_content" title="内容"
+		business-type-id="Text" name="news_content"></standard-field>
+	<standard-field id="detial_price" title="单价"
+		business-type-id="Decimal18" name="detial_price"></standard-field>
+	<standard-field id="receive_lattice" title="网点"
+		business-type-id="Varchar32" name="receive_lattice"></standard-field>
+	<standard-field id="user_name" title="用户名"
+		business-type-id="Varchar32" name="user_name"></standard-field>
+	<standard-field id="lattice_phone" title="电话"
+		business-type-id="Varchar32" name="lattice_phone"></standard-field>
+	<standard-field id="detial_score" title="积分"
+		business-type-id="Decimal" name="detial_score"></standard-field>
+	<standard-field id="user_password" title="用户密码"
+		business-type-id="Varchar32" name="user_password"></standard-field>
+	<standard-field id="product_delivery" title="配送方式"
+		business-type-id="Varchar1" name="product_delivery"></standard-field>
+	<standard-field id="focus_target" title="目标类型"
+		business-type-id="Varchar1" name="focus_target"></standard-field>
+	<standard-field id="user_birthday" title="生日"
+		business-type-id="Date" name="user_birthday"></standard-field>
+	<standard-field id="flow_total" title="总价"
+		business-type-id="Decimal18" name="flow_total"></standard-field>
+	<standard-field id="product_stock" title="库存"
+		business-type-id="BigInt18" name="product_stock"></standard-field>
+	<standard-field id="news_title" title="标题"
+		business-type-id="Varchar100" name="news_title"></standard-field>
+	<standard-field id="shop_status" title="店铺状态"
+		business-type-id="Varchar1" name="shop_status"></standard-field>
+	<standard-field id="product_fare" title="运费"
+		business-type-id="Decimal18" name="product_fare"></standard-field>
+	<standard-field id="basket_uuid" title="主键"
+		business-type-id="Varchar32" name="basket_uuid"></standard-field>
+	<standard-field id="picture_link" title="图片地址"
+		business-type-id="Varchar300" name="picture_link"></standard-field>
+	<standard-field id="news_uuid" title="主键"
+		business-type-id="Varchar32" name="news_uuid"></standard-field>
+	<standard-field id="picture_name" title="图片名称"
+		business-type-id="Varchar50" name="picture_name"></standard-field>
+	<standard-field id="class_name" title="分类名称"
+		business-type-id="Varchar50" name="class_name"></standard-field>
+	<standard-field id="product_norm" title="规格"
+		business-type-id="Varchar10" name="product_norm"></standard-field>
+	<standard-field id="online_time" title="上线时间"
+		business-type-id="Date" name="online_time"></standard-field>
+	<standard-field id="dict_id" title="字典"
+		business-type-id="Varchar32" name="dict_id"></standard-field>
+	<standard-field id="lattice_longitude" title="经度"
+		business-type-id="Varchar16" name="lattice_longitude"></standard-field>
+	<standard-field id="receive_delivery" title="配方方式"
+		business-type-id="Varchar1" name="receive_delivery"></standard-field>
+	<standard-field id="dict_item_group" title="字典条目分组"
+		business-type-id="Varchar30" name="dict_item_group"></standard-field>
+	<standard-field id="faq_question" title="问题"
+		business-type-id="Varchar300" name="faq_question"></standard-field>
+	<standard-field id="flow_status" title="订单状态"
+		business-type-id="Varchar1" name="flow_status"></standard-field>
+	<standard-field id="receive_id" title="送货地址"
+		business-type-id="Varchar32" name="receive_id"></standard-field>
+	<standard-field id="faqtype_name" title="类型名"
+		business-type-id="Varchar120" name="faqtype_name"></standard-field>
+	<standard-field id="lattice_description" title="介绍"
+		business-type-id="Text" name="lattice_description"></standard-field>
+	<standard-field id="picture_description" title="图片描述"
+		business-type-id="Text" name="picture_description"></standard-field>
+	<standard-field id="shop_name" title="店铺名"
+		business-type-id="Varchar50" name="shop_name"></standard-field>
+	<standard-field id="product_uuid" title="产品主键"
+		business-type-id="Varchar32" name="product_uuid"></standard-field>
+	<standard-field id="product_total" title="产品总价"
+		business-type-id="Decimal18" name="product_total"></standard-field>
+	<standard-field id="activity_link" title="连接"
+		business-type-id="Varchar300" name="activity_link"></standard-field>
+	<standard-field id="flow_id" title="流水id"
+		business-type-id="Varchar32" name="flow_id"></standard-field>
+	<standard-field id="news_createtime" title="发布时间"
+		business-type-id="Date" name="news_createtime"></standard-field>
+	<standard-field id="target_uuid" title="所属对象id"
+		business-type-id="Varchar32" name="target_uuid"></standard-field>
+	<standard-field id="realname_email" title="邮箱"
+		business-type-id="Varchar50" name="realname_email"></standard-field>
+	<standard-field id="receive_phone" title="收货人电话"
+		business-type-id="Varchar32" name="receive_phone"></standard-field>
+	<standard-field id="picture_uuid" title="图片"
+		business-type-id="Varchar32" name="picture_uuid"></standard-field>
+	<standard-field id="target_focus_uuid" title="关注主键"
+		business-type-id="Varchar32" name="target_focus_uuid"></standard-field>
+	<standard-field id="focus_target_uuid" title="目标id"
+		business-type-id="Varchar32" name="focus_target_uuid"></standard-field>
+	<standard-field id="detial_uuid" title="主键"
+		business-type-id="Varchar32" name="detial_uuid"></standard-field>
+	<standard-field id="activity_description" title="描述"
+		business-type-id="Varchar300" name="activity_description"></standard-field>
+	<standard-field id="realname_phone" title="手机"
+		business-type-id="Varchar32" name="realname_phone"></standard-field>
+	<standard-field id="user_role" title="角色"
+		business-type-id="Varchar1" name="user_role"></standard-field>
+	<standard-field id="product_priority" title="优先级"
+		business-type-id="Decimal" name="product_priority"></standard-field>
+	<standard-field id="flow_paytype" title="支付方式"
+		business-type-id="Varchar1" name="flow_paytype"></standard-field>
+	<standard-field id="document_type" title="证件类型"
+		business-type-id="Varchar1" name="document_type"></standard-field>
+	<standard-field id="flow_remark" title="备注"
+		business-type-id="Varchar300" name="flow_remark"></standard-field>
+	<standard-field id="shop_summary" title="店铺简介"
+		business-type-id="Varchar300" name="shop_summary"></standard-field>
+	<standard-field id="user_status" title="状态"
+		business-type-id="Varchar1" name="user_status"></standard-field>
+	<standard-field id="dict_description" title="字典描述"
+		business-type-id="Varchar100" name="dict_description"></standard-field>
+	<standard-field id="product_selled" title="已售出"
+		business-type-id="Decimal" name="product_selled"></standard-field>
+	<standard-field id="attention_num" title="关注度"
+		business-type-id="BigInt18" name="attention_num"></standard-field>
+	<standard-field id="activity_uuid" title="主键"
+		business-type-id="Varchar32" name="activity_uuid"></standard-field>
+	<standard-field id="lattice_uuid" title="网点"
+		business-type-id="Varchar32" name="lattice_uuid"></standard-field>
+	<standard-field id="faqtype_parent" title="上级分类"
+		business-type-id="Varchar32" name="faqtype_parent"></standard-field>
+	<standard-field id="product_modify" title="上次修改"
+		business-type-id="Date" name="product_modify"></standard-field>
+	<standard-field id="dict_item_name" title="字典条目名称"
+		business-type-id="Varchar50" name="dict_item_name"></standard-field>
+	<standard-field id="receive_no" title="邮编"
+		business-type-id="Varchar32" name="receive_no"></standard-field>
+	<standard-field id="product_name" title="产品名称"
+		business-type-id="Varchar50" name="product_name"></standard-field>
+	<standard-field id="dict_item_description" title="字典项描述"
+		business-type-id="Varchar100" name="dict_item_description"></standard-field>
+	<standard-field id="product_description" title="描述信息"
+		business-type-id="Varchar100" name="product_description"></standard-field>
+	<standard-field id="class_uuid" title="分类主键"
+		business-type-id="Varchar32" name="class_uuid"></standard-field>
+	<standard-field id="product_num" title="产品数量"
+		business-type-id="Int" name="product_num"></standard-field>
+	<standard-field id="user_id" title="所属用户"
+		business-type-id="Varchar32" name="user_id"></standard-field>
+	<standard-field id="faqtype_description" title="描述"
+		business-type-id="Varchar300" name="faqtype_description"></standard-field>
+	<standard-field id="dict_code" title="字典类型"
+		business-type-id="Varchar50" name="dict_code"></standard-field>
+	<standard-field id="flow_uuid" title="主键"
+		business-type-id="Varchar32" name="flow_uuid"></standard-field>
+	<standard-field id="dict_item_value" title="字典条目值"
+		business-type-id="Varchar50" name="dict_item_value"></standard-field>
+	<standard-field id="realname_uuid" title="主键"
+		business-type-id="Varchar32" name="realname_uuid"></standard-field>
+	<standard-field id="detial_number" title="产品数量"
+		business-type-id="Int" name="detial_number"></standard-field>
+	<standard-field id="detial_freight" title="运费"
+		business-type-id="Decimal18" name="detial_freight"></standard-field>
+	<standard-field id="faq_uuid" title="主键"
+		business-type-id="Varchar32" name="faq_uuid"></standard-field>
+	<standard-field id="receive_uuid" title="主键"
+		business-type-id="Varchar32" name="receive_uuid"></standard-field>
+	<standard-field id="flow_no" title="订单号"
+		business-type-id="Varchar32" name="flow_no"></standard-field>
+	<standard-field id="receive_people" title="收货人"
+		business-type-id="Varchar32" name="receive_people"></standard-field>
+	<standard-field id="product_discount" title="折扣"
+		business-type-id="Decimal3" name="product_discount"></standard-field>
+	<standard-field id="faq_order_number" title="排序字段"
+		business-type-id="Int" name="faq_order_number"></standard-field>
+	<standard-field id="faqtype_order_number" title="排序字段"
+		business-type-id="Int" name="faqtype_order_number"></standard-field>
+	<standard-field title="关联主键" business-type-id="Varchar32"
+		name="basket_product_uuid" id="basket_product_uuid"></standard-field>
+	<standard-field title="旧密码" business-type-id="Varchar50"
+		name="old_password" id="old_password"></standard-field>
+	<standard-field title="新密码" business-type-id="Varchar50"
+		name="new_password" id="new_password"></standard-field>
+	<standard-field title="确认密码" business-type-id="Varchar50"
+		name="confirm_password" id="confirm_password"></standard-field>
+	<standard-field title="便民服务主键" business-type-id="Varchar32"
+		name="easy_uuid" id="easy_uuid"></standard-field>
+	<standard-field title="服务店名称" business-type-id="Varchar50"
+		name="easy_shop_name" id="easy_shop_name"></standard-field>
+	<standard-field title="地址" business-type-id="Varchar300"
+		name="easy_shop_url" id="easy_shop_url"></standard-field>
+	<standard-field title="类型" business-type-id="Varchar1"
+		name="easy_type" id="easy_type"></standard-field>
+	<standard-field title="距离" business-type-id="Varchar50"
+		name="easy_distance" id="easy_distance"></standard-field>
+	<standard-field title="电话" business-type-id="Varchar32"
+		name="easy_phone" id="easy_phone"></standard-field>
+	<standard-field title="折扣" business-type-id="Decimal8"
+		name="easy_discount" id="easy_discount"></standard-field>
+	<standard-field title="友情链接主键" business-type-id="Varchar32"
+		name="links_uuid" id="links_uuid"></standard-field>
+	<standard-field title="链接标题" business-type-id="Varchar50"
+		name="links_title" id="links_title"></standard-field>
+	<standard-field title="链接" business-type-id="Varchar50"
+		name="links_url" id="links_url"></standard-field>
+	<standard-field title="经度" business-type-id="Varchar16"
+		name="easy_longitude" id="easy_longitude"></standard-field>
+	<standard-field title="纬度" business-type-id="Varchar16"
+		name="easy_latitude" id="easy_latitude"></standard-field>
+	<standard-field title="分类编号" business-type-id="Varchar32"
+		name="class_code" id="class_code"></standard-field>
+	<standard-field title="名称" business-type-id="Varchar32"
+		name="lattice_name" id="lattice_name"></standard-field>	
+	<standard-field id="easy_description" title="说明"
+		business-type-id="Text" name="easy_description"></standard-field>	
+	<standard-field id="discount_price" title="折扣价"
+		business-type-id="Decimal18" name="discount_price"></standard-field>	
+
+</standard-fields>

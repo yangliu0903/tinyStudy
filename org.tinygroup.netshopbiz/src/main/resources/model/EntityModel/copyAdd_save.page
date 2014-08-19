@@ -1,0 +1,9 @@
+<script>
+	function closeAddSaveDialog(){
+		#if($refreshFunction)$refreshFunction();#end
+		$("#${modelDefine.id}_${operationDefine.id}").wijdialog('close');
+	}
+</script>
+#@wijAutoCloseDialog("${modelDefine.id}_${operationDefine.id}CopyAddSave" "提示信息" "closeAddSaveDialog")
+	成功保存添加的记录！
+#end
