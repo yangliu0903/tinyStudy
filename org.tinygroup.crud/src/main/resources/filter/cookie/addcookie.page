@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=" http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Cookie过滤测试</title></head>
+<body>
+<form action="${TINY_CONTEXT_PATH}/filter/checkcookie.do" method="get">
+请检查配置文件application.xml，调整过滤器属性。<br>
+1. basicTinyFilter过滤器的maxCookieSize属性决定cookie最大上限，默认值是7k。(注意k换算是1024不是1000)<br>
+要添加cookie名称:<input type="text" name="name" value="testCookie" /><br/>
+cookie总大小:<input type="text" name="times" value="1000" /><br/>
+<input type="submit" value="测试cookie">
+</form>
+</body>
+</html>

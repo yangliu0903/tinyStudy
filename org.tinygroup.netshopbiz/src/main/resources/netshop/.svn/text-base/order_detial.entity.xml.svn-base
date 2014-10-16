@@ -1,0 +1,216 @@
+<entity-model id="orderDetial" name="orderDetial" title="订单明细表"
+	enable-delete="true" enable-modity="true" version="2.0" cache-enabled="true">
+	<operations>
+		<operation id="orderDetialmodelopadduuid" name="addOrder_detial"
+			title="新增" enable-delete="true" enable-modity="true" type="add"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="detial_uuid_uuid" connect-mode="AND" compare-mode="containsWith" />
+			</condition-fields>
+			<operation-group id="addopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="detial_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="product_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_number_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_score_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_price_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_freight_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderDetialmodelopupdateuuid" name="modifyOrder_detial"
+			title="修改" enable-delete="true" enable-modity="true" type="modify"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="detial_uuid_uuid" connect-mode="AND" />
+			</condition-fields>
+			<operation-group id="modifyopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="detial_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="product_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_number_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_score_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_price_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_freight_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderDetialmodelopdeleteuuid" name="deleteOrder_detial"
+			title="删除" enable-delete="true" enable-modity="true" type="delete"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="detial_uuid_uuid" connect-mode="AND" />
+			</condition-fields>
+			<operation-group id="deleteopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="detial_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="product_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_number_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_score_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_price_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_freight_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderDetialmodelopqueryuuid" name="viewOrder_detial"
+			title="查看" enable-delete="true" enable-modity="true" type="view"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="detial_uuid_uuid" connect-mode="AND" />
+			</condition-fields>
+			<operation-group id="viewopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="false" hidden="true"
+						field-id="detial_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="product_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_number_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_score_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_price_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_freight_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+		<operation id="orderDetialmodelopaddcopyuuid" name="copyAddOrder_detial"
+			title="拷贝添加" enable-delete="true" enable-modity="true" type="copyAdd"
+			fixed-size="false" modal="true">
+			<condition-fields>
+				<condition-field editable="false" hidden="false"
+					field-id="detial_uuid_uuid" connect-mode="AND" />
+			</condition-fields>
+			<operation-group id="copyAddopbasicgroup" name="basicgroup"
+				title="基本信息" enable-delete="true" enable-modity="true">
+				<operation-fields>
+					<operation-field editable="true" hidden="false"
+						field-id="product_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="flow_uuid_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_number_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_score_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_price_uuid" />
+					<operation-field editable="true" hidden="false"
+						field-id="detial_freight_uuid" />
+				</operation-fields>
+			</operation-group>
+		</operation>
+	</operations>
+	<views>
+		<view id="orderDetialmodeloptableuuid" name="tableorder_detial"
+			title="表格查询" enable-delete="true" enable-modity="true" type="table"
+			page-size="10" allow-edit="false" allow-filter-front="false"
+			fixed-size="false" modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="product_uuid_uuid" connect-mode="AND" />
+				<condition-field editable="true" hidden="false"
+					field-id="flow_uuid_uuid" connect-mode="AND" />
+				<condition-field editable="true" hidden="false"
+					field-id="detial_number_uuid" connect-mode="AND" />
+				<condition-field editable="true" hidden="false"
+					field-id="detial_score_uuid" connect-mode="AND" />
+				<condition-field editable="true" hidden="false"
+					field-id="detial_price_uuid" connect-mode="AND" />
+				<condition-field editable="true" hidden="false"
+					field-id="detial_freight_uuid" connect-mode="AND" />
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="true"
+						field-id="detial_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="product_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="flow_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="detial_number_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="detial_score_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="detial_price_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="detial_freight_uuid" aggregate-by-view="false" />
+				</view-group>
+			</view-groups>
+			<references>
+				<operation-reference type="operation"
+					id="orderDetialmodelopadduuid" />
+				<operation-reference type="operation"
+					id="orderDetialmodelopaddcopyuuid" />
+				<operation-reference type="operation"
+					id="orderDetialmodelopdeleteuuid" />
+				<operation-reference type="operation"
+					id="orderDetialmodelopupdateuuid" />
+				<operation-reference type="operation"
+					id="orderDetialmodelopqueryuuid" />
+			</references>
+		</view>
+	</views>
+	<groups>
+		<group id="basicgroup" name="basicgroup" title="基本信息"
+			enable-delete="true" enable-modity="true">
+			<field standard-field-id="detial_uuid" primary="true" unique="true"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="detial_uuid_uuid" />
+			<field standard-field-id="product_uuid" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="product_uuid_uuid" />
+			<field standard-field-id="flow_uuid" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="flow_uuid_uuid" />
+			<field standard-field-id="detial_number" primary="false"
+				unique="false" display="false" not-null="false" auto-increase="false"
+				editable="false" hidden="false" table-field="true" id="detial_number_uuid" />
+			<field standard-field-id="detial_score" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="detial_score_uuid" />
+			<field standard-field-id="detial_price" primary="false" unique="false"
+				display="false" not-null="false" auto-increase="false" editable="false"
+				hidden="false" table-field="true" id="detial_price_uuid" />
+			<field standard-field-id="detial_freight" primary="false"
+				unique="false" display="false" not-null="false" auto-increase="false"
+				editable="false" hidden="false" table-field="true" id="detial_freight_uuid" />
+		</group>
+	</groups>
+</entity-model>

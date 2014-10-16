@@ -1,0 +1,149 @@
+@charset "utf-8";
+/* CSS Document */
+.login button, .login_zc{
+background:transparent url(../../images/btn_bg.png) no-repeat scroll 0 0;
+}
+.login *{overflow:hidden}
+.login{
+	width:912px;
+	margin:0px auto 20px;
+	}
+.login li, .login .bg{
+	float:left;
+	}
+.login .l{
+	width:23px;
+	margin-top:39px;
+
+	}
+.login .r{
+	width:549px;
+	margin-top:39px;}
+.login .c{
+	width:340px;}
+.login .bg{
+	background:url(../../images/login_bg_04.png) no-repeat top;
+	}
+.login .top_bg{
+
+	background:url(../../images/login_bg_02.png) no-repeat top;
+	}
+.login .top_bg h1{
+	color:#000000;
+font-size:14px;
+line-height:30px;
+height:30px;
+margin:0 10px 5px 45px;
+padding-top:14px;
+}
+.login .c ul{
+	margin:0px 10px 10px 45px;
+	}
+.login .c li{
+	line-height:30px;
+	float:left;
+	width:285px;
+	}
+.login .c h3{
+	color:#FF6C00;
+	font-size:12px;
+	font-weight:100;
+	display:block;
+	}
+.login .c label{
+	float:left;
+margin-top:2px;
+width:50px;}
+.login .c .input{
+	width:200px;
+	height:20px;
+	border:1px solid #C5DAE9;}
+.login .c h3, .login .c .jz{
+	margin-left:50px;}
+.login .c .jz{
+		width:205px;
+		float:left;
+		_margin-left:25px;}
+.login .c .jz input{
+	margin:9px 0px 0px;
+	*margin:-3px 0px 0px;
+	position:absolute;
+	}
+.login .c .jz span{
+	margin-left:20px;}
+.login .c .jz a{
+	font-size:14px;
+	margin:5px;
+	float:right;}
+	.login .c .bg{
+		background:url(../../images/login_bg_04.png) repeat-y;
+		float:left;}
+	.login .c h2{
+	font-size:12px;
+	font-weight:100;
+	}
+	.login .c .zc{
+		margin-left:12px;
+width:285px;
+border-top:1px dotted #377AB7;
+line-height:20px;
+padding:20px 10px 5px;
+margin-top:20px}
+	.login .c .zc strong{
+			color:#377AB7;}
+	.login .c .zc input{
+			background:url(../../images/login_btn.png) no-repeat;
+			border:none;
+			width:168px;
+			height:29px;
+			font-size:14px;
+			margin-left: 60px;
+			margin-top:15px;
+			color:#000;}
+
+			.login .c .bz{
+				margin-left: 25px;
+				}
+.login button {
+border:medium none;
+height:26px;
+margin-right:20px;
+width:80px;
+margin-top:5px;
+cursor:pointer;
+}
+.r_text{
+	margin-top:20px;}
+.r_text li{
+	line-height:40px;
+	width:460px;
+	color:#404040;
+	float:right;
+	margin-right:20px;
+	padding:0px 10px;
+	border-bottom:1px dotted #ededed;
+	}
+.r_text i{
+	width:36px;
+	height:30px;
+	float:left;
+	margin:5px 10px;}
+.r_text .icon01{
+	background:url(../../images/login_ico2.png) no-repeat;
+	}
+.r_text .icon02{
+	background:url(../../images/login_ico3.png) no-repeat;
+
+	}
+.r_text .icon03{
+	background:url(../../images/login_ico1.png) no-repeat;
+
+	}
+.r_text .icon04{
+	background:url(../../images/login_ico4.png) no-repeat;
+	}
+.r_text strong{
+	color:#404040;
+	margin-right:5px;}
+.r_text li.last{
+	border:none;}

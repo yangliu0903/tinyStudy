@@ -1,0 +1,122 @@
+*{
+	font-size: 12px;
+	font: @ËÎÌו;
+}
+a.button_grey, a.button_grey span, .success_box i, .prompt_box i, .wronng_box i, .comfirm_box i{
+	 background-image:url(../../images/admin/comfim.png);
+}
+.comfirm_box, .wronng_box, .prompt_box, .success_box{
+	background:transparent url(../../images/admin/comfim_bg.gif) top left no-repeat;
+	padding:0;
+	margin:0px auto;
+	width: 285px;
+	height:158px;
+	float: none;
+	position:relative;
+	overflow:hidden;
+}
+.loading_box{
+	border:1px solid #235B9A;
+	background-color:#FFF;
+	padding:10px 33px;
+	margin:0px auto;
+	width: 50px;
+	float: none;
+	position:relative;
+	overflow:hidden;
+}
+.loading_box i{
+	background:url(../../images/admin/loading.gif) top left no-repeat;
+	width:20px;
+	height:20px;
+	position:absolute;
+	top:10px;
+	left:10px;
+}
+.comfirm_box h2, .success_box h2, .prompt_box h2, .wronng_box h2{
+	color: #0033a9;
+	font-size: 14px;
+	position:absolute;
+	top:45px;
+	left:90px;
+	padding: 10px;
+}
+.success_box h2{
+	color: green;
+}
+.prompt_box h2{
+	color: #d59423;
+}
+.wronng_box h2{
+	color: #000;
+}
+.comfirm_box i, .success_box i, .prompt_box i, .wronng_box i{
+	position:absolute;
+	top:40px;
+	left:30px;
+	float: left;
+	width:48px;
+	height: 48px;
+	background-repeat: no-repeat;
+}
+.comfirm_box i{
+	background-position: -48px top;
+}
+.success_box i{
+  background-position: -96px top;
+}
+.prompt_box i{
+  background-position: -144px top;
+}
+.wronng_box i{
+  background-position: left top;
+}
+.button_area{
+	position:absolute;
+	top:120px;
+	left:90px;
+	width:150px;
+}
+.button_area a{
+	margin-left: 5px;
+}
+.prompt_box ul li{
+	list-style-type: square;
+	margin-left: 100px;
+}
+a.button_grey{
+	 background-position: left -49px;
+	 background-repeat: no-repeat;
+	 line-height: 23px;
+	 float: left;
+	 color:#000;
+	 text-decoration: none;
+}
+.button_grey span{
+	background-position: right -49px;
+	background-repeat: no-repeat;
+	margin-left: 10px;
+	padding-right: 10px;
+	float: left;
+	cursor: pointer;
+}
+div#shadow {
+	background-color:#D2E9FF;
+	color:#EEEEEE !important;
+	left:0px;
+	margin:0pt;
+	filter:alpha(Opacity=70);
+	opacity:0.5;
+	padding:0pt;
+	position:absolute;
+	top:0px;
+	z-index:200;
+}
+div#lightbox {
+	left:0pt;
+	padding:5px;
+	position:absolute;
+	top:0pt;
+	visibility:hidden;
+	z-index:201;
+}

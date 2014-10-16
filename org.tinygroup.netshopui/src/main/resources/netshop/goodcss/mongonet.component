@@ -1,0 +1,200 @@
+#macro(mongonotice )
+<div class="notic ">
+  <h5><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page" class="fr fn f12">更多>></a>活动公告</h5>
+  <ul>
+  #callService("processModelService" "requestName=MongoModel_table_news_queryAllNews&sortField=newsCreatetime&sortDirection=desc&pageSize=5&pageNumber=0" "modelProcessResult" "newsInfos")
+
+  #if($newsInfos.objects.size()==0)
+  	暂无公告
+  #else
+  	#foreach($newsInfo in $newsInfos.objects)
+
+  		<li><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page?showNewsInfoId=$newsInfo.newsUuid">$newsInfo.newsTitle</a></li>
+  	#end
+  #end	
+  
+  </ul>
+</div>
+
+#end
+
+
+#macro(mongoselledList)
+<div class="notic">
+  <h5>热销商品</h5>
+  <ul>
+  #callService("processModelService" "requestName=MongoModel_table_product_queryAllProductsOrderBySelled&sortField=newsCreatetime&sortDirection=desc&pageSize=4&pageNumber=0" "modelProcessResult" "newsInfos")
+
+  #if($newsInfos.objects.size()==0)
+  	
+  #else
+  	#foreach($newsInfo in $newsInfos.objects)
+  		<li><a href="${TINY_CONTEXT_PATH}/mainsite2/news/news.page?showNewsInfoId=$newsInfo.newsUuid">$newsInfo.newsTitle</a></li>
+  	#end
+  #end	
+  
+  </ul>
+</div>
+#end
+
+
+#macro(mongoSearchBox)
+<div class="search">
+  <form id="form1" name="form1" method="post" action="${TINY_CONTEXT_PATH}/mainsite2/home/search.page">
+    <ul>
+      <li>
+        <input name="namelike" type="text" class="input_t" id="namelike" value="" />
+      </li>         
+      <li>
+        <input type="submit" name="button" class="btn-search" id="button" value="搜索"/>
+      </li>
+    </ul>
+  </form>
+</div>
+#end
+
+
+#macro(mongoOrderInfoByFlow $flow)
+
+#@shadowBox()
+订单编号：<b>$flow.flowUuid</b>，成交日期：<b>$flow.flowCreatetime</b>，运费：<b>$flow.flowFreight</b>
+###link("/mainsite2/detail/detail.page" "查看详情")  
+	#if($flow.flowStatus!=1)
+		#notFinished("关闭订单")
+	#end
+<hr/>
+<table id="movies" class="metrotable" width="100%">
+    <thead>
+        <tr>
+            <th>图片</th>
+            <th>产品名称</th>
+            <th>价格</th>
+            <th>数量</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+    
+    #callService("processModelService" "requestName=MongoModel_relationQuery_orderflow_queryAllOrderDetailsByFlowId&flowUuid=$flow.flowUuid" "modelProcessResult" "orderDetials")
+    
+    
+    #foreach($orderDetial in $orderDetials.objects)
+    	
+	    <tr>
+	        <td>#img("$orderDetial.thumbnailPicture[0].pictureLink" "" "100" "100")</td>
+	        <td>#link("/mainsite2/detail/detail.page?productid=$orderDetial.productUuid" "$orderDetial.productName")</td>
+	        <td>$orderDetial.detialPrice</td>
+	        <td>$orderDetial.detialNumber</td>
+	    </tr>
+    #end
+    <tr>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
+ 	</tr>
+	</tbody>
+</table>
+#end
+#end
+
+
+#macro(mongoFastNav)
+<div class="nav clearfix">
+	#mongoCategory
+</div>
+#end
+
+
+#macro(mongoCategory)
+#callService("processModelService" "requestName=MongoModel_treeWithCode_productClass_productClassTree&classCodeLevelLength=2&queryAllTree=true" "modelProcessResult" "categorys")
+<div style="display:none">
+<form id="loginshumi" name="form1" method="post" action="https://account.fund123.cn/login/login/login.aspx" target="new">
+  <p>
+    <label for="username">姓名</label>
+    <input type="text" name="username"  value="spzebra"/>
+  </p>
+  <p>
+    <label for="password">密码</label>
+    <input type="text" name="pwd" value="llllll"/>
+  </p>
+  <p>
+    <label for="modeHidden">登录方式</label>
+    <input type="text" name="mode" id="modeHidden" value="0"/>
+  </p>
+  <p>
+    <label for="verifyCode">校验码</label>
+    <input type="text" name="verifyCode" id="verifyCode" />
+  </p>
+  <p>
+    <label for="ReturnUrl">返回Url</label>
+    <input type="text" name="ReturnUrl" id="ReturnUrl" value="http://my.fund123.cn/"/>
+  </p><input name="登录" type="submit" value="login" />
+</form>
+</div>
+<div class="category">
+	<div class="hd">产品分类</div>
+	<div class="bd">
+		<ul>
+		#foreach($category in $categorys)
+			<li><p><img src='../images/ic_ifm.gif'><a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page?categoryid=$category.value&categoryname=$category.text">$category.text</a></p>
+		
+			#if( $category.nodes.size()>0)
+				<div class="sub-category">
+					<ul>
+						#foreach($subcategory in $category.nodes)
+						<li><a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page?categoryid=$category.value&categoryname=$category.text&firstViewCategory=$subcategory.id&firstViewCategoryName=$subcategory.text">$subcategory.text</a></li>
+						#end
+					</ul>
+				</div>
+			#end
+			
+			</li>
+		#end
+		</ul>
+	</div>
+</div>
+<!-- Fast nav -->
+#fastNavMenu
+<ul class="fast-nav">
+	#foreach($category in $categorys.beans)
+		<li>#link("/mainsite2/detail/product.page?categoryid=$category.classUuid&categoryname=$category.className" "<span>$category.className</span>")</li>
+	#end
+</ul>
+#end
+
+
+#macro(mongoProductList $id $width $height)
+#callService("processModelService" "requestName=MongoModel_table_product_queryProductByClassId&classUuid=$id" "modelProcessResult" "productListResult")
+
+
+
+<div style="flow:left;">
+<ul class="lh">
+
+#foreach($product in $productListResult.objects)
+
+#productItem("$product.thumbnailPicture[0].pictureLink" "/mainsite2/detail/detail.page?productid=$product.productUuid" "$product.productName" "$product.unitPrice" "$product.productDiscount")
+#end
+</ul>
+</div>
+
+#end
+
+
+
+#macro(mongoNewProduct)
+<div class="new-products clearfix">
+	<div class="hd">
+		<!-- <a href="${TINY_CONTEXT_PATH}/mainsite2/detail/product.page" class="fr">更多&gt;&gt;</a> -->
+		<a href="../detail/category.page" class="fr">更多&gt;&gt;</a>
+		<h2>商城推荐</h2>
+	</div>
+	#callService("processModelService" "requestName=MongoModel_table_product_queryAllProductOrderByTime&sortField=onlineTime&sortDirection=desc&pageSize=3" "modelProcessResult" "newProducts")
+	
+	#foreach($newProduct in $newProducts.objects)
+		#imageWithDetail("$product.thumbnailPicture[0].pictureLink" "$newProduct.productName" "../detail/detail.page?productid=$newProduct.productUuid")
+	#end
+	
+</div>
+#end

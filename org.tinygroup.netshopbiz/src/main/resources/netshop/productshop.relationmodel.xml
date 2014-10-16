@@ -1,0 +1,59 @@
+<relation-model id="productShopRelation" name="productShopRelation" title="产品商铺关联查询" main-bean-type="product">
+	<views>
+		<view id="queryShopWithProductId" name="queryShopWithProductId" title="根据产品查询商铺"
+			enable-delete="true" enable-modity="true" type="table" page-size="10"
+			allow-edit="false" allow-filter-front="false" fixed-size="false"
+			modal="false" front-paging="false">
+			<condition-fields>
+				<condition-field editable="true" hidden="false"
+					field-id="shop_uuid_uuid" connect-mode="AND" compare-mode="equals" />
+				<condition-field editable="true" hidden="false"
+					field-id="product_uuid_uuid" connect-mode="AND" compare-mode="equals" />	
+			</condition-fields>
+			<view-groups>
+				<view-group id="viewbasicgroup" name="basicgroup" title="基本信息"
+					enable-delete="true" enable-modity="true">
+					<display-field editable="false" hidden="true"
+						field-id="shop_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_name_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_id_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_level_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_status_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="user_uuid_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_summary_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="shop_description_uuid" aggregate-by-view="false" />
+					<display-field editable="false" hidden="false"
+						field-id="picture_uuid_uuid" aggregate-by-view="false" />			
+				</view-group>
+			</view-groups>
+		</view>
+	</views>
+	
+	<model-references>
+	    <model-reference relation-id="productShopRelation" />
+	</model-references>
+	
+	
+	<relation-groups>
+		<relation-group id="basicgroup" name="basicgroup" title="基本信息"
+			enable-delete="true" enable-modity="true">
+			<relation-field   field-id="shop_uuid_uuid" model-id="shop"/>
+			<relation-field   field-id="shop_name_uuid" model-id="shop"/>
+		    <relation-field   field-id="shop_id_uuid" model-id="shop"/>
+		    <relation-field   field-id="shop_level_uuid" model-id="shop"/>	
+			<relation-field   field-id="shop_summary_uuid" model-id="shop"/>	
+			<relation-field   field-id="shop_description_uuid" model-id="shop"/>	
+			<relation-field   field-id="picture_uuid_uuid" model-id="shop"/>
+			<relation-field   field-id="shop_status_uuid" model-id="shop"/>
+			<relation-field   field-id="user_uuid_uuid" model-id="shop"/>
+			<relation-field   field-id="product_uuid_uuid" model-id="product"/>
+		</relation-group>
+	</relation-groups>
+</relation-model>

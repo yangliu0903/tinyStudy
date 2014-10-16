@@ -1,0 +1,226 @@
+<table width="600" border="0" align="center" cellpadding="10" cellspacing="0">
+      
+      <tbody><tr>
+        <td><p>
+          <script language="javascript" src="../../FinanceCalculator/CalcZCLQ.js"></script><script language="javascript">
+<!--
+	function getRate(month)
+	{
+		for(var i=0;i<rate.length;i++)
+		{
+			if(month==parseInt(minterm[i]))
+				return rate[i];
+		}
+		return 0;
+	}
+	function getTerm(month)
+	{
+		for(var i=0;i<rate.length;i++)
+		{
+			if(Math.abs(month-parseInt(minterm[i]))<1)
+				return i;
+		}
+		return -1;
+	}
+	function setRate()
+	{
+		this.document.all.tbRate.value = Round(100*getRate(parseInt(this.document.all.cbMonth.value)),4);
+	}
+//-->
+</script><script language="javascript" event="onclick" for="rblItem">
+	if(this.document.all.rblItem_0.checked)
+	{
+		/*tbEverySum.className="txtd";
+		tbFirstSum.className="txtnum";
+		tbEverySum.value="计算得出";
+		if(tbFirstSum.value=="计算得出")
+			tbFirstSum.value="";
+		if(cbMonth.value=="计算得出")
+			cbMonth.value=cbMonth.options[0].value;
+		tbFirstSum.disabled=false;
+		tbEverySum.disabled=true;
+		cbMonth.disabled=false;*/
+		tbEverySum.disabled=true;
+		tbEverySum.className="txtd";
+		
+		tbEverySum.value="计算得出";
+		lblFirstSum.innerText= "初始存入金额";
+		lblEverySum.innerText="每次支取金额";
+		
+	}
+	else
+	{
+		if(this.document.all.rblItem_1.checked)
+		{
+			/*tbEverySum.className="txtnum";
+			tbFirstSum.className="txtd";
+			tbFirstSum.value="计算得出";
+			if(tbEverySum.value=="计算得出")
+				tbEverySum.value="";
+			if(cbMonth.value=="计算得出")
+				cbMonth.value=cbMonth.options[0].text;
+			tbFirstSum.disabled=true;
+			tbEverySum.disabled=false;
+			cbMonth.disabled=false;*/
+			tbEverySum.disabled=true;
+			tbEverySum.value="计算得出";
+			tbEverySum.className="txtd";
+			lblFirstSum.innerText= "每次支取金额";
+			lblEverySum.innerText="初始存入金额";
+			
+		}
+		else
+		{
+			/*tbEverySum.className="txtnum";
+			tbFirstSum.className="txtnum";
+			cbMonth.text="计算得出";
+			if(tbEverySum.value=="计算得出")
+				tbEverySum.value="";
+			if(tbFirstSum.value=="计算得出")
+				tbFirstSum.value="";
+			tbFirstSum.disabled=false;
+			tbEverySum.disabled=false;
+			cbMonth.disabled=true;*/
+			tbEverySum.disabled=false;
+			tbEverySum.value="";
+			tbEverySum.className="txtnum";
+			lblFirstSum.innerText= "初始存入金额";
+			lblEverySum.innerText="每次支取金额";
+			
+		}
+	}
+//-->
+</script><script language="javascript" event="onclick" for="btnCalc">
+<!--
+	if(this.document.all.rblItem_0.checked)
+	if(!CheckFN3(this.document.all.tbFirstSum,"请在[初始存入金额]中输入正数金额！",false))
+			return false;
+	if(this.document.all.rblItem_1.checked)
+	if(!CheckFN3(this.document.all.tbFirstSum,"请在[每次存入金额]中输入正数金额！",false))
+			return false;
+	if(this.document.all.rblItem_2.checked)
+	{
+	if(!CheckFN3(this.document.all.tbFirstSum,"请在[初始存入金额]中输入正数金额！",false))
+			return false;	
+	if(!CheckFN3(this.document.all.tbEverySum,"请在[每次支取金额]中输入正数金额！",false))
+			return false;			
+	}
+	
+	if(!CheckEmpty(this.document.all.beginDateID,"请输入初始存入日期！"))
+		return false;
+	if(Cal_strtodate("1999-11-1")>Cal_strtodate(this.document.all.beginDateID.value))
+	{
+		DispMessage(this.document.all.beginDateID, "初始存入日期不得小于1999年11月1日！");
+		return false;
+	}
+	if(!CheckFN3(this.document.all.tbRate,"请在[年利率]中输入正数！",false))
+		return false;
+	
+	Calc(document);
+	return false;
+//-->
+</script><script id="clientEventHandlersJS" language="javascript">
+<!--
+function btnCalc_onclick() {
+}
+//-->
+</script>
+</p><form id="EduCalc" onsubmit="return false;" name="EduCalc">
+    <div>整存零取计算器</div>
+    <div>整存零取存款指客户须一次存入，然后按期定额支取的储蓄品种。本计算器可依据一定要求计算出整存零取存款的每次支取金额和所得利息金额（已扣除利息税），并可反向计算整存零取的初始存入金额和储蓄存期。</div>
+    <table id="rblItem" width="96%" border="0">
+        <tbody>
+            <tr>
+                <td><span id="lblItem">计算项目</span></td>
+                <td><input id="rblItem_0" tabindex="1" type="radio" checked="checked" name="rblItem" value="1"> <label for="rblItem_0">每次支取金额</label></td>
+                <td><input id="rblItem_1" tabindex="1" type="radio" name="rblItem" value="2"><label for="rblItem_1">初始存入金额</label></td>
+                <td><input id="rblItem_2" tabindex="1" type="radio" name="rblItem" value="3"> <label for="rblItem_2">储蓄存期</label></td>
+            </tr>
+        </tbody>
+    </table>
+    <table cellspacing="2" cellpadding="0" width="96%" border="0">
+        <tbody>
+            <tr>
+                <td><span id="lblFirstSum">初始存入金额(元)</span></td>
+                <td><input class="txtnum" id="tbFirstSum" style="width: 125px" tabindex="2" name="tbFirstSum" type="text"></td>
+                <td><input class="btn" id="btnCalc" tabindex="10" type="submit" onclick="return btnCalc_onclick()" name="btnCalc" value=" 计算"></td>
+            </tr>
+            <tr>
+                <td><span id="lblDate">初始存入日期</span></td>
+                <td><input class="txt" id="beginDateID" style="width: 100px" tabindex="3" size="13" onblur="ChkCZDate(beginDateID);" name="beginDate" value="2002-2-21" type="text"> <img style="cursor: hand" height="17" alt="" width="22" align="absMiddle" onclick="javascript:Cal_dropdown(beginDateID)" src="../../images/Calendar1.gif"></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><span id="lblMonth">储蓄存期</span></td>
+                <td><select id="cbMonth" style="width: 126px" tabindex="4" onchange="setRate()" name="cbMonth">
+                <option value="12" selected="selected">一年</option>
+                <option value="36">三年</option>
+                <option value="60">五年</option>
+                </select></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><span id="lblRate">年利率(%)</span></td>
+                <td><input class="txtnum" id="tbRate" style="width: 126px" tabindex="5" name="tbRate" type="text"></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td><span id="lblFreq">支取频度</span></td>
+                <td><input id="rblFreq_0" tabindex="6" type="radio" checked="checked" name="rblFreq" value="1"><label for="rblFreq_0">每月</label> <input id="rblFreq_1" tabindex="6" type="radio" name="rblFreq" value="3"><label for="rblFreq_1">每季</label> <input id="rblFreq_2" tabindex="6" type="radio" name="rblFreq" value="6"><label for="rblFreq_2">每半年</label></td>
+                <td>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr style="width: 400px" size="1">
+    <table cellspacing="2" cellpadding="0" width="96%" border="0">
+        <tbody>
+            <tr>
+                <td width="120"><span id="lblEverySum">每次支取金额(元)</span></td>
+                <td><input class="txtd" id="tbEverySum" style="width: 126px" disabled="disabled" tabindex="7" name="tbEverySum" value="计算得出" type="text"></td>
+            </tr>
+            <tr>
+                <td><span id="lbInSum">所得利息金额(元)</span></td>
+                <td><input class="txtd" id="tbInSum" style="width: 126px" disabled="disabled" tabindex="8" name="tbInSum" value="计算得出" type="text"></td>
+            </tr>
+            <!--
+            <tr>
+                <td><span id="lblTaxSum">扣除利息税金额(元)</span></td>
+                <td><input class="txtd" id="tbTaxSum" style="width: 126px" disabled="disabled" tabindex="9" name="tbTaxSum" value="计算得出" type="text"></td>
+            </tr>-->
+        </tbody>
+    </table>
+    <script language="javascript">
+function ChkCZDate(edit)
+{edit.value=Trim(edit.value);if(edit.value=='') return true;if(!Cal_datevalid(edit,'1910-1-1','3000-1-1')) 
+{alert('日期格式不正确,日期有效范围为1910年到3000年');
+edit.focus();}
+ }
+</script><script language="javascript">
+<!--
+	var minterm;
+	var rate1;
+	var rate2;
+	var rate3;
+	var rate;
+	function init()
+	{
+		minterm =  new Array(12,36,60,-1);
+		rate1 = GetRMBSaveRatio(5,12,window.xmlRMBSaveRate.XMLDocument)/100;
+		rate2 = GetRMBSaveRatio(5,36,window.xmlRMBSaveRate.XMLDocument)/100;
+		rate3 = GetRMBSaveRatio(5,60,window.xmlRMBSaveRate.XMLDocument)/100;
+		rate =  new Array(rate1,rate2,rate3,-1);
+		setRate();
+	}
+		// -->
+</script>
+</form>
+<xml id="xmlRMBSaveRate" ondatasetcomplete="init()" src="../../Data/200811/t20081117_130519.xml"></xml><script language="javascript">
+document.EduCalc.beginDateID.value = datetostring(new Date());
+//GetCalc_Close();
+</script>
+          <p></p>
+            <ul>
+              
+            </ul></td>
+      </tr>
+    </tbody></table>

@@ -1,0 +1,1 @@
+"faqtype_uudi"	"faqtype_name"	"faqtype_description"	"faqtype_parent"

@@ -1,0 +1,7 @@
+
+#@boxWithDate("帐号注册窗口" "Welcome")
+<div style="height:300pt;">
+这里是注册窗口
+</div>
+#end
+				

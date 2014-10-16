@@ -1,0 +1,29 @@
+#callService("processModelService" "requestName=EntityModel_view_easyService_easyServicemodelopqueryuuid&easyUuid=$shopId" "modelProcessResult" "easyServiceResult")
+
+#if($easyServiceResult.size() == 0)
+			暂无信息
+#else
+	#set($info=$easyServiceResult.get(0))
+	#@boxWithDate("$info.easyShopName" "便民服务点")
+		地址：$!info.easyShopUrl<br />
+		电话：$!info.easyPhone<br />
+		折扣：$!info.easyDiscount<br />
+		$!info.easyDescription
+		<div class="listing_details">
+<div class="detail">
+<b>价格区间：</b> 147¥ - 300¥ </div>
+<div class="detail">
+<b>菜系：</b> 欧洲, 快餐/西式简餐, 披萨&amp;意面, 亚洲融合菜式
+</div>
+<div class="detail">
+<b>适合：</b> 景观餐厅, 经济实惠 </div>
+<div class="detail">
+<b>餐厅推荐：</b> 预订, 宵夜 </div>
+</div>
+<hr />
+#img("/mainsite2/images/vote.png" "")
+#img("/mainsite2/images/vote.png" "")
+#img("/mainsite2/images/vote.png" "")
+#img("/mainsite2/images/vote.png" "")
+	#end
+#end

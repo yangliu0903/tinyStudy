@@ -1,0 +1,181 @@
+
+.listbox {
+clear: both;
+background-color: #fff;
+margin: 0 10px;
+border: 1px solid #a8b8cf;
+border-top: 0;
+border-bottom:0;
+}
+.listbox a {
+text-decoration: underline;
+}
+.listbox table {
+width: 100%;
+}
+.listbox .listbox_title{
+	background: url(../../images/admin/th_bg.gif) top left repeat-x;
+	height:26px;
+	line-height:26px;
+	padding-left:10px;
+	padding-top:0px !important;
+	padding-top:5px;
+	color:#20406f;
+	font-weight:bold;
+}
+.listbox .listbox_title img{
+	margin:auto 5px;
+}
+.listbox th {
+font: 12px "Segoe UI", Tahoma, Arial, Verdana, Helvetica, sans-serif;
+color: #000;
+height:24px;
+background: url(../../images/admin/th_bg2.gif) top right repeat-x;
+background-color: #e0e3e8;
+text-align: center;
+}
+
+.listbox td {
+padding: 3px 4px;
+border-bottom: 1px solid #cdd4e3;
+text-align: left;
+}
+.listbox tbody td {
+text-align: center;
+}
+
+
+/*****************************************/
+.listbox .lastth {
+background: url(../../images/admin/th_bg2.gif) 0px left repeat-x;
+width: auto;
+}
+.listbox .actionbt {
+width: 50px;
+}
+.listbox .actionbt a{color:#006699;}
+.listbox .actionbt a img{ margin-right:5px;}
+.listbox .actionbt a:link{ color:#006699; }
+/*********for fund2 the fundNew**********/
+.maxlistbox {
+clear: both;
+background-color: #E0E3E8;
+border: 1px solid #466094;
+border-top: 0;
+}
+/******************Over*****************/
+/****************Search Box****************/
+.searchbox {
+color: #62759A;
+background: #eef0f6;
+margin: 10px;
+padding: 10px 15px;
+border: 1px solid #7b9ebd;
+}
+.searchbox input, .searchbox select {
+background: #fff;
+border: 1px solid #7b9ebd;
+padding: 1px;
+}
+.searchbox td {
+padding-top: 3px;
+padding-bottom: 3px;
+}
+.searchbox .searchbt {
+background: url(../../images/admin/icn_bt_search.gif) top no-repeat;
+border: 0;
+width: 50px;
+height: 19px;
+cursor: hand;
+}
+.searchbox .sb-label {
+text-align: right;
+padding-right: 1em;
+width: 10em;
+}
+.searchbox .sb-field {
+width: 18em;
+}
+.searchbox .mustfill {
+color: #F47B63;
+margin-left: 5px;
+}
+
+
+.updatetip {
+float: right;
+color: #62759A;
+background: #E2EAF8;
+margin: 7px 10px 0 10px !important;
+margin: 7px 5px 0 10px;
+padding: 3px 6px;
+border: 1px solid #92B0DD;
+text-align: center;
+vertical-align: middle;
+}
+
+
+.forminform {
+border: 1px solid #ccc;
+background: #f5f5f5;
+margin: 10px;
+border-bottom:0;
+}
+.forminform table {
+margin: 0;
+padding: 0;
+border-collapse:collapse;
+}
+.forminform table thead {
+background: #d8d8d8;
+}
+.forminform table th {
+font: 12px "Segoe UI", Tahoma, Arial, Verdana, Helvetica, sans-serif;
+color: #222;
+border: 0;
+height:26px;
+*height:22px;
+background: url(../../images/admin/th_bg4.gif) top right repeat-x;
+border:1px solid #a8b8cf;
+background-color: #e0e3e8;
+text-align: center;
+}
+.forminform table tbody {
+background: #fff;
+text-align: right;
+}
+.forminform table tbody td {
+padding: 3px 8px;
+border-bottom: 1px solid #cdd4e3;
+text-align: left;
+}
+.forminform table tbody td input, .forminform table tbody td select {
+width: 96%;
+padding: 2px;
+}
+.forminform table tbody td.checkboxtd, .forminform table tbody th.checkboxtd {
+width: 2.5em;
+}
+
+.forminform table tbody td.checkboxtd input {
+width: 1.5em;
+border: 0;
+background: transparent;
+}
+.forminform table select.sel{width:200px; margin-left:10px;}
+.forminform table input.button{ background:#255E96; color:#FFF; width:100px; border:1px solid #5287BC; margin-left:30px; cursor:pointer;}
+.forminformbt {
+padding:10px 20px;
+}
+.forminformbtbt input {
+color: #3A3E45;
+background: url(../../images/admin/bg_forminformbt.gif) left top no-repeat;
+width: 40px;
+height: 19px;
+border: 0;
+margin-right: 10px;
+}
+.subfoldericn {
+vertical-align: middle;
+margin-right: 4px;
+}

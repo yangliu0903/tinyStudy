@@ -30,7 +30,6 @@
         <application-processor bean="PluginMgtProcessor"></application-processor>
         <application-processor bean="CEPProcessor"></application-processor>
         <application-processor bean="databaseInstallerProcessor"></application-processor>
-        <application-processor bean="beanOperatorApplicationProcessor"></application-processor>
         <application-processor bean="dictLoadProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
@@ -105,12 +104,6 @@
         <annotation-mapping id="validate" value="org\.tiny\..*"></annotation-mapping>
     </annotation-configuration>
 
-    <!-- beanmanager配置信息  schema为表模式, bean-name为beanoperate的bean名称,table-name-pattern配置加载的表名称模式，key-type：表主键类型，现有increase和uuid-->
-    <bean-manager-config default-schema="opensource">
-	   <bean-opertate-config schema="opensource"
-			table-name-pattern="%" bean-name="beanStringOperator" key-type="uuid">
-		</bean-opertate-config>
-    </bean-manager-config>
 
     <!--tiny-processor实现 -->
     <tiny-processors>
@@ -248,6 +241,33 @@
                 <rewrite-handler bean-name="urlNormalizer" />
             </handlers>
         </rule> -->
+        <rule pattern="/filter/rewrite/show\.page">
+          <condition test="%{QUERY:keyword}" pattern="yancheng" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="110" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
+        <rule pattern="/filter/rewrite/show2\.page">
+          <condition test="%{QUERY:type}" pattern="!1" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="220" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
+        <rule pattern="/filter/rewrite/show3\.page">
+          <condition test="%{REQUEST_URI}" pattern="show3\.page" flags="ornext" />
+          <substitution uri="/filter/rewrite/rewrite\.page" flags="L,R,QSA">
+             <parameter key="pa" value="330" />
+          </substitution>
+          <handlers>
+                <rewrite-handler bean-name="urlNormalizer" />
+          </handlers>
+        </rule>
     </rewrite>
     <session>
         <id cookieEnabled="true" urlEncodeEnabled="false">

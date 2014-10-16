@@ -1,0 +1,24 @@
+#setTitle("收货地址管理")
+#@boxWithDate("收货地址管理" "用户中心")
+#clearDiv
+<FORM id=custInfManForm>
+#callService("processModelService" "requestName=EntityModel_table_receive_queryAllReceives&userUuid=0105f0751c2f4bea888fc0508a8aea2b" "modelProcessResult" "userAddressQueryResult")
+#if( $userAddressQueryResult.beans.size()==0 )
+	用户尚未配置收获地址
+#else
+	##$name $mobile $tel $postCode $address
+	#foreach( $userReceviceInfo in $userAddressQueryResult.beans)
+		#addressInput("$userReceviceInfo.receivePeople" "$userReceviceInfo.receiveMobilephone" "$userReceviceInfo.receivePhone" "$userReceviceInfo.receiveNo" "$userReceviceInfo.receiveAddress")
+	#end
+#end
+
+
+
+
+</FORM>
+<hr />
+<div class="tr pr20">
+<input type="button" class="button-2" id="btn4" value="保存">
+</div>
+
+#end

@@ -1,0 +1,67 @@
+<div id="biz"></div>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_product_productmodeloptableuuid.modellet',{operation_id:'productmodeloptableuuid'});">产品管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_user_usermodeloptableuuid.modellet',{operation_id:'usermodeloptableuuid'});">用户管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_shop_shopmodeloptableuuid.modellet',{operation_id:'shopmodeloptableuuid'});">商铺管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_basket_basketmodeloptableuuid.modellet',{operation_id:'basketmodeloptableuuid'});">购物车管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_orderflow_orderflowmodeloptableuuid.modellet',{operation_id:'orderflowmodeloptableuuid'});">订单流水管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_orderDetial_orderDetialmodeloptableuuid.modellet',{operation_id:'orderDetialmodeloptableuuid'});">订单详细管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_faq_faqmodeloptableuuid.modellet',{operation_id:'faqmodeloptableuuid'});">faq管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_faqtype_faqtypemodeloptableuuid.modellet',{operation_id:'faqtypemodeloptableuuid'});">faq分类管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_activity_activitymodeloptableuuid.modellet',{operation_id:'activitymodeloptableuuid'});">首页活动管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_picture_picturemodeloptableuuid.modellet',{operation_id:'picturemodeloptableuuid'});">图片管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_lattice_latticemodeloptableuuid.modellet',{operation_id:'latticemodeloptableuuid'});">网点管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_realname_realnamemodeloptableuuid.modellet',{operation_id:'realnamemodeloptableuuid'});">用户实名信息管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_receive_receivemodeloptableuuid.modellet',{operation_id:'receivemodeloptableuuid'});">收货信息管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_userFocus_userFocusmodeloptableuuid.modellet',{operation_id:'userFocusmodeloptableuuid'});">关注明细管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_counterjumper_counterjumpermodeloptableuuid.modellet',{operation_id:'counterjumpermodeloptableuuid'});">网店助手管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_dict_dictmodeloptableuuid.modellet',{operation_id:'dictmodeloptableuuid'});">字典管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_dictItem_dictItemmodeloptableuuid.modellet',{operation_id:'dictItemmodeloptableuuid'});">字典条目管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_news_newsmodeloptableuuid.modellet',{operation_id:'newsmodeloptableuuid'});">公告管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_productClass_productClassmodeloptableuuid.modellet',{operation_id:'productClassmodeloptableuuid'});">产品分类管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_targetFocus_targetFocusmodeloptableuuid.modellet',{operation_id:'targetFocusmodeloptableuuid'});">被关注管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_links_linksmodeloptableuuid.modellet',{operation_id:'linksmodeloptableuuid'});">友情链接管理</a>
+<a href="javascript:loadDialogPage('#biz','EntityModel_table_easyService_easyServicemodeloptableuuid.modellet',{operation_id:'easyServicemodeloptableuuid'});">便民服务管理</a>
+<a href="javascript:loadDialogPage('#biz','editor2.pagelet',{operation_id:'editor2'});">编辑器</a>
+<select id="theme_select" name="theme_select" onchange="doChangeTheme();">
+  <option value=""></option>
+  <optgroup label="wijmo">
+	<option value="/wijmo/themes/arctic/jquery-wijmo.css">arctic</option>
+	<option value="/wijmo/themes/aristo/jquery-wijmo.css">aristo</option>
+	<option value="/wijmo/themes/cobalt/jquery-wijmo.css">cobalt</option>
+	<option value="/wijmo/themes/metro/jquery-wijmo.css">metro</option>
+	<option value="/wijmo/themes/metro-dark/jquery-wijmo.css">metro-dark</option>
+	<option value="/wijmo/themes/midnight/jquery-wijmo.css">midnight</option>
+	<option value="/wijmo/themes/rocket/jquery-wijmo.css">rocket</option>
+	<option value="/wijmo/themes/sterling/jquery-wijmo.css">sterling</option>
+	<option value="/wijmo/themes/wijmo/jquery-wijmo.css">wijmo</option>
+	</optgroup>
+  <optgroup label="jqueryui">
+<option value="/jqueryui/themes/black-tie/jquery-ui.css">black-tie</option>
+<option value="/jqueryui/themes/blitzer/jquery-ui.css">blitzer</option>
+<option value="/jqueryui/themes/cupertino/jquery-ui.css">cupertino</option>
+<option value="/jqueryui/themes/dark-hive/jquery-ui.css">dark-hive</option>
+<option value="/jqueryui/themes/dot-luv/jquery-ui.css">dot-luv</option>
+<option value="/jqueryui/themes/eggplant/jquery-ui.css">eggplant</option>
+<option value="/jqueryui/themes/excite-bike/jquery-ui.css">excite-bike</option>
+<option value="/jqueryui/themes/flick/jquery-ui.css">flick</option>
+<option value="/jqueryui/themes/hot-sneaks/jquery-ui.css">hot-sneaks</option>
+<option value="/jqueryui/themes/humanity/jquery-ui.css">humanity</option>
+<option value="/jqueryui/themes/le-frog/jquery-ui.css">le-frog</option>
+<option value="/jqueryui/themes/mint-choc/jquery-ui.css">mint-choc</option>
+<option value="/jqueryui/themes/overcast/jquery-ui.css">overcast</option>
+<option value="/jqueryui/themes/pepper-grinder/jquery-ui.css">pepper-grinder</option>
+<option value="/jqueryui/themes/redmond/jquery-ui.css">redmond</option>
+<option value="/jqueryui/themes/smoothness/jquery-ui.css">smoothness</option>
+<option value="/jqueryui/themes/south-street/jquery-ui.css">south-street</option>
+<option value="/jqueryui/themes/start/jquery-ui.css">start</option>
+<option value="/jqueryui/themes/sunny/jquery-ui.css">sunny</option>
+<option value="/jqueryui/themes/swanky-purse/jquery-ui.css">swanky-purse</option>
+<option value="/jqueryui/themes/trontastic/jquery-ui.css">trontastic</option>
+<option value="/jqueryui/themes/ui-darkness/jquery-ui.css">ui-darkness</option>
+<option value="/jqueryui/themes/ui-lightness/jquery-ui.css">ui-lightness</option>
+<option value="/jqueryui/themes/vader/jquery-ui.css">vader</option>
+	</optgroup>
+
+
+</select>
+

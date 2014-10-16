@@ -55,7 +55,6 @@
 				<ref bean="customSqlFileResolver" />
 				<ref bean="viewFileResolver" />
 				<ref bean="procedureFileResolver" />
-				<ref bean="relationFileProcessor" />
 				
 			</list>
 		</property>

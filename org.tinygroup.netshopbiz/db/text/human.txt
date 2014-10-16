@@ -1,0 +1,1 @@
+"objno"	"gender"	"orgid"	"objname"	"workstatus"	"tel1"	"tel2"	"tel3"	"exttextfield0"	"officeaddr"	"mainstation"
