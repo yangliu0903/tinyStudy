@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -11,8 +11,10 @@
 			<list>
 				<ref bean="i18nFileProcessor" />
 				<ref bean="xStreamFileProcessor" />
+				
 				<ref bean="tinyFilterFileProcessor" />
 				<ref bean="tinyProcessorFileProcessor" />
+
                 <!-- validate -->
                 <ref bean="validateMapFileProcessor"/>
                 <ref bean="validateFileProcessor"/>
@@ -23,7 +25,6 @@
 				<!-- xmlservice -->
 				<ref bean="xmlServiceFileProcessor" />
 				<ref bean="xmlSysServiceFileProcessor" />
-
 				<!-- flow -->
 				<ref bean="flowFileProcessor" />
 				<ref bean="flowComponentProcessor" />
@@ -37,27 +38,17 @@
                 <!--dictload-->
                 <ref bean="dictLoadFileProcessor" />
 
+				<ref bean="processorFileResolver" />
 				<ref bean="velocityMacroFileProcessor" />
 				<ref bean="fullContextFileFinder" />
 				<ref bean="uIComponentFileProcessor" />
 				<!-- context2objects -->
 				<ref bean="generatorFileProcessor"/>
-                <!-- serviceMapping -->
+				<!-- serviceMapping -->
 				<ref bean="serviceMappingFileProcessor"/>
-				<!-- database -->
-				<ref bean="constantFileResolver" />
-				<ref bean="standardTypeFileResolver" />
-				<ref bean="errorMessageFileResolver" />
-				<ref bean="businessTypeFileResolver" />
-				<ref bean="standardFieldFileResolver" />
-				<ref bean="tableFileResolver" />
-				<ref bean="initDataFileResolver" />
-				<ref bean="processorFileResolver" />
-				<ref bean="customSqlFileResolver" />
-				<ref bean="viewFileResolver" />
-				<ref bean="procedureFileResolver" />
-				<ref bean="relationFileProcessor" />
-				
+				<!-- tld
+                <ref bean="tldFileProcessor"/>
+                -->
 			</list>
 		</property>
 	</bean>

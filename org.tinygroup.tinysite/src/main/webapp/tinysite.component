@@ -1,16 +1,11 @@
 #macro (a $aHref $title $aTarget )
-<a#if($title) title="$title"#end#if($aHref)
-              href="#linkConvert($aHref)"#end#if($aTarget)
-              target="$aTarget"#end>
+<a#if($title) title="$title"#end#if($aHref) href="#linkConvert($aHref)"#end#if($aTarget) target="$aTarget"#end>
     $bodyContent
 </a>
 #end
 
 #macro (img $imgHref $imgTitle)
-<!-- $imgHref.charAt(0) -->
-        <img#if($imgTitle) alt="$imgTitle"#end#if($imgHref)
-                           src="#linkConvert($imgHref)"#end#>
-</a>
+   <img#if($imgTitle) alt="$imgTitle"#end#if($imgHref) src="#linkConvert($imgHref)"#end#>
 #end
 
 #macro(linkConvert $href)
@@ -322,7 +317,7 @@ $bodyContent
 </div>
 #end
 #macro(masonryItem $masonryItemClass)
-<div class="single $masonryItemClass">
+<div class="single $!masonryItemClass">
     $bodyContent
 </div>
 #end
