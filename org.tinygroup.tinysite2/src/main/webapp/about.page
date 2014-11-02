@@ -35,11 +35,11 @@
             #@thumbnailsItem("Kraken","中级程序员","1458307249","1458307249@qq.com","img/Kraken.jpg")
             负责模板引擎
             #end
-            #@thumbnailsItem("旺旺旺","初级程序员","343512613","343512613@qq.com","img/www.jpg")
-            测试、示例
+            #@thumbnailsItem("密缘之友","中级程序员","763586002","763586002@qq.com","img/www.jpg")
+            擅长于前端UI
             #end
-            #@thumbnailsItem("reman","高级程序员","309688283","309688283@qq.com","img/reman.jpg")
-            负责TinyReport开发
+            #@thumbnailsItem("Hulk","初级程序员","119702153","119702153@qq.com","img/reman.jpg")
+            测试、示例
             #end
             #@thumbnailsItem("秋窗寒雨","初级程序员","100218084","100218084@qq.com","img/qchy.jpg")
             测试、示例
