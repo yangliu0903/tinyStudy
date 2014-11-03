@@ -41,11 +41,11 @@
             #@thumbnailsItem("Hulk","初级程序员","119702153","119702153@qq.com","img/reman.jpg")
             测试、示例
             #end
+            #@thumbnailsItem("風淡芸轻","中级程序员","731575970","731575970@qq.com","img/moveup.jpg")
+            擅长后台开发
+            #end
             #@thumbnailsItem("秋窗寒雨","初级程序员","100218084","100218084@qq.com","img/qchy.jpg")
             测试、示例
-            #end
-            #@thumbnailsItem("KeepUp","初级程序员","345977373","345977373@qq.com","img/moveup.jpg")
-            擅长后台开发
             #end
             #@thumbnailsItem("耗子","初级程序员","654879871","654879871@qq.com","img/haozi.png")
             测试、示例
