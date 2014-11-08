@@ -523,6 +523,7 @@
         </tiny-processor>
         <tiny-processor id="tinyTemplateProcessor" class="tinyTemplateProcessor">
             <servlet-mapping url-pattern=".*\.page"></servlet-mapping>
+            <servlet-mapping url-pattern=".*\.pagelet"></servlet-mapping>
         </tiny-processor>
     </tiny-processors>
 
