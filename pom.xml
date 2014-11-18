@@ -17,5 +17,9 @@
         <module>org.tinygroup.netshopbiz</module>
         <module>org.tinygroup.netshopplatform</module>
         <module>org.tinygroup.netshopui</module>
+        <module>org.tinygroup.hellobyannotation</module>
+        <module>org.tinygroup.hellobyxml</module>
+        <module>org.tinygroup.hellobyflow</module>
+        <module>org.tinygroup.hellobymvc</module>
     </modules>
 </project>
