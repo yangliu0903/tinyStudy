@@ -1,7 +1,0 @@
-"activity_uuid"	"activity_name"	"activity_link"	"activity_description"	"picture_uuid"
-"0f186fd9d96b40a59bbd0d2c6810e6b1"	"黄金特价抢购3"	"www.baidu.com"	"http://g.hiphotos.bdimg.com/album/s%3D1400%3Bq%3D90/sign=7fbc80106e061d957946333c4bc431a0/ca1349540923dd5480f35e40d109b3de9c824812.jpg"	"c29d967ff5274deca46d166aa37c4f8f"
-"0f186fd9d96b40a59bbd0d2c6810e6b2"	"黄金特价抢购4"	"www.baidu.com"	"http://g.hiphotos.bdimg.com/album/s%3D1400%3Bq%3D90/sign=7fbc80106e061d957946333c4bc431a0/ca1349540923dd5480f35e40d109b3de9c824812.jpg"	"c29d967ff5274deca46d166aa37c4f8f"
-"0f186fd9d96b40a59bbd0d2c6810e6b3"	"黄金特价抢购5"	"www.baidu.com"	"http://g.hiphotos.bdimg.com/album/s%3D1400%3Bq%3D90/sign=7fbc80106e061d957946333c4bc431a0/ca1349540923dd5480f35e40d109b3de9c824812.jpg"	"c29d967ff5274deca46d166aa37c4f8f"
-"0f186fd9d96b40a59bbd0d2c6810e6b4"	"黄金特价抢购6"	"www.baidu.com"	"http://g.hiphotos.bdimg.com/album/s%3D1400%3Bq%3D90/sign=7fbc80106e061d957946333c4bc431a0/ca1349540923dd5480f35e40d109b3de9c824812.jpg"	"c29d967ff5274deca46d166aa37c4f8f"
-"0f186fd9d96b40a59bbd0d2c6810e6b5"	"黄金特价抢购1"	"www.baidu.com"	"http://g.hiphotos.bdimg.com/album/s%3D1400%3Bq%3D90/sign=7fbc80106e061d957946333c4bc431a0/ca1349540923dd5480f35e40d109b3de9c824812.jpg"	"c29d967ff5274deca46d166aa37c4f8f"
-"ce218fff7bfd4dad85dcee394612adad"	"黄金特价抢购2"	"www.google.com"	"http://xiangce.baidu.com/picture/detail/0b426fd48b5c82da827cfcaef974902b5760a043#8c0dc8cc32e7bcbc01b96b139dd3d0ed06bc5943"	"c29d967ff5274deca46d166aa37c4f8f"

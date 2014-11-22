@@ -1,7 +1,5 @@
 package org.tinygroup.crud.service.impl;
 
-import java.util.List;
-
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 import org.tinygroup.weblayer.WebContext;
@@ -9,6 +7,8 @@ import org.tinygroup.weblayer.mvc.WebContextAware;
 import org.tinygroup.weblayer.mvc.annotation.Controller;
 import org.tinygroup.weblayer.mvc.annotation.RequestMapping;
 import org.tinygroup.weblayer.mvc.annotation.View;
+
+import java.util.List;
 
 @Controller()
 @RequestMapping(value={"/mvc"})
@@ -61,7 +61,7 @@ public class UserAction implements WebContextAware{
 	}
 	
 	@RequestMapping(value={"/list.do"})
-	@View(value="/crud/mvc/list.page")
+	@View("/crud/mvc/list.page")
 	public void getListMethod(){
 		List<User> users = queryUsers((User)webContext.getRequest().getAttribute("user"));
 		webContext.getRequest().setAttribute("users", users);

@@ -17,11 +17,6 @@
         <module>org.tinygroup.websample</module>
         <module>org.tinygroup.tinysite</module>
         <module>org.tinygroup.tinysite2</module>
-        <module>org.tinygroup.offer</module>
-        <module>org.tinygroup.netshop</module>        
-        <module>org.tinygroup.netshopbiz</module>
-        <module>org.tinygroup.netshopplatform</module>
-        <module>org.tinygroup.netshopui</module>
         <module>org.tinygroup.hellobyannotation</module>
         <module>org.tinygroup.hellobyxml</module>
         <module>org.tinygroup.hellobyflow</module>

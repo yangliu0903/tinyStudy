@@ -1,6 +1,0 @@
-
- #@wijMenu("${modelDefine.id}_${operationDefine.id}_menu")
- #foreach($menu in $modelProcessResult)
- $menu
- #end
- #end

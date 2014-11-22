@@ -1,7 +1,0 @@
-<standard-fields package-name="org.tinygroup.common">
-  <standard-field title="主键字段" business-type-id="Varchar50" name="id" id="id"></standard-field>
-  <standard-field title="名称" business-type-id="Varchar50" name="name" id="name"></standard-field>
-  <standard-field title="金额" business-type-id="Varchar50" name="money" id="money"></standard-field>
-  <standard-field title="备注" business-type-id="Text" name="remark" id="remark"></standard-field> 
-  <standard-field title="日期" business-type-id="Datetime" name="date" id="date"></standard-field> 
-</standard-fields>
