@@ -11,6 +11,7 @@
     <version>1.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
+        <module>org.tinygroup.DemoSite</module>
         <module>org.tinygroup.crud</module>
         <module>org.tinygroup.fouroperate</module>
         <module>org.tinygroup.helloworld</module>

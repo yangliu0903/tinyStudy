@@ -8,4 +8,10 @@ public class HelloWorldXmlService{
 		}
 		return "hello," + name;
 	}
+	public String sayHello1(String name) {
+		if (name == null) {
+			name = "world.";
+		}
+		return "hello," + name;
+	}
 }

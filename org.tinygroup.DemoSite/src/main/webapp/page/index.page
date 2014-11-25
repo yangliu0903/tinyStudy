@@ -1,0 +1,48 @@
+#pageTitle("Home" "Home")
+
+#@tooplateMiddle()
+  #flashGridSlider()
+#end
+
+#@tooplateContent()
+
+    <h2>Welcome To The Block!</h2>
+
+    <div class="image_wrapper image_fl"><span></span>
+        #img("/images/tooplate_image_01.jpg" "image")
+    </div>
+    <p><em>The Block is a <a rel="nofollow" href="http://www.tooplate.com">free website template</a> from <a
+            rel="nofollow" href="http://www.tooplate.com">Tooplate</a>. Credit goes to <a rel="nofollow"
+                                                                                          href="http://www.photovaco.com">Free
+        Photos</a> for photos used in this template.</em></p>
+
+    <p align="justify">Aliquam et augue et odio luctus posuere sit amet et nisi. Maecenas convallis, est sit amet
+        convallis consectetur, elementum lacus, ut fermentum elit sem. Duis eu elit tortor, sed condimentum nulla.
+        Phasellus varius posuere adipiscing. Mauris sodales dictum ullamcorper. Validate <a
+                href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> and <a
+                href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+
+    <div class="cleaner h40"></div>
+    #@box220()
+        <h4>pharetra id turpis<span>Lorem Ipsum Dolor</span></h4>
+
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta adi Piscing libero, eget elem
+            ntum lectus varius sed.</p>
+        <a href="#" class="more">more</a>
+    #end
+    #@box220()
+        <h4>semper nisl ac nibh<span>Donec Tincidunt Varius</span></h4>
+
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
+            eu mauris id neque porttitor.</p>
+        <a href="#" class="more">more</a>
+    #end
+    #@box220("rmb")
+        <h4>consect adipiscing elit<span>Etiam Gravida Sagittis</span></h4>
+
+        <p>Cras eu egestas sem. Aenean mollis feugiat massa, eget pharetra nunc interdum non. Etiam euismod sem ac
+            sem tincidunt adipiscin.</p>
+        <a href="#" class="more">more</a>
+    #end
+#end
+
