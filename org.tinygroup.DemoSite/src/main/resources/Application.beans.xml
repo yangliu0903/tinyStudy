@@ -36,6 +36,9 @@
 				<!-- plugin -->
 				<ref bean="tinyPluginFileProcessor" />
 
+				<!-- 模板引擎-->
+				<ref bean="tinyMacroFileProcessor" />
+
                 <!--dictload-->
                 <ref bean="dictLoadFileProcessor" />
 
@@ -48,7 +51,6 @@
 				<!-- serviceMapping -->
 				<ref bean="serviceMappingFileProcessor"/>
 				<!-- tinyMacro -->
-				<ref bean="tinyMacroFileProcessor"/>
 
 			</list>
 		</property>
