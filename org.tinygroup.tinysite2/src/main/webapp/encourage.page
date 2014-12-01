@@ -8,14 +8,21 @@
             <p>支付宝帐户：<em style="color:red">luo_guo@icloud.com</em>，可为我们留下您的期许与鼓励。</p>
     </div>
     #end
-    #@span6()
+    #@span4()
         <div style="text-align: right">
-            <p  style="color:red"><strong>支付宝二维码</strong>　　　　　</p>
+            <p  style="color:red"><strong>　　　　支付宝二维码</strong>　　　　　</p>
         #img("img/appxl1rc0koh8fj044.png","支付宝二维码")
         </div>
     #end
 
-    #@span6()
+    #@span4()
+    <div style="text-align: center">
+        <p  style="color:red"><strong>微信支持二维码</strong>　　　　　</p>
+        #img("img/littlewx.png","支付宝二维码")
+    </div>
+    #end
+
+    #@span4()
     <p  style="color:red">　　　　<strong>微信公众帐号</strong> </p>
         #img("img/qrcode_for_gh_2ee3199c0201_256.jpg","微信公众帐号")
     #end
