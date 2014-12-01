@@ -4,7 +4,6 @@
     #@span12()
     <div class="thumbnail" style="text-align: left;">
             <p>我想每一个访问到这个页面的人，一定也是同样对技术有所追求的人。相对于金钱来说，我们更需要您的支持、鼓励，以及对我们所做工作的认可。</p>
-            <p>我们不希望收到多少金钱，但是我们希望收获许多支持。</p>
             <p>如果您感受得到我们的努力及付出，请不辞辛苦为我们加<em style="color:red"><strong>油</strong></em>，为我们助<em style="color:red"><strong>威</strong></em>！</p>
             <p>支付宝帐户：<em style="color:red">luo_guo@icloud.com</em>，可为我们留下您的期许与鼓励。</p>
     </div>
@@ -28,10 +27,12 @@
             <th width="10%"  style="text-align: center">添加者</th>
             <th width="11%" style="text-align: center">勇气量</th>
             <th width="*">留言/添加方式</th>
-            <th width="15%" style="text-align: center">时间</th>
+            <th width="20%" style="text-align: center">时间</th>
         </tr>
         </thead>
         <tbody>
+        #donate("赵东","20000","2014-12-01 09:41")
+        #donate("杨兴","100","2014-12-01 09:23")
         #donate("李亮","111","2014-11-29 13:04")
         #donate("刘德智","50000","2014-11-29 12:27")
         #donate("曹德键","1024","2014-11-28 23:08")
