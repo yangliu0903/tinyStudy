@@ -17,7 +17,7 @@
 
     #@span4()
     <div style="text-align: center">
-        <p  style="color:red"><strong>微信支持二维码</strong>　　　　　</p>
+        <p  style="color:red"><strong>微信支付二维码</strong>　　　　　</p>
         #img("img/littlewx.png","支付宝二维码")
     </div>
     #end
@@ -38,6 +38,7 @@
         </tr>
         </thead>
         <tbody>
+        #donate("严文杰","298","2014-12-01 10:57")
         #donate("赵东","20000","2014-12-01 09:41")
         #donate("杨兴","100","2014-12-01 09:23")
         #donate("李亮","111","2014-11-29 13:04")
