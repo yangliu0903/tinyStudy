@@ -103,7 +103,7 @@ public class TinyDbCrudService extends BeanSupport implements
 	@ServiceMethod(serviceId = "queryUserByIdTiny")
 	@ServiceResult(name = "user")
 	@ServiceViewMapping("/crud/service/tinydb/operate.page")
-	public Bean getUserById(String id) {
+	public Bean getUserById(@ServiceParameter(name = "id") String id) {
 		if (id == null) {
 			return null;
 		}
