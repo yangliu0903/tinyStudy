@@ -289,14 +289,7 @@
         <!--<interceptors> <interceptor bean-name="sessionLifecycleLogger"></interceptor>
             <interceptor bean-name="sessionAttributeWhitelist"></interceptor> </interceptors> -->
     </session>
-    <tiny-listener>
-        <listener-bean name="TG_WSServletContextListener"></listener-bean>
-        <past-pattern pattern=".*"/>
-        <skip-pattern pattern="serviceGetNodeName|serviceCEPCoreStart|serviceCEPCoreStop|serviceGetProcessorCount"/>
-        <skip-pattern pattern="cepNodeRegisteNodes|cepNodeRegisteNode|cepNodeRegisteNodes|cepNodeUnRegisteNode|cepNodeUnRegisteNodes|cepNodeBreathCheck"/>
-        <skip-pattern pattern="serviceGetFlow|serviceGetFlowWithVersion|serviceRemoveFlow|serviceRemoveFlowWithVersion"/>
-        <skip-pattern pattern="serviceGetServiceCount|serviceGetServiceRegistryItems"/>
-    </tiny-listener>
+    
     
     <jcs-config enable="false">
     </jcs-config>
