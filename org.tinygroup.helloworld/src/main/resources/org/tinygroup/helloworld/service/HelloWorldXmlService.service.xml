@@ -4,7 +4,7 @@
       <service-parameters>
         <service-parameter name="name" type="java.lang.String" required="false" is-array="false"/>
       </service-parameters>
-      <service-result name="sayHelloResult" required="false" is-array="false" type="java.lang.String"/>
+      <service-result name="result" required="false" is-array="false" type="java.lang.String"/>
     </service-method>
   </service-component>
 </service-components>

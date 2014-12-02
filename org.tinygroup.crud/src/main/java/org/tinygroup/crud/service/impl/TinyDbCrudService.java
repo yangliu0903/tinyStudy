@@ -74,7 +74,7 @@ public class TinyDbCrudService extends BeanSupport implements
 
 	@ServiceMethod(serviceId = "deleteUserTiny")
 	@ServiceViewMapping(value = "/queryUsersTiny.servicepage?@beantype=TUser", type = "redirect")
-	public void deleteUserById(String id) {
+	public void deleteUserById(@ServiceParameter(name = "id") String id) {
 		try {
 			operator.deleteById(id, beanType);
 		} catch (TinyDbException e) {
