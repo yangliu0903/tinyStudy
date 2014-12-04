@@ -1,4 +1,4 @@
-<flow id="helloworld" name="helloworld" enable="false" private-context="false">
+<flow id="business" enable="true" private-context="false">
   <nodes>
     <node id="start" name="start" title="开始">
       <next-nodes>
@@ -10,16 +10,6 @@
         <properties>
           <flow-property name="name" value="${name}"/>
           <flow-property name="result" value="result"/>
-        </properties>
-      </component>
-      <next-nodes>
-        <next-node next-node-id="forwardComponent"/>
-      </next-nodes>
-    </node>
-    <node id="forwardComponent" name="forwardComponent" title="页面转发">
-      <component name="forwardComponent" title="页面转发">
-        <properties>
-          <flow-property name="path" value="/helloworld/helloresult.page"/>
         </properties>
       </component>
       <next-nodes>
