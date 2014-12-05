@@ -1,3 +1,0 @@
-"lattice_uuid"	"shop_uuid"	"lattice_address"	"lattice_phone"	"lattice_description"	"lattice_longitude"	"lattice_latitude"
-"303273449c4c4525a752d5e753933ad2"	"6ce27d8617374ec6a894700677937c35"	"杭州市滨江区江南大道1000号"	"13223233445"	"广东粤宝黄金投资有限公司配送网点"	""	""
-"7d781b8b4d344ba5b4113678992d9f01"	"6ce27d8617374ec6a894700677937c35"	"杭州市西湖区文三路1000号"	"13189897865"	"广东粤宝黄金投资有限公司网店"	""	""

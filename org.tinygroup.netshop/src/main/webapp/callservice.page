@@ -1,9 +1,0 @@
-#callService("helloWorldService" "name=aaabbb1")
-$sayHelloResult
-<br>
-#callService("helloWorldService" "name=aaabbb2" "sayHelloResult" "aaaddd")
-$aaaddd
-
-#callService("processModelService" "requestName=EntityModel_table_productClass_queryTopProductClass&parentId=''" "modelProcessResult" "categorys")
-
-$categorys.class.name

@@ -1,0 +1,6 @@
+<ui-components>
+    <ui-component name="demosite" dependencies="">
+        <css-resource>/css/jquery.lightbox-0.5.css,/css/slider_style.css,/css/tooplate_style.css</css-resource>
+        <js-resource>/js/jquery.js,/js/jquery.lightbox-0.5.js,/js/swfobject.js</js-resource>
+    </ui-component>
+</ui-components>

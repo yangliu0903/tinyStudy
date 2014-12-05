@@ -1,0 +1,26 @@
+#@tooplateWrapper()
+    #@header()
+        #siteTitle("The Block")
+        #@menu()
+            #menuItem("index.page" "Home" "Home")
+            #menuItem("about.page" "About Us" "About")
+            #menuItem("blog.page" "Blog" "Blog")
+            #menuItem("gallery.page" "Gallery" "Gallery")
+            #menuItem("contact.page" "Contact" "Contact")
+        #end
+    #end
+
+    ${pageContent}
+
+    #@tooplateFooter()
+    Copyright © 2048 <a href="#">Company Name</a> - Design: <a href="http://www.tooplate.com">tooplate</a>
+
+    #end
+
+#end
+<script type="text/javascript">
+    $('#gallery a').lightBox();
+</script>
+<script type="text/javascript">
+    $('#map a').lightBox();
+</script>

@@ -1,3 +1,0 @@
-"detial_uuid"	"product_id"	"flow_id"	"detial_number"	"detial_score"	"detial_total"	"detial_freight"
-"24be9d14410d404492ec424f969bde2a"	"04dd34c321294d14a317f5d1d7f367c6"	"0bdc6017117940e7825839b3efd91ea1"	"1"	"1"	"1050.00"	"10.00"
-"b8a10e6fcd7d4a14941253954e399f94"	"175a720a369d47408c9f41875994f0e9"	"0bdc6017117940e7825839b3efd91ea1"	"1"	"1"	"123.00"	"10.00"

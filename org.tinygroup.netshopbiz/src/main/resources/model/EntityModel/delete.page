@@ -1,3 +1,0 @@
-#@wijAutoCloseDialog("${operationDefine.id}Delete" "提示信息")
-成功删除选定的记录！
-#end

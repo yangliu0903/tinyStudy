@@ -1,0 +1,21 @@
+#pageTitle("Gallery" "Gallery")
+
+#@tooplateMiddleSub()
+<h2>Our Gallery</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta adipiscing libero, eget elementum lectus
+    varius sed. Aliquam metus urna, dignissim quis posuere at, posuere eget mauris. Vestibulum laoreet sodales tellus
+    nec mollis. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a>
+    and <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+#end
+
+#@tooplateContent()
+    #@gallery()
+    #galleryBox("/images/gallery/image_01_l.jpg" "/images/gallery/image_01_s.jpg" "Nunc et tellus id risus ultrices" "Image 01" "Nunc et tellus id risus ultrices")
+    #galleryBox("/images/gallery/image_02_l.jpg" "/images/gallery/image_02_s.jpg" "Nunc et tellus id risus ultrices" "Image 02" "Nunc et tellus id risus ultrices")
+    #galleryBox("/images/gallery/image_03_l.jpg" "/images/gallery/image_03_s.jpg" "Nunc et tellus id risus ultrices" "Image 03" "Nunc et tellus id risus ultrices" "gb_rmb")
+    #galleryBox("/images/gallery/image_04_l.jpg" "/images/gallery/image_04_s.jpg" "Nunc et tellus id risus ultrices" "Image 04" "Nunc et tellus id risus ultrices")
+    #galleryBox("/images/gallery/image_05_l.jpg" "/images/gallery/image_05_s.jpg" "Nunc et tellus id risus ultrices" "Image 05" "Nunc et tellus id risus ultrices")
+    #galleryBox("/images/gallery/image_06_l.jpg" "/images/gallery/image_06_s.jpg" "Nunc et tellus id risus ultrices" "Image 06" "Nunc et tellus id risus ultrices" "gb_rmb")
+    #end
+#end
+

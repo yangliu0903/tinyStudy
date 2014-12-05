@@ -289,6 +289,7 @@
         <!--<interceptors> <interceptor bean-name="sessionLifecycleLogger"></interceptor>
             <interceptor bean-name="sessionAttributeWhitelist"></interceptor> </interceptors> -->
     </session>
+<<<<<<< HEAD
     <tiny-listener>
         <listener-bean name="TG_WSServletContextListener"></listener-bean>
         <past-pattern pattern="read.*|write.*"/>
@@ -297,6 +298,9 @@
         <skip-pattern pattern="serviceGetFlow|serviceGetFlowWithVersion|serviceRemoveFlow|serviceRemoveFlowWithVersion"/>
         <skip-pattern pattern="serviceGetServiceCount|serviceGetServiceRegistryItems"/>
     </tiny-listener>
+=======
+    
+>>>>>>> 8c82841de68b4524add18775d825b5fe08bbfd60
     
     <jcs-config enable="false">
     </jcs-config>

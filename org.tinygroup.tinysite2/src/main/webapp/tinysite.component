@@ -359,16 +359,17 @@
         #logo()
         #end
         #@span9()
-        <div class="top-header text-right"><em>QQ群:<em>228977971</em> 邮箱：<a
+        <div class="top-header text-right"><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=5e6ef409eec4046b4aa0273c0359920bd875b87f834bee175917f96e8b216489"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Tiny" title="Tiny">228977971</a> 邮箱：<a
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
-                #shortcut("Sonar代码检查","http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny","/img/sonar.ico")
-                #shortcut("Hudson持续集成","http://www.tinygroup.org/hudson/job/tiny/","/img/hudson.png")
+##                #shortcut("Sonar代码检查","http://www.tinygroup.org/sonar/dashboard/index/org.tinygroup:tiny","/img/sonar.ico")
+##                #shortcut("Hudson持续集成","http://www.tinygroup.org/hudson/job/tiny/","/img/hudson.png")
                 #shortcut("TinyFramework OSC首页","http://my.oschina.net/tinyframework","/img/osc.ico")
                 #shortcut("TinyFramework GIT网址","http://git.oschina.net/tinyframework/tiny","/img/git.ico")
                 #shortcut("TinyFramework文档","http://www.tinygroup.org/confluence/","/img/confluence.png")
-                #shortcut("TinyEclipse插件更新地址","http://www.tinygroup.org/TinyStudioSite/","/img/eclipse.jpg")
+                #shortcut("TinyEclipse插件更新地址","http://www.tinygroup.org/tinystudio/","/img/eclipse.jpg")
+                #shortcut("TinyAdmin演示网站","http://www.tinygroup.org/tinyadmin/","/img/tiny32.png")
             </div>
         </div>
         <div class="text-left">

@@ -1,0 +1,14 @@
+#macro a(title url)
+<a href="#link(url)">${title}</a>
+#end
+
+#macro img(url alt)
+<img src=#link(url) alt="${alt}">
+#end
+
+#macro link(url)#if(url.startsWith("/"))${TINY_CONTEXT_PATH}#end${url}#end
+
+#macro pageTitle(title page)
+    #!set(pageTitle=title)
+    #!set(activePage=page)
+#end

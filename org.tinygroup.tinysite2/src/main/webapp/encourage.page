@@ -4,19 +4,25 @@
     #@span12()
     <div class="thumbnail" style="text-align: left;">
             <p>我想每一个访问到这个页面的人，一定也是同样对技术有所追求的人。相对于金钱来说，我们更需要您的支持、鼓励，以及对我们所做工作的认可。</p>
-            <p>我们不希望收到多少金钱，但是我们希望收获许多支持。</p>
-            <p>如果您感受得到我们的努力及付出，请不辞辛苦为我们加<em style="color:red"><strong>油</strong></em>，为我们助威！</p>
+            <p>如果您感受得到我们的努力及付出，请不辞辛苦为我们加<em style="color:red"><strong>油</strong></em>，为我们助<em style="color:red"><strong>威</strong></em>！</p>
             <p>支付宝帐户：<em style="color:red">luo_guo@icloud.com</em>，可为我们留下您的期许与鼓励。</p>
     </div>
     #end
-    #@span6()
+    #@span4()
         <div style="text-align: right">
-            <p  style="color:red"><strong>支付宝二维码</strong>　　　　　</p>
+            <p  style="color:red"><strong>　　　　支付宝二维码</strong>　　　　　</p>
         #img("img/appxl1rc0koh8fj044.png","支付宝二维码")
         </div>
     #end
 
-    #@span6()
+    #@span4()
+    <div style="text-align: center">
+        <p  style="color:red"><strong>微信支付二维码</strong>　　　　　</p>
+        #img("img/littlewx.png","支付宝二维码")
+    </div>
+    #end
+
+    #@span4()
     <p  style="color:red">　　　　<strong>微信公众帐号</strong> </p>
         #img("img/qrcode_for_gh_2ee3199c0201_256.jpg","微信公众帐号")
     #end
@@ -25,22 +31,39 @@
     <table border="0" cellpadding="0" cellspacing="0" class="table table-hover">
         <thead>
         <tr ">
-            <th width="10%"  style="text-align: center">加油者</th>
-            <th width="11%" style="text-align: center">加油量</th>
-            <th width="*">留言/加油方式</th>
-            <th width="15%" style="text-align: center">时间</th>
+            <th width="10%"  style="text-align: center">添加者</th>
+            <th width="11%" style="text-align: center">勇气量</th>
+            <th width="*">留言/添加方式</th>
+            <th width="20%" style="text-align: center">时间</th>
         </tr>
         </thead>
         <tbody>
-        #donate("章名尚","10.00","2014-10-31 13:44")
-        #donate("龙振东","5.00","2014-10-11 21:08")
-        #donate("孔维杰","1.00","2014-06-3 11:10")
-        #donate("陈佼","1.00","2014-05-29 9:01")
-        #donate("李家宁","2.00","2014-05-26 14:04")
-        #donate("李思思","10.24","2014-05-26 13:42")
-        #donate("黄亿华","1.00","2014-05-26 13:41")
-        #donate("岳庆伟","1.00","2014-05-26 13:34")
-        #donate("余青松","2.00","2014-05-26 13:01")
+        #donate("温志宏","1000","2014-12-03 18:03")
+        #donate("严文杰","298","2014-12-01 10:57")
+        #donate("赵东","20000","2014-12-01 09:41")
+        #donate("杨兴","100","2014-12-01 09:23")
+        #donate("李亮","111","2014-11-29 13:04")
+        #donate("刘德智","50000","2014-11-29 12:27")
+        #donate("曹德键","1024","2014-11-28 23:08")
+        #donate("郑彬","10000","2014-11-28 20:20")
+        #donate("王冬辉","1024","2014-11-28 13:27")
+        #donate("韩亮","10000","2014-11-28 12:15")
+        #donate("张作强","109","2014-11-25 22:04")
+        #donate("唐文韬","1000","2014-11-23 10:01")
+        #donate("张德波","1","2014-11-22 15:04")
+        #donate("陈文","100","2014-11-22 13:19")
+        #donate("张于刚","2000","2014-11-22 11:17")
+        #donate("李银磊","2000","2014-11-20 12:13")
+        #donate("许惠武","1","2014-11-20 11:51")
+        #donate("章名尚","1000","2014-10-31 13:44")
+        #donate("龙振东","500","2014-10-11 21:08")
+        #donate("孔维杰","100","2014-06-3 11:10")
+        #donate("陈佼","100","2014-05-29 9:01")
+        #donate("李家宁","200","2014-05-26 14:04")
+        #donate("李思思","1024","2014-05-26 13:42")
+        #donate("黄亿华","100","2014-05-26 13:41")
+        #donate("岳庆伟","100","2014-05-26 13:34")
+        #donate("余青松","200","2014-05-26 13:01")
         </tbody>
     </table>
     #end

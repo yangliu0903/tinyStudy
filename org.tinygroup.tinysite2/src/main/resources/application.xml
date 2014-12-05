@@ -20,16 +20,13 @@
         * 欢迎进入Tiny
         Server *
         * *
-        * 如果有任何问题，请联系luoguo@hundsun.com *
+        * 如果有任何问题，请联系luo_guo@live.cn *
         **********************************************
 
     </greetings>
 
     <application-processors>
         <application-processor bean="fileResolverProcessor"></application-processor>
-        <application-processor bean="PluginMgtProcessor"></application-processor>
-        <application-processor bean="CEPProcessor"></application-processor>
-        <application-processor bean="dictLoadProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
     </application-processors>
@@ -659,7 +656,7 @@
     </jcs-config>
 
     <!--文件监控器配置参数，具体参见FileMonitorProcessor配置管理手册，interrupt扫描间隔时间，单位秒 -->
-    <file-monitor interval="10" enable="true"/>
+    <file-monitor interval="10" enable="false"/>
 
     <gzip-filter max-content-length="0">
         <!-- 多个content-type已分号隔开 -->

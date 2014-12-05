@@ -1,6 +1,0 @@
-<expression-configs>
-    <multiply-expression expression-id="productDiscountRate">
-       <left-expression class="org.tinygroup.expression.impl.VariableExpression" variable-name="unit_price" table-name="product"></left-expression>
-       <right-expression class="org.tinygroup.expression.impl.VariableExpression" variable-name="product_discount"  table-name="product"></right-expression>
-    </multiply-expression>
-</expression-configs>

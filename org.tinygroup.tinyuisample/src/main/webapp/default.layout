@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>演示网站-${pageTitle}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <script src="${TINY_CONTEXT_PATH}/uiengine.uijs"></script>
+    <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
+</head>
+<body>
+    ${pageContent}
+</body>
+</html>
+

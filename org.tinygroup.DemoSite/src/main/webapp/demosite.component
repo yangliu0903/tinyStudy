@@ -1,0 +1,120 @@
+#macro header()
+<div id="tooplate_header">
+    #bodyContent
+</div>
+#end
+
+#macro siteTitle(title))
+<div id="site_title"><h1><a href="#">${title}</a></h1></div>
+#end
+
+#macro menu()
+<div id="tooplate_menu">
+    <ul>
+        #bodyContent
+    </ul>
+</div>
+#end
+
+#macro menuItem(url title page)
+<li><a href="#link(url)"#if(activePage==page) class="current"#end >${title}</a></li>
+#end
+
+#macro tooplateWrapper())
+<div id="tooplate_wrapper">
+    #bodyContent
+</div>
+#end
+
+#macro tooplateMiddleSub()
+<div id="tooplate_middle_sub">
+    #bodyContent
+</div>
+#end
+
+#macro tooplateMiddle()
+<div id="tooplate_middle">
+    #bodyContent
+</div>
+#end
+
+
+#macro flashGridSlider()
+<div id="flash_grid_slider">
+    <a rel="nofollow" href="http://www.adobe.com/go/getflashplayer">
+        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+             alt="Get Adobe Flash player"/>
+    </a>
+</div>
+<script type="text/javascript">
+    var flashvars = {};
+    flashvars.xml_file = '#link("/photo_list.pagelet")';
+    var params = {};
+    params.wmode = "transparent";
+    var attributes = {};
+    attributes.id = "slider";
+    swfobject.embedSWF('#link(
+        "/flash_slider.swf")', "flash_grid_slider", "780", "210", "9.0.0", false, flashvars, params, attributes);
+</script>
+#end
+
+#macro tooplateContent())
+<div id="tooplate_content">
+    <span class="content_top"></span>
+    #bodyContent
+    <div class="cleaner"></div>
+</div>
+#end
+
+#macro tooplateFooter())
+<div id="tooplate_footer">
+    #bodyContent
+    <div class="cleaner"></div>
+</div>
+#end
+
+#macro box220(class)
+<div class="box_w220 ${class}">
+   #bodyContent
+</div>
+#end
+
+#macro box330(class)
+<div class="box_w330 ${class}">
+    #bodyContent
+</div>
+#end
+
+#macro gallery()
+<div id="gallery">
+    #bodyContent
+</div>
+#end
+
+#macro galleryBox(largeImage smallImage title alt info class)
+<div class="gallery_box ${class}">
+    <div class="gallery_img"><span></span>
+        <a href="#link(largeImage)" title="${title}">
+            <img src="#link(smallImage)" alt="${alt}"/>
+        </a>
+    </div>
+    <h6>${info}</h6>
+</div>
+#end
+
+#macro postBos(comment title imageUrl imageAlt postedInList commentCount)
+<div class="post_box">
+    <div class="comment"><a href="#">${comment}</a></div>
+    <h2>${title}</h2>
+
+    <div class="image_wrapper image_fl"><span></span>#img(imageUrl imageAlt)</div>
+    <p><span class="cat">Posted in
+     #for(postedIn in postedInList)
+        <a href="#">${postedIn}</a>&nbsp;
+     #end
+    </span></p>
+    #bodyContent
+    ${commentCount} comments <a class="more float_r" href="#">More</a>
+    <div class="cleaner"></div>
+</div>
+#end
