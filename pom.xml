@@ -23,5 +23,6 @@
         <module>org.tinygroup.hellobyxml</module>
         <module>org.tinygroup.hellobyflow</module>
         <module>org.tinygroup.hellobymvc</module>
+	<module>org.tinygroup.webservicesample</module>
     </modules>
 </project>
