@@ -33,8 +33,7 @@
 				<!-- pageflow -->
 				<ref bean="pageFlowComponentProcessor" />
 				<ref bean="pageFlowFileProcessor" />
-				<!-- plugin -->
-				<ref bean="tinyPluginFileProcessor" />
+				
 
 				<!-- 模板引擎-->
 				<ref bean="tinyMacroFileProcessor" />

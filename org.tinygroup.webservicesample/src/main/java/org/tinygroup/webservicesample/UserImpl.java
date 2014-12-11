@@ -15,9 +15,16 @@
  */
 package org.tinygroup.webservicesample;
 
-public class UserImpl implements User{
+
+//@XmlAccessorType(value=XmlAccessType.FIELD)  
+public class UserImpl implements User2{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6165366361015284657L;
 	private String name;
 	private String age;
+	
 	public UserImpl(String name,String age){
 		this.name = name;
 		this.age = age;
@@ -30,6 +37,12 @@ public class UserImpl implements User{
 
 	public String getAge() {
 		return age;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 }
