@@ -38,7 +38,7 @@ public class ServiceABC implements Serializable {
 		return s + "" + i;
 	}
 
-	public void readInterfaceUser(User user) {
+	public void readInterfaceUser(User2 user) {
 		logger.logMessage(LogLevel.INFO, "read interface User");
 		logger.logMessage(LogLevel.INFO, "{} {} {}", user, user.getName(),
 				user.getAge());

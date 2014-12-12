@@ -15,7 +15,7 @@
     </service-method>
     <service-method local-name="readInterfaceUser" service-id="readInterfaceUser" method-name="readInterfaceUser" cacheable="false">
       <service-parameters>
-        <service-parameter name="user" type="org.tinygroup.webservicesample.User" required="false" is-array="false"/>
+        <service-parameter name="user" type="org.tinygroup.webservicesample.User2" required="false" is-array="false"/>
       </service-parameters>
       <service-result name="readInterfaceUserResult" required="false" is-array="false" type="void"/>
     </service-method>

@@ -20,7 +20,7 @@
 	<bean id="serviceABC" name="serviceABC" scope="prototype"
 		class="org.tinygroup.webservicesample.ServiceABC">
 	</bean>
-	<bean id="user" name="user" scope="prototype"
+	<bean id="userImpl" name="userImpl" scope="prototype"
 		class="org.tinygroup.webservicesample.UserImpl">
 	</bean>
 </beans>

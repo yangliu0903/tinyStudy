@@ -49,7 +49,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.serviceplugin</artifactId>
+			<artifactId>org.tinygroup.serviceprocessor</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -57,29 +57,10 @@
 			<artifactId>org.tinygroup.simplechannel</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.rpc</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.servicebasicservice</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.flowbasicservice</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.cepcorebasicservice</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.flowplugin</artifactId>
+			<artifactId>org.tinygroup.flowprocessor</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -131,6 +112,16 @@
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.webservicesample</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.dynamicdatasource</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.cepcorenetty</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

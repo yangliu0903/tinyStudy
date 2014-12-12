@@ -17,13 +17,13 @@ package org.tinygroup.webservicesample;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class UserAdapter extends XmlAdapter<UserImpl, User> {
+public class UserAdapter extends XmlAdapter<UserImpl, User2> {
 	//{
-	public User unmarshal(UserImpl v) throws Exception {
+	public User2 unmarshal(UserImpl v) throws Exception {
 		return v;
 	}
 
-	public UserImpl marshal(User v) throws Exception {
+	public UserImpl marshal(User2 v) throws Exception {
 		if (v instanceof UserImpl)
 			return (UserImpl) v;
 		return new UserImpl(v.getName(), v.getAge());
