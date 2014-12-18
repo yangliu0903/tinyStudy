@@ -23,7 +23,6 @@ import org.tinygroup.crud.service.CrudDbService;
 import org.tinygroup.service.annotation.ServiceComponent;
 import org.tinygroup.service.annotation.ServiceMethod;
 import org.tinygroup.service.annotation.ServiceResult;
-import org.tinygroup.service.annotation.ServiceViewMapping;
 @ServiceComponent()
 public class HibernateCrudService implements CrudDbService<User> {
 	
@@ -37,30 +36,25 @@ public class HibernateCrudService implements CrudDbService<User> {
 		this.crudDbDao = crudDbDao;
 	}
 	@ServiceMethod(serviceId = "addUser")
-	@ServiceViewMapping(value="/queryUsers.servicepage",type="redirect")
 	public void addUser(User user) {
          crudDbDao.addUser(user);
 	}
 	@ServiceMethod(serviceId = "updateUser")
-	@ServiceViewMapping(value="/queryUsers.servicepage",type="redirect")
 	public void updateUser(User user) {
          crudDbDao.updateUser(user);
 	}
 	@ServiceMethod(serviceId = "deleteUser")
-	@ServiceViewMapping(value="/queryUsers.servicepage",type="redirect")
 	public void deleteUserById(String id) {
 		User user=getUserById(id);
 		crudDbDao.deleteUser(user);
 	}
 	@ServiceMethod(serviceId = "queryUsers")
 	@ServiceResult(name = "users")
-	@ServiceViewMapping("/crud/service/hibernate/list.page")
 	public List<User> queryUsers(User user) {
 		return crudDbDao.queryUsers(user);
 	}
 	@ServiceMethod(serviceId = "queryUserById")
 	@ServiceResult(name = "user")
-	@ServiceViewMapping("/crud/service/hibernate/operate.page")
 	public User getUserById(String id) {
 		if(id==null){
 			return null;

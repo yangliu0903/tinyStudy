@@ -25,7 +25,6 @@ import org.tinygroup.service.annotation.ServiceComponent;
 import org.tinygroup.service.annotation.ServiceMethod;
 import org.tinygroup.service.annotation.ServiceParameter;
 import org.tinygroup.service.annotation.ServiceResult;
-import org.tinygroup.service.annotation.ServiceViewMapping;
 import org.tinygroup.support.BeanSupport;
 import org.tinygroup.tinydb.Bean;
 import org.tinygroup.tinydb.DbOperatorFactory;
@@ -53,7 +52,6 @@ public class TinyDbCrudService extends BeanSupport implements
 	}
 
 	@ServiceMethod(serviceId = "addUserTiny")
-	@ServiceViewMapping(value = "/queryUsersTiny.servicepage?@beantype=TUser", type = "redirect")
 	public void addUser(@ServiceParameter(name = "TUser") Bean TUser) {
 		try {
 			operator.insert(TUser);
@@ -63,7 +61,6 @@ public class TinyDbCrudService extends BeanSupport implements
 	}
 
 	@ServiceMethod(serviceId = "updateUserTiny")
-	@ServiceViewMapping(value = "/queryUsersTiny.servicepage?@beantype=TUser", type = "redirect")
 	public void updateUser(@ServiceParameter(name = "TUser") Bean TUser) {
 		try {
 			operator.update(TUser);
@@ -73,7 +70,6 @@ public class TinyDbCrudService extends BeanSupport implements
 	}
 
 	@ServiceMethod(serviceId = "deleteUserTiny")
-	@ServiceViewMapping(value = "/queryUsersTiny.servicepage?@beantype=TUser", type = "redirect")
 	public void deleteUserById(@ServiceParameter(name = "id") String id) {
 		try {
 			operator.deleteById(id, beanType);
@@ -84,7 +80,6 @@ public class TinyDbCrudService extends BeanSupport implements
 
 	@ServiceMethod(serviceId = "queryUsersTiny")
 	@ServiceResult(name = "users")
-	@ServiceViewMapping("/crud/service/tinydb/list.page")
 	public List<Bean> queryUsers(@ServiceParameter(name = "TUser") Bean TUser) {
 		if (TUser == null) {
 			TUser = new Bean(beanType);
@@ -102,7 +97,6 @@ public class TinyDbCrudService extends BeanSupport implements
 
 	@ServiceMethod(serviceId = "queryUserByIdTiny")
 	@ServiceResult(name = "user")
-	@ServiceViewMapping("/crud/service/tinydb/operate.page")
 	public Bean getUserById(@ServiceParameter(name = "id") String id) {
 		if (id == null) {
 			return null;
