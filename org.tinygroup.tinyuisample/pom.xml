@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.weblayerext</artifactId>
+            <artifactId>org.tinygroup.templateweblayer</artifactId>
             <version>${project.version}</version>
             <exclusions>
                 <exclusion>
@@ -26,11 +26,14 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
-        
         <dependency>
             <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.templateweblayer</artifactId>
+            <artifactId>org.tinygroup.cepcorenetty</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.database</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
