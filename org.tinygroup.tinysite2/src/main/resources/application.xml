@@ -27,6 +27,7 @@
 
     <application-processors>
         <application-processor bean="fileResolverProcessor"></application-processor>
+        <application-processor bean="nettyCepCoreProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
     </application-processors>
@@ -577,20 +578,7 @@
         <!--<listener-bean name=""></listener-bean> -->
         <!--<context-param name="" value=""></context-param> -->
     </tiny-listener>
-    <!--velocity 自定义类配置 -->
-    <velocity-context-config>
-        <static-classes>
-            <static-class name="stringUtils" className="org.apache.commons.lang.StringUtils"></static-class>
-
-        </static-classes>
-        <platform-beans>
-            <bean name="pluginManager" type="org.tinygroup.plugin.impl.PluginManagerImpl"></bean>
-            <!--<bean name="user" type="org.tinygroup.usermanager.bean.User"></bean> -->
-        </platform-beans>
-        <spring-beans>
-            <!--<bean name="object2Json" type="org.tinygroup.usermanager.component.Object2Json"></bean> -->
-        </spring-beans>
-    </velocity-context-config>
+    
 
     <parser>
         <property-editors>
