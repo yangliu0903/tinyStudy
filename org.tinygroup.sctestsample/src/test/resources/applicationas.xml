@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<application-processors>
+		<application-processor bean="fileResolverProcessor"></application-processor>
+		<application-processor bean="serviceApplicationProcessor"></application-processor>
+		<application-processor bean="nettyCepCoreProcessor"></application-processor>
+	</application-processors>
+	<cep-configuration node-name="as">
+		<operator name="as"></operator>
+	</cep-configuration>
+</application>
