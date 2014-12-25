@@ -359,7 +359,9 @@
         #logo()
         #end
         #@span9()
-        <div class="top-header text-right"><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=5e6ef409eec4046b4aa0273c0359920bd875b87f834bee175917f96e8b216489"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Tiny" title="Tiny">228977971</a> 邮箱：<a
+        <div class="top-header text-right">
+        <a target="_blank" href="/tinySite/qq.page" alt="Tiny" title="Tiny"><img border="0" src="${TINY_CONTEXT_PATH}/img/Connect_logo_3.png" alt="Tiny" title="Tiny"></a>
+        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=5e6ef409eec4046b4aa0273c0359920bd875b87f834bee175917f96e8b216489"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Tiny" title="Tiny">228977971</a> 邮箱：<a
                 href="mailto:luo_guo@icloud.com">luo_guo@icloud.com</a></em>
 
             <div class="social">
@@ -388,7 +390,7 @@
                 <div class="footer">
                     <hr/>
                     <p class="text-center">&copy;Copy Right 2009~2014 <strong>tiny group</strong><br/>
-                        www.tinygroup.org</p>
+                        浙ICP备14043110号</p>
                 </div>
                 #end
             #end

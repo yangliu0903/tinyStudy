@@ -1,0 +1,3 @@
+#import("/demo/sub3/a.component")
+#test()
+#include("/demo/sub3/include.pagelet")
