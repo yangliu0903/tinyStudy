@@ -24,5 +24,7 @@
         <module>org.tinygroup.hellobyflow</module>
         <module>org.tinygroup.hellobymvc</module>
 	<module>org.tinygroup.webservicesample</module>
+	<module>org.tinygroup.sctestsample</module>
+	<module>org.tinygroup.sctestwebsample</module>
     </modules>
 </project>
