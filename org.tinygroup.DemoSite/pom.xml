@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.weblayerext</artifactId>
+            <artifactId>org.tinygroup.templateweblayer</artifactId>
             <version>${project.version}</version>
             <exclusions>
                 <exclusion>
@@ -28,11 +28,6 @@
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.channel</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.flowprocessor</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -44,21 +39,6 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.serviceprocessor</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.simplechannel</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.rpc</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.servicebasicservice</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -89,11 +69,6 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.jcscache</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.templateweblayer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
