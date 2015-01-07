@@ -42,7 +42,6 @@
                 <ref bean="dictLoadFileProcessor" />
 
 				<ref bean="processorFileResolver" />
-				<ref bean="velocityMacroFileProcessor" />
 				<ref bean="fullContextFileFinder" />
 				<ref bean="uIComponentFileProcessor" />
 				<!-- context2objects -->
