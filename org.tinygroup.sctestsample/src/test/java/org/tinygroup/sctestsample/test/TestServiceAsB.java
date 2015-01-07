@@ -20,8 +20,6 @@ import org.tinygroup.cepcore.CEPCore;
 import org.tinygroup.cepcore.EventProcessor;
 import org.tinygroup.cepcorenetty.NettyCepCoreImpl;
 import org.tinygroup.cepcorenettysc.operator.ArOperator;
-import org.tinygroup.cepcorenettysc.test.service.EventProcessorA;
-import org.tinygroup.cepcorenettysc.test.service.ServiceA;
 import org.tinygroup.tinytestutil.AbstractTestUtil;
 
 public class TestServiceAsB {
