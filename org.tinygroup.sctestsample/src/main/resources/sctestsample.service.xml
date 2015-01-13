@@ -9,5 +9,16 @@
 			<service-result name="result" required="true"
 				is-array="false" type="java.lang.String" />
 		</service-method>
+		
+		<service-method local-name="userhello" service-id="userhello"
+			method-name="hello" cacheable="false">
+			<service-parameters>
+				<service-parameter name="user" type="org.tinygroup.sctestsample.User"
+					required="false" is-array="false" />
+			</service-parameters>
+			<service-result name="result" required="true"
+				is-array="false" type="java.lang.String" />
+		</service-method>
+		
 	</service-component>
 </service-components>

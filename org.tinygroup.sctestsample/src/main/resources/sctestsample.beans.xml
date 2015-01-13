@@ -21,4 +21,7 @@
 	<bean id="hello" name="hello" scope="prototype"
 		class="org.tinygroup.sctestsample.Hello">
 	</bean>
+	<bean id="user" name="user" scope="prototype"
+		class="org.tinygroup.sctestsample.User">
+	</bean>
 </beans>
