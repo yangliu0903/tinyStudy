@@ -13,11 +13,11 @@
 				<th width="100px" height="35">名称</th>
 				<th width="365px" >年龄</th>
 			</tr>
-			#foreach($user in $users)
+			#foreach(user in users)
 			<tr bgcolor="#ffffff">
-				<td align="center"><input type="checkbox" name="id" value="$user.id"/></td>
-				<td align="center" height="30">$user.name</td>
-				<td align="center">$user.age</td>
+				<td align="center"><input type="checkbox" name="id" value="${user.id}"/></td>
+				<td align="center" height="30">${user.name}</td>
+				<td align="center">${user.age}</td>
 			</tr>
 			#end
 		</tbody>

@@ -1,10 +1,14 @@
 <form action="${TINY_CONTEXT_PATH}/crud.pageflow">
- 姓名:<input type="text" name="name" value="$!user.name" /><br/>
- 年龄:<input type="text" name="age" value="$!user.age" /><br/>
- <input type="hidden" name="id" value="$!user.id"/>
- #if($user)
+ 
+ #if(user)
+ 姓名:<input type="text" name="name" value="${user.name}" /><br/>
+ 年龄:<input type="text" name="age" value="${user.age}" /><br/>
+ <input type="hidden" name="id" value="${user.id}"/>
  <input type="hidden" name="tiny_flow_id" value="updateUser"/>
  #else
+ 姓名:<input type="text" name="name" value="" /><br/>
+ 年龄:<input type="text" name="age" value="" /><br/>
+ <input type="hidden" name="id" value=""/>
  <input type="hidden" name="tiny_flow_id" value="addUser"/>
  #end
 <input type="submit" value="提交">

@@ -8,8 +8,8 @@ cookie结果页面:
 				<th width="365px" >cookie总大小</th>
 			</tr>
 			<tr bgcolor="#ffffff">
-				<td align="center" height="30">$!cookie_name</td>
-				<td align="center">$!cookie_size</td>
+				<td align="center" height="30">${cookie_name}</td>
+				<td align="center">${cookie_size}</td>
 			</tr>
 		</tbody>
 	</table>

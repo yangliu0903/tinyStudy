@@ -7,10 +7,10 @@
 				<th width="100px" height="35">名称</th>
 				<th width="365px" >大小</th>
 			</tr>
-			#foreach($file in $files)
+			#foreach(file in files)
 			<tr bgcolor="#ffffff">
-				<td align="center" height="30">$file.name</td>
-				<td align="center">$file.size</td>
+				<td align="center" height="30">${file.name}</td>
+				<td align="center">${file.size}</td>
 			</tr>
 			#end
 		</tbody>

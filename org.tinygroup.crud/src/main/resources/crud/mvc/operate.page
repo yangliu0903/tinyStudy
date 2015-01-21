@@ -1,12 +1,18 @@
 <form 
-#if($user)
+#if(user)
 action="${TINY_CONTEXT_PATH}/mvc/userUpdate.do"
 #else
 action="${TINY_CONTEXT_PATH}/mvc/userAdd.do"
 #end
 >
- 姓名:<input type="text" name="name" value="$!user.name" /><br/>
- 年龄:<input type="text" name="age" value="$!user.age" /><br/>
- <input type="hidden" name="id" value="$!user.id"/>
+ #if(user)
+ 姓名:<input type="text" name="name" value="${user.name}" /><br/>
+ 年龄:<input type="text" name="age" value="${user.age}" /><br/>
+ <input type="hidden" name="id" value="${user.id}"/>
+ #else
+ 姓名:<input type="text" name="name" value="" /><br/>
+ 年龄:<input type="text" name="age" value="" /><br/>
+ <input type="hidden" name="id" value=""/>
+ #end
 <input type="submit" value="提交">
 </form>
