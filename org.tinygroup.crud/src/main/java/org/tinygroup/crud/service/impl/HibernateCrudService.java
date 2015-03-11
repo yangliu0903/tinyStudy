@@ -17,13 +17,14 @@ package org.tinygroup.crud.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 import org.tinygroup.crud.service.CrudDbService;
 import org.tinygroup.service.annotation.ServiceComponent;
 import org.tinygroup.service.annotation.ServiceMethod;
 import org.tinygroup.service.annotation.ServiceResult;
-@ServiceComponent()
+@ServiceComponent(bean="hibernateCrudService")
 public class HibernateCrudService implements CrudDbService<User> {
 	
 	private CrudDbDao<User> crudDbDao;
@@ -36,6 +37,7 @@ public class HibernateCrudService implements CrudDbService<User> {
 		this.crudDbDao = crudDbDao;
 	}
 	@ServiceMethod(serviceId = "addUser")
+	@Transactional
 	public void addUser(User user) {
          crudDbDao.addUser(user);
 	}
