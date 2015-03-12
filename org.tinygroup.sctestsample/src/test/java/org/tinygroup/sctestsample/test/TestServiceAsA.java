@@ -24,14 +24,14 @@ import org.tinygroup.tinytestutil.AbstractTestUtil;
 public class TestServiceAsA {
 	public static void main(String[] args) {
 		AbstractTestUtil.init("applicationa.xml", true);
-		NettyCepCoreImpl p  = BeanContainerFactory.getBeanContainer(
-				TestServiceAsA.class.getClassLoader()).getBean(CEPCore.CEP_CORE_BEAN);
-		p.setNodeName("asa");
-		ArOperator aro = new ArOperator("192.168.232.54","5555","192.168.232.54","8888",10);
-		
-		p.setOperator(aro);
-		p.registerEventProcessor(getEventProcessor());
-		p.startCEPCore(p);
+//		NettyCepCoreImpl p  = BeanContainerFactory.getBeanContainer(
+//				TestServiceAsA.class.getClassLoader()).getBean(CEPCore.CEP_CORE_BEAN);
+//		p.setNodeName("asa");
+//		ArOperator aro = new ArOperator("192.168.232.54","5555","192.168.232.54","8888",10);
+//		
+//		p.setOperator(aro);
+//		p.registerEventProcessor(getEventProcessor());
+//		p.startCEPCore(p);
 	}
 	
 	public static EventProcessor getEventProcessor(){
