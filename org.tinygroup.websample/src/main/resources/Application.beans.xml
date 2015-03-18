@@ -53,6 +53,7 @@
 				<ref bean="customSqlFileResolver" />
 				<ref bean="viewFileResolver" />
 				<ref bean="procedureFileResolver" />
+				<ref bean="urlRestfulFileProcessor"/>
 				
 			</list>
 		</property>
