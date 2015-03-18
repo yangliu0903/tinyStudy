@@ -24,9 +24,28 @@
 	
 	<bean id="as" scope="singleton"
 		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
-		<property name="ip" value="192.168.154.221"></property>
+		<property name="ip" value="192.168.232.54"></property>
 		<property name="port" value="2222"></property>
-		<property name="remoteIp" value="192.168.154.221"></property>
+		<property name="remoteIp" value="192.168.232.54"></property>
+		<property name="remotePort" value="8888"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	
+	<bean id="asb" scope="singleton"
+		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
+		<property name="ip" value="192.168.232.54"></property>
+		<property name="port" value="2221"></property>
+		<property name="remoteIp" value="192.168.232.54"></property>
+		<property name="remotePort" value="8888"></property>
+		<property name="weight" value="20"></property>
+	</bean>
+	
+	
+	<bean id="ar" scope="singleton"
+		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
+		<property name="ip" value="192.168.232.54"></property>
+		<property name="port" value="2223"></property>
+		<property name="remoteIp" value="192.168.232.54"></property>
 		<property name="remotePort" value="8888"></property>
 		<property name="weight" value="20"></property>
 	</bean>

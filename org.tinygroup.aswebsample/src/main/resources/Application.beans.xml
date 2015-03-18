@@ -11,6 +11,7 @@
 			<list>
 				<ref bean="i18nFileProcessor" />
 				<ref bean="xStreamFileProcessor" />
+				<ref bean="xmlServiceFileProcessor"/>
 				<ref bean="tinyFilterFileProcessor" />
 				<ref bean="tinyProcessorFileProcessor" />
 			</list>
@@ -25,7 +26,7 @@
 		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
 		<property name="ip" value="192.168.232.45"></property>
 		<property name="port" value="1111"></property>
-		<property name="remoteIp" value="192.168.232.45"></property>
+		<property name="remoteIp" value="192.168.232.54"></property>
 		<property name="remotePort" value="8888"></property>
 		<property name="weight" value="20"></property>
 	</bean>
