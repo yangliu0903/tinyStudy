@@ -26,5 +26,8 @@
 	<module>org.tinygroup.webservicesample</module>
 	<module>org.tinygroup.sctestsample</module>
 	<module>org.tinygroup.sctestwebsample</module>
+	<module>org.tinygroup.sctestwebsampleas</module>
+	<module>org.tinygroup.sctestwebsampleas2</module>
+	<module>org.tinygroup.sctestwebsamplesc</module>
     </modules>
 </project>
