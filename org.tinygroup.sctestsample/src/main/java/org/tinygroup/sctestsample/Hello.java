@@ -2,7 +2,8 @@ package org.tinygroup.sctestsample;
 
 public class Hello {
 	public String hello(String name) {
-
+		String a = null;
+		a.substring(1);
 		return "hello," + name;
 	}
 

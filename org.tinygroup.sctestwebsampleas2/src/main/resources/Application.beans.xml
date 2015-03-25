@@ -20,39 +20,10 @@
 				<ref bean="annotationFileProcessor" />
 				<ref bean="annotationClassFileProcessor" />
 
-				<!-- xmlservice
+				<!-- xmlservice -->
 				<ref bean="xmlServiceFileProcessor" />
-				<ref bean="xmlSysServiceFileProcessor" /> -->
-				<!-- flow -->
-				<ref bean="flowFileProcessor" />
-				<ref bean="flowComponentProcessor" />
-
-				<!-- pageflow -->
-				<ref bean="pageFlowComponentProcessor" />
-				<ref bean="pageFlowFileProcessor" />
-
-                <!--dictload-->
-                <ref bean="dictLoadFileProcessor" />
-
-				<ref bean="tinyMacroFileProcessor" />
-				<ref bean="fullContextFileFinder" />
-				<ref bean="uIComponentFileProcessor" />
-				<!-- context2objects -->
-				<ref bean="generatorFileProcessor"/>
-                <!-- serviceMapping -->
-				<ref bean="serviceMappingFileProcessor"/>
-				<!-- database -->
-				<ref bean="constantFileResolver" />
-				<ref bean="standardTypeFileResolver" />
-				<ref bean="errorMessageFileResolver" />
-				<ref bean="businessTypeFileResolver" />
-				<ref bean="standardFieldFileResolver" />
-				<ref bean="tableFileResolver" />
-				<ref bean="initDataFileResolver" />
-				<ref bean="processorFileResolver" />
-				<ref bean="customSqlFileResolver" />
-				<ref bean="viewFileResolver" />
-				<ref bean="procedureFileResolver" />
+				<ref bean="xmlSysServiceFileProcessor" />
+				
 				
 			</list>
 		</property>
@@ -62,10 +33,10 @@
 		<property name="fileResolver" ref="fileResolver"></property>
 	</bean>
 	
-	<bean id="ar" scope="singleton"
+	<bean id="as2" scope="singleton"
 		class="org.tinygroup.cepcorenettysc.operator.ArOperator">
 		<property name="ip" value="192.168.232.41"></property>
-		<property name="port" value="1110"></property>
+		<property name="port" value="1112"></property>
 		<property name="remoteIp" value="192.168.232.41"></property>
 		<property name="remotePort" value="8888"></property>
 		<property name="weight" value="20"></property>
