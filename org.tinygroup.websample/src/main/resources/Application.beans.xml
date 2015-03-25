@@ -54,6 +54,7 @@
 				<ref bean="viewFileResolver" />
 				<ref bean="procedureFileResolver" />
 				<ref bean="urlRestfulFileProcessor"/>
+				<ref bean="tinyListenerFileProcessor"/>
 				
 			</list>
 		</property>
@@ -61,5 +62,11 @@
 	<bean id="fileResolverProcessor" scope="singleton"
 		class="org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor">
 		<property name="fileResolver" ref="fileResolver"></property>
+	</bean>
+	<bean id="webListener" scope="singleton"
+		class="org.tinygroup.websample.WebListener">
+	</bean>
+	<bean id="tinyWebListener" scope="singleton"
+		class="org.tinygroup.websample.TinyWebListener">
 	</bean>
 </beans>
