@@ -2,7 +2,7 @@
 	type="org.tinygroup.tinydb.operator.impl.BeanStringOperator" default="opensource" is-increase="false">
 	<table-loads default="opensource">
 		<table-load type="org.tinygroup.tinydb.convert.impl.MetadataTableConfigLoad">
-			<property name="schema" value="opensource"/>
+			<property name="schema" value="sample"/>
 			<property name="tableNamePattern" value="%"/>
 		</table-load>
 		<table-load type="org.tinygroup.tinydb.convert.impl.DatabaseTableConfigLoad">
