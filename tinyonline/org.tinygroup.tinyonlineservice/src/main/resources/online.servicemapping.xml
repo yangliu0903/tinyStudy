@@ -1,0 +1,5 @@
+<service-view-mappings>
+	<service-view-mapping  service-id="renderTemplate"  path="/result/result.page"  type="forward"></service-view-mapping>
+<!--  <service-view-mapping service-id="queryChaptersTiny"  path="/result/home.page"   type="forward"></service-view-mapping> -->
+<!--  <service-view-mapping service-id="queryItemByChapId"  path="/result/result3.page"   type="forward"></service-view-mapping>  -->
+</service-view-mappings>

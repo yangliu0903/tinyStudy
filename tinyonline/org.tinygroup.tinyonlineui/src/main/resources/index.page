@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>tiny模版引擎 在线体验`(*∩_∩*)′</title>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+
+<script language="JavaScript" src="${TINY_CONTEXT_PATH}/js/jquery-1.11.2.min.js">
+</script>
+<script language="JavaScript" src="${TINY_CONTEXT_PATH}/js/home.js">
+</script>
+</head>
+
+
+<body>
+<form id="form1" target= "_blank" name="form1" method="post" action="${TINY_CONTEXT_PATH}/renderTemplate.servicepage" >   <!-- onsubmit="return validateForm();" -->
+ 
+  <table width="100%">
+    <tr>
+      <td valign="top">&nbsp;</td>
+      <td><img src="${TINY_CONTEXT_PATH}/img/logo.jpg" width="100" height="100"  style="margin-right: 30px" /><b>TinyFramework</b><a href="${TINY_CONTEXT_PATH}/img/sunny-big.png"><img src="${TINY_CONTEXT_PATH}/img/sunny-big.png" width="100" height="100" style="margin-left: 260px" /></a> <br/><br/>
+      </td>
+    </tr>
+    
+    <tr>
+      <td valign="top">例子</td>
+      <td>章节
+          <select name="chapter" id="chapter" >   <!-- onChange="changeChapter()" -->
+          <option value=0 selected="selected">请选择</option>
+           </select>
+         小节
+        <select name="item" id="item" >  <!--  onchange="changeSample()" -->
+        <option value=0 selected="selected">请选择</option>
+         </select>
+     </td>
+    </tr>
+
+
+
+    <tr>
+      <td width="11%" valign="top"><div align="left">演示示例：<span class="STYLE1">*</span></div></td>
+      <td width="89%"><label>
+        <textarea name="example" id="example_id" cols="100" rows="10" ></textarea>
+      </label></td>
+    </tr>
+
+    <tr>
+      <td>&nbsp;&nbsp;</td>
+      <td>
+        <input type="submit" name="Submit" value="运行" />&nbsp;&nbsp;
+        <input type="button" id="reset_id" value="重置" />
+       </td>
+    </tr>
+
+   <tr>
+      <!-- <td valign="top"><div align="left">语法解析</div></td>
+      <td><textarea name="explanation_id" id="explanation_id" cols="100" rows="6"></textarea></td> -->
+      <td valign="top"><div align="left">语法解析</div></td>
+      <td><pre><div name="explanation_id" id="explanation_id"></div></pre></td>
+   </tr>
+
+   
+    
+   <tr>
+      <td>帮助</td>
+      <td>
+        <ul>
+        <li>有任何问题，请联系luo_guo@icloud.com</li>
+        <li>由于时间限制，例子不能提供tiny模版引擎的所有特性，详情请阅读<a target="_blank" href="http://www.tinygroup.org/confluence/pages/viewpage.action?pageId=557323">官方在线手册</a></li>
+        <li><a target="_blank" href="http://www.tinygroup.org/#getAllCommonMember.servicepage">关于我们</a>
+        </ul>        
+      </td>
+        
+    </tr>
+     </table>
+  </form>
+</body>
+</html>

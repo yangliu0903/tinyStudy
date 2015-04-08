@@ -1,0 +1,17 @@
+<db-configuration
+	type="org.tinygroup.tinydb.operator.impl.BeanStringOperator" default="tinyonline" is-increase="false">
+	<table-loads default="tinyonline">
+		<table-load type="org.tinygroup.tinydb.convert.impl.MetadataTableConfigLoad">
+			<property name="schema" value="tinyonline" />
+			<property name="tableNamePattern" value="%"/>
+		</table-load>
+		<table-load type="org.tinygroup.tinydb.convert.impl.DatabaseTableConfigLoad">
+			<property name="database" value="mysql"/>
+		</table-load>
+	</table-loads>
+	<dialect type="org.tinygroup.tinydb.dialect.impl.MySQLDialect">
+ <property name="incrementerName" value="incrementer"/>
+ <property name="columnName" value="sequence_id"/>
+ <property name="cacheSize" value="100"/>
+ </dialect>
+</db-configuration>
