@@ -4,11 +4,11 @@
   <parent>
         <artifactId>tinyonline</artifactId>
         <groupId>org.tinygroup</groupId>
-        <version>1.2.0-SNAPSHOT</version>
+        <version>${tiny_version}</version>
     </parent>
   <groupId>org.tinygroup</groupId>
   <artifactId>org.tinygroup.tinyonlineui</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>${tiny_version}</version>
   <name>org.tinygroup.tinyonlineui</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -24,7 +24,7 @@
     <dependency>
     	<groupId>org.tinygroup</groupId>
     	<artifactId>org.tinygroup.jquery</artifactId>
-    	<version>1.2.0-SNAPSHOT</version>
+    	<version>${tiny_version}</version>
     </dependency>
   </dependencies>
 </project>

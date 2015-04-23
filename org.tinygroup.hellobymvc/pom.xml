@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.tinygroup</groupId>
     <artifactId>TinySample</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
   </parent>
   <artifactId>org.tinygroup.hellobymvc</artifactId>
   <packaging>jar</packaging>
@@ -19,12 +19,12 @@
      <dependency>
       <groupId>org.tinygroup</groupId>
       <artifactId>org.tinygroup.service</artifactId>
-      <version>1.2.0-SNAPSHOT</version>
+      <version>${tiny_version}</version>
     </dependency>
     <dependency>
       <groupId>org.tinygroup</groupId>
       <artifactId>org.tinygroup.weblayer</artifactId>
-      <version>1.2.0-SNAPSHOT</version>
+      <version>${tiny_version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

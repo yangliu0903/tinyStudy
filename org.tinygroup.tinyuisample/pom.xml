@@ -5,7 +5,7 @@
 	<parent>
          <groupId>org.tinygroup</groupId>
          <artifactId>TinySample</artifactId>
-         <version>1.2.0-SNAPSHOT</version>
+         <version>1.2.3-SNAPSHOT</version>
         </parent>
 	<artifactId>org.tinygroup.tinyuisample</artifactId>
     <name>tinyuisample</name>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.templateweblayer</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>servlet-api-2.5</artifactId>
@@ -29,12 +29,12 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.cepcorenetty</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.database</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

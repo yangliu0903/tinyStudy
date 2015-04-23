@@ -4,27 +4,27 @@
 	<parent>
 		<groupId>org.tinygroup</groupId>
 		<artifactId>TinySample</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.2.3-SNAPSHOT</version>
 	</parent>
 	<groupId>org.tinygroup</groupId>
 	<artifactId>org.tinygroup.sctestwebsampleas</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
+	<version>${tiny_version}</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.sctestsample</artifactId>
-			<version>${project.version}</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.validate</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.templateweblayer</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>servlet-api-2.5</artifactId>
@@ -39,17 +39,17 @@
 		<dependency>
           <groupId>org.tinygroup</groupId>
           <artifactId>org.tinygroup.dbfilter</artifactId>
-          <version>1.2.0-SNAPSHOT</version>
+          <version>${tiny_version}</version>
         </dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.serviceprocessor</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.cepcorenettysc</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 	</dependencies>
 </project>

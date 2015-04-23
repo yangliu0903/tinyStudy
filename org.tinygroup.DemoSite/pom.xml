@@ -5,7 +5,7 @@
 	<parent>
          <groupId>org.tinygroup</groupId>
          <artifactId>TinySample</artifactId>
-         <version>1.2.0-SNAPSHOT</version>
+         <version>1.2.3-SNAPSHOT</version>
         </parent>
 	<artifactId>org.tinygroup.DemoSite</artifactId>
     <name>DemoSite</name>
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.templateweblayer</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>servlet-api-2.5</artifactId>
@@ -29,52 +29,52 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.flowprocessor</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.monitor</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.serviceprocessor</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.flowbasicservice</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.cepcorebasicservice</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.database</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.flowservicecomponent</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.flowbasiccomponent</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.jcscache</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.cepcorenetty</artifactId>
-            <version>${project.version}</version>
+            <version>${tiny_version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
