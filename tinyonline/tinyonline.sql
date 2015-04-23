@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2015-04-08 17:38:07
+Date: 2015-04-10 15:34:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -32,7 +32,6 @@ INSERT INTO `chapter` VALUES ('1', 'Tiny模板引擎基础语法及指令');
 INSERT INTO `chapter` VALUES ('2', '控制结构语句');
 INSERT INTO `chapter` VALUES ('3', '宏的定义以及调用');
 INSERT INTO `chapter` VALUES ('4', '系统内嵌函数及自定义函数');
-INSERT INTO `chapter` VALUES ('5', 'Tiny模板引擎之布局');
 INSERT INTO `chapter` VALUES ('6', 'Tiny模板引擎综合示例');
 
 -- ----------------------------
@@ -79,12 +78,6 @@ INSERT INTO `item` VALUES ('22', '4', '1', '用call,callMacro调用宏', '      
 INSERT INTO `item` VALUES ('23', '4', '2', '格式化函数fmt,format,formatter', '    #set(name=\"cying\")\r\n    #set(result=format(\"hello,%s\",name))\r\n    ${format(\"hello,%s\",name)}', '    三个函数的作用完全相同。\r\n    format(formatString,...)\r\n    返回值：格式化后结果，字符串\r\n\r\n    format函数的底层实现是调用了java.util.Formatter实现的，因此具体如何填写，格式化串，请参考：java.util.Formatter用法 章节。');
 INSERT INTO `item` VALUES ('24', '4', '3', '求值函数eval,evaluate\"', '   #set(name=\"cying\") \r\n   #set(result=eval(\"hello,${name}\"))\r\n    ${eval(\"hello,${name}\")}', '    求值函数(eval，evaluate)，用于执行一段宏代码，并返回执行结果\r\n    eval(\"模板内容\")\r\n    evaluage(templateContentVarName)\r\n    返回值：执行后的结果，字符串');
 INSERT INTO `item` VALUES ('25', '4', '4', '类实例判断函数(is,instanceOf,instance)', '   ${instance(\"abc\",\"java.lang.String\",\"java.lang.Byte\")}\r\n   ${instanceOf(10,\"java.lang.Integer\")}', ' 类实例判断函数(is,instanceOf,instance) 根据传入对象判断是否为指定类的实例，返回值为true或者false.\r\n    is(object,clazz...)\r\n    instanceOf(object,clazz...)\r\n    instance(object,clazz...)');
-INSERT INTO `item` VALUES ('26', '4', '5', '读取文本资源函数read,readContent', '', '    读取文本资源函数(read,readContent),用于读取指定路径的文本资源，并返回指定结果\r\n    read(\"src/test.txt\")\r\n    readContent(resourceUrl)\r\n    返回值：加载文本资源的结果，字符串');
-INSERT INTO `item` VALUES ('27', '4', '6', '自定义扩展函数', '', 'tiny模板引擎支持自定义函数');
-INSERT INTO `item` VALUES ('28', '5', '1', '入门示例', null, null);
-INSERT INTO `item` VALUES ('29', '5', '2', '进阶示例', null, null);
-INSERT INTO `item` VALUES ('30', '5', '3', '布局重写语句#layout', null, null);
-INSERT INTO `item` VALUES ('31', '5', '4', '模板嵌套语句#include', null, null);
 INSERT INTO `item` VALUES ('32', '6', '2', '多层宏调用示例', '#macro firstMacro()\r\n<div>\r\n    #bodyContent\r\n</div>\r\n#end\r\n#macro secondMacro()\r\n<b>\r\n    #bodyContent\r\n</b>\r\n#end\r\n#@firstMacro()\r\n    #@secondMacro()\r\n    Information\r\n    #end\r\n#end\r\n#@secondMacro()\r\n    #@firstMacro()\r\n    Information\r\n    #end\r\n#end', 'tiny模版引擎的宏支持嵌套，但要注意有内容的宏在调用时要用@符号，以区别于宏的定义。');
 INSERT INTO `item` VALUES ('33', '6', '3', '宏定义中调用宏示例', '#macro firstMacro()\r\n<div>\r\n    #@secondMacro()\r\n        #bodyContent\r\n    #end\r\n</div>\r\n#end\r\n#macro secondMacro()\r\n<b>\r\n    #bodyContent\r\n</b>\r\n#end\r\n#@firstMacro()\r\n    Information\r\n#end', '注意宏定义与调用写法的区别\r\n上面示例应该得到这样的结果：\r\n<div><b>Information</b></div>\r\n');
 INSERT INTO `item` VALUES ('34', '6', '4', '多次循环调用示例', '#for(i:[1..2])\r\n    #for(j:[1..2])\r\n        ${i}*${j}=${i*j}#eol\r\n    #end\r\n#end', '以下是期待的调用结果：\r\n1*1=1\r\n1*2=2\r\n2*1=2\r\n2*2=4');
