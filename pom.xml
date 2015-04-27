@@ -12,6 +12,12 @@
     <properties>
         <tiny_version>1.2.2</tiny_version>
     </properties>
+    <scm>
+        <connection>scm:git:git@http://git.oschina.net/tinyframework/TinySample.git</connection>
+        <developerConnection>scm:git:http://git.oschina.net/tinyframework/TinySample.git</developerConnection>
+        <url>http://git.oschina.net/tinyframework/TinySample.git</url>
+    </scm>
+
     <modules>
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
