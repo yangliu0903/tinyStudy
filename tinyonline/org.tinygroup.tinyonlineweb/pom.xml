@@ -105,12 +105,12 @@
       <dependency>
       	<groupId>org.tinygroup</groupId>
       	<artifactId>org.tinygroup.tinyonlineui</artifactId>
-      	<version>${tiny_version}</version>
+      	<version>${project.version}</version>
       </dependency>
       <dependency>
       	<groupId>org.tinygroup</groupId>
       	<artifactId>org.tinygroup.tinyonlineservice</artifactId>
-      	<version>${tiny_version}</version>
+      	<version>${project.version}</version>
       </dependency>
     </dependencies>
     <build>
