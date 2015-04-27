@@ -101,7 +101,7 @@
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.webservicesample</artifactId>
-			<version>${tiny_version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
