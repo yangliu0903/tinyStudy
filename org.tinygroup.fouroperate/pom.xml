@@ -7,7 +7,6 @@
   </parent>
   <artifactId>org.tinygroup.fouroperate</artifactId>
   <name>org.tinygroup.fouroperate</name>
-  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--可以自定义标签对,可以在其它地方用{标签名引用}-->
