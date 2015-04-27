@@ -4,11 +4,9 @@
   <parent>
         <artifactId>tinyonline</artifactId>
         <groupId>org.tinygroup</groupId>
-        <version>${tiny_version}</version>
+        <version>1.2.2-SNAPSHOT</version>
     </parent>
-  <groupId>org.tinygroup</groupId>
   <artifactId>org.tinygroup.tinyonlineui</artifactId>
-  <version>${tiny_version}</version>
   <name>org.tinygroup.tinyonlineui</name>
   <url>http://maven.apache.org</url>
   <properties>
