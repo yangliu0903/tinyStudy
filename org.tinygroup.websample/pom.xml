@@ -11,6 +11,23 @@
 	<packaging>war</packaging>
 	<name>websample</name>
 	<url>http://maven.apache.org</url>
+	<repositories>
+		<repository>
+			<id>tinyrepositoryrelease</id>
+			<name>tinyrepositoryrelease</name>
+			<url>http://www.tinygroup.org/nexus/content/repositories/release/</url>
+			<releases><enabled>true</enabled></releases>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+		<repository>
+			<id>tinyrepositorysnapshot</id>
+			<name>tinyrepositorysnapshot</name>
+			<url>http://www.tinygroup.org/nexus/content/repositories/snapshots/</url>
+			<releases><enabled>false</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
