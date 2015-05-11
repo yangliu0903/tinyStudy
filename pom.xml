@@ -50,7 +50,6 @@
         <module>org.tinygroup.fouroperate</module>
         <module>org.tinygroup.helloworld</module>
         <module>org.tinygroup.websample</module>
-        <module>org.tinygroup.tinysite</module>
         <module>org.tinygroup.tinysite2</module>
         <module>org.tinygroup.hellobyannotation</module>
         <module>org.tinygroup.hellobyxml</module>
