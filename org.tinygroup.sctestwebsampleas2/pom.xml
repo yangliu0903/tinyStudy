@@ -12,7 +12,7 @@
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.sctestsample</artifactId>
-			<version>${tiny_version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
