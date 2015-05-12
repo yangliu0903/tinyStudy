@@ -8,8 +8,8 @@
     <node id="helloworld" name="helloworld" title="HelloWorld组件">
       <component name="helloworld" title="HelloWorld组件">
         <properties>
-          <flow-property name="name" value="${name}"/>
-          <flow-property name="result" value="result"/>
+          <flow-property name="name" type="java.lang.String" value="${name}"/>
+          <flow-property name="result" type="java.lang.String" value="result"/>
         </properties>
       </component>
       <next-nodes>
