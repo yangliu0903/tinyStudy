@@ -1,0 +1,65 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title>Tiny开发框架</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<LINK rel="Bookmark" href="/favicon.ico" >
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/Compatible/html5shiv.min.js"></script>
+<script type="text/javascript" src="js/Compatible/respond.min.js"></script>
+<script type="text/javascript" src="js/Compatible/PIE_IE678.js"></script>
+<![endif]-->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.min.1.7.1.js"></script>
+<!--[if IE 6]>
+<script type="text/javascript" src="js/Compatible/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('.pngfix,.icon,.list-icon');</script>
+<![endif]-->
+</head>
+<body>
+#@topbar()
+  #topbarItem("section-1","",true)
+  #topbarItem("section-2","方法论")
+  #topbarItem("section-3","SOA")
+  #topbarItem("section-4","水平扩展")
+  #topbarItem("section-5","模块化")
+  #topbarItem("section-6","热部署")
+  #topbarItem("section-7","流程引擎")
+  #topbarItem("section-8","WEB展现")
+  #topbarItem("section-9","组件库")
+  #topbarItem("section-10","开发工具")
+#end
+
+#@container()
+
+#sectionLeft("section-1","1.jpg")
+${pageContent}
+
+#footer();
+
+#end
+
+<script type="text/javascript" src="js/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="js/jquery.nav.js"></script>
+<script type="text/javascript">
+jQuery(function($) {
+	$('#nav').onePageNav({
+    begin: function() {
+	  	console.log('start');
+    },
+    end: function() {
+	  console.log('stop');
+    },
+	scrollOffset: 30
+  });
+});
+</script>
+</body>
+</html>

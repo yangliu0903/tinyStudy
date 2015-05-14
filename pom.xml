@@ -44,6 +44,7 @@
     </repositories>
 
     <modules>
+        <module>top.j2ee.site</module>
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
         <module>org.tinygroup.crud</module>

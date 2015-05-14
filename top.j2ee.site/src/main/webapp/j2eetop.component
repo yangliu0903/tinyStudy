@@ -1,0 +1,98 @@
+#macro topbar()
+<div class="topbar">
+  <div class="wp"> <a href="#" class="logo l"></a>
+    <ul id="nav" class="topnav l">
+      #bodyContent
+    </ul>
+    </div>
+</div>
+#end
+
+#macro topbarItem(section,title,current)
+#if(current)
+<li class="current"><a href="#${section}" style="display:none"></a></li>
+#else
+<li><a href="#${section}">${title}</a></li>
+#end
+#end
+
+#macro container()
+<div id="container">
+#bodyContent
+</div>
+#end
+
+#macro section(section,img,sectionClass)
+<div id="${section}" class="section" style="background-image:url(images/${img})">
+  <div class="wp">
+    <div class="tuwen">
+      <div class="tuwennr ${sectionClass}">
+      #bodyContent
+      </div>
+    </div>
+  </div>
+</div>
+#end
+
+
+#macro sectionLeft(section,img)
+#@section(section,img)
+      #bodyContent
+#end
+#end
+
+#macro sectionRight(section,img)
+#@section(section,img,"r")
+      #bodyContent
+#end
+#end
+
+#macro infoPanel(title,buttonTitle,buttonUrl)
+        <h2 class="title">${title}</h2>
+        <p class="info">
+        #bodyContent
+        </p>
+        #if(buttonTitle)
+        #button(buttonTitle,buttonUrl)
+        #end
+#end
+
+#macro button(buttonTitle,buttonUrl)
+<p class="btnbar"><a class="btn-buy" href="${buttonUrl}" target="_blank"><span class="paddingW"></span>${buttonTitle}</a></p>
+#end
+
+#macro footer()
+<div class="Newfooter">
+  <div class="wp cl">
+    <div class="weixin-pic"></div>
+    <div class="weixin-text">
+      <div style="padding-top:63px">服务号：J2EE.TOP<br>
+        扫一扫关注微信账号</div>
+    </div>
+    <div class="copyrightWP">
+      <div class="bottomNav cl">
+        <div class="leftbox">
+          <div class="tit">在线客服</div>
+          <ul>
+            <li>工作时间：8:30 - 17:30（节假日休息）</li>
+            <li>客服电话：010 - xxxx xxx</li>
+            <li>投诉电话：010 - xxxx xxx</li>
+            <li>E-mail：<a href="mailto:j2ee_top@126.com">j2ee_top@126.com</a></li>
+          </ul>
+        </div>
+        <div class="leftbox2">
+          <div class="tit">关于我们</div>
+          <ul>
+            <li><a href="http://www.tinygroup.org/" target="_blank">Tiny开源网站</a></li>
+            <li><a href="http://git.oschina.net/tinyframework/tiny" target="_blank">Tiny开源源码</a></li>
+            <li><a href="http://my.oschina.net/tinyframework" target="_blank">Tiny博客</a></li>
+            <li><a href="http://www.tinygroup.org/confluence/pages/viewpage.action?pageId=557323" target="_blank">Tiny文档</a></li>
+          </ul>
+        </div>
+        <a target="_blank" href="#" class="footer-logo"></a>
+      </div>
+      <div class="copyright">浙ICP备11017824号-4 / 浙ICP证130164号  / 杭州分局备案编号：110105000501<br>Copyright &copy; 2014-2015 Tiny inc.</div>
+    </div>
+  </div>
+</div>
+#end
