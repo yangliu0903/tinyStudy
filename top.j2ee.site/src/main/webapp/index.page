@@ -1,6 +1,6 @@
 
 
-#@sectionRight("section-2","2.jpg")
+#@sectionLeft("section-2","2.jpg")
     #@infoPanel("方法论决定了可以达到的高度")
     方法论，就是人们认识世界、改造世界的根本方法。<br>
     <br />
@@ -29,7 +29,7 @@
     #end
 #end
 
-#@sectionRight("section-4","4.jpg")
+#@sectionLeft("section-4","4.jpg")
     #@infoPanel("设计原则解决目标冲突时的解决策略")
     #@font("yellow")约定优于配置原则-COC#end<br>
     #@font("yellow")不要重复你自己原则-DRY#end<br>
@@ -43,7 +43,7 @@
 #end
 
 
-#@sectionLeft("section-5","5.jpg")
+#@sectionRight("section-5","5.jpg")
     #@infoPanel("生态圈决定了是否可以持续性发展")
     只有形成完整的开源生态圈，开源才能生存、发展。
     <br><br>
@@ -68,7 +68,7 @@
     #end
 #end
 
-#@sectionRight("section-7","7.jpg")
+#@sectionRight("section-7","3.jpg")
     #@infoPanel("热部署可有效帮助提升系统的可用性")
     所谓热部署，就是在应用正在运行的时候软件升级，却不需要重新启动应用。
     <br><br>
@@ -108,11 +108,8 @@
     #end
 #end
 
-#macro font(color)
-<font color="yellow">#bodyContent</font>
-#end
 
-#@sectionLeft("section-11","2.jpg")
+#@sectionRight("section-11","2.jpg")
     #@infoPanel("开发工具是软件工程方法的延伸","马上安装>>","http://www.tinygroup.org/tinystudio/")
     不用Tiny开发工具你可以完成所有基于Tiny框架的开发工作。<br>
     <br>

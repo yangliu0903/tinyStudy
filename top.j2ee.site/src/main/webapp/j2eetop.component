@@ -61,6 +61,10 @@
 <p class="btnbar"><a class="btn-buy" href="${buttonUrl}" target="_blank"><span class="paddingW"></span>${buttonTitle}</a></p>
 #end
 
+#macro font(color)
+<font color="yellow">#bodyContent</font>
+#end
+
 #macro footer()
 <div class="Newfooter">
   <div class="wp cl">
