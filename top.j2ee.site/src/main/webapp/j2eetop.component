@@ -34,7 +34,17 @@
 </div>
 #end
 
-
+#macro sectionCenter(section,img,sectionClass)
+<div id="${section}" class="section" style="background-image:url(images/${img})">
+  <div class="wp">
+    <div class="tuwen">
+      <div class="tuwennc">
+      #bodyContent
+      </div>
+    </div>
+  </div>
+</div>
+#end
 #macro sectionLeft(section,img)
 #@section(section,img)
       #bodyContent

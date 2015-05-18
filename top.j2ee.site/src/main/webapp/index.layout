@@ -42,6 +42,7 @@
   #topbarItem("section-10","组件库")
   #topbarItem("section-11","开发工具")
   #topbarItem("section-12","版本差异")
+  #topbarItem("section-13","关于我们")
 #end
 
 #@container()
@@ -49,7 +50,7 @@
 #sectionLeft("section-1","1.jpg")
 ${pageContent}
 
-#footer()
+##footer()
 
 #end
 
