@@ -30,7 +30,7 @@
 </head>
 <body>
 #@topbar()
-  #topbarItem("section-1","",true)
+  #topbarItem("homepage","",true)
   #topbarItem("section-2","方法论")
   #topbarItem("section-3","设计理念")
   #topbarItem("section-4","设计原则")
@@ -46,7 +46,7 @@
 #end
 
 #@container()
-
+#sectionLeft("homepage","1.jpg")
 ${pageContent}
 
 ##footer()

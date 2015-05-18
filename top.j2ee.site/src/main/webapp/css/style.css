@@ -69,7 +69,7 @@ html,body,#container,.section{width:100%;height:100%}
 		.section .tuwen{display: table-cell;height:100%;overflow: hidden;vertical-align: middle}
 		.section .tuwennr{ padding:25px; width:430px; height:auto;background-color:rgba(0,0,0,0.8);}
 		.section .tuwennc{ padding:25px; width:840px; height:auto;background-color:rgba(0,0,0,0.8);margin-left:auto;margin-right:auto;}
-		#section-1 .tuwennr{ padding:0; margin:0 auto; width:622px; height:447px;background:url(../images/1-1.png) no-repeat 0 0}
+		#homepage .tuwennr{ padding:0; margin:0 auto; width:622px; height:447px;background:url(../images/1-1.png) no-repeat 0 0}
 
 /*
 		#section-1{background-image:url(../images/1.jpg)}
