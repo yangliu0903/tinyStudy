@@ -4,9 +4,4 @@
 	<service-view-mapping service-id="deleteUser" path="/queryUsers.servicepage" type="redirect"></service-view-mapping>
 	<service-view-mapping service-id="queryUsers" path="/crud/service/hibernate/list.page" type="forward"></service-view-mapping>
 	<service-view-mapping service-id="queryUserById" path="/crud/service/hibernate/operate.page" type="forward"></service-view-mapping>
-	<service-view-mapping service-id="addUserTiny" path="/users/?@beantype=TUser" type="redirect"></service-view-mapping>
-	<service-view-mapping service-id="updateUserTiny" path="/users/?@beantype=TUser" type="redirect"></service-view-mapping>
-	<service-view-mapping service-id="deleteUserTiny" path="/users/?@beantype=TUser" type="redirect"></service-view-mapping>
-	<service-view-mapping service-id="queryUsersTiny" path="/crud/restful/list.page" type="forward"></service-view-mapping>
-	<service-view-mapping service-id="queryUserByIdTiny" path="/crud/restful/operate.page" type="forward"></service-view-mapping>
 </service-view-mappings>
