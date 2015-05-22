@@ -247,11 +247,7 @@
                 <rewrite-handler bean-name="urlNormalizer" />
           </handlers>
         </rule>
-        <rule pattern="/.*">
-          <handlers>
-                <rewrite-handler bean-name="restfulStyleSubstitutionHandler" />
-          </handlers>
-        </rule>
+        
     </rewrite>
     <session>
         <id cookieEnabled="true" urlEncodeEnabled="false">
