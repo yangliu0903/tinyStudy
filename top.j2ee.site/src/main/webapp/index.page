@@ -1,7 +1,7 @@
 
 
 
-#@sectionLeft("section-2","2.jpg")
+#@sectionLeft("methodology","2.jpg")
     #@infoPanel("方法论决定了可以达到的高度")
     方法论，就是人们认识世界、改造世界的根本方法。<br>
     <br />
@@ -18,7 +18,7 @@
 
 
 
-#@sectionRight("section-3","3.jpg")
+#@sectionRight("strategy","3.jpg")
     #@infoPanel("设计理念决定了设计的目标")
     使用灵活：可以整个使用它，也可以只用它的一个或几个部分。Tiny构建者认为，一个完整的框架可能需要有许许多多个部分组成，但是对于实际应用的用户来说，它可能只需要其中的一部分功能。构架一定要有这种能力，可以由使用者进行点菜式，使用，避免只要用一点点功能，就要引入许许多多的内容。
     <br><br>
@@ -30,7 +30,7 @@
     #end
 #end
 
-#@sectionLeft("section-4","4.jpg")
+#@sectionLeft("policy","4.jpg")
     #@infoPanel("设计原则解决目标冲突时的解决策略")
     #@font("yellow")约定优于配置原则-COC#end<br>
     #@font("yellow")不要重复你自己原则-DRY#end<br>
@@ -44,7 +44,7 @@
 #end
 
 
-#@sectionRight("section-5","5.jpg")
+#@sectionRight("ecosystem","5.jpg")
     #@infoPanel("生态圈决定了是否可以持续性发展")
     只有形成完整的开源生态圈，开源才能生存、发展。
     <br><br>
@@ -57,7 +57,7 @@
 #end
 
 
-#@sectionLeft("section-6","6.jpg")
+#@sectionLeft("modularize","6.jpg")
     #@infoPanel("模块化能力决定了业务模块治理的优劣")
     Tiny框架在模块化方面进行了深入的研究和实践。
     <br>
@@ -69,7 +69,7 @@
     #end
 #end
 
-#@sectionRight("section-7","3.jpg")
+#@sectionRight("hotdeploy","3.jpg")
     #@infoPanel("热部署可有效帮助提升系统的可用性")
     所谓热部署，就是在应用正在运行的时候软件升级，却不需要重新启动应用。
     <br><br>
@@ -79,7 +79,7 @@
     #end
 #end
 
-#@sectionLeft("section-8","8.jpg")
+#@sectionLeft("flow","8.jpg")
     #@infoPanel("流程引擎提供了非编程性能发的能力")
     所谓流程引擎，就是对通过流程化的方式来进行业务、页面、工作流程的编排支持的开发框架。<br>
     <br>
@@ -89,7 +89,7 @@
     #end
 #end
 
-#@sectionRight("section-9","9.jpg")
+#@sectionRight("webui","9.jpg")
     #@infoPanel("WEB展现是互联网应用中重中之重")
     Web应用开发是J2EE领域的重要问题领域<br>
     <br>
@@ -99,7 +99,7 @@
     #end
 #end
 
-#@sectionLeft("section-10","10.jpg")
+#@sectionLeft("component","10.jpg")
     #@infoPanel("面向组件的开发是效率与质量的保证")
     组件化编程的关键目的是为了将程序模块化，使各个模块之间可以单独开发，单独测试。组件的提取、管理与利用是面向组件开发的关键。
     <br><br>
@@ -110,7 +110,7 @@
 #end
 
 
-#@sectionRight("section-11","2.jpg")
+#@sectionRight("studio","2.jpg")
     #@infoPanel("开发工具是软件工程方法的延伸","马上安装>>","http://www.tinygroup.org/tinystudio/")
     不用Tiny开发工具你可以完成所有基于Tiny框架的开发工作。<br>
     <br>
@@ -120,7 +120,7 @@
     #end
 #end
 
-#@sectionLeft("section-12","3.jpg")
+#@sectionLeft("version","3.jpg")
     #@infoPanel("版本差异满足不同用户的使用诉求")
     #@font("yellow")开源版#end：遵守GPL V3协议就可以免费的使用Tiny框架的开源版本。<br>
     #@font("yellow")商业版#end：范围同开源版，适合不想遵守GPL V3协议用户。<br>
@@ -135,7 +135,7 @@
     #end
 #end
 
-#@sectionCenter("section-13","5.jpg")
+#@sectionCenter("about","5.jpg")
     #@infoPanel("关于我们")
         #footer()
     #end
