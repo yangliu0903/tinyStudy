@@ -69,7 +69,7 @@
     #end
 #end
 
-#@sectionRight("hotdeploy","3.jpg")
+#@sectionRight("hotdeploy","14.jpg")
     #@infoPanel("热部署可有效帮助提升系统的可用性")
     所谓热部署，就是在应用正在运行的时候软件升级，却不需要重新启动应用。
     <br><br>
@@ -79,7 +79,7 @@
     #end
 #end
 
-#@sectionLeft("flow","8.jpg")
+#@sectionLeft("flow","15.jpg")
     #@infoPanel("流程引擎提供了非编程性能发的能力")
     所谓流程引擎，就是对通过流程化的方式来进行业务、页面、工作流程的编排支持的开发框架。<br>
     <br>
@@ -110,7 +110,7 @@
 #end
 
 
-#@sectionRight("studio","2.jpg")
+#@sectionRight("studio","11.jpg")
     #@infoPanel("开发工具是软件工程方法的延伸","马上安装>>","http://www.tinygroup.org/tinystudio/")
     不用Tiny开发工具你可以完成所有基于Tiny框架的开发工作。<br>
     <br>
@@ -120,7 +120,7 @@
     #end
 #end
 
-#@sectionLeft("version","3.jpg")
+#@sectionLeft("version","12.jpg")
     #@infoPanel("版本差异满足不同用户的使用诉求")
     #@font("yellow")开源版#end：遵守GPL V3协议就可以免费的使用Tiny框架的开源版本。<br>
     #@font("yellow")商业版#end：范围同开源版，适合不想遵守GPL V3协议用户。<br>
@@ -130,7 +130,7 @@
     #end
 #end
 
-#@sectionCenter("about","5.jpg")
+#@sectionCenter("about","13.jpg")
     #@infoPanel("关于我们")
         #footer()
     #end
