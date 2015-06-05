@@ -107,6 +107,9 @@
 
     <!--tiny-processor实现 -->
     <tiny-processors>
+        <tiny-processor id="springMvcTinyProcessor" class="springMvcTinyProcessor">
+            <servlet-mapping url-pattern=".*"></servlet-mapping>
+        </tiny-processor>
         <tiny-processor id="uiEngineTinyProcessor" class="uiEngineTinyProcessor">
             <servlet-mapping url-pattern=".*/uiengine\.uijs"></servlet-mapping>
             <servlet-mapping url-pattern=".*/uiengine\.uicss"></servlet-mapping>
@@ -123,20 +126,12 @@
         <tiny-processor id="pageFlowTinyProcessor" class="pageFlowTinyProcessor">
             <servlet-mapping url-pattern=".*\.pageflow"></servlet-mapping>
         </tiny-processor>
-        <tiny-processor id="fullContextProcessor" class="fullContextProcessor">
-            <servlet-mapping url-pattern=".*\.css"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.jpg"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.png"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.html"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.js"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.gif"></servlet-mapping>
-        </tiny-processor>
     </tiny-processors>
 
     <!--tiny-filters配置 -->
     <tiny-filters>
         <tiny-wrapper-filter id="tinyFilterWrapper" class="tinyFilterWrapper">
-            <init-param name="filter_beans" value="gZIPFilter"></init-param>
+            <init-param name="filter_beans" value="gZIPFilter,hiddenHttpMethodFilter"></init-param>
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-wrapper-filter>
         <tiny-filter id="basicTinyFilter" class="basicTinyFilter">
@@ -174,9 +169,6 @@
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
         <tiny-filter id="sessionTinyFilter" class="sessionTinyFilter">
-            <filter-mapping url-pattern=".*"></filter-mapping>
-        </tiny-filter>
-        <tiny-filter id="tinydbFilter" class="tinydbFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
     </tiny-filters>
@@ -247,7 +239,11 @@
                 <rewrite-handler bean-name="urlNormalizer" />
           </handlers>
         </rule>
-        
+        <rule pattern="/.*">
+          <handlers>
+                <rewrite-handler bean-name="restfulStyleSubstitutionHandler" />
+          </handlers>
+        </rule>
     </rewrite>
     <session>
         <id cookieEnabled="true" urlEncodeEnabled="false">

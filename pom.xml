@@ -1,61 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.tinygroup</groupId>
         <artifactId>tiny</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.3-SNAPSHOT</version>
     </parent>
-    <version>1.2.3-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.tinygroup</groupId>
     <artifactId>TinySample</artifactId>
+    <version>1.2.3-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <properties>
-        <tiny_version>1.2.2</tiny_version>
-    </properties>
-    <scm>
-        <connection>scm:git:git@http://git.oschina.net/tinyframework/TinySample.git</connection>
-        <developerConnection>scm:git:http://git.oschina.net/tinyframework/TinySample.git</developerConnection>
-        <url>http://git.oschina.net/tinyframework/TinySample.git</url>
-    </scm>
-    <repositories>
-        <repository>
-            <id>tiny-nexus-snapshots</id>
-            <name>Tiny Nexus Snapshots</name>
-            <url>http://www.tinygroup.org/nexus/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>tiny-nexus-releases</id>
-            <name>Tiny Nexus Snapshots</name>
-            <url>http://www.tinygroup.org/nexus/content/repositories/release/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <modules>
-        <module>top.j2ee.site</module>
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
         <module>org.tinygroup.crud</module>
         <module>org.tinygroup.fouroperate</module>
         <module>org.tinygroup.helloworld</module>
         <module>org.tinygroup.websample</module>
+        <module>org.tinygroup.tinysite</module>
         <module>org.tinygroup.tinysite2</module>
-        <module>org.tinygroup.webservicesample</module>
-        <module>org.tinygroup.sctestsample</module>
-        <module>org.tinygroup.sctestwebsample</module>
-        <module>org.tinygroup.sctestwebsampleas</module>
-        <module>org.tinygroup.sctestwebsampleas2</module>
-        <module>org.tinygroup.sctestwebsamplesc</module>
+        <module>org.tinygroup.hellobyannotation</module>
+        <module>org.tinygroup.hellobyxml</module>
+        <module>org.tinygroup.hellobyflow</module>
+        <module>org.tinygroup.hellobymvc</module>
+	<module>org.tinygroup.webservicesample</module>
+	<module>org.tinygroup.sctestsample</module>
+	<module>org.tinygroup.sctestwebsample</module>
+	<module>org.tinygroup.sctestwebsampleas</module>
+	<module>org.tinygroup.sctestwebsampleas2</module>
+	<module>org.tinygroup.sctestwebsamplesc</module>
     </modules>
 </project>

@@ -1,0 +1,69 @@
+用户管理界面:
+<form>
+<div>
+	<p>
+		<input type="button" id="add" value="添加"/>
+	    <input type="button" id="update" value="修改"/>
+	    <input type="button" id="delete" value="删除"/>
+	</p>
+	<table cellpadding="0" cellspacing="1" border="0" bgcolor="#ebebeb" width="500px">
+		<tbody>
+			<tr bgcolor="#ffffff">
+				<th width="35"><input type="checkbox" id="selectAll"/></th>
+				<th width="100px" height="35">名称</th>
+				<th width="365px" >年龄</th>
+			</tr>
+			#foreach(user in users)
+			<tr bgcolor="#ffffff">
+				<td align="center"><input type="checkbox" name="id" value="${user.id}"/></td>
+				<td align="center" height="30">${user.name}</td>
+				<td align="center">${user.age}</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</div>
+<form>
+<script>
+$(document).ready(function(){
+   $("#selectAll").click(function(){
+        var checked=$(this).get(0).checked;
+        $(":checkbox:not('#selectAll')").each(function(){
+               $(this).get(0).checked=checked;
+        });
+     });
+
+   $("#add").click(function(){
+       location.href="${TINY_CONTEXT_PATH}/user/operate.shtm";
+    }
+   );
+   $("#update").click(function(){
+    var checkboxs=$(":checked:not('#selectAll')");
+    var size=checkboxs.size();
+        if(size==0){
+           alert("修改前请先选择记录");
+        }else if(size>1){
+           alert("只能选择一条记录进行修改");
+        }else{
+         var checkbox=checkboxs.get(0);
+         location.href="${TINY_CONTEXT_PATH}/user/operate.shtm?id="+checkbox.value;
+        } 
+    }
+   );
+    $("#delete").click(function(){
+        if(confirm("确定要删除选择的记录吗？")){
+              var checkboxs=$(":checked:not('#selectAll')");
+               var size=checkboxs.size();
+               if(size==0){
+                alert("修改前请先选择记录");
+               }else if(size>1){
+                 alert("只能选择一条记录进行修改");
+               }else{
+              var checkbox=checkboxs.get(0);
+             location.href="${TINY_CONTEXT_PATH}/user/delete.shtm?id="+checkbox.value;
+             }
+        }
+    }
+   );
+});
+</script>

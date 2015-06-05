@@ -1,0 +1,5 @@
+<form>
+主键:<label>${user?.id}</label><br/>
+ 姓名:<label>${user?.name}</label><br/>
+ 年龄:<label>${user?.age}</label><br/>
+</form>
