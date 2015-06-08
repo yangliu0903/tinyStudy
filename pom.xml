@@ -10,6 +10,9 @@
     <artifactId>TinySample</artifactId>
     <version>1.2.3-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <properties>
+        <tiny_version>2.0.0</tiny_version>
+    </properties>
     <modules>
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
@@ -17,17 +20,12 @@
         <module>org.tinygroup.fouroperate</module>
         <module>org.tinygroup.helloworld</module>
         <module>org.tinygroup.websample</module>
-        <module>org.tinygroup.tinysite</module>
         <module>org.tinygroup.tinysite2</module>
-        <module>org.tinygroup.hellobyannotation</module>
-        <module>org.tinygroup.hellobyxml</module>
-        <module>org.tinygroup.hellobyflow</module>
-        <module>org.tinygroup.hellobymvc</module>
-	<module>org.tinygroup.webservicesample</module>
-	<module>org.tinygroup.sctestsample</module>
-	<module>org.tinygroup.sctestwebsample</module>
-	<module>org.tinygroup.sctestwebsampleas</module>
-	<module>org.tinygroup.sctestwebsampleas2</module>
-	<module>org.tinygroup.sctestwebsamplesc</module>
+        <module>org.tinygroup.webservicesample</module>
+        <module>org.tinygroup.sctestsample</module>
+        <module>org.tinygroup.sctestwebsample</module>
+        <module>org.tinygroup.sctestwebsampleas</module>
+        <module>org.tinygroup.sctestwebsampleas2</module>
+        <module>org.tinygroup.sctestwebsamplesc</module>
     </modules>
 </project>
