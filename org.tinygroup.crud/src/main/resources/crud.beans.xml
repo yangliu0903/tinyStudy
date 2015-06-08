@@ -33,16 +33,24 @@
 
 	<bean id="dynamicDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName">
-			<value>org.apache.derby.jdbc.EmbeddedDriver</value>
+			<value>${jdbc.driverClassName}</value>
 		</property>
 		<property name="url">
-			<value>jdbc:derby:TESTDB;create=true</value>
+			<value>${jdbc.url}</value>
 		</property>
 		<property name="username">
-			<value>opensource</value>
+			<value>${jdbc.username}</value>
 		</property>
 		<property name="password">
-			<value>opensource</value>
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+	<bean id="resourceConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/jdbc.properties</value>
+			</list>
 		</property>
 	</bean>
 	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource">

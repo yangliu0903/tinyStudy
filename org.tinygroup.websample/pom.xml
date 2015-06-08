@@ -11,21 +11,37 @@
 	<packaging>war</packaging>
 	<name>websample</name>
 	<url>http://maven.apache.org</url>
+	<repositories>
+		<repository>
+			<id>tinyrepositoryrelease</id>
+			<name>tinyrepositoryrelease</name>
+			<url>http://www.tinygroup.org/nexus/content/repositories/release/</url>
+			<releases><enabled>true</enabled></releases>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+		<repository>
+			<id>tinyrepositorysnapshot</id>
+			<name>tinyrepositorysnapshot</name>
+			<url>http://www.tinygroup.org/nexus/content/repositories/snapshots/</url>
+			<releases><enabled>false</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.validate</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.webservice</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.templateweblayer</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>servlet-api-2.5</artifactId>
@@ -40,93 +56,93 @@
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.springmvc</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.channel</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.webservice</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.serviceprocessor</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.simplechannel</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.jquery</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.flowprocessor</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.flowservicecomponent</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.flowbasiccomponent</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.databasebuinstaller</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.jcscache</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.pageflowbasiccomponent</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.beanconverter</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.helloworld</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.fouroperate</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.crud</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.webservicesample</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.cepcorenetty</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>${tiny_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -138,11 +154,6 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.tinygroup</groupId>
-			<artifactId>org.tinygroup.urlrestful</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
