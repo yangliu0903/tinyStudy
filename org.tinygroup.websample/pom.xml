@@ -81,7 +81,7 @@
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.jquery</artifactId>
-			<version>${tiny_version}</version>
+			<version>${tinyui_version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.tinygroup</groupId>
