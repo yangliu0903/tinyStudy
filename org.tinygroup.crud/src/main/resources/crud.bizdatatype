@@ -1,0 +1,30 @@
+<business-types>
+  <business-type id="0646c9e0ab674449a3e08353f318d693" name="integer" title="基本业务整形数" standard-type-id="9c9a87c1656849a5932dfc0af13ebfe3">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="6bcbd173d8bb42efa1a6da30e4d76968" name="string30" title="STRING30" standard-type-id="9a36de7f6c274d1489dfd81fd93b9776">
+    <description>长度30的字符串</description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="30"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="ea9a7b24738b42f1aefdd4c5ecb5068f" name="string50" title="STRING50" standard-type-id="9a36de7f6c274d1489dfd81fd93b9776">
+    <description>长度50的字符串</description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="50"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="907ea36433894cadb1e2c754059e2d6e" name="string200" title="STRING200" standard-type-id="9a36de7f6c274d1489dfd81fd93b9776">
+    <description>长度200的字符串</description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="200"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="cb10d9b97dea4e3d8ef7ba65ca6b0251" name="string1" title="STRING1" standard-type-id="9a36de7f6c274d1489dfd81fd93b9776">
+    <description>长度1的字符串</description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="1"/>
+    </placeholder-value-list>
+  </business-type>
+</business-types>
