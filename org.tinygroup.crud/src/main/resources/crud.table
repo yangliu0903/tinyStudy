@@ -7,6 +7,5 @@
   </table>
   <table id="eb36b6a185d24f8aaa4ebd028bef7dfc" name="incrementer" title="主键自增表" schema="opensource" package-name="sample">
     <table-field standard-field-id="68cff8a170994ae4ad37841ca43c2677" primary="true" unique="true" not-null="true" id="sequence_id" auto-increase="true"/>
-    <table-field standard-field-id="5c548249133c4f44814fa4a11a4e2d62" primary="false" unique="false" not-null="false" id="dummy" auto-increase="false"/>
   </table>
 </tables>
