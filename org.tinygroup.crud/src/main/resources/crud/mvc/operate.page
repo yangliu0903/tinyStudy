@@ -7,6 +7,8 @@ action="${TINY_CONTEXT_PATH}/mvc/userAdd.do"
 >
  姓名:<input type="text" name="name" value="${user?.name}" /><br/>
  年龄:<input type="text" name="age" value="${user?.age}" /><br/>
- <input type="hidden" name="id" value="${user?.id}"/>
+#if(user)
+<input type="hidden" name="id" value="${user?.id}"/>
+#end
 <input type="submit" value="提交">
 </form>
