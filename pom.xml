@@ -28,5 +28,10 @@
         <module>org.tinygroup.websample</module>
         <module>org.tinygroup.tinysite2</module>
         <module>org.tinygroup.webservicesample</module>
+        <module>org.tinygroup.dslcruddao</module>
+        <module>org.tinygroup.dslservice</module>
+        <module>org.tinygroup.dslserviceimpl</module>
+        <module>org.tinygroup.dslservicewrapper</module>
+        <module>org.tinygroup.studytiny</module>
     </modules>
 </project>
