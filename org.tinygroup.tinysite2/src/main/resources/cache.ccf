@@ -43,7 +43,7 @@ jcs.region.testCache1.cacheattributes.MaxObjects=200002
 
 jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
 jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
-jcs.auxiliary.DC.attributes.DiskPath=D:/jcs/raf
+jcs.auxiliary.DC.attributes.DiskPath=temp/jcs/raf
 
 # Remote RMI Cache set up to failover
 jcs.auxiliary.RFailover=org.apache.jcs.auxiliary.remote.RemoteCacheFactory
