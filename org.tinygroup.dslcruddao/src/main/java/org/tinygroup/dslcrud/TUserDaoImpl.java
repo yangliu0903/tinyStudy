@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 1997-2013, www.tinygroup.org (tinygroup@126.com).
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
  *
  *  Licensed under the GPL, Version 3.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,31 +13,31 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package org.tinygroup.dslcrud;
 
-import static org.tinygroup.dslcrud.TUserTable.T_USER;
-import static org.tinygroup.tinysqldsl.Delete.delete;
-import static org.tinygroup.tinysqldsl.Insert.insertInto;
-import static org.tinygroup.tinysqldsl.Select.selectFrom;
-import static org.tinygroup.tinysqldsl.Update.update;
+import static org.tinygroup.tinysqldsl.base.StatementSqlBuilder.and;
+import static org.tinygroup.dslcrud.TUserTable.*;
+import static org.tinygroup.tinysqldsl.Select.*;
+import static org.tinygroup.tinysqldsl.Insert.*;
+import static org.tinygroup.tinysqldsl.Delete.*;
+import static org.tinygroup.tinysqldsl.Update.*;
 
 import java.util.List;
 
-import org.tinygroup.logger.Logger;
-import org.tinygroup.logger.LoggerFactory;
 import org.tinygroup.tinysqldsl.Delete;
 import org.tinygroup.tinysqldsl.DslSession;
 import org.tinygroup.tinysqldsl.Insert;
 import org.tinygroup.tinysqldsl.Select;
 import org.tinygroup.tinysqldsl.Update;
+import org.tinygroup.tinysqldsl.Pager;
+import org.tinygroup.tinysqldsl.extend.MysqlSelect;
 
 public class TUserDaoImpl implements TUserDao {
 
-	protected static Logger logger = LoggerFactory
-	.getLogger(TUserDaoImpl.class);
 	private DslSession dslSession;
 
-	public  DslSession getDslSession() {
+	public DslSession getDslSession() {
 		return dslSession;
 	}
 
@@ -72,24 +72,35 @@ public class TUserDaoImpl implements TUserDao {
 		return dslSession.execute(delete);
 	}
 
+	@SuppressWarnings({"rawtypes" })
 	public TUser getTUserById(Integer pk) {
 		Select select = selectFrom(T_USER).where(T_USER.ID.eq(pk));
 		return dslSession.fetchOneResult(select, TUser.class);
 	}
 
+	@SuppressWarnings({"rawtypes" })
 	public List<TUser> queryTUsers(TUser tUser) {
 		if(tUser==null){
 			tUser=new TUser();
 		}
-		//做示例简化操作
 		Select select = selectFrom(T_USER);
-		
 //		.where(
 //				and(
 //				T_USER.NAME.eq(tUser.getName()),
 //				T_USER.AGE.eq(tUser.getAge())));
-		List<TUser> list= dslSession.fetchList(select, TUser.class);
-		return list;
+		return dslSession.fetchList(select, TUser.class);
+	}
+
+	@SuppressWarnings({"rawtypes" })
+	public Pager<TUser> queryTUsersForPage(int start,int limit ,TUser tUser) {
+		if(tUser==null){
+			tUser=new TUser();
+		}
+		Select select = MysqlSelect.selectFrom(T_USER).where(
+				and(
+				T_USER.NAME.eq(tUser.getName()),
+				T_USER.AGE.eq(tUser.getAge())));
+		return dslSession.fetchPage(select,start, limit, false, TUser.class);
 	}
 
 }

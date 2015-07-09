@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 1997-2013, www.tinygroup.org (tinygroup@126.com).
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
  *
  *  Licensed under the GPL, Version 3.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package org.tinygroup.dslcrud;
 
 import java.io.Serializable;
@@ -24,9 +25,16 @@ public class TUser implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2308681872627208824L;
+
+	/** 唯一ID */
 	private Integer id;
+
+	/** 姓名 */
 	private String name;
+
+	/** 年龄 */
 	private Integer age;
+
 
 	public void setId(Integer id){
 		this. id = id;

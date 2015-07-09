@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 1997-2013, www.tinygroup.org (tinygroup@126.com).
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
  *
  *  Licensed under the GPL, Version 3.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,11 +13,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package org.tinygroup.dslcrud;
 
 import java.util.List;
 
 import org.tinygroup.tinysqldsl.DslSession;
+import org.tinygroup.tinysqldsl.Pager;
+
 public interface TUserDao {
 
 	public DslSession getDslSession();
@@ -35,5 +38,7 @@ public interface TUserDao {
 	public int deleteTUsers(Object... pks);
 
 	public List<TUser> queryTUsers(TUser tUser);
+
+	public Pager<TUser> queryTUsersForPage (int start ,int limit ,TUser tUser);
 
 }
