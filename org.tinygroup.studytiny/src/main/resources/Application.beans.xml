@@ -33,10 +33,7 @@
 				<!-- pageflow -->
 				<ref bean="pageFlowComponentProcessor" />
 				<ref bean="pageFlowFileProcessor" />
-				
-                <!--dictload-->
-                <ref bean="dictLoadFileProcessor" />
-
+		
 				<ref bean="tinyMacroFileProcessor" />
 				<ref bean="fullContextFileFinder" />
 				<ref bean="uIComponentFileProcessor" />
