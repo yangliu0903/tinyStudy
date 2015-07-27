@@ -4,7 +4,7 @@
   <parent>
         <artifactId>tinyonline</artifactId>
         <groupId>org.tinygroup</groupId>
-        <version>1.2.3-SNAPSHOT</version>
+        <version>2.0.1-SNAPSHOT</version>
     </parent>
   <artifactId>org.tinygroup.tinyonlineui</artifactId>
   <name>org.tinygroup.tinyonlineui</name>
@@ -22,7 +22,7 @@
     <dependency>
     	<groupId>org.tinygroup</groupId>
     	<artifactId>org.tinygroup.jquery</artifactId>
-    	<version>${tiny_version}</version>
+    	<version>${tinyui_version}</version>
     </dependency>
   </dependencies>
 </project>
