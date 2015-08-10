@@ -10,8 +10,8 @@
     <version>2.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
-        <tiny_version>2.0.7</tiny_version>
-        <tinyui_version>1.2.2</tinyui_version>
+        <tiny_version>2.0.12</tiny_version>
+        <tinyui_version>2.0.0</tinyui_version>
     </properties>
     <scm>
         <connection>scm:git:git@http://git.oschina.net/tinyframework/TinySample.git</connection>
