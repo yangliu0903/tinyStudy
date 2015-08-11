@@ -22,14 +22,11 @@
     <modules>
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
-        <module>org.tinygroup.crud</module>
-        <module>org.tinygroup.fouroperate</module>
-        <module>org.tinygroup.helloworld</module>
-        <module>org.tinygroup.websample</module>
         <module>org.tinygroup.tinysite2</module>
         <module>org.tinygroup.webservicesample</module>
         <module>tinyonline</module>
         <module>top.j2ee.site</module>
         <module>dslsample</module>
+        <module>websample</module>
     </modules>
 </project>

@@ -1,6 +1,0 @@
-<form action="${TINY_CONTEXT_PATH}/tUsers/${user?.id}" method="POST">
- 姓名:<input type="text" name="name" value="${user?.name}" /><br/>
- 年龄:<input type="text" name="age" value="${user?.age}" /><br/>
- <input type="hidden" name="_method" value="put" /><br/>
-<input type="submit" value="提交">
-</form>
