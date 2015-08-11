@@ -1,0 +1,17 @@
+<flow id="division" name="division" 
+	private-context="false" enable="false">
+	<nodes>
+	<node id="division" name="division"  title="除法服务">
+			<component name="divisionComponent">
+				<properties>
+					<flow-property name="number1" value="${number1}" />
+					<flow-property name="number2" value="${number2}" />
+					<flow-property name="resultKey" value="result" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="end"></next-node>
+			</next-nodes>
+		</node>
+	</nodes>
+</flow>

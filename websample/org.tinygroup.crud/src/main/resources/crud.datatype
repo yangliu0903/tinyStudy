@@ -1,0 +1,26 @@
+<standard-types>
+  <standard-type id="9a36de7f6c274d1489dfd81fd93b9776" name="string" title="标准字符串" data-type="12">
+    <description></description>
+    <placeholder-list>
+      <placeholder id="c37658d7092543f08190c4238b418ac9" name="length" title="长度"/>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="String"/>
+      <dialect-type language="derby" base-type="VARCHAR" ext-type="(${length})" default-value="">
+        <placeholder-value name="length"/>
+      </dialect-type>
+      <dialect-type language="mysql" base-type="VARCHAR" ext-type="(${length})" default-value="">
+        <placeholder-value name="length"/>
+      </dialect-type>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="9c9a87c1656849a5932dfc0af13ebfe3" name="int" title="基本整形" data-type="4">
+    <description></description>
+    <placeholder-list/>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Integer"/>
+      <dialect-type language="derby" base-type="INT" ext-type=""/>
+      <dialect-type language="mysql" base-type="INT"/>
+    </dialect-type-list>
+  </standard-type>
+</standard-types>

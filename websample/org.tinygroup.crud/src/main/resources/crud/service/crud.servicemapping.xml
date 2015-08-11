@@ -1,0 +1,12 @@
+<service-view-mappings>
+	<service-view-mapping service-id="addUser" path="/queryUsers.servicepage" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="updateUser" path="/queryUsers.servicepage" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="deleteUser" path="/queryUsers.servicepage" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="queryUsers" path="/crud/service/hibernate/list.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="queryUserById" path="/crud/service/hibernate/operate.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="addUserTiny" path="/queryUsersTiny.servicepage?@beantype=TUser" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="updateUserTiny" path="/queryUsersTiny.servicepage?@beantype=TUser" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="deleteUserTiny" path="/queryUsersTiny.servicepage?@beantype=TUser" type="redirect"></service-view-mapping>
+	<service-view-mapping service-id="queryUsersTiny" path="/crud/service/tinydb/list.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="queryUserByIdTiny" path="/crud/service/tinydb/operate.page" type="forward"></service-view-mapping>
+</service-view-mappings>

@@ -1,0 +1,11 @@
+<tables>
+  <table id="ea27fdd43a3b408d9264ba1c42f8e76f" name="t_user" title="用户表" schema="opensource" package-name="sample">
+    <description></description>
+    <table-field standard-field-id="fa83bb22c76e49289b25f3a1aec9f66e" primary="true" unique="true" not-null="true" id="id" auto-increase="false"/>
+    <table-field standard-field-id="2ed983ff1eb04eacb35c99e38d69c428" primary="false" unique="false" not-null="false" id="name" auto-increase="false"/>
+    <table-field standard-field-id="094634494f154520b4ecb40b4114904a" primary="false" unique="false" not-null="false" id="age" auto-increase="false"/>
+  </table>
+  <table id="eb36b6a185d24f8aaa4ebd028bef7dfc" name="incrementer" title="主键自增表" schema="opensource" package-name="sample">
+    <table-field standard-field-id="68cff8a170994ae4ad37841ca43c2677" primary="true" unique="true" not-null="true" id="sequence_id" auto-increase="true"/>
+  </table>
+</tables>

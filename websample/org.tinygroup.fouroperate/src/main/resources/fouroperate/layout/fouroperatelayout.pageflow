@@ -1,0 +1,55 @@
+<flow id="fouroperatelayout" name="fouroperatelayout" 
+	private-context="false" enable="false">
+	<nodes>
+	<node id="addition" name="addition"  title="加法服务">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="addition" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="success"></next-node>
+			</next-nodes>
+		</node>
+		<node id="subtraction" name="subtraction"  title="减法服务">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="subtraction" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="success"></next-node>
+			</next-nodes>
+		</node>
+		<node id="multi" name="multi"  title="乘法服务">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="multi" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="success"></next-node>
+			</next-nodes>
+		</node>
+		<node id="division" name="division"  title="除法服务">
+			<component name="callService">
+				<properties>
+					<flow-property name="serviceId" value="division" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="success"></next-node>
+			</next-nodes>
+		</node>
+		<node id="success" name="success" title="转换页面">
+			<component name="forwardComponent">
+				<properties>
+					<flow-property name="path" value="/fouroperate/result.page" />
+				</properties>
+			</component>
+			<next-nodes>
+			    <next-node next-node-id="end"></next-node>
+			</next-nodes>
+		</node>
+	</nodes>
+</flow>

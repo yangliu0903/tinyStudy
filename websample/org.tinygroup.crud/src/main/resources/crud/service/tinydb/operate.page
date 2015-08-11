@@ -1,0 +1,15 @@
+<form 
+#if(user)
+action="${TINY_CONTEXT_PATH}/updateUserTiny.servicepage"
+#else
+action="${TINY_CONTEXT_PATH}/addUserTiny.servicepage"
+#end
+>
+ 姓名:<input type="text" name="name" value="${user?.name}" /><br/>
+ 年龄:<input type="text" name="age" value="${user?.age}" /><br/>
+ #if(user)
+ <input type="hidden" name="id" value="${user?.id}"/>
+ #end
+ <input type="hidden" name="@beantype" value="TUser"/>
+<input type="submit" value="提交">
+</form>

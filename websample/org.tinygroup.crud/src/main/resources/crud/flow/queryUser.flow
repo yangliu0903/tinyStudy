@@ -1,0 +1,20 @@
+<flow id="queryUsersWithFlow" name="queryUsersWithFlow" enable="false" private-context="false">
+  <nodes>
+    <node id="queryUsers" name="queryUsers" title="查询用户">
+      <component name="tinydbQueryService">
+        <properties>
+          <flow-property name="beanType" value="TUser" required="true" type="java.lang.String"/>
+          <flow-property name="resultKey" value="users" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+    <node id="begin" name="begin" title="开始">
+      <next-nodes>
+        <next-node next-node-id="queryUsers"/>
+      </next-nodes>
+    </node>
+  </nodes>
+</flow>

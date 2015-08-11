@@ -1,0 +1,9 @@
+<standard-fields>
+  <standard-field id="fa83bb22c76e49289b25f3a1aec9f66e" name="id" title="主键字段" business-type-id="ea9a7b24738b42f1aefdd4c5ecb5068f" not-null="false"/>
+  <standard-field id="2ed983ff1eb04eacb35c99e38d69c428" name="name" title="名称" business-type-id="ea9a7b24738b42f1aefdd4c5ecb5068f" not-null="false">
+    <description></description>
+  </standard-field>
+  <standard-field id="094634494f154520b4ecb40b4114904a" name="age" title="年龄" business-type-id="0646c9e0ab674449a3e08353f318d693" not-null="false"/>
+  <standard-field id="68cff8a170994ae4ad37841ca43c2677" name="sequence_id" title="主键序列字段" business-type-id="0646c9e0ab674449a3e08353f318d693" not-null="false"/>
+  <standard-field id="5c548249133c4f44814fa4a11a4e2d62" name="dummy" title="DUMMY" business-type-id="cb10d9b97dea4e3d8ef7ba65ca6b0251" not-null="false"/>
+</standard-fields>

@@ -1,0 +1,17 @@
+cookie结果页面:
+<form>
+<div>
+	<table cellpadding="0" cellspacing="1" border="0" bgcolor="#ebebeb" width="500px">
+		<tbody>
+			<tr bgcolor="#ffffff">
+				<th width="100px" height="35">cookie名称</th>
+				<th width="365px" >cookie总大小</th>
+			</tr>
+			<tr bgcolor="#ffffff">
+				<td align="center" height="30">${cookie_name}</td>
+				<td align="center">${cookie_size}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<form>

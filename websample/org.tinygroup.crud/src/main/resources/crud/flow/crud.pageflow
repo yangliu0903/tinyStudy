@@ -1,0 +1,104 @@
+<flow id="crud" name="crud" enable="false" private-context="false">
+  <nodes>
+    <node id="addUser" name="addUser" title="添加用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="addUserWithFlow" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="redirect"/>
+      </next-nodes>
+    </node>
+    <node id="updateUser" name="updateUser" title="更新用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="updateUserWithFlow" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="redirect"/>
+      </next-nodes>
+    </node>
+    <node id="deleteUser" name="deleteUser" title="删除用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="deleteUserWithFlow" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="redirect"/>
+      </next-nodes>
+    </node>
+    <node id="queryUsers" name="queryUsers" title="查询用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="queryUsersWithFlow" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="list"/>
+      </next-nodes>
+    </node>
+    <node id="queryUserById" name="queryUserById" title="根据主键查询用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="queryUserByIdWithFlow" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="operate"/>
+      </next-nodes>
+    </node>
+    <node id="queryUsersBySql" name="queryUsersBySql" title="根据sql查询用户">
+      <component name="callService">
+        <properties>
+          <flow-property name="serviceId" value="queryUsersBySql" required="false"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="list"/>
+      </next-nodes>
+    </node>
+    <node id="list" name="list" title="转化页面">
+      <component name="forwardComponent">
+        <properties>
+          <flow-property name="path" value="/crud/flow/list.page" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+    <node id="redirect" name="redirect" title="重定向页面">
+      <component name="redirectComponent">
+        <properties>
+          <flow-property name="path" value="crud.pageflow?tiny_flow_id=queryUsers" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+    <node id="operate" name="operate" title="转化页面">
+      <component name="forwardComponent">
+        <properties>
+          <flow-property name="path" value="/crud/flow/operate.page" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+    <node id="begin" name="begin" title="开始">
+      <next-nodes>
+        <next-node next-node-id="queryUserById"/>
+        <next-node next-node-id="queryUsersBySql"/>
+        <next-node next-node-id="queryUsers"/>
+        <next-node next-node-id="deleteUser"/>
+        <next-node next-node-id="updateUser"/>
+        <next-node next-node-id="addUser"/>
+      </next-nodes>
+    </node>
+  </nodes>
+</flow>
