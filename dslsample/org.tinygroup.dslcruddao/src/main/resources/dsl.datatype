@@ -1,0 +1,31 @@
+<standard-types>
+  <standard-type id="4fcc3a602e174ee39bb48411249141a2" name="string" title="STRING" data-type="12">
+    <description>字符串</description>
+    <placeholder-list>
+      <placeholder id="973a565928bc496183d1d4f458919374" name="length" title="长度">
+        <description>定义字符串的长度</description>
+      </placeholder>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="String"/>
+      <dialect-type language="derby" base-type="VARCHAR" ext-type="(${length})">
+        <placeholder-value name="length"/>
+      </dialect-type>
+      <dialect-type language="mysql" base-type="VARCHAR" ext-type="(${length})">
+        <placeholder-value name="length"/>
+      </dialect-type>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="23f5d229d0724d63b7029b01acbd4748" name="int" title="INT" data-type="4">
+    <description>整数类型</description>
+    <placeholder-list>
+      <placeholder id="d11fcdc6c6244b9ca07fdc762b41dc66" name="precision" title="精度"/>
+      <placeholder id="7221ff2db5a74ae6804fcbd3f303045a" name="scale" title="范围"/>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Integer"/>
+      <dialect-type language="derby" base-type="INT"/>
+      <dialect-type language="mysql" base-type="INT" ext-type=""/>
+    </dialect-type-list>
+  </standard-type>
+</standard-types>
