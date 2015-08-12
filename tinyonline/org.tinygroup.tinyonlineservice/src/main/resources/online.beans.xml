@@ -47,13 +47,13 @@
 		<property name="driverClassName">
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
-		<property name="url" value="jdbc:mysql://localhost:3308/tinyonline?createDatabaseIfNotExist=true">
+		<property name="url" value="jdbc:mysql://localhost:3306/tinyonline?createDatabaseIfNotExist=true">
 		</property>
 		<property name="username">
 			<value>root</value>
 		</property>
 		<property name="password">
-			<value>1992924</value>
+			<value>123456</value>
 		</property>
 	</bean>
 	<bean id="dataSource2" class="org.apache.commons.dbcp.BasicDataSource">
