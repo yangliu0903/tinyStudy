@@ -23,13 +23,13 @@
     </dependency>
     <dependency>
       <groupId>org.tinygroup</groupId>
-      <artifactId>org.tinygroup.dslserviceimpl</artifactId>
-      <version>${project.version}</version>
+      <artifactId>org.tinygroup.cepcore</artifactId>
+      <version>${tiny_version}</version>
     </dependency>
     <dependency>
       <groupId>org.tinygroup</groupId>
-      <artifactId>org.tinygroup.cepcore</artifactId>
-      <version>${tiny_version}</version>
+      <artifactId>org.tinygroup.dslservice</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

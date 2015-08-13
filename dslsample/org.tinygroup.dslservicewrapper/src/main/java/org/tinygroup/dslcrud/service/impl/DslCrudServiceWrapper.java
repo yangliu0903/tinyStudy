@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 1997-2013, www.tinygroup.org (tinygroup@126.com).
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
  *
  *  Licensed under the GPL, Version 3.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+
 package org.tinygroup.dslcrud.service.impl;
 
 import java.util.List;
@@ -26,7 +27,7 @@ import org.tinygroup.event.Parameter;
 import org.tinygroup.event.ServiceInfo;
 import org.tinygroup.event.ServiceRequest;
 
-public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.CrudDbService<org.tinygroup.dslcrud.TUser> {
+public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.CrudDbService<org.tinygroup.dslcrud.service.pojo.UserPojo> {
 
 	CEPCore core;
 
@@ -48,7 +49,7 @@ public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.Crud
 		return event;
 	}
 
-	public void addUser(org.tinygroup.dslcrud.TUser user) {
+	public void addUser(org.tinygroup.dslcrud.service.pojo.UserPojo user) {
 		String serviceId = "addUser";
 
 		try{
@@ -61,7 +62,7 @@ public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.Crud
 		}
 	}
 
-	public void updateUser(org.tinygroup.dslcrud.TUser user) {
+	public void updateUser(org.tinygroup.dslcrud.service.pojo.UserPojo user) {
 		String serviceId = "updateUser";
 
 		try{
@@ -87,7 +88,7 @@ public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.Crud
 		}
 	}
 
-	public org.tinygroup.dslcrud.TUser getUserById(java.lang.String id) {
+	public org.tinygroup.dslcrud.service.pojo.UserPojo getUserById(java.lang.String id) {
 		String serviceId = "getUserById";
 
 		try{
@@ -100,12 +101,12 @@ public class DslCrudServiceWrapper implements org.tinygroup.dslcrud.service.Crud
 		}
 	}
 
-	public java.util.List<org.tinygroup.dslcrud.TUser> queryUsers(org.tinygroup.dslcrud.TUser user) {
+	public java.util.List<org.tinygroup.dslcrud.service.pojo.UserPojo> queryUsers(org.tinygroup.dslcrud.service.pojo.UserPojo pojo) {
 		String serviceId = "queryUsers";
 
 		try{
 			Context context = new ContextImpl();
-			context.put("user" ,user);
+			context.put("pojo" ,pojo);
 
 			return callServiceAndCallBack(serviceId,context);
 		}catch(Exception e){
