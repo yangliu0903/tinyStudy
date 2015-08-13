@@ -14,17 +14,10 @@
  *  limitations under the License.
  */
 
-package org.tinygroup.dslcrud;
-
-import java.io.Serializable;
+package org.tinygroup.dslcrud.pojo;
 
 
-public class TUser implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2308681872627208824L;
+public class TUser {
 
 	/** 唯一ID */
 	private Integer id;

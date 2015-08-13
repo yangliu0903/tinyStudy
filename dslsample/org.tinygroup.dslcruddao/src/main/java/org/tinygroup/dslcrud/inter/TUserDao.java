@@ -14,31 +14,12 @@
  *  limitations under the License.
  */
 
-package org.tinygroup.dslcrud;
+package org.tinygroup.dslcrud.inter;
 
-import java.util.List;
+import org.tinygroup.jdbctemplatedslsession.daosupport.BaseDao;
 
-import org.tinygroup.tinysqldsl.DslSession;
-import org.tinygroup.tinysqldsl.Pager;
+import org.tinygroup.dslcrud.pojo.TUser;
 
-public interface TUserDao {
-
-	public DslSession getDslSession();
-
-	public void setDslSession(DslSession dslSession);
-
-	public TUser insertTUser(TUser tUser);
-
-	public int updateTUser(TUser tUser);
-
-	public int deleteTUser(Integer pk);
-
-	public TUser getTUserById(Integer pk);
-
-	public int deleteTUsers(Object... pks);
-
-	public List<TUser> queryTUsers(TUser tUser);
-
-	public Pager<TUser> queryTUsersForPage (int start ,int limit ,TUser tUser);
+public interface TUserDao extends BaseDao<TUser> {
 
 }

@@ -14,17 +14,20 @@
  *  limitations under the License.
  */
 
-package org.tinygroup.dslcrud;
+package org.tinygroup.dslcrud.constant;
 
 import org.tinygroup.tinysqldsl.base.Column;
 import org.tinygroup.tinysqldsl.base.Table;
 
 public class TUserTable extends Table {
 
-		public static final TUserTable T_USER = new TUserTable();
-		public final Column ID = new Column(this, "id");
-		public final Column NAME = new Column(this, "name");
-		public final Column AGE = new Column(this, "age");
+	public static final TUserTable T_USERTABLE = new TUserTable();
+	/** 唯一ID */
+	public final Column ID = new Column(this, "id");
+	/** 姓名 */
+	public final Column NAME = new Column(this, "name");
+	/** 年龄 */
+	public final Column AGE = new Column(this, "age");
 
 		private TUserTable() {
 			super("t_user");
