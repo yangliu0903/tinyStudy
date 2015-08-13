@@ -1,4 +1,8 @@
 <flow id="helloworld" name="helloworld" enable="false" private-context="false">
+  <parameters>
+    <parameter array="false" required="true" name="name" type="java.lang.String" scope="in"/>
+    <parameter array="false" required="true" name="result" type="java.lang.String" scope="out"/>
+  </parameters>
   <nodes>
     <node id="start" name="start" title="开始">
       <next-nodes>
