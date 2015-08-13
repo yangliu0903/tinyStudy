@@ -25,6 +25,7 @@
   </dependencies>
   <modules>
   	<module>org.tinygroup.dslcruddao</module>
+  	<module>org.tinygroup.dslcruddaoimpl</module>
   	<module>org.tinygroup.dslservice</module>
   	<module>org.tinygroup.dslserviceimpl</module>
   	<module>org.tinygroup.dslservicewrapper</module>
