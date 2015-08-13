@@ -15,17 +15,19 @@
  */
 package org.tinygroup.dslcrud.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.tinygroup.dslcrud.TUser;
-import org.tinygroup.dslcrud.TUserDao;
+import org.tinygroup.dslcrud.inter.TUserDao;
+import org.tinygroup.dslcrud.pojo.TUser;
 import org.tinygroup.dslcrud.service.CrudDbService;
+import org.tinygroup.dslcrud.service.pojo.UserPojo;
 
 /**
  * @author yancheng11334
  *
  */
-public class DslCrudService implements CrudDbService<TUser>{
+public class DslCrudService implements CrudDbService<UserPojo>{
 
 	private TUserDao userDao;
 	
@@ -37,24 +39,54 @@ public class DslCrudService implements CrudDbService<TUser>{
 		this.userDao = userDao;
 	}
 
-	public void addUser(TUser user) {
-		userDao.insertTUser(user);
+	public void addUser(UserPojo user) {
+		userDao.insertObject(convertTUser(user));
 	}
 
-	public void updateUser(TUser user) {
-		userDao.updateTUser(user);
+	public void updateUser(UserPojo user) {
+		userDao.updateObject(convertTUser(user));
 	}
 
 	public void deleteUserById(String id) {
-		userDao.deleteTUser(Integer.valueOf(id));
+		userDao.deleteObject(id);
 	}
 	
-	public TUser getUserById(String id) {
-		return userDao.getTUserById(Integer.valueOf(id));
+	public UserPojo getUserById(String id) {
+		return convertUserPojo(userDao.getObjectById(id));
 	}
 	
-	public List<TUser> queryUsers(TUser user) {
-		return userDao.queryTUsers(user);
+	public List<UserPojo> queryUsers(UserPojo pojo) {
+		List<TUser> list = userDao.queryObjects(convertTUser(pojo));
+		List<UserPojo> result = new ArrayList<UserPojo>();
+		if(list!=null){
+		   for(TUser user:list){
+			   result.add(convertUserPojo(user)); 
+		   }
+		}
+		return result;
 	}
 
+	protected UserPojo convertUserPojo(TUser user){
+		if(user==null){
+		   return null;
+		}else{
+		   UserPojo pojo = new UserPojo();
+		   pojo.setAge(user.getAge());
+		   pojo.setId(user.getId());
+		   pojo.setName(user.getName());
+		   return pojo;
+		}
+	}
+	
+	protected TUser convertTUser(UserPojo pojo){
+		if(pojo==null){
+		   return null;
+		}else{
+		   TUser user = new TUser();
+		   user.setAge(pojo.getAge());
+		   user.setId(pojo.getId());
+		   user.setName(pojo.getName());
+		   return user;
+		}
+	}
 }

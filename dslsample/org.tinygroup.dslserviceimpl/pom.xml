@@ -28,7 +28,7 @@
     </dependency>
     <dependency>
       <groupId>org.tinygroup</groupId>
-      <artifactId>org.tinygroup.dslcruddao</artifactId>
+      <artifactId>org.tinygroup.dslcruddaoimpl</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

@@ -2,13 +2,13 @@
   <service-component type="org.tinygroup.dslcrud.service.impl.DslCrudService" bean="dslCrudService">
     <service-method local-name="addUser" service-id="addUser" method-name="addUser" cacheable="false" category="org.tinygroup.dslcrud.service.impl">
       <service-parameters>
-        <service-parameter name="user" type="org.tinygroup.dslcrud.TUser" required="false" is-array="false"/>
+        <service-parameter name="user" type="org.tinygroup.dslcrud.service.pojo.UserPojo" required="false" is-array="false"/>
       </service-parameters>
       <service-result name="addUserResult" required="false" is-array="false" type="void"/>
     </service-method>
     <service-method local-name="updateUser" service-id="updateUser" method-name="updateUser" cacheable="false" category="org.tinygroup.dslcrud.service.impl">
       <service-parameters>
-        <service-parameter name="user" type="org.tinygroup.dslcrud.TUser" required="false" is-array="false" validate-scene="abc"/>
+        <service-parameter name="user" type="org.tinygroup.dslcrud.service.pojo.UserPojo" required="false" is-array="false"/>
       </service-parameters>
       <service-result name="updateUserResult" required="false" is-array="false" type="void"/>
     </service-method>
@@ -22,13 +22,13 @@
       <service-parameters>
         <service-parameter name="id" type="java.lang.String" required="false" is-array="false"/>
       </service-parameters>
-      <service-result name="getUserByIdResult" required="false" is-array="false" type="org.tinygroup.dslcrud.TUser"/>
+      <service-result name="getUserByIdResult" required="false" is-array="false" type="org.tinygroup.dslcrud.service.pojo.UserPojo"/>
     </service-method>
     <service-method local-name="queryUsers" service-id="queryUsers" method-name="queryUsers" cacheable="false" category="org.tinygroup.dslcrud.service.impl">
       <service-parameters>
-        <service-parameter name="user" type="org.tinygroup.dslcrud.TUser" required="false" is-array="false"/>
+        <service-parameter name="pojo" type="org.tinygroup.dslcrud.service.pojo.UserPojo" required="false" is-array="false"/>
       </service-parameters>
-      <service-result name="queryUsersResult" required="false" is-array="false" collection-type="java.util.List" type="org.tinygroup.dslcrud.TUser"/>
+      <service-result name="queryUsersResult" required="false" is-array="false" collection-type="java.util.List" type="org.tinygroup.dslcrud.service.pojo.UserPojo"/>
     </service-method>
   </service-component>
 </service-components>
