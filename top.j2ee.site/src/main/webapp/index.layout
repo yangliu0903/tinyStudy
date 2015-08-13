@@ -47,7 +47,7 @@
 
 #@container()
 #sectionLeft("homepage","1.jpg")
-${pageContent}
+#pageContent
 
 ##footer()
 

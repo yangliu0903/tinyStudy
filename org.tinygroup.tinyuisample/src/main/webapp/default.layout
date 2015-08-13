@@ -9,7 +9,7 @@
     <link href="${TINY_CONTEXT_PATH}/uiengine.uicss" rel="stylesheet" />
 </head>
 <body>
-    ${pageContent}
+    #pageContent
 </body>
 </html>
 

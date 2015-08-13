@@ -9,7 +9,7 @@
     <tr>  
       <td width="20%">内容展示</td>
       <td>
-         ${pageContent}
+         #pageContent
       </td>
    </tr>
 </table>

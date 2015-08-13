@@ -56,7 +56,7 @@
         #hr() 
         #end
         #@container()
-            ${pageContent}
+            #pageContent
         #end
     #end
 #footer()

@@ -38,9 +38,6 @@
 				<!-- 模板引擎-->
 				<ref bean="tinyMacroFileProcessor" />
 
-                <!--dictload-->
-                <ref bean="dictLoadFileProcessor" />
-
 				<ref bean="processorFileResolver" />
 				<ref bean="fullContextFileFinder" />
 				<ref bean="uIComponentFileProcessor" />

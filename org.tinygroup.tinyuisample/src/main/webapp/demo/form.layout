@@ -5,7 +5,7 @@
 <tr>
 <td width="30%">MenuBar</td>
 <td>
-${pageContent}
+#pageContent
 </td>
 </tr>
 <tr>

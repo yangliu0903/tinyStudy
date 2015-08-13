@@ -10,7 +10,7 @@
         #end
     #end
 
-    ${pageContent}
+    #pageContent
 
     #@tooplateFooter()
     Copyright © 2048 <a href="#">Company Name</a> - Design: <a href="http://www.tooplate.com">tooplate</a>

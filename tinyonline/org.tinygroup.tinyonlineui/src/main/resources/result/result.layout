@@ -2,7 +2,7 @@
 <title>渲染结果演示</title>
 <body>
 <pre>
-${pageContent}
+#pageContent
 ${result}
 </pre>
 </body>
