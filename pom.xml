@@ -10,7 +10,7 @@
     <version>2.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
-        <tiny_version>2.0.16</tiny_version>
+        <tiny_version>2.0.17</tiny_version>
         <tinyui_version>2.0.0</tinyui_version>
     </properties>
     <scm>
@@ -23,7 +23,6 @@
         <module>org.tinygroup.tinyuisample</module>
         <module>org.tinygroup.DemoSite</module>
         <module>org.tinygroup.tinysite2</module>
-        <module>org.tinygroup.webservicesample</module>
         <module>tinyonline</module>
         <module>top.j2ee.site</module>
         <module>dslsample</module>

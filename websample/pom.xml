@@ -27,6 +27,7 @@
   	<module>org.tinygroup.crud</module>
     <module>org.tinygroup.fouroperate</module>
     <module>org.tinygroup.helloworld</module>
+    <module>org.tinygroup.webservicesample</module>
     <module>org.tinygroup.websample</module>
   </modules>
 </project>
