@@ -1,0 +1,85 @@
+<service-components>
+  <service-component type="org.tinygroup.webservicesample.ServiceABC" bean="serviceABC">
+    <service-method local-name="readboolean" service-id="readboolean" method-name="readboolean" cacheable="false">
+      <service-parameters>
+        <service-parameter name="a" type="boolean" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readbooleanResult" required="false" is-array="false" type="boolean"/>
+    </service-method>
+    <service-method local-name="readintString" service-id="readintString" method-name="readintString" cacheable="false">
+      <service-parameters>
+        <service-parameter name="i" type="int" required="false" is-array="false"/>
+        <service-parameter name="s" type="java.lang.String" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readintStringResult" required="false" is-array="false" type="java.lang.String"/>
+    </service-method>
+    <service-method local-name="readInterfaceUser" service-id="readInterfaceUser" method-name="readInterfaceUser" cacheable="false">
+      <service-parameters>
+        <service-parameter name="user" type="org.tinygroup.webservicesample.User2" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readInterfaceUserResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="readUser" service-id="readUser" method-name="readUser" cacheable="false">
+      <service-parameters>
+        <service-parameter name="user" type="org.tinygroup.webservicesample.UserImpl" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readUserResult" required="false" is-array="false" type="org.tinygroup.webservicesample.UserImpl"/>
+    </service-method>
+    <service-method local-name="readUserArray" service-id="readUserArray" method-name="readUserArray" cacheable="false">
+      <service-parameters>
+        <service-parameter name="users" type="org.tinygroup.webservicesample.UserImpl" required="false" is-array="true"/>
+      </service-parameters>
+      <service-result name="readUserArrayResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="writeUserArray" service-id="writeUserArray" method-name="writeUserArray" cacheable="false">
+      <service-parameters/>
+      <service-result name="writeUserArrayResult" required="false" is-array="true" type="org.tinygroup.webservicesample.UserImpl"/>
+    </service-method>
+    <service-method local-name="readWriteUserArray" service-id="readWriteUserArray" method-name="readWriteUserArray" cacheable="false">
+      <service-parameters>
+        <service-parameter name="users" type="org.tinygroup.webservicesample.UserImpl" required="false" is-array="true"/>
+      </service-parameters>
+      <service-result name="readWriteUserArrayResult" required="false" is-array="true" type="org.tinygroup.webservicesample.UserImpl"/>
+    </service-method>
+    <service-method local-name="readUserList" service-id="readUserList" method-name="readUserList" cacheable="false">
+      <service-parameters>
+        <service-parameter name="users" type="org.tinygroup.webservicesample.UserImpl" collection-type="java.util.List" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readUserListResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="writeUserList" service-id="writeUserList" method-name="writeUserList" cacheable="false">
+      <service-parameters/>
+      <service-result name="writeUserListResult" required="false" is-array="false" type="org.tinygroup.webservicesample.UserImpl"/>
+    </service-method>
+    <service-method local-name="readWriteUserList" service-id="readWriteUserList" method-name="readWriteUserList" cacheable="false">
+      <service-parameters>
+        <service-parameter name="users" type="org.tinygroup.webservicesample.UserImpl" collection-type="java.util.List" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readWriteUserListResult" required="false" is-array="false" type="org.tinygroup.webservicesample.UserImpl"/>
+    </service-method>
+    <service-method local-name="readbooleanArray" service-id="readbooleanArray" method-name="readbooleanArray" cacheable="false">
+      <service-parameters>
+        <service-parameter name="a" type="boolean" required="false" is-array="true"/>
+      </service-parameters>
+      <service-result name="readbooleanArrayResult" required="false" is-array="true" type="boolean"/>
+    </service-method>
+    <service-method local-name="readintArray" service-id="readintArray" method-name="readintArray" cacheable="false">
+      <service-parameters>
+        <service-parameter name="i" type="int" required="false" is-array="true"/>
+      </service-parameters>
+      <service-result name="readintArrayResult" required="false" is-array="true" type="int"/>
+    </service-method>
+    <service-method local-name="readStringArray" service-id="readStringArray" method-name="readStringArray" cacheable="false">
+      <service-parameters>
+        <service-parameter name="s" type="java.lang.String" required="false" is-array="true"/>
+      </service-parameters>
+      <service-result name="readStringArrayResult" required="false" is-array="true" type="java.lang.String"/>
+    </service-method>
+    <service-method local-name="readStringList" service-id="readStringList" method-name="readStringList" cacheable="false">
+      <service-parameters>
+        <service-parameter name="s" type="java.lang.String" collection-type="java.util.List" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readStringListResult" required="false" is-array="false" type="java.lang.String"/>
+    </service-method>
+  </service-component>
+</service-components>
