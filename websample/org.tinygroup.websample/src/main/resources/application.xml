@@ -40,6 +40,7 @@
             resolve-classpath="true">
         <class-paths>
             <!-- <class-path path="{TINY_WEBROOT}\WEB-INF\lib" /> -->
+            <!-- <class-path path="D:\test2" /> -->
         </class-paths>
         <include-patterns>
             <include-pattern pattern="org\.tinygroup\.(.)*\.jar"/>

@@ -21,7 +21,7 @@
     </script>
 
 
-    <link rel="shortcut icon" href="${TINY_CONTEXT_PATH}/icon/logo.png">
+    <link rel="shortcut icon" href="${TINY_CONTEXT_PATH}/icon/favicon.ico">
     
     #if(DEBUG_MODE && DEBUG_MODE=="true")
 	#foreach(component in uiengine.getHealthUiComponents())
