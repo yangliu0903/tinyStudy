@@ -67,10 +67,10 @@
 	<bean id="tinyWebListener" scope="singleton"
 		class="org.tinygroup.websample.TinyWebListener">
 	</bean>
-	<!-- <bean id="jcsCacheBean" scope="singleton"
-		class="org.tinygroup.websample.JcsCacheFactoryBean">
-		<property name="cacheRegion">
-			<value>${cache_region}</value>
-		</property>
-	</bean> -->
+	
+	<bean id="cacheShutDownApplicationProcessor" scope="singleton"
+		class="org.tinygroup.cache.application.CacheShutDownApplicationProcessor">
+		<property name="cacheManager" ref="${cache_manager}"></property>
+	</bean>
+	
 </beans>

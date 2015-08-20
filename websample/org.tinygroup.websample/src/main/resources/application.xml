@@ -12,6 +12,7 @@
         <!-- 如果没有指定语言或指定语言的内容找不到，则从默认语言查找 -->
         <property name="TINY_DEFAULT_LOCALE" value="zh_CN"/>
         <property name="cache_region" value="testCache1"></property>
+        <property name="cache_manager" value="jcsCacheManager"></property>
     </application-properties>
     <!-- config-processors节点由 ProcessorLoader处理器处理，如何配置请参考config-processors配置手册，本段配置如果不配置，则应用系统啥也不干 -->
     <!-- greetings信息由org.tinygroup.application.processor.GreetingProcessor处理器处理，如何配置请参考
@@ -29,10 +30,11 @@
     <application-processors>
         <application-processor bean="fileResolverProcessor"></application-processor>
         <application-processor bean="serviceApplicationProcessor"></application-processor>
-		    <application-processor bean="flowApplicationProcessor"></application-processor>
+		<application-processor bean="flowApplicationProcessor"></application-processor>
         <application-processor bean="databaseInstallerProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
+        <application-processor bean="cacheShutDownApplicationProcessor"></application-processor>
     </application-processors>
 
     <!-- 这里是文件搜索器相关配置，如果配置请参考file-resolver-configuration配置手册 -->
@@ -40,7 +42,7 @@
             resolve-classpath="true">
         <class-paths>
             <!-- <class-path path="{TINY_WEBROOT}\WEB-INF\lib" /> -->
-            <!-- <class-path path="D:\test2" /> -->
+            <class-path path="D:\test2" />
         </class-paths>
         <include-patterns>
             <include-pattern pattern="org\.tinygroup\.(.)*\.jar"/>
@@ -250,10 +252,11 @@
         </id>
         <stores>
             <session-store bean-name="cookieStore"/>
+            <session-store bean-name="cacheStoreImpl"/>
         </stores>
         <store-mappings>
             <match name="name" store="cookieStore"/>
-            <matchRegex pattern=".*" store="cookieStore"/>
+            <matchRegex pattern=".*" store="cacheStoreImpl"/>
         </store-mappings>
         <!-- 如果没有配置默认为SessionModelEncoderImpl -->
         <session-model-encoders>

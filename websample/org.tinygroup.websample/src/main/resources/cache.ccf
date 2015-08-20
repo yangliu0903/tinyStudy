@@ -39,7 +39,7 @@ jcs.default.elementattributes.IsRemote=true
 jcs.default.elementattributes.IsLateral=true
 
 
-# # jcs.region.testCache1=DC
+jcs.region.testCache1=DC
 jcs.region.testCache1.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
 jcs.region.testCache1.cacheattributes.MaxObjects=200002
 
@@ -56,5 +56,10 @@ jcs.auxiliary.RCluster.attributes.LocalClusterConsistency=true
 
 jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
 jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
-jcs.auxiliary.DC.attributes.DiskPath=@project_home@/raf/remote
-
+jcs.auxiliary.DC.attributes.DiskPath=d:/raf/remote
+jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000
+jcs.auxiliary.DC.attributes.MaxKeySize=10000
+jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
+jcs.auxiliary.DC.attributes.OptimizeOnShutdown=true
+jcs.auxiliary.DC.attributes.MaxRecycleBinSize=7500
+jcs.auxiliary.DC.attributes.DiskLimitType=COUNT

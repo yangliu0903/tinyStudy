@@ -136,7 +136,7 @@
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 	
-	<bean id="springUserAciton" class="org.tinygroup.crud.service.impl.SpringUserAction">
+	<bean id="springUserAction" class="org.tinygroup.crud.service.impl.SpringUserAction">
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 	
