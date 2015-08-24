@@ -40,23 +40,23 @@ public class DslCrudService implements CrudDbService<UserPojo>{
 	}
 
 	public void addUser(UserPojo user) {
-		userDao.insertObject(convertTUser(user));
+		userDao.add(convertTUser(user));
 	}
 
 	public void updateUser(UserPojo user) {
-		userDao.updateObject(convertTUser(user));
+		userDao.edit(convertTUser(user));
 	}
 
 	public void deleteUserById(String id) {
-		userDao.deleteObject(id);
+		userDao.deleteByKey(Integer.parseInt(id));
 	}
 	
 	public UserPojo getUserById(String id) {
-		return convertUserPojo(userDao.getObjectById(id));
+		return convertUserPojo(userDao.getByKey(Integer.parseInt(id)));
 	}
 	
 	public List<UserPojo> queryUsers(UserPojo pojo) {
-		List<TUser> list = userDao.queryObjects(convertTUser(pojo));
+		List<TUser> list = userDao.query(convertTUser(pojo));
 		List<UserPojo> result = new ArrayList<UserPojo>();
 		if(list!=null){
 		   for(TUser user:list){

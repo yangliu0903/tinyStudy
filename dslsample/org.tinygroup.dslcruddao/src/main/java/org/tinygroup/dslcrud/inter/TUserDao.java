@@ -20,6 +20,6 @@ import org.tinygroup.jdbctemplatedslsession.daosupport.BaseDao;
 
 import org.tinygroup.dslcrud.pojo.TUser;
 
-public interface TUserDao extends BaseDao<TUser> {
+public interface TUserDao extends BaseDao<TUser,Integer> {
 
 }
