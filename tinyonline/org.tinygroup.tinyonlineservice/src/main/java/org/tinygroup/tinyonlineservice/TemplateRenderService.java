@@ -15,11 +15,17 @@
  */
 package org.tinygroup.tinyonlineservice;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.StringWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 
 import org.tinygroup.service.annotation.ServiceComponent;
 import org.tinygroup.service.annotation.ServiceMethod;
+import org.tinygroup.service.annotation.ServiceParameter;
 import org.tinygroup.service.annotation.ServiceResult;
 import org.tinygroup.template.Template;
 import org.tinygroup.template.TemplateContext;
@@ -33,25 +39,37 @@ import org.tinygroup.template.loader.StringResourceLoader;
 public class TemplateRenderService{
 	@ServiceMethod(serviceId = "renderTemplate")
 	@ServiceResult(name = "result")
-	public String renderTemplate(String example) throws TemplateException, FileNotFoundException {
+	public String renderTemplate(@ServiceParameter String example) throws TemplateException, FileNotFoundException, UnsupportedEncodingException {
 		
-//		  TemplateEngine engine=new TemplateEngineDefault();
-//		  ResourceLoader<String> resourceLoader=new StringResourceLoader();
-//		  engine.addResourceLoader(resourceLoader);
-//		  Template template=resourceLoader.createTemplate("helloWorld");
-//		  template.render();
-		//String processTxt="Hello:${name}  #set(tips=\"hello, World\")  tips的值为${tips}";
 		final TemplateEngine engine = new TemplateEngineDefault();
 		StringResourceLoader  resourceLoader = new StringResourceLoader();
 		engine.addResourceLoader(resourceLoader);
 		Template template = resourceLoader.createTemplate(example);
 		TemplateContext context = new TemplateContextDefault();
 		//context.put("name", "abc111");
-		
-        StringWriter resWriter=new StringWriter();
-		template.render(context, resWriter);
-		
-		 return resWriter.getBuffer().toString();
-		  
+		 Writer writer=null;
+		 OutputStream stream =null;
+		 try{
+			 stream = new ByteArrayOutputStream();
+			 writer = new OutputStreamWriter(stream,"utf-8");
+			 template.render(context,stream);
+			 return writer.toString();
+		 }finally{
+			 if(stream!=null){
+				 try {
+					stream.close();
+				} catch (IOException e) {
+					//ignore
+				}
+			 }
+			 if(writer!=null){
+				 try {
+					writer.close();
+				} catch (IOException e) {
+					//ignore
+				} 
+			 }
+		 }
+		 
 	}
 }
