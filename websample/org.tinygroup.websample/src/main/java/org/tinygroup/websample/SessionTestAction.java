@@ -25,4 +25,11 @@ public class SessionTestAction {
 		return "{getAttribute:"+value+"}";
 	}
 	
+	@RequestMapping("/removeAttribute")
+	@ResponseBody
+	public String removeAttribute(HttpServletRequest request){
+		request.getSession().removeAttribute("test");
+		return "{removeAttribute:test}";
+	}
+	
 }

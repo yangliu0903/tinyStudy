@@ -18,11 +18,14 @@ package org.tinygroup.crud.service.impl;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 import org.tinygroup.weblayer.WebContext;
 import org.tinygroup.weblayer.mvc.WebContextAware;
+
+import com.alibaba.fastjson.JSONObject;
 
 @RequestMapping(value={"/springmvc"})
 public class SpringUserAction implements WebContextAware{
@@ -71,11 +74,29 @@ public class SpringUserAction implements WebContextAware{
 		return new ModelAndView("operate", "user", user);
 	}
 	
-	@RequestMapping(value={"/list.shtm"})
+	@RequestMapping(value={"/list"})
 	public String getListMethod(){
 		List<User> users = queryUsers((User)webContext.getRequest().getAttribute("user"));
 		webContext.getRequest().setAttribute("users", users);
 		return "list";
+	}
+	
+	
+	@RequestMapping(value={"/listjson.shtm"})
+	@ResponseBody
+	public List<User> getListJsonMethod(){
+		List<User> users = queryUsers((User)webContext.getRequest().getAttribute("user"));
+		return users;
+	}
+	
+	@RequestMapping(value={"/liststring.shtm"})
+	@ResponseBody
+	public String getJsonString(){
+		User user=new User();
+		user.setAge(12);
+		user.setName("实得分方法");
+		user.setId("dadsdf");
+		return JSONObject.toJSONString(user);
 	}
 	
 	

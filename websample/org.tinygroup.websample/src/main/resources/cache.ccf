@@ -14,22 +14,17 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-# # # Registry used to register and provide the IRmiCacheService service.
-registry.host=localhost
-registry.port=1101
-remote.cache.service.port=1101
-remote.cluster.LocalClusterConsistency=true
-#remote.cacheeventlogger=org.apache.jcs.engine.logging.CacheEventLoggerDebugLogger
-#remote.cacheeventlogger.attributes.logCategoryName=TestEventLogCategory
-
-# # # sets the default aux value for any non configured caches
-jcs.default=DC
+# #############################################################
+# ################# DEFAULT CACHE REGION  #####################
+# sets the default aux value for any non configured caches
+jcs.default=DC,RFailover
 jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
 jcs.default.cacheattributes.MaxObjects=200000
 jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
 jcs.default.cacheattributes.UseMemoryShrinker=true
-jcs.default.cacheattributes.MaxMemoryIdleTimeSeconds=3600
-jcs.default.cacheattributes.ShrinkerIntervalSeconds=60
+jcs.default.cacheattributes.MaxMemoryIdleTimeSeconds=60
+jcs.default.cacheattributes.ShrinkerIntervalSeconds=30
+jcs.default.cacheattributes.DiskUsagePatternName=UPDATE
 jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
 jcs.default.elementattributes.IsEternal=true
 jcs.default.elementattributes.MaxLifeSeconds=7000
@@ -39,27 +34,26 @@ jcs.default.elementattributes.IsRemote=true
 jcs.default.elementattributes.IsLateral=true
 
 
-jcs.region.testCache1=DC
+# #############################################################
+# ################# CACHE REGIONS AVAILABLE ###################
+jcs.region.testCache1=DC,RFailover
 jcs.region.testCache1.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
 jcs.region.testCache1.cacheattributes.MaxObjects=200002
 
 
-# # # server to update for clustering -- remote.cache2.ccf(1102)  and remote.cache3.ccf(1103)
-jcs.auxiliary.RCluster=org.apache.jcs.auxiliary.remote.RemoteCacheFactory
-jcs.auxiliary.RCluster.attributes=org.apache.jcs.auxiliary.remote.RemoteCacheAttributes
-jcs.auxiliary.RCluster.attributes.RemoteTypeName=CLUSTER
-jcs.auxiliary.RCluster.attributes.RemoveUponRemotePut=false
-jcs.auxiliary.RCluster.attributes.ClusterServers=localhost:1102
-jcs.auxiliary.RCluster.attributes.GetOnly=false
-jcs.auxiliary.RCluster.attributes.LocalClusterConsistency=true
+# AVAILABLE AUXILIARY CACHES
+#jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
+#jcs.auxiliary.DC.attributes= org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
+#jcs.auxiliary.DC.attributes.DiskPath=${user.dir}/jcs_swap
+#jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000000
+#jcs.auxiliary.DC.attributes.MaxKeySize=1000000
+#jcs.auxiliary.DC.attributes.MaxRecycleBinSize=5000
+#jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
+#jcs.auxiliary.DC.attributes.ShutdownSpoolTimeLimit=60
 
-
-jcs.auxiliary.DC=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheFactory
-jcs.auxiliary.DC.attributes=org.apache.jcs.auxiliary.disk.indexed.IndexedDiskCacheAttributes
-jcs.auxiliary.DC.attributes.DiskPath=d:/raf/remote
-jcs.auxiliary.DC.attributes.MaxPurgatorySize=10000
-jcs.auxiliary.DC.attributes.MaxKeySize=10000
-jcs.auxiliary.DC.attributes.OptimizeAtRemoveCount=300000
-jcs.auxiliary.DC.attributes.OptimizeOnShutdown=true
-jcs.auxiliary.DC.attributes.MaxRecycleBinSize=7500
-jcs.auxiliary.DC.attributes.DiskLimitType=COUNT
+# Remote RMI Cache set up to failover
+jcs.auxiliary.RFailover=org.apache.jcs.auxiliary.remote.RemoteCacheFactory
+jcs.auxiliary.RFailover.attributes=org.apache.jcs.auxiliary.remote.RemoteCacheAttributes
+jcs.auxiliary.RFailover.attributes.FailoverServers=localhost:1101
+jcs.auxiliary.RC.attributes.RemoveUponRemotePut=true
+jcs.auxiliary.RFailover.attributes.GetOnly=false
