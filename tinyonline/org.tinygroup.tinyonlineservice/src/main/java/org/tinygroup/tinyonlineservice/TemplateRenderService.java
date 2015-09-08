@@ -53,7 +53,7 @@ public class TemplateRenderService{
 			 stream = new ByteArrayOutputStream();
 			 writer = new OutputStreamWriter(stream,"utf-8");
 			 template.render(context,stream);
-			 return writer.toString();
+			 return stream.toString();
 		 }finally{
 			 if(stream!=null){
 				 try {
