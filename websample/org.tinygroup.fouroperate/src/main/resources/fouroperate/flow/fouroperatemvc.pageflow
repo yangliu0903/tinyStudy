@@ -1,63 +1,70 @@
-<flow id="fouroperatemvc" name="fouroperatemvc" begin-node-id="addition"
-	private-context="false" enable="false">
-	<nodes>
-	<node id="addition" name="addition"  title="加法服务">
-			<component name="additionComponent">
-				<properties>
-					<flow-property name="number1" value="${number1}" />
-					<flow-property name="number2" value="${number2}" />
-					<flow-property name="resultKey" value="result" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="success"></next-node>
-			</next-nodes>
-		</node>
-		<node id="subtraction" name="subtraction"  title="减法服务">
-			<component name="subtractionComponent">
-				<properties>
-					<flow-property name="number1" value="${number1}" />
-					<flow-property name="number2" value="${number2}" />
-					<flow-property name="resultKey" value="result" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="success"></next-node>
-			</next-nodes>
-		</node>
-		<node id="multi" name="multi"  title="乘法服务">
-			<component name="multiComponent">
-				<properties>
-					<flow-property name="number1" value="${number1}" />
-					<flow-property name="number2" value="${number2}" />
-					<flow-property name="resultKey" value="result" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="success"></next-node>
-			</next-nodes>
-		</node>
-		<node id="division" name="division"  title="除法服务">
-			<component name="divisionComponent">
-				<properties>
-					<flow-property name="number1" value="${number1}" />
-					<flow-property name="number2" value="${number2}" />
-					<flow-property name="resultKey" value="result" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="success"></next-node>
-			</next-nodes>
-		</node>
-		<node id="success" name="success" title="转换页面">
-			<component name="forwardComponent">
-				<properties>
-					<flow-property name="path" value="/fouroperate/result.page" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="end"></next-node>
-			</next-nodes>
-		</node>
-	</nodes>
+<flow id="fouroperatemvc" name="fouroperatemvc" enable="false" private-context="false">
+  <nodes>
+    <node id="begin" name="begin" title="开始">
+      <next-nodes>
+        <next-node next-node-id="addition"/>
+        <next-node next-node-id="subtraction"/>
+        <next-node next-node-id="multi"/>
+        <next-node next-node-id="division"/>
+      </next-nodes>
+    </node>
+    <node id="addition" name="addition" title="加法服务">
+      <component name="additionComponent">
+        <properties>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="success"/>
+      </next-nodes>
+    </node>
+    <node id="subtraction" name="subtraction" title="减法服务">
+      <component name="subtractionComponent">
+        <properties>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="success"/>
+      </next-nodes>
+    </node>
+    <node id="multi" name="multi" title="乘法服务">
+      <component name="multiComponent">
+        <properties>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="success"/>
+      </next-nodes>
+    </node>
+    <node id="division" name="division" title="除法服务">
+      <component name="divisionComponent">
+        <properties>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="success"/>
+      </next-nodes>
+    </node>
+    <node id="success" name="success" title="转换页面">
+      <component name="forwardComponent">
+        <properties>
+          <flow-property name="path" value="/fouroperate/result.page" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+  </nodes>
 </flow>

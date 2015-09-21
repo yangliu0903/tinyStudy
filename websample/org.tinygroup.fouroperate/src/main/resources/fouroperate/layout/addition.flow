@@ -1,6 +1,11 @@
 <flow id="addition" name="addition" enable="false" private-context="false">
+  <parameters>
+    <parameter array="false" required="true" name="number1" type="java.lang.Double" scope="in"/>
+    <parameter array="false" required="true" name="number2" type="java.lang.Double" scope="in"/>
+    <parameter array="false" required="true" name="result" type="java.lang.Double" scope="out"/>
+  </parameters>
   <nodes>
-    <node id="start" name="start" title="开始">
+    <node id="begin" name="begin" title="开始">
       <next-nodes>
         <next-node next-node-id="addition"/>
       </next-nodes>
@@ -8,17 +13,14 @@
     <node id="addition" name="addition" title="加法服务">
       <component name="additionComponent">
         <properties>
-          <flow-property name="number1" value="${number1}"/>
-          <flow-property name="number2" value="${number2}"/>
-          <flow-property name="resultKey" value="result"/>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
         </properties>
       </component>
       <next-nodes>
         <next-node next-node-id="end"/>
       </next-nodes>
-    </node>
-    <node id="end" name="end" title="结束">
-      <next-nodes/>
     </node>
   </nodes>
 </flow>

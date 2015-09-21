@@ -1,17 +1,26 @@
-<flow id="multi" name="multi" 
-	private-context="false" enable="false">
-	<nodes>
-	<node id="multi" name="multi"  title="乘法服务">
-			<component name="multiComponent">
-				<properties>
-					<flow-property name="number1" value="${number1}" />
-					<flow-property name="number2" value="${number2}" />
-					<flow-property name="resultKey" value="result" />
-				</properties>
-			</component>
-			<next-nodes>
-			    <next-node next-node-id="end"></next-node>
-			</next-nodes>
-		</node>
-	</nodes>
+<flow id="multi" name="multi" enable="false" private-context="false">
+  <parameters>
+    <parameter array="false" required="true" name="number1" type="java.lang.Double" scope="in"/>
+    <parameter array="false" required="true" name="number2" type="java.lang.Double" scope="in"/>
+    <parameter array="false" required="true" name="result" type="java.lang.Double" scope="out"/>
+  </parameters>
+  <nodes>
+    <node id="begin" name="begin" title="开始">
+      <next-nodes>
+        <next-node next-node-id="multi"/>
+      </next-nodes>
+    </node>
+    <node id="multi" name="multi" title="乘法服务">
+      <component name="multiComponent">
+        <properties>
+          <flow-property name="number1" value="${number1}" required="true" type="java.lang.Double"/>
+          <flow-property name="number2" value="${number2}" required="true" type="java.lang.Double"/>
+          <flow-property name="resultKey" value="result" required="true" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+  </nodes>
 </flow>
