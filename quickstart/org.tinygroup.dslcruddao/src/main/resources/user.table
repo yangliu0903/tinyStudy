@@ -1,8 +1,0 @@
-<tables>
-  <table id="223ec410a39141a1899a95a461eef9fe" name="t_user" title="USER" schema="OPENSOURCE" package-name="org.tinygroup.dslcruddao">
-    <description>用户表</description>
-    <table-field standard-field-id="9e7a798c0a85410589b4df32b415f245" primary="true" unique="true" not-null="true" id="id" auto-increase="true"/>
-    <table-field standard-field-id="70bff2ec2b634875b0e0983826853e57" primary="false" unique="false" not-null="false" id="name" auto-increase="false"/>
-    <table-field standard-field-id="812c7b3de83e4d5ea2c0df3e70f263a7" primary="false" unique="false" not-null="false" id="age" auto-increase="false"/>
-  </table>
-</tables>
