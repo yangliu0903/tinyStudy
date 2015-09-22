@@ -1,0 +1,6 @@
+<service-view-mappings>
+	<service-view-mapping service-id="addition" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="subtraction" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="multi" path="/result.page" type="forward"></service-view-mapping>
+	<service-view-mapping service-id="division" path="/result.page" type="forward"></service-view-mapping>
+</service-view-mappings>
