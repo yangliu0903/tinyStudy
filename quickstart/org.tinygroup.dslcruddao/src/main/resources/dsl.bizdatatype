@@ -1,0 +1,19 @@
+<business-types>
+  <business-type id="abfcc23f10e6408db623cfdb847dda8d" name="int" title="INT" standard-type-id="269295ddfe00491bb8becc613db4afb9">
+    <description></description>
+    <placeholder-value-list>
+      <placeholder-value name="precision" value="0"/>
+      <placeholder-value name="scale" value="0"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="6a692d3fa97d48cc80d1e4a148f03972" name="string30" title="STRING30" standard-type-id="91577d297f1d4b9fadf7d730735c98b6">
+    <placeholder-value-list>
+      <placeholder-value name="length" value="30"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="a85f9c7e33674e629378c7f9a0127de7" name="string50" title="STRING50" standard-type-id="91577d297f1d4b9fadf7d730735c98b6">
+    <placeholder-value-list>
+      <placeholder-value name="length" value="50"/>
+    </placeholder-value-list>
+  </business-type>
+</business-types>

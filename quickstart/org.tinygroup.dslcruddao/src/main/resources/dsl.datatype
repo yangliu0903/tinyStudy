@@ -1,0 +1,25 @@
+<standard-types>
+  <standard-type id="269295ddfe00491bb8becc613db4afb9" name="int" title="INT" data-type="4">
+    <description>整形类型</description>
+    <placeholder-list>
+      <placeholder id="7c7d7b775e434bcab712bbfe8107c758" name="precision" title="精度"/>
+      <placeholder id="c1a5a13e4ff5433cbcbee860a578baf2" name="scale" title="范围"/>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Integer"/>
+      <dialect-type language="mysql" base-type="INT"/>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="91577d297f1d4b9fadf7d730735c98b6" name="string" title="STRING" data-type="12">
+    <description>字符串</description>
+    <placeholder-list>
+      <placeholder id="1fbcd353eee2439f9d5bcbf78e80d53d" name="length" title="长度">
+        <description>定义字符串的长度</description>
+      </placeholder>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="String"/>
+      <dialect-type language="mysql" base-type="VARCHAR"/>
+    </dialect-type-list>
+  </standard-type>
+</standard-types>
