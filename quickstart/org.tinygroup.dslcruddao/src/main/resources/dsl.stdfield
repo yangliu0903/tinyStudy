@@ -1,0 +1,11 @@
+<standard-fields>
+  <standard-field id="9e7a798c0a85410589b4df32b415f245" name="id" title="ID" business-type-id="abfcc23f10e6408db623cfdb847dda8d" not-null="false">
+    <description></description>
+  </standard-field>
+  <standard-field id="70bff2ec2b634875b0e0983826853e57" name="name" title="NAME" business-type-id="a85f9c7e33674e629378c7f9a0127de7" not-null="false">
+    <description>用户姓名</description>
+  </standard-field>
+  <standard-field id="812c7b3de83e4d5ea2c0df3e70f263a7" name="age" title="AGE" business-type-id="abfcc23f10e6408db623cfdb847dda8d" not-null="false">
+    <description>年龄</description>
+  </standard-field>
+</standard-fields>
