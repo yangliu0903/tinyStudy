@@ -29,5 +29,6 @@
         <module>dslsample</module>
         <module>websample</module>
     <module>top.develop.demo</module>
+        <module>quickstart</module>
   </modules>
 </project>
