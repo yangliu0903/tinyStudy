@@ -1,0 +1,7 @@
+#for(foo : [1..5])
+	${foo}
+#end
+
+#for(bar : [0..-2])
+	${bar}
+#end

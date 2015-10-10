@@ -1,0 +1,24 @@
+## ==相等运算
+#set (foo = "tiny0",bar = "tiny1")
+#if (foo == bar)
+ 	这个例子明显不相等
+#else
+	不会输出
+#end
+
+## AND运算
+#set(foo = true,bar = foo)
+#if( foo && bar )
+   And运算结果
+#end
+
+## OR运算
+#set(bar = false)
+#if( foo || bar )
+   OR运算结果
+#end
+
+## NOT运算
+#if( !bar )
+   NOT运算结果
+#end

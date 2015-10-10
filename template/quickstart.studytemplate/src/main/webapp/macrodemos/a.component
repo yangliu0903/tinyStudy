@@ -1,0 +1,15 @@
+#macro showTitle(titleInfo titleSize titleColor)
+	#if(titleSize && titleSize!="")
+		<${titleSize}>
+	#end
+	#if(titleColor && titleColor!="")
+		<font color="${titleColor}">
+	#end
+		${titleInfo}
+	#if(titleColor && titleColor!="" )
+		</font>
+	#end
+	#if(titleSize && titleSize!="")
+		</${titleSize}>
+	#end
+#end 

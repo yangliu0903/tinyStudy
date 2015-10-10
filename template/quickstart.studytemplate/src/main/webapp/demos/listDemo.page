@@ -1,0 +1,16 @@
+## 模拟组装数据
+## 单行注释
+#set(user1 = {"id":11,"name":"<p>Tiny框架</p>"}) ## 数字和字母混合的Map
+#set(user2 = {"id":22,"name":"Tiny模板引擎"})
+#set(users = [user1,user2]) ## 数组
+
+## 模拟页面列表显示
+	序号     ID     名称
+#for(user : users)
+	${userFor.index}     ${user.id}     $!{user.name}
+#end
+
+#* 
+	另外，Map取值表达式 ：
+	${user["name"]}  ${user.get("name")}
+*#
