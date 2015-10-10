@@ -1,0 +1,21 @@
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<servlet>
+    	<servlet-name>ServeltTemplate</servlet-name>
+    	<servlet-class>quickstart.servlettemplate.ServeltTemplateDemo</servlet-class>
+    	<!-- 如果要配置则修改，不填的话，Tiny默认配置如下
+    	<init-param>
+        	<param-name>resourceLoaderPath</param-name>
+        	<param-value>resource:src/main/resources,templateextname:page,layoutextname:layout,macrolibraryextname:component</param-value>
+    	</init-param>
+    	 -->
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ServeltTemplate</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+</web-app>
