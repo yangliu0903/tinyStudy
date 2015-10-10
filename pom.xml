@@ -30,5 +30,6 @@
         <module>websample</module>
     <module>top.develop.demo</module>
         <module>quickstart</module>
+        <module>template</module>
   </modules>
 </project>

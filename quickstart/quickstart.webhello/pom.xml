@@ -10,6 +10,11 @@
     <name>quickstart.webhello</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+    	<dependency>
+    		<groupId>org.apache.maven.plugins</groupId>
+   			<artifactId>maven-compiler-plugin</artifactId>
+    		<version>3.1</version>
+		</dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.validate</artifactId>
