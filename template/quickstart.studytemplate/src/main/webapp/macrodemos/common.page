@@ -1,0 +1,3 @@
+#showTitle("a页面首部" "" "blue")
+#showTitle("网页尾部" "h3") 
+这是普通页面的内容

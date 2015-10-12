@@ -1,0 +1,11 @@
+#set(bar = 1)
+#set(foo = bar + 6)
+${foo}
+#set(foo = bar - 2)
+${foo}
+#set(foo = bar * 3)
+${foo}
+#set(foo = bar / 2)
+${foo}
+#set(foo = bar % 5)
+${foo}

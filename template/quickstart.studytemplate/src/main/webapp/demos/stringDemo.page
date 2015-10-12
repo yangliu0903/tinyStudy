@@ -1,0 +1,4 @@
+#set( a = "aaa" )
+#set( b = "bbb" )
+This is ${a + b}
+${fmt("This is %s %s",a,b)}

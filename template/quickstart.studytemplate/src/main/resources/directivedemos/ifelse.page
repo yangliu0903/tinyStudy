@@ -1,0 +1,16 @@
+## 条件判断
+#set( foo = 15 , bar = 6)
+
+#if(foo)
+	True
+#end
+
+#if( foo < 10 )
+    Go North
+#elseif( foo == 10 )
+    Go East
+#elseif( bar == 6 )
+    Go South
+#else
+    Go West
+#end

@@ -1,0 +1,40 @@
+## 取值表达式
+#set(tiny = "tinyFramwork")
+#set(tinyHtml = "<H1>tinyFramwork</H1>")
+${tiny}
+${tinyHtml}
+$!{tinyHtml}
+
+## Map常量
+#set(map0 = {"id":1,"keyName":"valueContent"})
+${map0.keyName}
+${map0["keyName"]}
+${map0.get("keyName")}
+
+## 数组常量
+#set(array0 = [2,"TinyTemplate"])
+${array0[0]} - ${array0[1]}
+
+#set(aa = 'Say："Tiny"')
+${aa}
+#set(bb = " Say：'Tiny' ")
+${bb}
+
+######
+## 其他表达式
+######
+## 自增/自减
+#set(num = 3)
+${num++}
+${++num}
+
+## 字符串常量
+#set(say = 'Say："Tiny"')
+#set(say0 = "Say：\"Tiny\"")
+${say}
+${say0}
+
+## 布尔值特例
+#if(0)
+	zero
+#end

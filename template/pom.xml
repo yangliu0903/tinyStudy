@@ -7,15 +7,10 @@
     <version>2.0.2-SNAPSHOT</version>
   </parent>
 
-  <groupId>quickstart</groupId>
-  <artifactId>quickstart</artifactId>
+  <groupId>template</groupId>
+  <artifactId>template</artifactId>
   <packaging>pom</packaging>
-  <name>quickstart</name>
-
-  <properties>
-      <tiny_version>2.0.24</tiny_version>
-      <tinyui_version>2.0.0</tinyui_version>
-  </properties>
+  <name>template</name>
 
   <dependencies>
     <dependency>
@@ -26,14 +21,8 @@
     </dependency>
   </dependencies>
   <modules>
-  	<module>quickstart.dslcruddao</module>
-  	<module>quickstart.dslcruddaoimpl</module>
-  	<module>quickstart.dslcrudservice</module>
-  	<module>quickstart.dslcrudserviceimpl</module>
-  	<module>quickstart.dslcrudservicewrapper</module>
-  	<module>quickstart.dslcrudweb</module>
-    <module>quickstart.fouroperate</module>
-    <module>quickstart.studytiny</module>
-    <module>quickstart.webhello</module>     
+    <module>quickstart.studytemplate</module>    
+    <module>quickstart.servlettemplate</module>    
+    <module>quickstart.springmvctemplate</module>    
   </modules>
 </project>

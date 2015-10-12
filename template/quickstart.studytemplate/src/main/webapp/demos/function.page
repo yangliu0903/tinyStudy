@@ -1,0 +1,30 @@
+#set(text = read("/src/main/resources/demos/test.txt"))
+${text}
+#set(text = readContent("/src/main/resources/demos/test.txt"))
+${text}
+
+
+${is("abc","java.lang.String","java.lang.Byte")}
+${instance("abc","java.lang.String","java.lang.Byte")}
+${instanceOf(10,"java.lang.Integer")}
+${instanceOf(10.0,"java.lang.Double")}
+${instanceOf(10L,"java.lang.long")}
+${instanceOf(10L,"java.lang.Double")}
+
+#set(name = "tiny")
+#set(result=eval("hello,${name}"))${eval("hello,${name}")}
+
+${rand()}
+${random()}
+${rand("int")}
+${random("long")}
+${rand("float")}
+${rand("double")}
+${rand("uuid")}
+
+${toInt("8")+toInt("2")}
+${toDouble("2")}
+${toFloat("20.4")+toFloat("20.8")}
+${toBool("true")?1:2}
+
+${formatDate(now(),"yyyy年MM月dd日 HH:mm:ss")}

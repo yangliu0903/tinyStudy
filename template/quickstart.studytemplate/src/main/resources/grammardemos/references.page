@@ -1,0 +1,14 @@
+## 变量引用(variables)
+#set(variable0 = "0")
+#set(_variable0 = "_0")
+${variable0}
+${_variable0}
+## #set(0variable = "error")
+
+## 属性（properties）
+#set(user0 = {"id":11,"name":"Tiny"})
+${user0.id} - ${user0.name}
+
+## 方法（methods）
+## user.getName() 等价于  user.name
+## page.setTitile("title name")
