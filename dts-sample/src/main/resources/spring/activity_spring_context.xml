@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="activityDataSource" name="activityDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://192.168.51.28:3306/tiny-dts?createDatabaseIfNotExist=true</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+	</bean>
+
+	<bean id="activityTransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="activityDataSource" />
+		</property>
+	</bean>
+
+	<bean id="activityTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager">
+			<ref bean="activityTransactionManager" />
+		</property>
+	</bean>
+	
+	<bean id="transferService"
+		class="org.tinygroup.dts.client.sample.activity.TransferService">
+		<property name="transactionTemplate">
+			<ref bean="activityTransactionTemplate" />
+		</property>
+		<property name="firstAction">
+			<ref bean="firstAction" />
+		</property>
+		<property name="secondAction">
+			<ref bean="secondAction" />
+		</property>
+		<property name="businessActivityControlService">
+			<ref bean="businessActivityControlService" />
+		</property>
+	</bean>
+	
+	<!-- 分布式事务的服务，用来发起分布式事务 -->
+	<bean name='businessActivityControlService' class="org.tinygroup.dts.api.impl.BusinessActivityControlServiceImpl">
+      <property name="dataSource" ref="activityDataSource"/>
+      <property name="dbType" value="mysql"/>
+	</bean>
+	
+	<bean name='ibatisMysqlDaoProvider' class="org.tinygroup.dts.manager.impl.IbatisMysqlDaoProvider">
+	</bean>
+	<!-- 第一个参与者的代理 -->
+	<bean id="firstAction" class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces" value="org.tinygroup.dts.client.sample.action.FirstAction"/>
+	    <property name="target" ref="firstActionTarget"/>
+	    <property name="interceptorNames">
+	        <list>
+	            <value>businessActionInterceptor</value>
+	        </list>
+	    </property>
+	</bean>
+	<!-- 第一个参与者 -->
+	<bean id="firstActionTarget" class="org.tinygroup.dts.client.sample.action.impl.FirstActionImpl">
+	    <property name="accountTransactionDAO">
+			<ref bean="firstActionAccountTransactionDAO" />
+		</property>
+		<property name="accountDAO">
+			<ref bean="firstActionAccountDAO" />
+		</property>
+		<property name="transactionTemplate">
+			<ref bean="firstActionTransactionTemplate" />
+		</property>
+	</bean>
+	
+	<!-- 第一个参与者的代理 -->
+	<bean id="secondAction" class="org.springframework.aop.framework.ProxyFactoryBean">
+	    <property name="proxyInterfaces" value="org.tinygroup.dts.client.sample.action.SecondAction"/>
+	    <property name="target" ref="secondActionTarget"/>
+	    <property name="interceptorNames">
+	        <list>
+	            <value>businessActionInterceptor</value>
+	        </list>
+	    </property>
+	</bean>
+	<!-- 第二个参与者 -->
+	<bean id="secondActionTarget" class="org.tinygroup.dts.client.sample.action.impl.SecondActionImpl">
+	    <property name="accountTransactionDAO">
+			<ref bean="secondActionAccountTransactionDAO" />
+		</property>
+		<property name="accountDAO">
+			<ref bean="secondActionAccountDAO" />
+		</property>
+		<property name="transactionTemplate">
+			<ref bean="secondActionTransactionTemplate" />
+		</property>
+	</bean>
+	<!-- 拦截器，在参与者调用前生效，插入参与者的action记录 -->
+	<bean id="businessActionInterceptor"
+      class="org.tinygroup.dts.integration.BusinessActionInterceptor">
+	    <property name="businessActivityControlService" ref="businessActivityControlService">
+	    </property>
+	</bean>	
+</beans>  

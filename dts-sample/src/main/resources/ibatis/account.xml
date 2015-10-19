@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+  
+<!DOCTYPE sqlMap        
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"        
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="account">
+	<resultMap class="org.tinygroup.dts.client.sample.action.Account"
+		id="account">
+		<result property="accountNo" column="account_no" />
+		<result property="amount" column="amount" javaType="java.lang.Double" />
+		<result property="freezedAmount" column="freezed_amount" javaType="java.lang.Double" />
+	</resultMap>
+	<select id="getAccount" resultMap="account">
+		select * from account where account_no=#accountNo#
+	</select>
+	<insert id="addAccount" parameterClass="org.tinygroup.dts.client.sample.action.Account">
+		insert into account(account_no,amount,freezed_amount) values(#accountNo#,#amount#,#freezedAmount#)
+	</insert>
+	<update id="updateAmount">
+		update account set amount=#amount# where account_no=#accountNo#
+	</update>
+	<update id="updateFreezedAmount">
+		update account set freezed_amount=#freezedAmount# where account_no=#accountNo#
+	</update>
+</sqlMap>  
