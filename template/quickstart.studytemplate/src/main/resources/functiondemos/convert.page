@@ -1,0 +1,5 @@
+## 类型转换函数
+${toInt("8")+toInt("2")}
+${toDouble("2")}
+${toFloat("20.4")+toFloat("20.8")}
+${toBool("true")?1:2}

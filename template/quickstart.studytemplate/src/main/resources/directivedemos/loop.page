@@ -1,0 +1,40 @@
+## FOR循环
+#for(number : [1,2,4,7])
+	value:${number}
+#end
+#for(book:null)
+#else
+	book没被找到
+#end
+
+## 循环状态变量
+#for(num : [1,2,3,4,5])
+	#if(numFor.first)
+		第一个数字是${num},总数为${numFor.size}。
+	#else
+		${num}
+	#end
+#end
+
+## 循环中断：#break
+#for(num : [1,2,3])
+	${num}
+	#break(num == 2)
+#end
+#for(num : [1,2,3])
+	${num}
+	#if(num == 2)#break#end
+#end
+
+## 循环继续：#continue
+#for(num : [4,5,6])
+	${num}
+	#continue(num == 5)
+	#break(num == 5)
+#end
+
+## while循环
+#set(i = 7)
+#while(i < 10)
+	${i++}
+#end

@@ -1,0 +1,16 @@
+## 宏定义语句#macro-定义了header宏
+#macro header(subTitle)
+    <h1>Tiny框架：${subTitle}</h1>
+#end
+
+## 宏包含#bodyContent
+#macro div()
+<div>
+    #bodyContent
+</div>
+#end
+#macro p()
+    <p>
+    #bodyContent
+    </p>
+#end

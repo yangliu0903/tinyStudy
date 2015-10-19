@@ -1,0 +1,4 @@
+## 实例判断函数is,instanceOf,instance
+${is("10","java.lang.Integer")}
+${instance("abc","java.lang.String","java.lang.Byte")}
+${instanceOf(12,"java.lang.String")}

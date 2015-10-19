@@ -1,0 +1,8 @@
+## 模板嵌套语句#include
+## #include("/src/main/resources/directivedemos/ifelse.page")   ##表示绝对路径
+#include("ifelse.page") ##表示相对路径
+
+## 其他
+## #include(format("file%s-%s.page",1,2))
+##表示采用格式化函数执行结果作为路径，这个例子中为：与当前访问路径相同路径中的"file1-2.page"文件
+## #include("/a/b/aa.page",{aa:user,bb:book})##表示带参数访问，会带过去两个参数aa和bb。

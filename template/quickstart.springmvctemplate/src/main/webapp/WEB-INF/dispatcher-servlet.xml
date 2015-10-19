@@ -20,16 +20,17 @@
 	        </list>
 	    </property>
 	</bean>
+	
 	<!-- 文件扫描器配置 -->
 	<bean id="fileScanner" class="org.tinygroup.templatespringext.impl.FileScannerImpl">
 	    <property name="jarFileProcessor" ref="jarFileProcessor"></property>
-	    <!-- 如果要配置则修改，不填的话，Tiny默认配置如下
+	    <!-- 如果要配置则修改，不填的话，Tiny默认配置如下-->
 	    <property name="classPathList">
 	        <list>
 	            <value>src\main\resources</value>
 	        </list>
 	    </property>
-	     -->
+	     
 	</bean>
 	
 	<!-- 视图解析器配置 -->

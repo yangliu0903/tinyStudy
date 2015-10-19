@@ -1,0 +1,4 @@
+## 宏定义语句#macro-定义了header宏
+#macro header(subTitle)
+    <h2>Tiny框架：${subTitle}</h2>
+#end

@@ -1,0 +1,5 @@
+## 格式化函数fmt,format,formatter
+#set(name = "Tiny User",tiny = "Tiny")
+#set(result = format("Hello,%s。欢迎使用%s",name,tiny))
+${result}
+${format("Hello,%s",name)}

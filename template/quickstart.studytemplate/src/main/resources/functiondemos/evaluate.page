@@ -1,0 +1,5 @@
+## 求值函数eval,evaluate
+#set(name = "Tiny User")
+#set(result=eval("Hello,${name}"))
+${result}
+${eval("Hello,${name}")}
