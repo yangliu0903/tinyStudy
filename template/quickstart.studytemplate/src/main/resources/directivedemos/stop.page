@@ -1,0 +1,9 @@
+## 停止执行#stop
+#for(num : [1,2,3])
+	${num}
+	#stop(num == 2)
+#end
+#for(num : [1,2,3])
+	${num}
+	#if(num == 2)#stop#end
+#end

@@ -1,0 +1,4 @@
+## 读取文本资源函数read,readContent
+#set(data = read("src/main/resources/functiondemos/data.txt"))
+${data}
+${readContent("src/main/resources/functiondemos/data.txt")}

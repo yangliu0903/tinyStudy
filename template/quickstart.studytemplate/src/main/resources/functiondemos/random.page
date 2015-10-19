@@ -1,0 +1,8 @@
+## 随机数函数rand,random
+${rand()}
+${random()}
+${rand("int")}
+${random("long")}
+${rand("float")}
+${rand("double")}
+${rand("uuid")}
