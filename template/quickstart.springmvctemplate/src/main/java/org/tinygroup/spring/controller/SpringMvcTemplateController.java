@@ -15,5 +15,10 @@ public class SpringMvcTemplateController {
         model.addAttribute("date",new Date());
         return "index.page";
     }
+    
+    @RequestMapping(value="/macro")
+    public String macro(Model model){ 
+        return "macro.page";
+    }
 }
 

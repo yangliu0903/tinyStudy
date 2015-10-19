@@ -1,0 +1,10 @@
+## 宏定义语句#macro-header宏的调用
+#header("homepage")
+#header("about")
+
+## 宏定义语句#macro-div、p宏的调用
+#@div()
+    #@p()
+        <em>一些信息</em><b>一些内容</b>
+    #end
+#end
