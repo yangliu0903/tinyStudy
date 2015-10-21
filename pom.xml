@@ -32,5 +32,6 @@
         <module>quickstart</module>
         <module>template</module>
         <module>dts-sample</module>
+        <module>tiny-dts</module>
   </modules>
 </project>
