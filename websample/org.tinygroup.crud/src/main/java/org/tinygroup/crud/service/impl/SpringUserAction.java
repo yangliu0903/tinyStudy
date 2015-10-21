@@ -15,11 +15,15 @@
  */
 package org.tinygroup.crud.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.tinygroup.commons.tools.CollectionUtil;
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 import org.tinygroup.weblayer.WebContext;
@@ -46,6 +50,24 @@ public class SpringUserAction implements WebContextAware{
 		user.setAge(Integer.parseInt(webContext.getRequest().getParameter("age")));
 		user.setName(name);
 		crudDbDao.addUser(user);
+		getListMethod();
+		return "list";
+	}
+	
+	@RequestMapping(value={"/addUser.shtm"})
+	public String addUser(User user) {
+		crudDbDao.addUser(user);
+		getListMethod();
+		return "list";
+	}
+	
+	@RequestMapping(value={"/addUsers.shtm"})
+	public String addUser(ArrayList<User> users) {
+		if(!CollectionUtil.isEmpty(users)){
+			for (User user : users) {
+				crudDbDao.addUser(user);
+			}
+		}
 		getListMethod();
 		return "list";
 	}
@@ -116,4 +138,32 @@ public class SpringUserAction implements WebContextAware{
 		this.webContext = webContext;
 	}
 
+	
+	public static void main(String[] args) {
+		
+		BeanWrapper beanWrapper=new BeanWrapperImpl(User.class);
+		beanWrapper.setAutoGrowNestedPaths(true);
+		beanWrapper.setPropertyValue("name", "sdfd");
+		beanWrapper.setPropertyValue("age",12);
+		beanWrapper.setPropertyValue("fileInfos[0].name", "sdss");
+		beanWrapper.setPropertyValue("fileInfos[0].size", 1222);
+		beanWrapper.setPropertyValue("fileInfos[1].name", "sdss");
+		beanWrapper.setPropertyValue("fileInfos[1].size", 13322);
+		beanWrapper.setPropertyValue("fInfos[0].name", "sdss");
+		beanWrapper.setPropertyValue("fInfos[0].size", 122112);
+		beanWrapper.setPropertyValue("fInfos[1].name", "sdss");
+		beanWrapper.setPropertyValue("fInfos[1].size", 13322);
+		User user=(User) beanWrapper.getWrappedInstance();
+		
+		System.out.println(user.getName());
+		System.out.println(user.getAge());
+		System.out.println(user.getFileInfos());
+		System.out.println(user.getfInfos());
+		
+		
+		
+	}
+	
+	
+	
 }

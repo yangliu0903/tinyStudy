@@ -13,6 +13,12 @@
       </service-parameters>
       <service-result name="readintStringResult" required="false" is-array="false" type="java.lang.String"/>
     </service-method>
+    <service-method local-name="readint" service-id="readint" method-name="readint" cacheable="false">
+      <service-parameters>
+        <service-parameter name="i" type="int" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="readintResult" required="false" is-array="false" type="int"/>
+    </service-method>
     <service-method local-name="readInterfaceUser" service-id="readInterfaceUser" method-name="readInterfaceUser" cacheable="false">
       <service-parameters>
         <service-parameter name="user" type="org.tinygroup.webservicesample.User2" required="false" is-array="false"/>

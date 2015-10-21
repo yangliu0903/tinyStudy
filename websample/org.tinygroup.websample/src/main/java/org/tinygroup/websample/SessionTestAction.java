@@ -1,10 +1,13 @@
 package org.tinygroup.websample;
 
+import java.lang.annotation.Annotation;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.tinygroup.commons.tools.AnnotationUtils;
 
 @Controller
 @RequestMapping("/session")
@@ -32,4 +35,12 @@ public class SessionTestAction {
 		return "{removeAttribute:test}";
 	}
 	
+	
+	public static void main(String[] args) {
+		
+		Annotation annotation=AnnotationUtils.findAnnotation(SessionTestAction.class, RequestMapping.class);
+	    System.out.println(annotation.annotationType());
+		
+		
+	}
 }

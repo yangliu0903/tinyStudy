@@ -16,12 +16,18 @@
 package org.tinygroup.crud.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class User implements Serializable{
 
 	private String id;  
     private String name;
     private int age;
+    
+    private  List<FileInfo> fileInfos;
+    
+    private FileInfo[] fInfos;
+    
 	public String getName() {
 		return name;
 	}
@@ -39,6 +45,18 @@ public class User implements Serializable{
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public List<FileInfo> getFileInfos() {
+		return fileInfos;
+	}
+	public void setFileInfos(List<FileInfo> fileInfos) {
+		this.fileInfos = fileInfos;
+	}
+	public FileInfo[] getfInfos() {
+		return fInfos;
+	}
+	public void setfInfos(FileInfo[] fInfos) {
+		this.fInfos = fInfos;
 	}
 	
 }

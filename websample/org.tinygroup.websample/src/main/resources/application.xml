@@ -35,6 +35,7 @@
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
         <application-processor bean="cacheShutDownApplicationProcessor"></application-processor>
+        <application-processor bean="sessionMonitorApplicationProcessor"></application-processor>
     </application-processors>
 
     <!-- 这里是文件搜索器相关配置，如果配置请参考file-resolver-configuration配置手册 -->
@@ -243,7 +244,7 @@
           </handlers>
         </rule>
     </rewrite>
-    <session>
+    <session maxInactiveInterval="60" forceExpirationPeriod="0" keepInTouch="true" backgroundProcessorDelay="10" sessionManagerBeanId="cacheSessionManager">
         <id cookieEnabled="true" urlEncodeEnabled="false">
             <cookie path="/" name="tinyjsessionid"></cookie>
             <url-encode name="tinyjsessionid"></url-encode>
@@ -255,7 +256,7 @@
             <session-store bean-name="cacheStoreImpl"/>
         </stores>
         <store-mappings>
-            <match name="name" store="cookieStore"/>
+            <match name="SESSION_MODEL" store="cookieStore"/>
             <matchRegex pattern=".*" store="cacheStoreImpl"/>
         </store-mappings>
         <!-- 如果没有配置默认为SessionModelEncoderImpl -->

@@ -73,4 +73,9 @@
 		<property name="cacheManager" ref="${cache_manager}"></property>
 	</bean>
 	
+	<bean id="cacheSessionManager" scope="singleton"
+		class="org.tinygroup.weblayer.webcontext.session.model.CacheSessionManager">
+		<property name="sessionCaches" ref="cacheBean"></property>
+	</bean>
+	
 </beans>
