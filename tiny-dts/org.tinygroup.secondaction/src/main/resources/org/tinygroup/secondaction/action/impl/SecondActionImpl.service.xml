@@ -1,0 +1,24 @@
+<service-components>
+  <service-component type="org.tinygroup.secondaction.action.impl.SecondActionImpl" bean="SecondAction">
+    <service-method local-name="prepare_add" service-id="prepare_add" method-name="prepare_add" cacheable="false" category="org.tinygroup.secondaction.action.impl">
+      <service-parameters>
+        <service-parameter name="businessActionContext" type="org.tinygroup.dts.base.BusinessActionContext" required="false" is-array="false"/>
+        <service-parameter name="accountNo" type="java.lang.String" required="false" is-array="false"/>
+        <service-parameter name="amount" type="double" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="prepare_addResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="commit" service-id="commit" method-name="commit" cacheable="false" category="org.tinygroup.secondaction.action.impl">
+      <service-parameters>
+        <service-parameter name="businessActionContext" type="org.tinygroup.dts.base.BusinessActionContext" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="commitResult" required="false" is-array="false" type="boolean"/>
+    </service-method>
+    <service-method local-name="rollback" service-id="rollback" method-name="rollback" cacheable="false" category="org.tinygroup.secondaction.action.impl">
+      <service-parameters>
+        <service-parameter name="businessActionContext" type="org.tinygroup.dts.base.BusinessActionContext" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="rollbackResult" required="false" is-array="false" type="boolean"/>
+    </service-method>
+  </service-component>
+</service-components>
