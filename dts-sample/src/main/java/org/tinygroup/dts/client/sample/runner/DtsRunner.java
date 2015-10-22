@@ -13,7 +13,7 @@ import org.tinygroup.dts.client.sample.activity.TransferService;
 /**
  * 测试类
  */
-public class XtsRunner {
+public class DtsRunner {
     /**
      * spring上下文
      */
