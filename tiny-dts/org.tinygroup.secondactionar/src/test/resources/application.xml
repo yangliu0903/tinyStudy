@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+	<application-processors>
+		<application-processor bean="fileResolverProcessor"></application-processor>
+		<application-processor bean="serviceApplicationProcessor"></application-processor>
+		<application-processor bean="cepCoreProcessor"></application-processor>
+	</application-processors>
+	<cep-configuration node-name="node2">
+		<operator name="node2"></operator>
+		<scs>
+			<sc host="127.0.0.1" port="9191"></sc>
+		</scs>
+		<params>
+			<param name="stop-start-fail" value="false" />
+			<param name="heart-beat-time" value="25"/>
+			<param name="heart-beat-outtimes" value="10"/>
+		</params>
+	</cep-configuration>
+</application>

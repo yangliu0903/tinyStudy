@@ -13,7 +13,7 @@ import org.tinygroup.event.ServiceInfo;
 import org.tinygroup.event.ServiceRequest;
 import org.tinygroup.firstaction.action.FirstAction;
 
-public class FirstActionFacadeWrapper implements  FirstAction{
+public class FirstActionWrapper implements  FirstAction{
 
 	private CEPCore core;
 	

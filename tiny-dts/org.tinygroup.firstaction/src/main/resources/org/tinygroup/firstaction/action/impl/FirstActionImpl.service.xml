@@ -1,5 +1,5 @@
 <service-components>
-  <service-component type="org.tinygroup.firstaction.action.impl.FirstActionImpl" bean="FirstAction">
+  <service-component type="org.tinygroup.firstaction.action.impl.FirstActionImpl" bean="firstActionTarget">
     <service-method local-name="prepare_minus" service-id="prepare_minus" method-name="prepare_minus" cacheable="false" category="org.tinygroup.firstaction.action.impl">
       <service-parameters>
         <service-parameter name="businessActionContext" type="org.tinygroup.dts.base.BusinessActionContext" required="false" is-array="false"/>

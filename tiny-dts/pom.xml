@@ -26,5 +26,9 @@
   <modules>
   	<module>org.tinygroup.firstaction</module>
   	<module>org.tinygroup.secondaction</module>
+        <module>org.tinygroup.dtstest</module>
+        <module>org.tinygroup.firstactionar</module>
+  	<module>org.tinygroup.secondactionar</module>
+        <module>org.tinygroup.dtslaunch</module>
   </modules>
 </project>
