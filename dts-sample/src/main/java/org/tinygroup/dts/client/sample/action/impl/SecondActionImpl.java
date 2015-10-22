@@ -39,6 +39,7 @@ public class SecondActionImpl implements SecondAction {
                     double freezedAmount = account.getFreezedAmount() + amount;
                     account.setFreezedAmount(freezedAmount);
                     accountDAO.updateFreezedAmount(account);
+                    System.out.println(7/0);
                 } catch (Exception e) {
                     throw new TransactionFailException("一阶段操作失败", e);
                 }
@@ -57,6 +58,9 @@ public class SecondActionImpl implements SecondAction {
                     //找到账户操作流水
                     AccountTransaction accountTransaction = accountTransactionDAO
                         .findTransaction(businessActionContext.getTxId());
+                    if(accountTransaction==null){
+                    	return true;
+                    }
                     Account account = accountDAO.getAccount(accountTransaction.getAccountNo());
                     //加钱
                     double amount = account.getAmount() + accountTransaction.getAmount();
@@ -81,6 +85,9 @@ public class SecondActionImpl implements SecondAction {
                 try {
                     AccountTransaction accountTransaction = accountTransactionDAO
                         .findTransaction(businessActionContext.getTxId());
+                    if(accountTransaction==null){
+                    	return true;
+                    }
                     Account account = accountDAO.getAccount(accountTransaction.getAccountNo());
                     account.setFreezedAmount(account.getFreezedAmount()
                                              - accountTransaction.getAmount());
