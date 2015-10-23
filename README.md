@@ -19,7 +19,7 @@
 	├── dslsample / org.tinygroup.studytiny	// 演示DSL方式实现用户的增删改查的web工程
 	├── dts-sample //分布式事务测试用例
 	├── org.tinygroup.DemoSite	// 网站构建实例
-	├── org.tinygroup.tinysite2	// 
+	├── org.tinygroup.tinysite2	// tiny官网最初版本工程
 	├── org.tinygroup.tinyuisample	// 演示了tiny的页面文件与布局文件的关系，和渲染机制
 	├── quickstart目录
 	├── quickstart / quickstart.dslcrudweb	// 教学任务---DSL操作数据库案例
@@ -31,7 +31,7 @@
 	├── template / quickstart.springmvctemplate	// Tiny模板引擎和SpringMVC整合案例
 	├── template / quickstart.studytemplate	//  Tiny模板引擎语法 指令等学习案例
 	├── tiny-dts  //  基于tiny服务的dts测试
-	├── tinyonline  //  基于tiny服务的dts测试
+	├── tinyonline  //  模板引擎在线测试的示例工程
 	├── top.develop.demo	// develop骨架工程案例，如何开发一个数据库操作的示例
 	├── top.j2ee.site	// 
 	├── websample目录
