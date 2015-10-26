@@ -36,6 +36,7 @@ import org.tinygroup.tinysqldsl.expression.JdbcNamedParameter;
 import org.tinygroup.tinysqldsl.extend.MysqlSelect;
 import org.tinygroup.dslcruddao.pojo.TUser;
 import org.tinygroup.dslcruddao.TUserDao;
+import org.tinygroup.jdbctemplatedslsession.daosupport.OrderBy;
 import org.tinygroup.jdbctemplatedslsession.daosupport.TinyDslDaoSupport;
 
 import org.tinygroup.jdbctemplatedslsession.callback.DeleteGenerateCallback;
@@ -185,4 +186,13 @@ public class TUserDaoImpl extends TinyDslDaoSupport implements TUserDao {
 		});
 	}
 
+	public List<TUser> query(TUser t, OrderBy... orderArgs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Pager<TUser> queryPager(int start, int limit, TUser t, OrderBy... orderArgs) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
