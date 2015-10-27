@@ -5,8 +5,8 @@
          <artifactId>TinySample</artifactId>
          <version>2.0.2-SNAPSHOT</version>
         </parent>
-	<artifactId>org.tinygroup.dtstest</artifactId>
-        <name>org.tinygroup.dtstest</name>
+	<artifactId>org.tinygroup.dtssc</artifactId>
+        <name>org.tinygroup.dtssc</name>
         <dependencies>
 		<dependency>
 			<groupId>junit</groupId>
