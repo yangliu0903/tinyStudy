@@ -11,7 +11,11 @@
     <version>2.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
+<<<<<<< HEAD
         <tiny_version>2.0.27-SNAPSHOT</tiny_version>
+=======
+        <tiny_version>2.0.26</tiny_version>
+>>>>>>> 49decb567ed47023b125c9e81c32dc8db5d76d8f
         <tinyui_version>2.0.0</tinyui_version>
     </properties>
     <scm>
@@ -31,7 +35,5 @@
         <module>top.develop.demo</module>
         <module>quickstart</module>
         <module>template</module>
-        <module>dts-sample</module>
-        <module>tiny-dts</module>
   </modules>
 </project>
