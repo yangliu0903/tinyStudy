@@ -1,0 +1,8 @@
+#set(clazz="第一个 static Class")
+## 调用静态方法，将字符串转为大写
+
+## 别名调用
+${stringUtil.toUpper(clazz)}
+<br>
+## 原调用
+${stringUtil.toUpperCase(clazz)}

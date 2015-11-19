@@ -24,5 +24,8 @@
     <module>quickstart.studytemplate</module>    
     <module>quickstart.servlettemplate</module>    
     <module>quickstart.springmvctemplate</module>    
+    <module>quickstart.templatei18n</module>   
+    <module>quickstart.templateExt</module>   
+    
   </modules>
 </project>
