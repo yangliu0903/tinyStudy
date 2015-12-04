@@ -31,5 +31,6 @@
         <module>top.develop.demo</module>
         <module>quickstart</module>
         <module>template</module>
+		<module>servicewrapper</module>
   </modules>
 </project>
