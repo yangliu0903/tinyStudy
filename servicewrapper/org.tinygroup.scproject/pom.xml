@@ -19,11 +19,11 @@
 			<artifactId>org.tinygroup.service</artifactId>
 			<version>${tiny_version}</version>
 		</dependency>
-		<dependency>
+<!--		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.cepcoremutiremoteimpl</artifactId>
 			<version>${tiny_version}</version>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.tinyrunner</artifactId>
