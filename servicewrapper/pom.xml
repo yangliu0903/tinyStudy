@@ -7,9 +7,9 @@
     <version>2.0.2-SNAPSHOT</version>
   </parent>
 
-  <artifactId>cepwrapper</artifactId>
+  <artifactId>servicewrapper</artifactId>
   <packaging>pom</packaging>
-  <name>cepwrapper</name>
+  <name>servicewrapper</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
