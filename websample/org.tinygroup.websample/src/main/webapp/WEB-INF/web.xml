@@ -38,5 +38,17 @@
 		 <dispatcher>REQUEST</dispatcher>  
          <dispatcher>FORWARD</dispatcher>  
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>webservicefilter</filter-name>
+		<filter-class>org.tinygroup.websample.WebServiceFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>webservicefilter</filter-name>
+		<url-pattern>/services/*</url-pattern>
+		 <dispatcher>REQUEST</dispatcher>  
+         <dispatcher>FORWARD</dispatcher>  
+	</filter-mapping>
 
 </web-app>

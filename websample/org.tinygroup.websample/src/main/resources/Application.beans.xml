@@ -78,4 +78,8 @@
 		<property name="sessionCaches" ref="cacheBean"></property>
 	</bean>
 	
+	<bean id="myTinyFilter" scope="singleton"
+		class="org.tinygroup.websample.MyTinyFilter">
+	</bean>
+	
 </beans>

@@ -1,0 +1,10 @@
+<form 
+action="${TINY_CONTEXT_PATH}/fileupload/springmultiupload.shtm"
+enctype="multipart/form-data"
+method="post"
+>
+标题:<input type="text" name="title" value="" /><br/>
+ 文件1:<input type="file" name="file"/><br/>
+ 文件2:<input type="file" name="file"/><br/>
+<input type="submit" value="提交">
+</form>

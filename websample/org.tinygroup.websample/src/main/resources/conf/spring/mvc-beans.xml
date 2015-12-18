@@ -10,7 +10,9 @@
 	default-autowire="byName" default-lazy-init="false">
 
 	<context:component-scan base-package="org.tinygroup" />
-	<mvc:resources mapping="/icon/**" location="/icon/" />
+	<!--  <mvc:resources mapping="/icon1/**" location="/icon/" />-->
+	<mvc:resources mapping="/static/**" location="/icon/" />
+	<mvc:resources mapping="/**/*.ico" location="/" />
 	<!-- <mvc:default-servlet-handler /> -->
 	<bean id="myTemplateLayoutViewResolver"
 		class="org.tinygroup.springmvc.view.TinyTemplateLayoutViewResolver">

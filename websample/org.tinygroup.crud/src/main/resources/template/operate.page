@@ -2,7 +2,7 @@
 #if(user)
 action="${TINY_CONTEXT_PATH}/springmvc/userUpdate.shtm"
 #else
-action="${TINY_CONTEXT_PATH}/springmvc/userAdd.shtm"
+action="${TINY_CONTEXT_PATH}/springmvc/userAdd.shtm?test=ffff"
 #end
 >
  姓名:<input type="text" name="name" value="${user?.name}" /><br/>

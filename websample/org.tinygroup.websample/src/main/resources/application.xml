@@ -175,6 +175,9 @@
         <tiny-filter id="sessionTinyFilter" class="sessionTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
+         <!--  <tiny-filter id="myTinyFilter" class="myTinyFilter">
+            <filter-mapping url-pattern=".*"></filter-mapping>
+        </tiny-filter> -->
     </tiny-filters>
     <!--tiny listener 配置 -->
 
@@ -190,13 +193,14 @@
             <param-parser-filter bean-name="hTMLParameterValueFilter"></param-parser-filter>
             <!-- <param-parser-filter bean-name="paramValueEncryptFilter"></param-parser-filter> -->
         </param-parser-filters>
-        <upload-service bean-name="uploadService">
+      <upload-service bean-name="uploadService">
             <property name="sizeMax" value="-1"></property>
             <property name="fileSizeMax" value="-1"></property>
             <property name="repository" value="C:\temp"></property>
             <property name="sizeThreshold" value="1024"></property>
             <property name="keepFormFieldInMemory" value="true"></property>
             <property name="saveInFile" value="false"></property>
+            <property name="temporary" value="false"></property>
         </upload-service>
     </parser>
     <rewrite>
@@ -244,7 +248,7 @@
           </handlers>
         </rule>
     </rewrite>
-    <session maxInactiveInterval="60" forceExpirationPeriod="0" keepInTouch="true" backgroundProcessorDelay="10" sessionManagerBeanId="cacheSessionManager">
+    <session maxInactiveInterval="3600" forceExpirationPeriod="0" keepInTouch="true" backgroundProcessorDelay="10" sessionManagerBeanId="cacheSessionManager">
         <id cookieEnabled="true" urlEncodeEnabled="false">
             <cookie path="/" name="tinyjsessionid"></cookie>
             <url-encode name="tinyjsessionid"></url-encode>

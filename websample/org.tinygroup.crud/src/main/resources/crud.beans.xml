@@ -132,15 +132,18 @@
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 	
-	<bean id="userAciton" class="org.tinygroup.crud.service.impl.UserAction">
+	<bean id="userAciton" class="org.tinygroup.crud.action.UserAction">
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 	
-	<bean id="springUserAction" class="org.tinygroup.crud.service.impl.SpringUserAction">
+	<bean id="springUserAction" class="org.tinygroup.crud.action.SpringUserAction">
 		<property name="crudDbDao" ref="hibernateCrudDao" />
 	</bean>
 	
-	<bean id="uploadFileAction" class="org.tinygroup.crud.service.impl.UploadFileAction">
+	<bean id="fileUploadAction" class="org.tinygroup.crud.action.FileUploadAction">
+	</bean>
+	
+	<bean id="uploadFileAction" class="org.tinygroup.crud.action.UploadFileAction">
 	</bean>
 
 	<bean id="tinyDbCrudService" class="org.tinygroup.crud.service.impl.TinyDbCrudService" scope="singleton">

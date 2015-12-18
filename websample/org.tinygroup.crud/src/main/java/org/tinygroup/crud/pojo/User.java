@@ -24,10 +24,18 @@ public class User implements Serializable{
     private String name;
     private int age;
     
+    private String[] addresses;
+    
     private  List<FileInfo> fileInfos;
     
     private FileInfo[] fInfos;
     
+	public String[] getAddresses() {
+		return addresses;
+	}
+	public void setAddresses(String[] addresses) {
+		this.addresses = addresses;
+	}
 	public String getName() {
 		return name;
 	}
