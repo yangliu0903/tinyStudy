@@ -15,10 +15,12 @@
  */
 package org.tinygroup.crud.action;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
+import javax.tools.FileObject;
 
 import org.tinygroup.crud.pojo.FileInfo;
 import org.tinygroup.weblayer.WebContext;
@@ -101,5 +103,23 @@ public class UploadFileAction implements WebContextAware{
 		webContext.getRequest().setAttribute("cookie_size", times+name.length()+1);
 		webContext.getRequest().setAttribute("cookie_name", name);
 	}
+
+	@RequestMapping(value={"/uploadfile.do"})
+	public void uploadMethod(String title) throws IOException {
+		Object o = webContext.getRequest().getAttribute("file");
+		if(o instanceof ItemFileObject){
+			ItemFileObject item = (ItemFileObject) o;
+			System.out.println(item.getAbsolutePath());
+			System.out.println(item.getFileName());
+			System.out.println(item.getPath());
+			System.out.println(item.getSize());
+			System.out.println(title);
+			webContext.getResponse().getWriter().print(item.getAbsolutePath());
+		}else{
+			webContext.getResponse().getWriter().print("未找到文件");
+		}
+
+	}
+
 
 }

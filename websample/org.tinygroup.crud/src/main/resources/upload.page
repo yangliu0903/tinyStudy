@@ -1,9 +1,21 @@
-<form 
-action="${TINY_CONTEXT_PATH}/fileupload/upload.shtm"
+<form name="fileform"
 enctype="multipart/form-data"
 method="post"
 >
 标题:<input type="text" name="title" value="" /><br/>
  文件1:<input type="file" name="file"/><br/>
-<input type="submit" value="提交">
+<input type="button" value="提交(springmvc)" id="springmvcbtn">
+<input type="button" value="提交(tinymvc)" id="tinymvcbtn">
 </form>
+<script>
+ $(function(){
+   $("#springmvcbtn").click(function(){
+      $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/fileupload/upload.shtm");
+      $("form[name=fileform]").submit();
+   });
+   $("#tinymvcbtn").click(function(){
+      $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/filter/uploadfile.do");
+      $("form[name=fileform]").submit();
+      });
+ });
+</script>

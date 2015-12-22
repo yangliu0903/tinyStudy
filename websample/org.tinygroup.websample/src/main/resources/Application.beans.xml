@@ -81,5 +81,8 @@
 	<bean id="myTinyFilter" scope="singleton"
 		class="org.tinygroup.websample.MyTinyFilter">
 	</bean>
-	
+	<bean id="uploadedFileExtensionWhitelistFilter" scope="singleton"
+		  class="org.tinygroup.weblayer.webcontext.parser.impl.UploadedFileExtensionWhitelist">
+		<property name="allowedExtensions" value="jpg,bmp"/>
+	</bean>
 </beans>

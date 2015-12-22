@@ -12,7 +12,7 @@ public class FileUploadAction {
 	
 	@RequestMapping("/upload.shtm")
 	@ResponseBody
-	public String upload(@RequestParam("file")TinyMultipartFile file,String title){
+	public String upload(@RequestParam(value="file",required = false)TinyMultipartFile file,String title){
 		System.out.println(file.getName());
 		System.out.println(file.getOriginalFilename());
 		System.out.println(file.getContentType());
@@ -23,7 +23,7 @@ public class FileUploadAction {
 	
 	@RequestMapping("/multiupload.shtm")
 	@ResponseBody
-	public String multiUpload(@RequestParam("file")TinyMultipartFile[] files,String title){
+	public String multiUpload(@RequestParam(value = "file",required = false)TinyMultipartFile[] files,String title){
 		StringBuffer buffer=new StringBuffer("文件路径列表:");
 		if(files!=null){
 			for (int i = 0; i < files.length; i++) {
