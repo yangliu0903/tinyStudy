@@ -1,3 +1,5 @@
+<div>
+单文件:
 <form name="fileform"
 enctype="multipart/form-data"
 method="post"
@@ -7,14 +9,32 @@ method="post"
 <input type="button" value="提交(springmvc)" id="springmvcbtn">
 <input type="button" value="提交(tinymvc)" id="tinymvcbtn">
 </form>
+</div>
+
+<div style="margin-top:30px">
+多文件:
+<form
+enctype="multipart/form-data" action="${TINY_CONTEXT_PATH}/fileupload/multiupload.shtm"
+method="post"
+>
+标题:<input type="text" name="title" value="" /><br/>
+ 文件1:<input type="file" name="file"/><br/>
+ 文件2:<input type="file" name="file"/><br/>
+ 文件3:<input type="file" name="file"/><br/>
+ 文件4:<input type="file" name="file"/><br/>
+<input type="submit" value="提交(springmvc)">
+</form>
+</div>
 <script>
  $(function(){
    $("#springmvcbtn").click(function(){
       $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/fileupload/upload.shtm");
+##        $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/fileupload/multiupload.shtm");
       $("form[name=fileform]").submit();
    });
    $("#tinymvcbtn").click(function(){
       $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/filter/uploadfile.do");
+##        $("form[name=fileform]").attr("action","${TINY_CONTEXT_PATH}/filter/multiuploadfile.do");
       $("form[name=fileform]").submit();
       });
  });

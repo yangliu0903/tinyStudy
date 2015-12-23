@@ -13,11 +13,13 @@ public class FileUploadAction {
 	@RequestMapping("/upload.shtm")
 	@ResponseBody
 	public String upload(@RequestParam(value="file",required = false)TinyMultipartFile file,String title){
-		System.out.println(file.getName());
-		System.out.println(file.getOriginalFilename());
-		System.out.println(file.getContentType());
-		System.out.println(file.getSize());
-		System.out.println(title);
+		if(file!=null) {
+			System.out.println(file.getName());
+			System.out.println(file.getOriginalFilename());
+			System.out.println(file.getContentType());
+			System.out.println(file.getSize());
+			System.out.println(title);
+		}
 		return "文件路径:"+file.toFileObject().getAbsolutePath();
 	}
 	
@@ -36,7 +38,7 @@ public class FileUploadAction {
 					buffer.append(file.toFileObject().getAbsolutePath());
 				}
 				if(i<files.length){
-					buffer.append(",");
+					buffer.append(System.getProperty("line.separator"));
 				}
 			}
 		}

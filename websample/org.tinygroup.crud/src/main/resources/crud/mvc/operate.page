@@ -1,4 +1,5 @@
-<form 
+<form
+method="post"
 #if(user)
 action="${TINY_CONTEXT_PATH}/mvc/userUpdate.do"
 #else

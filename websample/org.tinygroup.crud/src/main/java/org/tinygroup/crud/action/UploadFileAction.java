@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
-import javax.tools.FileObject;
 
 import org.tinygroup.crud.pojo.FileInfo;
 import org.tinygroup.weblayer.WebContext;
@@ -29,6 +28,7 @@ import org.tinygroup.weblayer.mvc.annotation.Controller;
 import org.tinygroup.weblayer.mvc.annotation.RequestMapping;
 import org.tinygroup.weblayer.mvc.annotation.View;
 import org.tinygroup.weblayer.webcontext.parser.impl.ItemFileObject;
+import org.tinygroup.vfs.FileObject;
 
 @Controller()
 @RequestMapping(value={"/filter"})
@@ -105,7 +105,8 @@ public class UploadFileAction implements WebContextAware{
 	}
 
 	@RequestMapping(value={"/uploadfile.do"})
-	public void uploadMethod(String title) throws IOException {
+	public void uploadMethod(FileObject file,String title) throws IOException {
+		System.out.println(file instanceof ItemFileObject);
 		Object o = webContext.getRequest().getAttribute("file");
 		if(o instanceof ItemFileObject){
 			ItemFileObject item = (ItemFileObject) o;
@@ -119,6 +120,21 @@ public class UploadFileAction implements WebContextAware{
 			webContext.getResponse().getWriter().print("未找到文件");
 		}
 
+	}
+
+	@RequestMapping(value={"/multiuploadfile.do"})
+	public void uploadMethod(FileObject[] file,String title) throws IOException {
+		StringBuffer sb = new StringBuffer("文件路径列表:");
+		for(FileObject onefile : file){
+			System.out.println(onefile.getAbsolutePath());
+			System.out.println(onefile.getPath());
+			System.out.println(onefile.getFileName());
+			System.out.println(onefile.getPath());
+			System.out.println(onefile.getSize());
+			sb.append(onefile.getAbsolutePath()).append(System.getProperty("line.separator"));
+		}
+		System.out.println(title);
+		webContext.getResponse().getWriter().print(sb);
 	}
 
 
