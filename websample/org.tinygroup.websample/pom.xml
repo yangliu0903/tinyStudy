@@ -9,22 +9,6 @@
 	<packaging>war</packaging>
 	<name>org.tinygroup.websample</name>
 	<url>http://maven.apache.org</url>
-	<repositories>
-		<repository>
-			<id>tinyrepositoryrelease</id>
-			<name>tinyrepositoryrelease</name>
-			<url>http://www.tinygroup.org/nexus/content/repositories/release/</url>
-			<releases><enabled>true</enabled></releases>
-			<snapshots><enabled>false</enabled></snapshots>
-		</repository>
-		<repository>
-			<id>tinyrepositorysnapshot</id>
-			<name>tinyrepositorysnapshot</name>
-			<url>http://www.tinygroup.org/nexus/content/repositories/snapshots/</url>
-			<releases><enabled>false</enabled></releases>
-			<snapshots><enabled>true</enabled></snapshots>
-		</repository>
-	</repositories>
 	<dependencies>
 		<dependency>
 			<artifactId>servlet-api</artifactId>
@@ -132,7 +116,6 @@
 			<artifactId>org.tinygroup.pageflowbasiccomponent</artifactId>
 			<version>${tiny_version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.beanconverter</artifactId>
