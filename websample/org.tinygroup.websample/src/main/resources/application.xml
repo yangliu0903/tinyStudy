@@ -190,7 +190,8 @@
             </property-editor>
         </property-editors>
         <param-parser-filters>
-            <param-parser-filter bean-name="hTMLParameterValueFilter"></param-parser-filter>
+            <param-parser-filter bean-name="hTMLParameterValueFilter1"></param-parser-filter>
+            <param-parser-filter bean-name="customUploadedFileExtensionWhitelist"></param-parser-filter>
             <!-- <param-parser-filter bean-name="paramValueEncryptFilter"></param-parser-filter> -->
         </param-parser-filters>
       <upload-service bean-name="uploadService">

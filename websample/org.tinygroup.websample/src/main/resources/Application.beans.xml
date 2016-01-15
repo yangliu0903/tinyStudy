@@ -82,4 +82,26 @@
 		class="org.tinygroup.websample.MyTinyFilter">
 	</bean>
 	
+	<bean id="customUploadedFileExtensionWhitelist" scope="singleton"
+		class="org.tinygroup.weblayer.webcontext.parser.impl.UploadedFileExtensionWhitelist">
+		<property name="allowedExtensions">
+		     <list>
+		         <value>jpg</value>
+		     </list>
+		</property>
+	</bean>
+	
+	<bean id="hTMLParameterValueFilter1" scope="singleton"
+		class="org.tinygroup.weblayer.webcontext.parser.impl.HTMLParameterValueFilter">
+		<property name="allowed">
+		   <map>
+		      <entry key="bean">
+		           <set>
+		             <value>id</value>
+		             <value>class</value>
+		           </set>
+		      </entry>
+		   </map>
+		</property>
+	</bean>
 </beans>

@@ -12,7 +12,7 @@ public class FileUploadAction {
 	
 	@RequestMapping("/upload.shtm")
 	@ResponseBody
-	public String upload(@RequestParam("file")TinyMultipartFile file,String title){
+	public String upload(@RequestParam(value="file",required=false)TinyMultipartFile file,String title){
 		System.out.println(file.getName());
 		System.out.println(file.getOriginalFilename());
 		System.out.println(file.getContentType());
