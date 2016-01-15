@@ -193,7 +193,6 @@
             <param-parser-filter bean-name="hTMLParameterValueFilter1"></param-parser-filter>
             <param-parser-filter bean-name="customUploadedFileExtensionWhitelist"></param-parser-filter>
             <!-- <param-parser-filter bean-name="paramValueEncryptFilter"></param-parser-filter> -->
-            <param-parser-filter bean-name="uploadedFileExtensionWhitelistFilter"></param-parser-filter>
         </param-parser-filters>
       <upload-service bean-name="uploadService">
             <property name="sizeMax" value="-1"></property>
