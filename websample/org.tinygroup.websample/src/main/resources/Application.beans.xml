@@ -104,4 +104,8 @@
 		   </map>
 		</property>
 	</bean>
+	
+	<bean id="springLifeCycle" scope="singleton"
+		class="org.tinygroup.websample.SpringLifeCycle">
+	</bean>
 </beans>
