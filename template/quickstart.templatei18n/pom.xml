@@ -13,6 +13,12 @@
     <name>quickstart.templatei18n</name>
 
     <dependencies>
+        <dependency>
+            <artifactId>servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
     	<dependency>
     		<groupId>org.tinygroup</groupId>
     		<artifactId>org.tinygroup.templatei18n</artifactId>
@@ -21,6 +27,11 @@
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.validate</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.tinymvc</artifactId>
             <version>${tiny_version}</version>
         </dependency>
         <dependency>

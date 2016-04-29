@@ -13,6 +13,12 @@
     <url>http://maven.apache.org</url>
     
     <dependencies>
+        <dependency>
+            <artifactId>servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
     	<!-- 模板引擎对servlet的扩展依赖 -->
     	<dependency>
   			<groupId>org.tinygroup</groupId>

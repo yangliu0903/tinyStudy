@@ -10,6 +10,22 @@
     <name>quickstart.dslcrudweb</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <dependency>
+            <artifactId>servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.tinymvc</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.serviceweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
        <dependency>
            <groupId>quickstart</groupId>
            <artifactId>quickstart.dslcrudserviceimpl</artifactId>

@@ -15,6 +15,21 @@
     <dependencies>
         <dependency>
             <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.serviceweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.tinymvc</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.flowweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.validate</artifactId>
             <version>${tiny_version}</version>
         </dependency>

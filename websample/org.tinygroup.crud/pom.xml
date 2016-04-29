@@ -23,6 +23,12 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
   <dependencies>
+      <dependency>
+          <artifactId>servlet-api</artifactId>
+          <groupId>javax.servlet</groupId>
+          <version>2.5</version>
+          <scope>provided</scope>
+      </dependency>
     <dependency>
       <groupId>org.tinygroup</groupId>
       <artifactId>org.tinygroup.flow</artifactId>
@@ -53,6 +59,11 @@
       <artifactId>org.tinygroup.pageflowbasiccomponent</artifactId>
       <version>${tiny_version}</version>
     </dependency>
+      <dependency>
+          <groupId>org.tinygroup</groupId>
+          <artifactId>org.tinygroup.tinymvc</artifactId>
+          <version>${tiny_version}</version>
+      </dependency>
      <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
