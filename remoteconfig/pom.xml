@@ -6,7 +6,7 @@
     <artifactId>TinySample</artifactId>
     <version>2.0.2-SNAPSHOT</version>
   </parent>
-
+  <groupId>org.tinygroup</groupId>
   <artifactId>remoteconfig</artifactId>
   <packaging>pom</packaging>
   <name>remoteconfig</name>
