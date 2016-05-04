@@ -19,9 +19,9 @@ import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
 import org.tinygroup.weblayer.WebContext;
 import org.tinygroup.weblayer.mvc.WebContextAware;
-import org.tinygroup.tinymvc.annotation.Controller;
-import org.tinygroup.tinymvc.annotation.RequestMapping;
-import org.tinygroup.tinymvc.annotation.View;
+import org.tinygroup.weblayer.mvc.annotation.Controller;
+import org.tinygroup.weblayer.mvc.annotation.RequestMapping;
+import org.tinygroup.weblayer.mvc.annotation.View;
 
 import java.util.List;
 

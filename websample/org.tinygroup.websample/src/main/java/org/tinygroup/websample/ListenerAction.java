@@ -22,8 +22,8 @@ import javax.servlet.http.HttpSession;
 import org.tinygroup.weblayer.WebContext;
 import org.tinygroup.weblayer.listener.ServletContextHolder;
 import org.tinygroup.weblayer.mvc.WebContextAware;
-import org.tinygroup.tinymvc.annotation.Controller;
-import org.tinygroup.tinymvc.annotation.RequestMapping;
+import org.tinygroup.weblayer.mvc.annotation.Controller;
+import org.tinygroup.weblayer.mvc.annotation.RequestMapping;
 
 @Controller()
 @RequestMapping(value = { "/listener" })
