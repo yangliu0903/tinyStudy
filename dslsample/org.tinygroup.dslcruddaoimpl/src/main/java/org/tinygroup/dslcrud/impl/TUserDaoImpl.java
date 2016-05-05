@@ -188,13 +188,11 @@ public class TUserDaoImpl extends TinyDslDaoSupport implements TUserDao {
 	}
 
 	public List<TUser> query(TUser t, OrderBy... orderArgs) {
-		// TODO Auto-generated method stub
-		return null;
+		return query(t);
 	}
 
 	public Pager<TUser> queryPager(int start, int limit, TUser t, OrderBy... orderArgs) {
-		// TODO Auto-generated method stub
-		return null;
+		return queryPager(start,limit,t);
 	}
 
 }
