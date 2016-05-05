@@ -26,6 +26,11 @@
             <artifactId>org.tinygroup.serviceweblayer</artifactId>
             <version>${tiny_version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.uiengineweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
        <dependency>
            <groupId>quickstart</groupId>
            <artifactId>quickstart.dslcrudserviceimpl</artifactId>
