@@ -11,17 +11,7 @@
     <dependencies>
         <dependency>
             <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.tinymvc</artifactId>
-            <version>${tiny_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.flowweblayer</artifactId>
-            <version>${tiny_version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.serviceweblayer</artifactId>
+            <artifactId>org.tinygroup.uiengineweblayer</artifactId>
             <version>${tiny_version}</version>
         </dependency>
         <dependency>
