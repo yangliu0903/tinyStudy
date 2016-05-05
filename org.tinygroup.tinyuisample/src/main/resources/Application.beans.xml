@@ -18,33 +18,13 @@
                 <!-- validate -->
                 <ref bean="validateMapFileProcessor"/>
                 <ref bean="validateFileProcessor"/>
-				<!-- annotation -->
-				<ref bean="annotationFileProcessor" />
-				<ref bean="annotationClassFileProcessor" />
-
-				<!-- xmlservice -->
-				<ref bean="xmlServiceFileProcessor" />
-				<ref bean="xmlSysServiceFileProcessor" />
-
-				<!-- flow -->
-				<ref bean="flowFileProcessor" />
-				<ref bean="flowComponentProcessor" />
-
-				<!-- pageflow -->
-				<ref bean="pageFlowComponentProcessor" />
-				<ref bean="pageFlowFileProcessor" />
+				
 				<!-- 模板引擎-->
-				<ref bean="tinyMacroFileProcessor" />
-
-				<ref bean="processorFileResolver" />
 				<ref bean="tinyMacroFileProcessor" />
 				<ref bean="fullContextFileFinder" />
 				<ref bean="uIComponentFileProcessor" />
 				<!-- context2objects -->
 				<ref bean="generatorFileProcessor"/>
-				<!-- serviceMapping -->
-				<ref bean="serviceMappingFileProcessor"/>
-				<!-- tinyMacro -->
 
 			</list>
 		</property>

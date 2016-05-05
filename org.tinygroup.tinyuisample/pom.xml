@@ -9,6 +9,11 @@
     <name>tinyuisample</name>
 	<packaging>war</packaging>
     <dependencies>
+    	  <dependency>
+            <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.uiengineweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.templateweblayer</artifactId>
@@ -29,11 +34,7 @@
             <artifactId>org.tinygroup.cepcoreimpl</artifactId>
             <version>${tiny_version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.tinygroup</groupId>
-            <artifactId>org.tinygroup.database</artifactId>
-            <version>${tiny_version}</version>
-        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

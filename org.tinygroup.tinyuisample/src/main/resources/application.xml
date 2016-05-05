@@ -297,18 +297,7 @@
             <servlet-mapping url-pattern=".*/uiengine\.uijs"></servlet-mapping>
             <servlet-mapping url-pattern=".*/uiengine\.uicss"></servlet-mapping>
         </tiny-processor>
-        <tiny-processor id="serviceTinyProcessor" class="serviceTinyProcessor">
-            <servlet-mapping url-pattern=".*\.servicexml"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.servicejson"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.servicepage"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.servicepagelet"></servlet-mapping>
-        </tiny-processor>
-        <tiny-processor id="mvcTinyProcessor" class="mvcTinyProcessor">
-            <servlet-mapping url-pattern=".*\.do"></servlet-mapping>
-        </tiny-processor>
-        <tiny-processor id="pageFlowTinyProcessor" class="pageFlowTinyProcessor">
-            <servlet-mapping url-pattern=".*\.pageflow"></servlet-mapping>
-        </tiny-processor>
+        
         <tiny-processor id="fullContextProcessor" class="fullContextProcessor">
             <servlet-mapping url-pattern=".*\.evy"></servlet-mapping>
             <servlet-mapping url-pattern=".*\.fif"></servlet-mapping>
@@ -503,14 +492,7 @@
             <servlet-mapping url-pattern=".*\.xaf"></servlet-mapping>
             <servlet-mapping url-pattern=".*\.xof"></servlet-mapping>
         </tiny-processor>
-        <!--
-        <tiny-processor id="velocityViewProcessor" class="velocityViewProcessor">
-            <init-param name="templeteWithLayoutExtFileName" value=".page"></init-param>
-            <init-param name="templateExtFileName" value=".pagelet"></init-param>
-            <servlet-mapping url-pattern=".*\.page"></servlet-mapping>
-            <servlet-mapping url-pattern=".*\.pagelet"></servlet-mapping>
-        </tiny-processor>
-        -->
+       
         <tiny-processor id="tinyTemplateProcessor" class="tinyTemplateProcessor">
             <servlet-mapping url-pattern=".*\.page"></servlet-mapping>
             <servlet-mapping url-pattern=".*\.pagelet"></servlet-mapping>
