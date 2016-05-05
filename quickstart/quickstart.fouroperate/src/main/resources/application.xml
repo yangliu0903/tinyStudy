@@ -28,7 +28,6 @@
     <application-processors>
         <application-processor bean="fileResolverProcessor"></application-processor>
         <application-processor bean="serviceApplicationProcessor"></application-processor>
-        <application-processor bean="flowApplicationProcessor"></application-processor>
         <application-processor bean="tinyListenerProcessor"></application-processor>
         <application-processor bean="fileMonitorProcessor"></application-processor>
         <application-processor bean="tinyTemplateConfigProcessor"></application-processor>
@@ -81,12 +80,7 @@
             <servlet-mapping url-pattern=".*\.servicepage"></servlet-mapping>
             <servlet-mapping url-pattern=".*\.servicepagelet"></servlet-mapping>
         </tiny-processor>
-        <tiny-processor id="mvcTinyProcessor" class="mvcTinyProcessor">
-            <servlet-mapping url-pattern=".*\.do"></servlet-mapping>
-        </tiny-processor>
-        <tiny-processor id="pageFlowTinyProcessor" class="pageFlowTinyProcessor">
-            <servlet-mapping url-pattern=".*\.pageflow"></servlet-mapping>
-        </tiny-processor>
+        
         <tiny-processor id="fullContextProcessor" class="fullContextProcessor">
             <servlet-mapping url-pattern=".*\.evy"></servlet-mapping>
             <servlet-mapping url-pattern=".*\.fif"></servlet-mapping>
