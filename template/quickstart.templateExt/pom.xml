@@ -40,6 +40,11 @@
         </dependency>
         <dependency>
             <groupId>org.tinygroup</groupId>
+            <artifactId>org.tinygroup.uiengineweblayer</artifactId>
+            <version>${tiny_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinygroup</groupId>
             <artifactId>org.tinygroup.templateweblayer</artifactId>
             <version>${tiny_version}</version>
             <exclusions>
