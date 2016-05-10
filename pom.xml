@@ -12,7 +12,7 @@
     <packaging>pom</packaging>
     <properties>
         <tiny_version>2.2.0</tiny_version>
-        <tinyui_version>2.0.0</tinyui_version>
+        <tinyui_version>2.2.0</tinyui_version>
     </properties>
     <scm>
         <connection>scm:git:git@http://git.oschina.net/tinyframework/TinySample.git</connection>
