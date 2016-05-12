@@ -32,6 +32,6 @@
         <module>quickstart</module>
         <module>template</module>
 		<module>servicewrapper</module>
-		<module>remoteconfig</module>
+		<module>remoteconfigsimple</module>
   </modules>
 </project>
