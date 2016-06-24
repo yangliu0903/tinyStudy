@@ -30,10 +30,26 @@
 			<param-name>excludePath</param-name>
 			<param-value>.*/services.*</param-value>
 		</init-param>
+		<init-param>
+			<param-name>passthruPath</param-name>
+			<param-value>/index.html</param-value>
+		</init-param>
 	</filter>
 	
 	<filter-mapping>
 		<filter-name>TinyFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		 <dispatcher>REQUEST</dispatcher>  
+         <dispatcher>FORWARD</dispatcher>  
+	</filter-mapping>
+	
+	<!-- <filter>
+		<filter-name>testFilter</filter-name>
+		<filter-class>org.tinygroup.websample.TestFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>testFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 		 <dispatcher>REQUEST</dispatcher>  
          <dispatcher>FORWARD</dispatcher>  
@@ -50,5 +66,5 @@
 		 <dispatcher>REQUEST</dispatcher>  
          <dispatcher>FORWARD</dispatcher>  
 	</filter-mapping>
-
+ -->
 </web-app>
