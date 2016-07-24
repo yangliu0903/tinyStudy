@@ -11,7 +11,7 @@
     <version>2.2.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
-        <tiny_version>2.2.0</tiny_version>
+        <tiny_version>2.2.4-SNAPSHOT</tiny_version>
         <tinyui_version>2.2.0</tinyui_version>
     </properties>
     <scm>

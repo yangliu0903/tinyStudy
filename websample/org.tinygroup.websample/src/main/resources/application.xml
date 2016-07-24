@@ -133,7 +133,7 @@
     </tiny-processors>
 
     <!--tiny-filters配置 -->
-    <tiny-filters>
+     <tiny-filters>
         <tiny-wrapper-filter id="tinyFilterWrapper" class="tinyFilterWrapper">
             <init-param name="filter_beans" value="gZIPFilter,hiddenHttpMethodFilter"></init-param>
             <filter-mapping url-pattern=".*"></filter-mapping>
@@ -175,9 +175,9 @@
         <tiny-filter id="sessionTinyFilter" class="sessionTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
-         <!--  <tiny-filter id="myTinyFilter" class="myTinyFilter">
+          <tiny-filter id="myTinyFilter" class="myTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
-        </tiny-filter> -->
+        </tiny-filter>
     </tiny-filters>
     <!--tiny listener 配置 -->
 
@@ -249,7 +249,7 @@
           </handlers>
         </rule>
     </rewrite>
-    <session maxInactiveInterval="3600" forceExpirationPeriod="0" keepInTouch="true" backgroundProcessorDelay="10" sessionManagerBeanId="cacheSessionManager">
+    <session maxInactiveInterval="3600" forceExpirationPeriod="0" keepInTouch="true" backgroundProcessorDelay="10" sessionManagerBeanId="defaultSessionManager">
         <id cookieEnabled="true" urlEncodeEnabled="false">
             <cookie path="/" name="tinyjsessionid"></cookie>
             <url-encode name="tinyjsessionid"></url-encode>

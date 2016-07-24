@@ -24,8 +24,8 @@
 				<ref bean="xmlServiceFileProcessor" />
 				<ref bean="xmlSysServiceFileProcessor" />
 				<!-- flow -->
-				<ref bean="flowFileProcessor" />
 				<ref bean="flowComponentProcessor" />
+				<ref bean="flowFileProcessor" />
 
 				<!-- pageflow -->
 				<ref bean="pageFlowComponentProcessor" />
@@ -53,7 +53,8 @@
 				<ref bean="customSqlFileResolver" />
 				<ref bean="viewFileResolver" />
 				<ref bean="procedureFileResolver" />
-				<ref bean="tinyListenerFileProcessor" />
+				<ref bean="contextParamFileProcessor"/>
+				<!-- <ref bean="tinyListenerFileProcessor" /> -->
 
 			</list>
 		</property>
@@ -62,25 +63,25 @@
 		class="org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor">
 		<property name="fileResolver" ref="fileResolver"></property>
 	</bean>
-	<bean id="webListener" scope="singleton" class="org.tinygroup.websample.WebListener">
+	<!-- <bean id="webListener" scope="singleton" class="org.tinygroup.websample.WebListener">
 	</bean>
 	<bean id="tinyWebListener" scope="singleton"
 		class="org.tinygroup.websample.TinyWebListener">
-	</bean>
+	</bean> -->
 	
 	<bean id="cacheShutDownApplicationProcessor" scope="singleton"
 		class="org.tinygroup.cache.application.CacheShutDownApplicationProcessor">
 		<property name="cacheManager" ref="${cache_manager}"></property>
 	</bean>
 	
-	<bean id="cacheSessionManager" scope="singleton"
-		class="org.tinygroup.weblayer.webcontext.session.model.CacheSessionManager">
-		<property name="sessionCaches" ref="cacheBean"></property>
+	<bean id="defaultSessionManager" scope="singleton"
+		class="org.tinygroup.weblayer.webcontext.session.model.DefaultSessionManager">
 	</bean>
 	
 	<bean id="myTinyFilter" scope="singleton"
 		class="org.tinygroup.websample.MyTinyFilter">
 	</bean>
+	
 	
 	<bean id="customUploadedFileExtensionWhitelist" scope="singleton"
 		class="org.tinygroup.weblayer.webcontext.parser.impl.UploadedFileExtensionWhitelist">
