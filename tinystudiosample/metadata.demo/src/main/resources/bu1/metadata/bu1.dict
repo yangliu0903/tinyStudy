@@ -1,0 +1,13 @@
+<dicts>
+  <dict id="4fa05e654ce7455495f8a72c416d75ff" name="sex" title="SEX">
+    <description></description>
+    <dict-item>
+      <text>男</text>
+      <value>1</value>
+    </dict-item>
+    <dict-item>
+      <text>女</text>
+      <value>0</value>
+    </dict-item>
+  </dict>
+</dicts>

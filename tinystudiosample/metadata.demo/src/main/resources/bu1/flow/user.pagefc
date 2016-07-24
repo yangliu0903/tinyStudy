@@ -1,0 +1,31 @@
+<components>
+  <component category="" name="findUser" bean="findUser" title="查找用户" icon="">
+    <short-description></short-description>
+    <long-description></long-description>
+    <parameter name="user_id" title="用户ID" type="java.lang.String" editType="textarea" scope="in" array="false"/>
+    <result name="user" title="用户" type="org.test.dto.User" array="false" required="false"/>
+  </component>
+  <component category="" name="findScore" bean="findScore" title="查询成绩">
+    <short-description></short-description>
+    <long-description></long-description>
+    <parameter name="user" title="用户" type="org.test.dto.User" editType="textarea" scope="in" array="false"/>
+    <parameter name="user_class" title="班级" type="org.test.dto.UserClass" editType="textarea" scope="in" array="false"/>
+    <result name="score" title="分数" type="org.test.dto.Score" array="true" required="false"/>
+  </component>
+  <component category="" name="passOrNot" bean="passOrNot" title="是否通过">
+    <short-description></short-description>
+    <long-description></long-description>
+    <parameter name="score" title="成绩" type="org.test.dto.Score" editType="textarea" scope="in" array="true"/>
+    <result name="passStatus" title="通过状态" type="java.lang.Integer" array="false" required="false"/>
+  </component>
+  <component category="" name="reExam" bean="reExam" title="补考">
+    <short-description></short-description>
+    <long-description></long-description>
+    <parameter name="user" title="用户" type="org.test.dto.User" editType="textarea" scope="in" array="false"/>
+    <parameter name="user_class" title="班级" type="org.test.dto.UserClass" editType="textarea" scope="in" array="false"/>
+  </component>
+  <component category="" name="success" bean="success" title="通过">
+    <short-description></short-description>
+    <long-description></long-description>
+  </component>
+</components>

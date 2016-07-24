@@ -9,6 +9,13 @@
 		class="org.tinygroup.fileresolver.impl.FileResolverImpl">
 		<property name="fileProcessorList">
 			<list>
+				<ref bean="i18nFileProcessor" />
+				<ref bean="xStreamFileProcessor" />
+
+				<ref bean="tinyProcessorFileProcessor" />
+
+				<ref bean="tinyMacroFileProcessor" />
+				<ref bean="fullContextFileFinder" />
 			</list>
 		</property>
 	</bean>
@@ -16,4 +23,15 @@
 		class="org.tinygroup.fileresolver.applicationprocessor.FileResolverProcessor">
 		<property name="fileResolver" ref="fileResolver"></property>
 	</bean>
+	
+	<bean id="testService" scope="singleton"
+		class="org.tinygroup.config.demo.TestService">
+		<property name="pro2" value="${name2}"></property>
+		<property name="pro3" value="${name3}"></property>
+		<property name="pro4" value="${name4}"></property>
+	</bean>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+    </bean>
+	
 </beans>

@@ -1,0 +1,51 @@
+<tables>
+  <table id="3fe0812fce9047aeb90bfb5fbd2b2f48" name="user" title="USER" schema="test">
+    <extend-properties>
+      <property key="package-name" value="org.db"/>
+    </extend-properties>
+    <description></description>
+    <table-field standard-field-id="9152ed5bd4c6420999bab7f7c11c141e" primary="true" unique="true" not-null="true" id="user_id" auto-increase="false"/>
+    <table-field standard-field-id="54348f924cfb461d9043be2d296b24a8" primary="false" unique="false" not-null="false" id="user_name" auto-increase="false"/>
+    <table-field standard-field-id="3df6c82a1f004090ac1ce343027510d3" primary="false" unique="false" not-null="false" id="user_alia" auto-increase="false"/>
+    <table-field standard-field-id="24785ad36dcc41f7a03d9f4f51afcc12" primary="false" unique="false" not-null="false" id="user_sex" auto-increase="false"/>
+    <table-field standard-field-id="2994e70e18e742709f0fb396dd33bab0" primary="false" unique="false" not-null="false" id="user_num" auto-increase="false"/>
+    <table-field standard-field-id="68be1f5cdc254b738914ead9d050f972" primary="false" unique="false" not-null="false" id="user_hight" auto-increase="false"/>
+    <table-field standard-field-id="6c06b38b48364d9ba7b7ad904387400e" primary="false" unique="false" not-null="false" id="user_weight" auto-increase="false"/>
+  </table>
+  <table id="64daf8236cba4669b4e597cbad831dbf" name="user_class" title="USER_CLASS" schema="test">
+    <extend-properties>
+      <property key="package-name" value="org.db"/>
+    </extend-properties>
+    <description></description>
+    <table-field standard-field-id="8c7c97d6588b4062965eb8f20f49187f" primary="true" unique="true" not-null="true" id="class_id" auto-increase="false"/>
+    <table-field standard-field-id="7570bf28ecdd4e3fb3b8d31089666d81" primary="false" unique="false" not-null="false" id="class_name" auto-increase="false"/>
+    <table-field standard-field-id="c1e99c38b93f432b8e4287e1f47e6aa9" primary="false" unique="false" not-null="false" id="class_owner_id" auto-increase="false"/>
+    <foreign-reference name="user_class_fk">
+      <description></description>
+      <main-table>3fe0812fce9047aeb90bfb5fbd2b2f48</main-table>
+      <reference-field>user_id</reference-field>
+      <foreign-field>class_owner_id</foreign-field>
+    </foreign-reference>
+  </table>
+  <table id="45d461b53bfc418c82caad370086b679" name="score" title="SCORE" schema="test">
+    <extend-properties>
+      <property key="package-name" value="org.db"/>
+    </extend-properties>
+    <description></description>
+    <table-field standard-field-id="2eee739b07ae46f18753a862a5bf067c" primary="true" unique="true" not-null="true" id="score_id" auto-increase="false"/>
+    <table-field standard-field-id="016dc4cab4ba476482ec8792fbea5235" primary="false" unique="false" not-null="false" id="score_point" auto-increase="false"/>
+    <table-field standard-field-id="b92f3a87f90642a28c8ce5ce16419d7e" primary="false" unique="false" not-null="false" id="score_class_id" auto-increase="false"/>
+    <table-field standard-field-id="20cc759d36d9459f80d7a3dbecad5fe9" primary="false" unique="false" not-null="false" id="score_user_id" auto-increase="false"/>
+    <foreign-reference name="user_fk">
+      <description></description>
+      <main-table>3fe0812fce9047aeb90bfb5fbd2b2f48</main-table>
+      <reference-field>user_id</reference-field>
+      <foreign-field>score_user_id</foreign-field>
+    </foreign-reference>
+    <foreign-reference name="class_fk">
+      <main-table>64daf8236cba4669b4e597cbad831dbf</main-table>
+      <reference-field>class_id</reference-field>
+      <foreign-field>score_class_id</foreign-field>
+    </foreign-reference>
+  </table>
+</tables>

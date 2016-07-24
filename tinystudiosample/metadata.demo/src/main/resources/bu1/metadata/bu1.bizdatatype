@@ -1,0 +1,45 @@
+<business-types>
+  <business-type id="bf873b11d27f4986bb1ae6c67aae8797" name="biz_id" title="USER_ID" standard-type-id="3cb10cb1c16f4c1db538f8e276637003">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="62785bb8c7b24e96a9588a7124255c6d" name="biz_num" title="BIZ_NUM" standard-type-id="3cb10cb1c16f4c1db538f8e276637003">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="bc0cd27cb4b84d9095ea9defd35e4597" name="biz_age" title="BIZ_AGE" standard-type-id="3cb10cb1c16f4c1db538f8e276637003">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="f0c9d02138b14aab85c8acf0f8a0548b" name="biz_str16" title="BIZ_NAME16" standard-type-id="d3c907a89b3f41dca1e6f1fd8281c333">
+    <description></description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="16"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="3662297a63064595b09dea432aa2b24a" name="biz_str32" title="BIZ_NAME16" standard-type-id="d3c907a89b3f41dca1e6f1fd8281c333">
+    <description></description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="32"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="a56a45da338342dbbcd9a708d4de544e" name="biz_str64" title="BIZ_NAME64" standard-type-id="d3c907a89b3f41dca1e6f1fd8281c333">
+    <description></description>
+    <placeholder-value-list>
+      <placeholder-value name="length" value="64"/>
+    </placeholder-value-list>
+  </business-type>
+  <business-type id="909ff572f2d24116b1f4c241f4ad11e5" name="biz_date" title="BIZ_DATE" standard-type-id="5cd7b055fc894535823bb0145c49d255">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="457ee542235c4ace9d0c82b45c4deec4" name="biz_sex" title="BIZ_SEX" standard-type-id="3cb10cb1c16f4c1db538f8e276637003">
+    <description></description>
+    <dict-id>4fa05e654ce7455495f8a72c416d75ff</dict-id>
+    <placeholder-value-list/>
+  </business-type>
+  <business-type id="28cafc731441431a89f4935257a4759e" name="biz_float" title="BIZ_FLOAT" standard-type-id="d16344f7908343989f11c661f0f71e8c">
+    <description></description>
+    <placeholder-value-list/>
+  </business-type>
+</business-types>

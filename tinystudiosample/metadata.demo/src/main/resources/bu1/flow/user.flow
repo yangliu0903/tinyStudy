@@ -1,0 +1,67 @@
+<flow id="user" enable="true" private-context="false">
+  <nodes>
+    <node id="begin" name="begin" title="开始">
+      <next-nodes>
+        <next-node next-node-id="findUser"/>
+      </next-nodes>
+    </node>
+    <node id="findUser" name="findUser" title="查找用户">
+      <component name="findUser" title="查找用户">
+        <description></description>
+        <properties>
+          <flow-property name="user_id" required="false" type="java.lang.String"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="findScore"/>
+      </next-nodes>
+    </node>
+    <node id="findScore" name="findScore" title="查询成绩">
+      <component name="findScore" title="查询成绩">
+        <description></description>
+        <properties>
+          <flow-property name="user" required="false" type="org.test.dto.User"/>
+          <flow-property name="user_class" required="false" type="org.test.dto.UserClass"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="passOrNot"/>
+      </next-nodes>
+    </node>
+    <node id="passOrNot" name="passOrNot" title="是否通过">
+      <component name="passOrNot" title="是否通过">
+        <description></description>
+        <properties>
+          <flow-property name="score" required="false" type="org.test.dto.Score"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="reExam">
+          <el>成绩低于60，不及格</el>
+        </next-node>
+        <next-node next-node-id="success"/>
+      </next-nodes>
+    </node>
+    <node id="reExam" name="reExam" title="补考">
+      <component name="reExam" title="补考">
+        <description></description>
+        <properties>
+          <flow-property name="user" required="false" type="org.test.dto.User"/>
+          <flow-property name="user_class" required="false" type="org.test.dto.UserClass"/>
+        </properties>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+    <node id="success" name="success" title="通过">
+      <component name="success" title="通过">
+        <description></description>
+        <properties/>
+      </component>
+      <next-nodes>
+        <next-node next-node-id="end"/>
+      </next-nodes>
+    </node>
+  </nodes>
+</flow>

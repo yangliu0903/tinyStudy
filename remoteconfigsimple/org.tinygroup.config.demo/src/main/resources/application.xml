@@ -35,4 +35,9 @@
 		<application-processor bean="fileResolverProcessor"></application-processor>
 	</application-processors>
 
+	<tiny-processors>
+		<tiny-processor id="springMvcTinyProcessor" class="springMvcTinyProcessor">
+            <servlet-mapping url-pattern=".*"></servlet-mapping>
+        </tiny-processor>
+	</tiny-processors>
 </application>

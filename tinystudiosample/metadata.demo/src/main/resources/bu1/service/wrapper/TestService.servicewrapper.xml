@@ -1,0 +1,12 @@
+<method-configs>
+  <method-config service-id="add" type="org.test.TestService" method-name="add">
+    <parameter-type type="org.db.pojo.User"/>
+  </method-config>
+  <method-config service-id="delete" type="org.test.TestService" method-name="delete">
+    <parameter-type type="int"/>
+  </method-config>
+  <method-config service-id="getAll" type="org.test.TestService" method-name="getAll"/>
+  <method-config service-id="get" type="org.test.TestService" method-name="get">
+    <parameter-type type="int"/>
+  </method-config>
+</method-configs>

@@ -1,0 +1,40 @@
+<initDatas>
+  <initData id="52e5bf1c3c0143adb006e05876f5d19a" table-id="3fe0812fce9047aeb90bfb5fbd2b2f48">
+    <description></description>
+    <records>
+      <record>
+        <value-pairs>
+          <value-pair table-field-id="user_id" value="1"/>
+          <value-pair table-field-id="user_name" value="达达"/>
+          <value-pair table-field-id="user_alia" value="达子"/>
+          <value-pair table-field-id="user_sex" value="男"/>
+          <value-pair table-field-id="user_num" value="1123123123"/>
+          <value-pair table-field-id="user_hight" value="2"/>
+          <value-pair table-field-id="user_weight" value="1"/>
+        </value-pairs>
+      </record>
+      <record>
+        <value-pairs>
+          <value-pair table-field-id="user_id" value="2"/>
+          <value-pair table-field-id="user_name" value="点点"/>
+          <value-pair table-field-id="user_alia" value="点子"/>
+          <value-pair table-field-id="user_sex" value="女"/>
+          <value-pair table-field-id="user_num" value="12312312"/>
+          <value-pair table-field-id="user_hight"/>
+          <value-pair table-field-id="user_weight"/>
+        </value-pairs>
+      </record>
+      <record>
+        <value-pairs>
+          <value-pair table-field-id="user_id" value="3"/>
+          <value-pair table-field-id="user_name" value="层层"/>
+          <value-pair table-field-id="user_alia" value="层子"/>
+          <value-pair table-field-id="user_sex" value="男"/>
+          <value-pair table-field-id="user_num" value="21112"/>
+          <value-pair table-field-id="user_hight"/>
+          <value-pair table-field-id="user_weight"/>
+        </value-pairs>
+      </record>
+    </records>
+  </initData>
+</initDatas>

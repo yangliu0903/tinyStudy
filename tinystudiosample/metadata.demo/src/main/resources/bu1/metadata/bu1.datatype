@@ -1,0 +1,44 @@
+<standard-types>
+  <standard-type id="d3c907a89b3f41dca1e6f1fd8281c333" name="std_str" title="STD_STR" data-type="12">
+    <description></description>
+    <placeholder-list>
+      <placeholder name="length" title="长度"/>
+    </placeholder-list>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="String"/>
+      <dialect-type language="oracle" base-type="VARCHAR2" ext-type="(${length})">
+        <placeholder-value name="length"/>
+      </dialect-type>
+      <dialect-type language="mysql" base-type="VARCHAR" ext-type="(${length})">
+        <placeholder-value name="length"/>
+      </dialect-type>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="3cb10cb1c16f4c1db538f8e276637003" name="std_int" title="STD_INT" data-type="4">
+    <description></description>
+    <placeholder-list/>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Integer"/>
+      <dialect-type language="oracle" base-type="INTEGER"/>
+      <dialect-type language="mysql" base-type="INT"/>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="5cd7b055fc894535823bb0145c49d255" name="std_date" title="STD_DATE" data-type="91">
+    <description></description>
+    <placeholder-list/>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Date"/>
+      <dialect-type language="oracle" base-type="DATE"/>
+      <dialect-type language="mysql" base-type="DATE"/>
+    </dialect-type-list>
+  </standard-type>
+  <standard-type id="d16344f7908343989f11c661f0f71e8c" name="std_float" title="STD_FLORT" data-type="6">
+    <description></description>
+    <placeholder-list/>
+    <dialect-type-list>
+      <dialect-type language="java" base-type="Float"/>
+      <dialect-type language="oracle" base-type="FLOAT"/>
+      <dialect-type language="mysql" base-type="FLOAT"/>
+    </dialect-type-list>
+  </standard-type>
+</standard-types>

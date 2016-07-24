@@ -1,0 +1,61 @@
+<language-types>
+  <language-type id="oracle" name="oracle" type="1">
+    <description></description>
+    <language-field id="CHAR" name="CHAR"/>
+    <language-field id="VARCHAR2" name="VARCHAR2"/>
+    <language-field id="NCHAR" name="NCHAR"/>
+    <language-field id="NCHAR2" name="NCHAR2"/>
+    <language-field id="DATE" name="DATE"/>
+    <language-field id="LONG" name="LONG"/>
+    <language-field id="FLOAT" name="FLOAT"/>
+    <language-field id="INTEGER" name="INTEGER"/>
+    <language-field id="REAL" name="REAL"/>
+    <language-field id="NUMBER" name="NUMBER"/>
+    <language-field id="DECIMAL" name="DECIMAL"/>
+    <language-field id="BLOB" name="BLOB"/>
+    <language-field id="CLOB" name="CLOB"/>
+    <language-field id="NCLOB" name="NCLOB"/>
+  </language-type>
+  <language-type id="mysql" name="mysql" type="1">
+    <description></description>
+    <language-field id="TINYINT" name="TINYINT"/>
+    <language-field id="SMALLINT" name="SMALLINT"/>
+    <language-field id="MEDIUMINT" name="MEDIUMINT"/>
+    <language-field id="INT" name="INT"/>
+    <language-field id="BIGINT" name="BIGINT"/>
+    <language-field id="FLOAT" name="FLOAT"/>
+    <language-field id="DOUBLE" name="DOUBLE"/>
+    <language-field id="DECIMAL" name="DECIMAL"/>
+    <language-field id="CHAR" name="CHAR"/>
+    <language-field id="VARCHAR" name="VARCHAR"/>
+    <language-field id="TINYBLOB" name="TINYBLOB"/>
+    <language-field id="BLOB" name="BLOB"/>
+    <language-field id="MEDIUMBLOB" name="MEDIUMBLOB"/>
+    <language-field id="LONGBLOB" name="LONGBLOB"/>
+    <language-field id="TINYTEXT" name="TINYTEXT"/>
+    <language-field id="TEXT" name="TEXT"/>
+    <language-field id="MEDIUMTEXT" name="MEDIUMTEXT"/>
+    <language-field id="LONGTEXT" name="LONGTEXT"/>
+    <language-field id="ENUM" name="ENUM"/>
+    <language-field id="SET" name="SET"/>
+    <language-field id="DATE" name="DATE"/>
+    <language-field id="TIME" name="TIME"/>
+    <language-field id="DATETIME" name="DATETIME"/>
+    <language-field id="TIMESTAMP" name="TIMESTAMP"/>
+  </language-type>
+  <language-type id="java" name="java" type="0">
+    <description></description>
+    <language-field id="String" name="String"/>
+    <language-field id="Date" name="Date"/>
+    <language-field id="Boolean" name="Boolean"/>
+    <language-field id="Short" name="Short"/>
+    <language-field id="Integer" name="Integer"/>
+    <language-field id="Long" name="Long"/>
+    <language-field id="Float" name="Float"/>
+    <language-field id="Double1" name="Double"/>
+    <language-field id="Character" name="Character"/>
+    <language-field id="Byte" name="Byte"/>
+    <language-field id="BigDecimal" name="BigDecimal"/>
+    <language-field id="BigInteger" name="BigInteger"/>
+  </language-type>
+</language-types>

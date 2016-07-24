@@ -1,0 +1,24 @@
+<dto-metadatas>
+  <dto-metadata id="cf06865f574f4bfc8a9ae317d1030df8" name="user_data" title="DATA">
+    <extend-properties>
+      <property key="package-name" value="org.test"/>
+      <property key="class-name" value="UserData"/>
+    </extend-properties>
+    <description></description>
+    <properties>
+      <property csf-ref="99b4894899cf4fe8afd1a3c6f9c9cf4e"/>
+      <property ref="9152ed5bd4c6420999bab7f7c11c141e" csf-ref=""/>
+    </properties>
+  </dto-metadata>
+  <dto-metadata id="c3a8a1bd6abe4cfea07bc009f6ee44ec" name="class_user" title="CLASS_USER">
+    <extend-properties>
+      <property key="package-name" value="org.test"/>
+      <property key="class-name" value="ClassUser"/>
+    </extend-properties>
+    <description></description>
+    <properties>
+      <property ref="8c7c97d6588b4062965eb8f20f49187f" csf-ref=""/>
+      <property ref="" csf-ref="495ccb8b4e794b818321c09543aaefc2"/>
+    </properties>
+  </dto-metadata>
+</dto-metadatas>

@@ -1,0 +1,26 @@
+<service-components>
+  <service-component type="org.test.TestService">
+    <service-method local-name="add" service-id="add" method-name="add" cacheable="false" category="org.test">
+      <service-parameters>
+        <service-parameter name="user" type="org.db.pojo.User" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="addResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="delete" service-id="delete" method-name="delete" cacheable="false" category="org.test">
+      <service-parameters>
+        <service-parameter name="id" type="int" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="deleteResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="getAll" service-id="getAll" method-name="getAll" cacheable="false" category="org.test">
+      <service-parameters/>
+      <service-result name="getAllResult" required="false" is-array="false" type="void"/>
+    </service-method>
+    <service-method local-name="get" service-id="get" method-name="get" cacheable="false" category="org.test">
+      <service-parameters>
+        <service-parameter name="id" type="int" required="false" is-array="false"/>
+      </service-parameters>
+      <service-result name="getResult" required="false" is-array="false" type="void"/>
+    </service-method>
+  </service-component>
+</service-components>

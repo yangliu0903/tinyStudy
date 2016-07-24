@@ -1,0 +1,12 @@
+<procedures>
+  <procedure id="2886e79ac9194228a977b0e406457119" name="score_rank" title="SCORE_TOTLE" schema="">
+    <description>成绩汇总排名</description>
+    <procedure-parameters>
+      <procedure-parameter standard-field-id="8c7c97d6588b4062965eb8f20f49187f"/>
+    </procedure-parameters>
+    <sqls>
+      <sql dialect-type-name="oracle" content="create procedure ..."/>
+      <sql dialect-type-name="mysql" content="create procedure ..."/>
+    </sqls>
+  </procedure>
+</procedures>

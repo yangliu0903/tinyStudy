@@ -12,6 +12,11 @@
 
 	<listener>
 		<listener-class>
+			org.tinygroup.remoteconfig.web.RemoteConfigStartupListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
 			org.tinygroup.weblayer.ApplicationStartupListener
 		</listener-class>
 	</listener>

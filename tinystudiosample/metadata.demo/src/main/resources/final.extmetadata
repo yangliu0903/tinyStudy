@@ -1,0 +1,36 @@
+<extend-metadatas>
+	<extend-metadata type="errorcode">
+		<ext-fields>
+			<extend-field name="package-name" title="包名" edit-type="TEXT"/>
+			<extend-field name="class-name" title="类名"/>
+		</ext-fields>
+	</extend-metadata>
+	<extend-metadata type="table">
+		<ext-fields>
+			<extend-field name="package-name" title="包名"/>
+		</ext-fields>
+	</extend-metadata>
+	<extend-metadata type="servicedef">
+		<ext-fields>
+			<extend-field name="package-name" title="包名"/>
+			<extend-field name="class-name" title="类名"/>
+		</ext-fields>
+	</extend-metadata>
+	<extend-metadata type="servicedefmethod">
+		<ext-fields>
+			<extend-field name="method-name" title="方法名"/>
+		</ext-fields>
+	</extend-metadata>
+	<extend-metadata type="dto">
+		<ext-fields>
+			<extend-field name="package-name" title="包名"/>
+			<extend-field name="class-name" title="类名"/>
+		</ext-fields>
+	</extend-metadata>
+	<extend-metadata type="defaultvalue">
+		<ext-fields>
+			<extend-field name="package-name" title="包名"/>
+			<extend-field name="class-name" title="类名"/>
+		</ext-fields>
+	</extend-metadata>
+</extend-metadatas>

@@ -1,0 +1,44 @@
+<dto-metadatas>
+  <dto-metadata id="31fa75a3e8e8407d9d8fbd285647b0eb" name="user" title="USER">
+    <extend-properties>
+      <property key="package-name" value="org.test"/>
+      <property key="class-name" value="User"/>
+    </extend-properties>
+    <description></description>
+    <properties>
+      <property ref="9152ed5bd4c6420999bab7f7c11c141e"/>
+      <property ref="54348f924cfb461d9043be2d296b24a8"/>
+      <property ref="aa460967210d43bc8792afb713f9035a"/>
+      <property ref="3df6c82a1f004090ac1ce343027510d3"/>
+      <property ref="6c06b38b48364d9ba7b7ad904387400e"/>
+      <property ref="68be1f5cdc254b738914ead9d050f972"/>
+      <property ref="24785ad36dcc41f7a03d9f4f51afcc12"/>
+      <property ref="2994e70e18e742709f0fb396dd33bab0"/>
+    </properties>
+  </dto-metadata>
+  <dto-metadata id="66748a15779e47f88de98503f9abc596" name="user_class" title="USER_CLASS">
+    <extend-properties>
+      <property key="package-name" value="org.test"/>
+      <property key="class-name" value="UserClass"/>
+    </extend-properties>
+    <description></description>
+    <properties>
+      <property ref="8c7c97d6588b4062965eb8f20f49187f"/>
+      <property ref="7570bf28ecdd4e3fb3b8d31089666d81"/>
+      <property ref="c1e99c38b93f432b8e4287e1f47e6aa9"/>
+    </properties>
+  </dto-metadata>
+  <dto-metadata id="deb0b89d4eff42fc8cc695afce8d0818" name="score" title="SCORE">
+    <extend-properties>
+      <property key="package-name" value="org.test"/>
+      <property key="class-name" value="Score"/>
+    </extend-properties>
+    <description></description>
+    <properties>
+      <property ref="2eee739b07ae46f18753a862a5bf067c"/>
+      <property ref="016dc4cab4ba476482ec8792fbea5235"/>
+      <property ref="b92f3a87f90642a28c8ce5ce16419d7e"/>
+      <property ref="20cc759d36d9459f80d7a3dbecad5fe9"/>
+    </properties>
+  </dto-metadata>
+</dto-metadatas>

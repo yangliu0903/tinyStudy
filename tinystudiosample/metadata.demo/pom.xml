@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.tinygroup</groupId>
+	<artifactId>metadata.demo</artifactId>
+
+	<parent>
+      <artifactId>tinystudiosample</artifactId>
+      <groupId>org.tinygroup</groupId>
+      <version>2.0.2-SNAPSHOT</version>
+	</parent>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<tiny_version>2.3.0</tiny_version>
+		<tiny_ui_version>2.2.0</tiny_ui_version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.ui.tpl.clean</artifactId>
+			<version>${tiny_ui_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.flow</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.flowcomponent</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.servicecomponent</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.metadatacomponent</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.macro</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.pageflow</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.studio.documentgen.pageflowcomponent</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<!--皮肤 end -->
+
+		<!--公用包 start -->
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.ui.public</artifactId>
+			<version>${tiny_ui_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.gendslcode</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.gendtocode</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.gensql</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.databasechange</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.jdbctemplatedslsession</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.genservicewrapxml</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.genservicewrap</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.tinygroup</groupId>
+			<artifactId>org.tinygroup.cepcore</artifactId>
+			<version>${tiny_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.3.146</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+	</dependencies>
+
+
+</project>

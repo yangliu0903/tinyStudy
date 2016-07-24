@@ -1,0 +1,22 @@
+<default-values>
+  <extend-properties>
+    <property key="package-name" value=""/>
+    <property key="class-name" value=""/>
+  </extend-properties>
+  <default-value id="76d73f07a7954d2b8b8df9cec0683693" name="user_hight" title="USER_HIGHT">
+    <description></description>
+    <dialect-type-list>
+      <dialect-type language="java" value="1.6"/>
+      <dialect-type language="oracle" value="1.6"/>
+      <dialect-type language="mysql" value="1.6"/>
+    </dialect-type-list>
+  </default-value>
+  <default-value id="9fecefdc566c4023b1cfa37f9afce93f" name="user_weight" title="USER_WIDTH">
+    <description></description>
+    <dialect-type-list>
+      <dialect-type language="java" value="50"/>
+      <dialect-type language="oracle" value="50"/>
+      <dialect-type language="mysql" value="50"/>
+    </dialect-type-list>
+  </default-value>
+</default-values>

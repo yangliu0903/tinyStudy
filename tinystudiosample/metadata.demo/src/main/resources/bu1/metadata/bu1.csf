@@ -1,0 +1,14 @@
+<c-standard-fields>
+  <c-standard-field id="495ccb8b4e794b818321c09543aaefc2" name="users" title="USERS" standard-field-id="" dto-id="31fa75a3e8e8407d9d8fbd285647b0eb" collection-type="" is-array="true">
+    <description></description>
+    <nick-names/>
+  </c-standard-field>
+  <c-standard-field id="9a90ca7bcb7c42df8a87d7f865b792a9" name="user_classes" title="USER_CLASSES" standard-field-id="" dto-id="66748a15779e47f88de98503f9abc596" collection-type="java.util.List" is-array="false">
+    <description></description>
+    <nick-names/>
+  </c-standard-field>
+  <c-standard-field id="99b4894899cf4fe8afd1a3c6f9c9cf4e" name="scores" title="SCORES" standard-field-id="" dto-id="deb0b89d4eff42fc8cc695afce8d0818" collection-type="" is-array="true">
+    <description></description>
+    <nick-names/>
+  </c-standard-field>
+</c-standard-fields>

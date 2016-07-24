@@ -1,0 +1,62 @@
+<standard-fields>
+  <standard-field id="9152ed5bd4c6420999bab7f7c11c141e" name="user_id" title="USER_ID" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description>用户表ID</description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="54348f924cfb461d9043be2d296b24a8" name="user_name" title="USER_NAME" business-type-id="f0c9d02138b14aab85c8acf0f8a0548b">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="aa460967210d43bc8792afb713f9035a" name="user_address" title="USER_ADRESS" business-type-id="a56a45da338342dbbcd9a708d4de544e">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="3df6c82a1f004090ac1ce343027510d3" name="user_alia" title="USER_ALIA" business-type-id="f0c9d02138b14aab85c8acf0f8a0548b">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="24785ad36dcc41f7a03d9f4f51afcc12" name="user_sex" title="USER_SEX" business-type-id="457ee542235c4ace9d0c82b45c4deec4">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="68be1f5cdc254b738914ead9d050f972" name="user_hight" title="USER_HIGHT" business-type-id="bf873b11d27f4986bb1ae6c67aae8797" default-value-id="76d73f07a7954d2b8b8df9cec0683693">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="6c06b38b48364d9ba7b7ad904387400e" name="user_weight" title="USER_WEIGHT" business-type-id="28cafc731441431a89f4935257a4759e" default-value-id="9fecefdc566c4023b1cfa37f9afce93f">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="2994e70e18e742709f0fb396dd33bab0" name="user_num" title="USER_NUM" business-type-id="62785bb8c7b24e96a9588a7124255c6d">
+    <description>人员号码</description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="8c7c97d6588b4062965eb8f20f49187f" name="class_id" title="CLASS_ID" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description>班级表id</description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="7570bf28ecdd4e3fb3b8d31089666d81" name="class_name" title="CLASS_NAME" business-type-id="f0c9d02138b14aab85c8acf0f8a0548b">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="c1e99c38b93f432b8e4287e1f47e6aa9" name="class_owner_id" title="CLASS_OWNE" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="2eee739b07ae46f18753a862a5bf067c" name="score_id" title="TEACHER_ID" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description>成绩表id</description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="b92f3a87f90642a28c8ce5ce16419d7e" name="score_class_id" title="SCORE_CLASS_ID" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="016dc4cab4ba476482ec8792fbea5235" name="score_point" title="SCORE_POINT" business-type-id="62785bb8c7b24e96a9588a7124255c6d">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+  <standard-field id="20cc759d36d9459f80d7a3dbecad5fe9" name="score_user_id" title="SCORE_USER_ID" business-type-id="bf873b11d27f4986bb1ae6c67aae8797">
+    <description></description>
+    <nick-names/>
+  </standard-field>
+</standard-fields>
