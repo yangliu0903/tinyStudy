@@ -16,7 +16,6 @@
 
 package org.test.dto;
 
-import org.db.pojo.Score;
 
 /**
  * <!-- begin-user-doc --> DATA * <!-- end-user-doc -->

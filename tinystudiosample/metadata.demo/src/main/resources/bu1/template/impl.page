@@ -1,0 +1,396 @@
+/**
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
+ *
+ *  Licensed under the GPL, Version 3.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.gnu.org/licenses/gpl.html
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+#set(pojoName = classNameUtils.getClassName(table.getName()))
+#set(interfaceName = pojoName + "Dao")
+#set(daoName = pojoName + "DaoImpl")
+#set(tableName = pojoName + "Table")
+#getPackageName(table,project)
+${process.setExtendPackageName(table.properties.extendMap.get("package-name"))}
+
+#set(interfacepackageName = call("getInterfacePackageName" ,table,interProject ,interfacePackage))
+#set(interfacepackageName = stringUtils.trim(interfacepackageName))
+import static org.tinygroup.tinysqldsl.base.StatementSqlBuilder.and;
+import static ${interfacepackageName}constant.${tableName}.*;
+import static org.tinygroup.tinysqldsl.Select.*;
+import static org.tinygroup.tinysqldsl.Insert.*;
+import static org.tinygroup.tinysqldsl.Delete.*;
+import static org.tinygroup.tinysqldsl.Update.*;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.tinygroup.tinysqldsl.Delete;
+import org.tinygroup.tinysqldsl.Insert;
+import org.tinygroup.tinysqldsl.Select;
+import org.tinygroup.tinysqldsl.Update;
+import org.tinygroup.tinysqldsl.Pager;
+		
+import org.tinygroup.commons.tools.CollectionUtil;
+import org.tinygroup.tinysqldsl.expression.JdbcNamedParameter;
+import org.tinygroup.tinysqldsl.select.OrderByElement;
+
+import ${interfacepackageName}pojo.${pojoName};
+#if(interfacepackageName != null && interfacepackageName?.length() > 0)
+import ${interfacepackageName}${interfaceName};
+#end
+
+import org.tinygroup.jdbctemplatedslsession.daosupport.OrderBy;
+import org.tinygroup.jdbctemplatedslsession.daosupport.TinyDslDaoSupport;
+import org.tinygroup.jdbctemplatedslsession.callback.DeleteGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.InsertGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.NoParamDeleteGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.NoParamInsertGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.NoParamUpdateGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.SelectGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.callback.UpdateGenerateCallback;
+import org.tinygroup.jdbctemplatedslsession.util.TinyDSLUtil;
+
+#javadoc()
+public class ${daoName} extends TinyDslDaoSupport implements ${interfaceName} {
+
+#comment()
+#set(instanceName = stringUtils.upperCase(table.name) + "_TABLE")
+#set(varName = stringUtils.uncapitalize(pojoName))
+public ${pojoName} add(${pojoName} ${varName}) {
+	return getDslTemplate().insertAndReturnKey(${varName}, new InsertGenerateCallback<${pojoName}>() {
+		public Insert generate(${pojoName} t) {
+			Insert insert = insertInto(${instanceName}).values(
+			#for(field in table.getFieldList())
+				#getTableFieldBuffer(table,field,instanceName,"value","t",null)
+				#if(fieldFor.index != table.getFieldList().size())
+					,#nextline()
+				#end
+			#end
+			);
+			return insert;
+			}
+			});
+			}
+
+
+#comment()
+#set(primary = table.getPrimaryKey())
+#if(primary == null && table.getFieldList().size() > 0)
+	#set(primary = table.getFieldList().get(0))
+#end
+#if(primary != null)
+	#set(stdfield = standardfieldCache.get(primary.getStandardFieldId()))
+	#if(stdfield != null)
+		#set(stdfieldName = stdfield.name)
+		#set(tempStdfieldName = classNameUtils.getVarName(stdfieldName))
+		public int edit(${pojoName} ${varName}) {
+			if(${varName} == null || ${varName}.get${stringUtils.capitalize(tempStdfieldName)}() == null){
+				return 0;
+			}
+			return getDslTemplate().update(${varName}, new UpdateGenerateCallback<${pojoName}>() {
+				public Update generate(${pojoName} t) {
+				Update update = update(${instanceName}).set(
+				#set(tempIndex = 0)
+				#for(field in table.getFieldList())
+					#if(!field.isPrimary())
+						#if(tempIndex > 0)
+						,
+						#end
+						#set(tempIndex = tempIndex + 1)
+						#getTableFieldBuffer(table,field,instanceName,"value","t",null)
+					#end
+				#end
+				).where(
+				#if(primary != null)
+					#getTableFieldBuffer(table,primary,instanceName,"eq","t",null)
+				#end
+				);
+				return update;
+				}
+				});
+			}
+	#end
+#end
+
+#comment()
+#if(primary != null)
+	#set(stdfield = standardfieldCache.get(primary.getStandardFieldId()))
+	#if(stdfield != null)
+		#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+		public int deleteByKey(${type} pk){
+		if(pk == null){
+		return 0;
+		}
+		return getDslTemplate().deleteByKey(pk, new DeleteGenerateCallback<Serializable>() {
+		public Delete generate(Serializable pk) {
+			return delete(${instanceName}).where(#getTableFieldBuffer(table,primary,instanceName,"eq",pojoName,"pk"));
+		}
+		});
+		}
+	#end
+#end
+
+#comment()
+#if(primary != null)
+	#set(stdfield = standardfieldCache.get(primary.getStandardFieldId()))
+	#if(stdfield != null)
+		#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+		public int deleteByKeys(${type}... pks){
+		if(pks == null || pks.length == 0){
+		return 0;
+		}
+		return getDslTemplate().deleteByKeys(new DeleteGenerateCallback<Serializable[]>() {
+		public Delete generate(Serializable[] t) {
+			return delete(${instanceName}).where(#getTableFieldBuffer(table,primary,instanceName,"in",pojoName,"t"));
+		}
+		},pks);
+		}
+	#end
+#end
+
+#comment()
+#if(primary != null)
+	#set(stdfield = standardfieldCache.get(primary.getStandardFieldId()))
+	#if(stdfield != null)
+		#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+		public ${pojoName} getByKey(${type} pk) {
+			return getDslTemplate().getByKey(pk, ${pojoName}.class, new SelectGenerateCallback<Serializable>() {
+			
+				@SuppressWarnings("rawtypes")
+				public Select generate(Serializable t) {
+					return selectFrom(${instanceName}).where(#getTableFieldBuffer(table,primary,instanceName,"eq",pojoName,"t"));
+				}
+			});
+		}
+	#end
+#end
+
+#comment()
+public List<${pojoName}> query(${pojoName} ${varName} ,final OrderBy... orderArgs) {
+if(${varName} == null){
+${varName} = new ${pojoName}();
+}
+return getDslTemplate().query(${varName}, new SelectGenerateCallback<${pojoName}>() {
+@SuppressWarnings("rawtypes")
+public Select generate(${pojoName} t) {
+Select select = selectFrom(${instanceName}).where(
+and(
+#set(tempIndex = 0)
+#for(field in table.getFieldList())
+	#if(!field.isPrimary())
+		#if(tempIndex > 0)
+		,
+		#end
+		#set(tempIndex = tempIndex + 1)
+		#getTableFieldBuffer(table,field,instanceName,"eq","t",null)
+	#end
+#end
+));
+return TinyDSLUtil.addOrderByElements(select, orderArgs);
+}
+			});
+		}
+
+#comment()
+public Pager<${pojoName}> queryPager(int start,int limit ,${pojoName} ${varName} ,final OrderBy... orderArgs) {
+if(${varName} == null){
+${varName} = new ${pojoName}();
+}
+return getDslTemplate().queryPager(start, limit, ${varName}, false, new SelectGenerateCallback<${pojoName}>() {
+public Select generate(${pojoName} t) {
+Select select = Select.selectFrom(${instanceName}).where(
+and(
+#set(tempIndex = 0)
+#for(field in table.getFieldList())
+	#if(!field.isPrimary())
+		#if(tempIndex > 0)
+		,
+		#end
+		#set(tempIndex = tempIndex + 1)
+		#getTableFieldBuffer(table,field,instanceName,"eq","t",null)
+	#end
+#end
+));
+return TinyDSLUtil.addOrderByElements(select, orderArgs);
+}
+});
+}
+
+
+#comment()
+public int[] batchInsert(boolean autoGeneratedKeys ,List<${pojoName}> ${varName}) {
+if (CollectionUtil.isEmpty(${varName})) {
+return new int[0];
+}
+return getDslTemplate().batchInsert(autoGeneratedKeys, ${varName}, new NoParamInsertGenerateCallback() {
+
+public Insert generate() {
+return insertInto(${instanceName}).values(
+#set(tempIndex = 0)
+#for(field in table.getFieldList())
+	#if(!field.isPrimary())
+		#if(tempIndex > 0)
+		,
+		#end
+		#set(tempIndex = tempIndex + 1)
+		#getTableFieldBatchBuffer(table,field,instanceName,"value")
+	#end
+#end
+);
+}
+});
+}
+
+#comment()
+public int[] batchInsert(List<${pojoName}> ${stringUtils.uncapitalize(pojoName)}s){
+return batchInsert(true ,${stringUtils.uncapitalize(pojoName)}s);
+}
+
+#comment()
+public int[] batchUpdate(List<${pojoName}> ${varName}) {
+if (CollectionUtil.isEmpty(${varName})) {
+return new int[0];
+}
+return getDslTemplate().batchUpdate(${varName}, new NoParamUpdateGenerateCallback() {
+public Update generate() {
+return update(${instanceName}).set(
+#set(tempIndex = 0)
+#for(field in table.getFieldList())
+	#if(!field.isPrimary())
+		#if(tempIndex > 0)
+		,
+		#end
+		#set(tempIndex = tempIndex + 1)
+		#getTableFieldBatchBuffer(table,field,instanceName,"value")
+	#end
+#end
+).where(
+#if(primary != null)
+	#getTableFieldBatchBuffer(table,primary,instanceName,"eq")
+	);
+#end
+}
+});
+}
+
+
+#comment()
+public int[] batchDelete(List<${pojoName}> ${varName}) {	
+if (CollectionUtil.isEmpty(${varName})) {
+return new int[0];
+}
+
+return getDslTemplate().batchDelete(${varName}, new NoParamDeleteGenerateCallback() {		
+public Delete generate() {
+return delete(${instanceName}).where(and(	
+#set(tempIndex = 0)
+#for(field in table.getFieldList())
+	#if(!field.isPrimary())
+		#if(tempIndex > 0)
+		,
+		#end
+		#set(tempIndex = tempIndex + 1)
+		#getTableFieldBatchBuffer(table,field,instanceName,"eq")
+	#end
+#end	
+));
+}
+});
+}
+}	
+
+
+#macro getPackageName(table ,project)
+	#set(packageName=implPackage)
+	#set(tempPackageName = table.properties.extendMap.get("package-name"))
+	#if(tempPackageName?.length() > 0)
+		#if(packageName?.length() > 0)
+			#set(packageName=packageName + "." +tempPackageName)
+		#else
+			#set(packageName=tempPackageName)
+		#end
+	#end
+	#set(packageName=packageName?.replace("interface", "inter"))
+
+	#if(packageName != null && packageName?.length() > 0)
+		#set(pojoPackage=packageName + ";")
+package ${pojoPackage}#nextline()
+	#end
+#end
+
+#macro getInterfacePackageName(table ,interProject ,interfacePackage)
+	#set(interfacepackageName=interfacePackage)
+	#set(tempPackageName = table.properties.extendMap.get("package-name"))
+	#if(tempPackageName?.length() > 0)
+		#if(interfacepackageName?.length() > 0)
+			#set(interfacepackageName=interfacepackageName + "." +tempPackageName)
+		#else
+			#set(interfacepackageName=tempPackageName)
+		#end
+	#end
+	#set(interfacepackageName=interfacepackageName?.replace("interface", "inter"))
+
+	#if(interfacepackageName != null && interfacepackageName?.length() > 0)
+${interfacepackageName}.
+	#end
+#end
+
+#macro nextline()
+	#eol
+#end
+
+#macro javadoc()
+	/** 
+	 * <!-- begin-user-doc -->
+	 * 如果不希望某方法或者变量被覆盖，可以在方法或者变量注释中增加@unmodifiable
+ 	 * <!-- end-user-doc -->
+ 	 */#eol
+#end
+
+#macro comment()
+/** 
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ */
+#end
+
+#macro getTableFieldBuffer(table ,field ,instanceName , seq , pojoName ,value)
+#set(tablePojoName = classNameUtils.getClassName(table.name))
+#set(daoName = tablePojoName + "DaoImpl")
+#set(stdfield = standardfieldCache.get(field.getStandardFieldId()))
+	#if(stdfield != null)
+		#set(stdfieldName = stdfield.name)
+	#end
+#set(tempVarName = classNameUtils.getVarName(stdfieldName))
+	#if(tempVarName != null && tempVarName?.length() > 0)
+		#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+		#if(type != null)
+			#set(methodName = getterSetterUtil.getGetterName(javaProject, tempVarName, 0, false, paramUtils.getEmptyArray()))
+			#if(stringUtils.indexOf(type, "boolean")> -1 || stringUtils.indexOf(type, "BOOLEAN") > -1)
+				#set(methodName = getterSetterUtil.getGetterName(javaProject, varName, 0, true, paramUtils.getEmptyArray()))
+			#end
+			#set(methodName = methodName + "()")
+		#end
+		#if(value == null)
+${instanceName}.${stringUtils.upperCase(stdfieldName)}.${seq}(${stringUtils.uncapitalize(pojoName)}.${methodName})
+	#else
+${instanceName}.${stringUtils.upperCase(stdfieldName)}.${seq}(${value})
+		#end
+	#end
+#end
+
+#macro getTableFieldBatchBuffer(table ,field ,instanceName ,seq)
+	#set(tempStdfield = standardfieldCache.get(field.getStandardFieldId()))
+	#set(tempStdfieldName = tempStdfield.name)
+	#set(tempVarName = classNameUtils.getVarName(tempStdfieldName))
+${instanceName}.${stringUtils.upperCase(tempStdfieldName)}.${seq}(new JdbcNamedParameter("${tempVarName}"))
+#end

@@ -5,7 +5,9 @@
       <sql dialect-type-name="oracle" content="create view ..."/>
       <sql dialect-type-name="mysql" content="create view ..."/>
     </sqls>
-    <ref-view-ids/>
+    <ref-view-ids>
+      <ref-view-id>3677a6d1a77148a28784d33c1156eba2</ref-view-id>
+    </ref-view-ids>
   </view>
   <view id="3677a6d1a77148a28784d33c1156eba2" name="user_class" title="USER_CLASS" schema="test">
     <description>班级成员视图</description>

@@ -1,0 +1,84 @@
+/**
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
+ *
+ *  Licensed under the GPL, Version 3.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.gnu.org/licenses/gpl.html
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+#set(pojoName = classNameUtils.getClassName(table.getName()))
+#set(interfaceName = pojoName + "Dao")
+#getPackageName(table,project)
+${process.setExtendPackageName(table.properties.extendMap.get("package-name"))}
+
+#set(interfacepackageName = call("getInterfacePackageName" ,table,interProject ,interfacePackage))
+#set(interfacepackageName = stringUtils.trim(interfacepackageName))
+import org.tinygroup.jdbctemplatedslsession.daosupport.BaseDao;
+import ${interfacepackageName}pojo.${pojoName};
+#javadoc()
+#set(primary = table.getPrimaryKey())
+#if(primary == null && table.getFieldList().size() > 0)
+	#set(primary = table.getFieldList().get(0))
+#end
+#if(primary != null)
+	#set(stdfield = standardfieldCache.get(primary.standardFieldId))
+	#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+#]#]public interface ${interfaceName} extends BaseDao<${pojoName},${type}> {
+	
+}
+#end
+
+
+#macro getPackageName(table ,project)
+	#set(packageName=interfacePackage)
+	#set(tempPackageName = table.properties.extendMap.get("package-name"))
+	#if(tempPackageName?.length() > 0)
+		#if(packageName?.length() > 0)
+			#set(packageName=packageName + "." +tempPackageName)
+		#else
+			#set(packageName=tempPackageName)
+		#end
+	#end
+	#set(packageName=packageName?.replace("interface", "inter"))
+
+	#if(packageName != null && packageName?.length() > 0)
+		#set(pojoPackage=packageName + ";")
+package ${pojoPackage}#nextline()
+	#end
+#end
+
+#macro nextline()
+	#eol
+#end
+
+#macro javadoc()
+	/** 
+	 * <!-- begin-user-doc -->
+	 * 如果不希望某方法或者变量被覆盖，可以在方法或者变量注释中增加@unmodifiable
+ 	 * <!-- end-user-doc -->
+ 	 */#eol
+#end
+
+#macro getInterfacePackageName(table ,interProject ,interfacePackage)
+	#set(interfacepackageName=interfacePackage)
+	#set(tempPackageName = table.properties.extendMap.get("package-name"))
+	#if(tempPackageName?.length() > 0)
+		#if(interfacepackageName?.length() > 0)
+			#set(interfacepackageName=interfacepackageName + "." +tempPackageName)
+		#else
+			#set(interfacepackageName=tempPackageName)
+		#end
+	#end
+	#set(interfacepackageName=interfacepackageName?.replace("interface", "inter"))
+
+	#if(interfacepackageName != null && interfacepackageName?.length() > 0)
+${interfacepackageName}.
+	#end
+#end

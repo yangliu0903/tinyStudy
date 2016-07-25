@@ -1,0 +1,107 @@
+/**
+ *  Copyright (c) 1997-2013, www.tinygroup.org (luo_guo@icloud.com).
+ *
+ *  Licensed under the GPL, Version 3.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *       http://www.gnu.org/licenses/gpl.html
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+#getPackageName(table,project)
+${process.setExtendPackageName(table.properties.extendMap.get("package-name"))}
+#set(pojoName = classNameUtils.getClassName(table.name))
+import java.util.Date;#nextline()
+#javadoc(table.title ,table.description)
+public class ${pojoName}  { #nextline()
+	
+#for(field in table.fieldList)
+#getFieldContent(field ,standardfieldCache)
+#end
+
+#for(field in table.fieldList)
+#getGetterSetterContent(field ,standardfieldCache ,javaProject)
+#end
+
+}
+#macro getFieldContent(field ,standardfieldCache)
+	#set(stdfield = standardfieldCache.get(field.standardFieldId))
+	#if(stdfield != null)
+		#set(varName = classNameUtils.getVarName(stdfield.name))
+		#if(varName != null && stringUtils.isNotBlank(varName))
+			#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+			#if(stringUtils.isNotBlank(type))
+#javadoc(stdfield.title,stdfield.description)
+	private ${type}  ${varName};#nextline()
+				
+			#end
+		#end
+	#end
+#end
+
+#macro getGetterSetterContent(field ,standardfieldCache ,javaProject)
+	#set(stdfield = standardfieldCache.get(field.standardFieldId))
+	#if(stdfield != null)
+		#set(varName = classNameUtils.getVarName(stdfield.name))
+		#if(varName != null && stringUtils.isNotBlank(varName))
+			#set(type = metadataUtils.getStdTypeByStdField(project, stdfield, "java"))
+			#if(type != null && stringUtils.isNotBlank(type))
+#javadoc(stdfield.title,stdfield.description)
+				#set(methodName = getterSetterUtil.getSetterName(javaProject, varName, 0, false, paramUtils.getEmptyArray()))
+#[#[#[	public void  ${methodName} (${type} ${varName}){ #nextline()
+					this.${varName}  =  ${varName};#nextline()
+				} #nextline()
+				
+				#set(methodName = getterSetterUtil.getGetterName(javaProject, varName, 0, false, paramUtils.getEmptyArray()))
+				#if(stringUtils.indexOf(type, "boolean")> -1 || stringUtils.indexOf(type, "BOOLEAN") > -1)
+					#set(methodName = getterSetterUtil.getGetterName(javaProject, varName, 0, true, paramUtils.getEmptyArray()))
+				#end
+#[#[#[	public ${type}  ${methodName} (){ #nextline()
+		return ${varName}; #nextline()
+	}#nextline()
+			#end
+		#end
+	#end
+#end
+
+#macro nextline()
+	#eol
+#end
+
+#macro getPackageName(table ,project)
+	#set(packageName=interfacePackage)
+	#set(tempPackageName = table.properties.extendMap.get("package-name"))
+	#if(tempPackageName?.length() > 0)
+		#if(packageName?.length() > 0)
+			#set(packageName=packageName + "." +tempPackageName)
+		#else
+			#set(packageName=tempPackageName)
+		#end
+	#end
+	#set(packageName=packageName?.replace("interface", "inter"))
+
+#if(packageName != null && packageName?.length() > 0)
+#set(pojoPackage=packageName + "." + "pojo;")
+package ${pojoPackage}#nextline()
+#else
+package pojo;#nextline()
+#end
+#end
+
+#macro javadoc(title , description)
+	/** 
+	 * <!-- begin-user-doc -->
+	 ${title}
+	 #if(description != null && description?.length() > 0)
+		 #for(line in stringUtils.split(description))
+ 	 * ${line}#eol
+		 #end
+	 #end
+ 	 * <!-- end-user-doc -->
+ 	 */#eol
+#end

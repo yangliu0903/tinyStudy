@@ -16,7 +16,6 @@
 
 package org.test.dto;
 
-import org.db.pojo.User;
 
 /**
  * <!-- begin-user-doc --> CLASS_USER * <!-- end-user-doc -->
