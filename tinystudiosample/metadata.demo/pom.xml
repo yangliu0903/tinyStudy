@@ -22,7 +22,7 @@
 			<artifactId>org.tinygroup.ui.tpl.clean</artifactId>
 			<version>${tiny_ui_version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.studio.documentgen.flow</artifactId>
 			<version>${tiny_version}</version>
@@ -56,7 +56,7 @@
 			<groupId>org.tinygroup</groupId>
 			<artifactId>org.tinygroup.studio.documentgen.pageflowcomponent</artifactId>
 			<version>${tiny_version}</version>
-		</dependency>
+		</dependency>-->
 		<!--皮肤 end -->
 
 		<!--公用包 start -->

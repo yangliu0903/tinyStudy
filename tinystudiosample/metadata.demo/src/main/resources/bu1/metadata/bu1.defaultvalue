@@ -1,8 +1,4 @@
 <default-values>
-  <extend-properties>
-    <property key="package-name" value=""/>
-    <property key="class-name" value=""/>
-  </extend-properties>
   <default-value id="76d73f07a7954d2b8b8df9cec0683693" name="user_hight" title="USER_HIGHT">
     <description></description>
     <dialect-type-list>
