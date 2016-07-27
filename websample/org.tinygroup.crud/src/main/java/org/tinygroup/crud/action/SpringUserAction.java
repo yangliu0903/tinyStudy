@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.tinygroup.commons.tools.CollectionUtil;
 import org.tinygroup.crud.dao.CrudDbDao;
 import org.tinygroup.crud.pojo.User;
+import org.tinygroup.springmvc.handler.Form;
 import org.tinygroup.weblayer.WebContext;
 import org.tinygroup.weblayer.mvc.WebContextAware;
 
@@ -36,6 +37,7 @@ public class SpringUserAction implements WebContextAware{
 
     private CrudDbDao<User> crudDbDao;
     private WebContext webContext;
+    private String value;
 	public CrudDbDao<User> getCrudDbDao() {
 		return crudDbDao;
 	}
@@ -45,6 +47,7 @@ public class SpringUserAction implements WebContextAware{
 	}
 	
 	@RequestMapping(value={"/userAdd.shtm"})
+	@Form
 	public String addUserMethod(String name) {
 		User user=new User();
 		user.setAge(Integer.parseInt(webContext.getRequest().getParameter("age")));

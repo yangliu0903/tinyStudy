@@ -22,7 +22,7 @@
 	</bean>
 
 	<bean id="mappingJacksonJsonView"
-		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 	</bean>
 
 	<bean id="defaultViewsStorage" class="org.tinygroup.springmvc.view.DefaultViewsStorage">
@@ -39,6 +39,12 @@
 				<entry key="json" value="application/json"></entry>
 			</map>
 		</property>
+	</bean>
+
+	<bean id="applicationPropertyResourceConfigurer1" scope="singleton"
+		class="org.tinygroup.springutil.ApplicationPropertyResourceConfigurer">
+		<property name="order" value="1" />  
+		<property name="ignoreUnresolvablePlaceholders" value="true" /> 
 	</bean>
 
 </beans>

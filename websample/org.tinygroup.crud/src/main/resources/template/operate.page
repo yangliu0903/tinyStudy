@@ -1,12 +1,18 @@
+#macro addFormToken()
+  #set(form=formManagerImpl.newForm(request))
+<input type="hidden" name="${form.getTokenFieldName()}" value="${form.getToken()}"/>
+#end
 <form 
 #if(user)
 action="${TINY_CONTEXT_PATH}/springmvc/userUpdate.shtm"
 #else
 action="${TINY_CONTEXT_PATH}/springmvc/userAdd.shtm?test=ffff"
 #end
+method="post"
 >
  姓名:<input type="text" name="name" value="${user?.name}" /><br/>
  年龄:<input type="text" name="age" value="${user?.age}" /><br/>
  <input type="hidden" name="id" value="${user?.id}"/>
+  #addFormToken()
 <input type="submit" value="提交">
 </form>
