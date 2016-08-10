@@ -22,6 +22,18 @@
 		<servlet-name>tinywebservice</servlet-name>
 		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
+	
+<!-- 	<filter>
+		<filter-name>webservicefilter</filter-name>
+		<filter-class>org.tinygroup.websample.WebServiceFilter</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>webservicefilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		 <dispatcher>REQUEST</dispatcher>  
+         <dispatcher>FORWARD</dispatcher>  
+	</filter-mapping> -->
 
 	<filter>
 		<filter-name>TinyFilter</filter-name>
@@ -53,18 +65,6 @@
 		<url-pattern>/*</url-pattern>
 		 <dispatcher>REQUEST</dispatcher>  
          <dispatcher>FORWARD</dispatcher>  
-	</filter-mapping>
+	</filter-mapping> -->
 	
-	<filter>
-		<filter-name>webservicefilter</filter-name>
-		<filter-class>org.tinygroup.websample.WebServiceFilter</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>webservicefilter</filter-name>
-		<url-pattern>/services/*</url-pattern>
-		 <dispatcher>REQUEST</dispatcher>  
-         <dispatcher>FORWARD</dispatcher>  
-	</filter-mapping>
- -->
 </web-app>

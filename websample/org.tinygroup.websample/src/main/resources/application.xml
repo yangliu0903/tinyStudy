@@ -65,7 +65,7 @@
     <!-- 数据库安装处理器 -->
     <database-install-processor>
         <database-installer>
-            <database type="derby"/>
+            <database type="mysql"/>
         </database-installer>
     </database-install-processor>
 
@@ -175,9 +175,14 @@
         <tiny-filter id="sessionTinyFilter" class="sessionTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
         </tiny-filter>
-          <tiny-filter id="myTinyFilter" class="myTinyFilter">
+        <tiny-filter id="formCheckTinyFilter" class="formCheckTinyFilter">
             <filter-mapping url-pattern=".*"></filter-mapping>
+            <init-param name="filterFormCheck" value="true" id="{ddd}" key="{DEBUG_MODE}"></init-param>
+           <!--  <init-param name="checkUrls" value=""></init-param> -->
         </tiny-filter>
+        <!--   <tiny-filter id="myTinyFilter" class="myTinyFilter">
+            <filter-mapping url-pattern=".*"></filter-mapping>
+        </tiny-filter> -->
     </tiny-filters>
     <!--tiny listener 配置 -->
 
@@ -291,4 +296,8 @@
     <service-interface>
          <class-name-regular pattern=".*"></class-name-regular>
     </service-interface>
+    
+    <post-data-process>
+       <data-mapping name="" host-pattern="192.168.84.*" ></data-mapping>
+    </post-data-process>
 </application>
