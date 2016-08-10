@@ -1,5 +1,5 @@
-<initDatas>
-  <initData id="52e5bf1c3c0143adb006e05876f5d19a" table-id="3fe0812fce9047aeb90bfb5fbd2b2f48">
+<init-datas>
+  <init-data id="52e5bf1c3c0143adb006e05876f5d19a" table-id="3fe0812fce9047aeb90bfb5fbd2b2f48">
     <description></description>
     <records>
       <record>
@@ -36,5 +36,5 @@
         </value-pairs>
       </record>
     </records>
-  </initData>
-</initDatas>
+  </init-data>
+</init-datas>
