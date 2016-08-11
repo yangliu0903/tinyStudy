@@ -29,5 +29,6 @@
     <module>org.tinygroup.helloworld</module>
     <module>org.tinygroup.webservicesample</module>
     <module>org.tinygroup.websample</module>
+    <module>org.tinygroup.websample2</module>
   </modules>
 </project>
